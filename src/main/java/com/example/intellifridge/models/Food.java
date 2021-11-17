@@ -31,9 +31,8 @@ public class Food {
     @Column(nullable = false, columnDefinition = "TimeStamp(20)")
     private Timestamp expirationDate;
 
-    @OneToMany(mappedBy = "foods")
-    private List<User> users;
-    private List<Fridge> fridges;
+
+
 
     public Food() {
     }
