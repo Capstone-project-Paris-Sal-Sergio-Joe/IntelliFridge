@@ -2,6 +2,7 @@ package com.example.intellifridge.models;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -25,6 +26,15 @@ public class User {
 
     @Column(columnDefinition = "VARCHAR(200)")
     private String profilePicture;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name ="fridge_user",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "fridge_id")}
+    )
+    private List<Fridge> fridges;
+
 
     public User(long id, String username, String email, String password, String phoneNumber, String profilePicture) {
         this.id = id;
