@@ -3,6 +3,7 @@ package com.example.intellifridge.models;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "foods")
@@ -30,6 +31,12 @@ public class Food {
     @Column(nullable = false, columnDefinition = "TimeStamp(20)")
     private Timestamp expirationDate;
 
+    @OneToMany(mappedBy = "foods")
+    private List<User> users;
+    private List<Fridge> fridges;
+
+    public Food() {
+    }
 
     public Food(long id, boolean isInFreezer, String name, Timestamp date_Added, Timestamp expirationDate) {
         this.id = id;
