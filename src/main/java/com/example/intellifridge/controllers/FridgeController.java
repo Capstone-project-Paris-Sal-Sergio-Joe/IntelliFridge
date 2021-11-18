@@ -74,10 +74,17 @@ private UserRepository userRepository;
 
 
 
+
+
+
+
 //sort foods
-//-needs sortFoods functionality (sort by days til' expired,
+
+    //-needs sortFoods functionality
+
+// sort by days tillexpired
 // food group,
-// alphabetical, etc.)
+// alphabetical, etc.
 
 
 
