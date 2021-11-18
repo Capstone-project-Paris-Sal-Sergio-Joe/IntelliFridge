@@ -33,6 +33,7 @@ public class User {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "fridge_id")}
     )
+
     private List<Fridge> fridges;
 
 
