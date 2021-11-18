@@ -33,6 +33,9 @@ public class Food {
 
 
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "foods")
+    private List<User> users;
+    private List<Fridge> fridges;
 
     public Food() {
     }

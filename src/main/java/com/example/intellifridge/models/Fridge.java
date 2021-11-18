@@ -17,6 +17,15 @@ public class Fridge {
     @ManyToMany(mappedBy = "fridges")
     private List<User> users;
 
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
     public Fridge(){
 
     }
