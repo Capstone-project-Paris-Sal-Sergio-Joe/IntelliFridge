@@ -1,6 +1,7 @@
 package com.example.intellifridge.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "food_shelf_life")
@@ -23,20 +24,20 @@ public class ShelfLife {
     private String imgUrl;
 
     @ManyToOne
-    @JoinColumn(name = "food_id")
+    @JoinColumn(name = "food_group_id")
     private FoodGroup foodGroup;
 
-    @OneToOne
-    private Food foodId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shelfLife")
+    private List<Food> foods;
 
-    public ShelfLife(long id, String name, int shelfLifeFridgeDays, int shelfLifeFreezerDays, String imgUrl, FoodGroup foodGroup, Food foodId) {
+    public ShelfLife(long id, String name, int shelfLifeFridgeDays, int shelfLifeFreezerDays, String imgUrl, FoodGroup foodGroup ) {
         this.id = id;
         this.name = name;
         this.shelfLifeFridgeDays = shelfLifeFridgeDays;
         this.shelfLifeFreezerDays = shelfLifeFreezerDays;
         this.imgUrl = imgUrl;
         this.foodGroup = foodGroup;
-        this.foodId = foodId;
+
     }
 
     public ShelfLife() {
@@ -90,11 +91,4 @@ public class ShelfLife {
         this.foodGroup = foodGroup;
     }
 
-    public Food getFoodId() {
-        return foodId;
-    }
-
-    public void setFoodId(Food foodId) {
-        this.foodId = foodId;
-    }
 }
