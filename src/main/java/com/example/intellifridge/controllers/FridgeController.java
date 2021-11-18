@@ -1,6 +1,7 @@
 package com.example.intellifridge.controllers;
 
 
+import com.example.intellifridge.models.Food;
 import com.example.intellifridge.models.Fridge;
 import com.example.intellifridge.models.User;
 import com.example.intellifridge.repositories.FoodRepository;
@@ -50,6 +51,20 @@ private UserRepository userRepository;
     }
 
 
+    @GetMapping("/fridge/adFood")
+    public String adFood(Model model) {
+        model.addAttribute("food", new Food());
+        return "fridge/adFood";
+    }
+
+
+    @PostMapping("/fridge/adFood")
+    public String adFoodTOFridge(@ModelAttribute Food food) {
+        User userFridge = (User) userRepository.getById(1L);
+        food.setName((List<User>) userFridge);
+        fridgeRepository.save(fridge);
+        return "redirect:/fridge";
+    }
 
 
 
