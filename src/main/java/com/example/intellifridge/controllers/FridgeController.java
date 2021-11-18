@@ -2,6 +2,7 @@ package com.example.intellifridge.controllers;
 
 
 import com.example.intellifridge.models.Fridge;
+import com.example.intellifridge.models.User;
 import com.example.intellifridge.repositories.FoodRepository;
 import com.example.intellifridge.repositories.FridgeRepository;
 import com.example.intellifridge.repositories.UserRepository;
@@ -10,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 
 @Controller
@@ -40,8 +43,8 @@ private UserRepository userRepository;
 
     @PostMapping("/fridge/create")
     public String createFridge(@ModelAttribute Fridge fridge) {
-        Fridge userFridge = fridgeRepository.getById(1L);
-        fridge.setName(userFridge);
+        User userFridge = (User) userRepository.getById(1L);
+        fridge.setUsers((List<User>) userFridge);
         fridgeRepository.save(fridge);
         return "redirect:/fridge";
     }
