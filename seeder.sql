@@ -16,6 +16,9 @@ create table if not exists food_group
 );
 
 
+
+
+
 create table if not exists food_shelf_life
 (
     id int NOT NULL AUTO_INCREMENT,

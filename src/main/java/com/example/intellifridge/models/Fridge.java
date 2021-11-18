@@ -17,6 +17,9 @@ public class Fridge {
     @ManyToMany(mappedBy = "fridges")
     private List<User> users;
 
+
+
+
     public Fridge(){
 
     }
