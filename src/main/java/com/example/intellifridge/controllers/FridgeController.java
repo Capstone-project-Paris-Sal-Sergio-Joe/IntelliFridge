@@ -51,18 +51,18 @@ private UserRepository userRepository;
     }
 
 
-    @GetMapping("/fridge/adFood")
-    public String adFood(Model model) {
-        model.addAttribute("food", new Food());
-        return "fridge/adFood";
-    }
+//    @GetMapping("/fridge/adFood")
+//    public String adFood(Model model) {
+//        model.addAttribute("food", new Food());
+//        return "fridge/adFood";
+//    }
 
 
     @PostMapping("/fridge/adFood")
-    public String adFoodTOFridge(@ModelAttribute Food food) {
-        User userFridge = (User) userRepository.getById(1L);
-        food.setName((List<User>) userFridge);
-        fridgeRepository.save(fridge);
+    public String adFoodToFridge(@ModelAttribute Food food) {
+        Fridge userFridge =  fridgeRepository.getById(1L);
+        food.setName(userFridge.getName());
+        fridgeRepository.save(userFridge);
         return "redirect:/fridge";
     }
 

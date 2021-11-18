@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Food</title>
+</head>
+<body>
+<form th:action="@{fidge/addFood}" th:method="post" th:object="${food}">
+    <label for="name">Insert Food Name:</label>
+    <input type="text" placeholder="what food are you adding?" id="name" th:field = "*{name}" />
+    <label for="isInFreezer">Fridge or Freezer?</label>
+    <select id="isInFreezer" name="isInFreezer" th:field = "*{isInFreezer}">
+        <option value ="false">Fridge</option>
+        <option value ="true">Freezer</option>
+    </select>
+    //if it is in freezer
+
+    <button type="submit"></button>
+</form>
+</body>
+</html>
