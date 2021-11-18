@@ -9,9 +9,7 @@ import com.example.intellifridge.repositories.FridgeRepository;
 import com.example.intellifridge.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -60,11 +58,33 @@ private UserRepository userRepository;
 
     @PostMapping("/fridge/adFood")
     public String adFoodTOFridge(@ModelAttribute Food food) {
-        User userFridge = (User) userRepository.getById(1L);
-        food.setName((List<User>) userFridge);
-        fridgeRepository.save(fridge);
+        Fridge userFridge = (Fridge) fridgeRepository.getById(1L);
+        food.setName(userFridge.getName());
+        fridgeRepository.save(userFridge);
         return "redirect:/fridge";
     }
+
+
+
+    @PostMapping("/food/{id}/delete")
+    public String deletePost(@PathVariable long id) {
+        foodRepository.deleteById(id);
+        return "redirect:/fridge";
+    }
+
+
+
+
+
+
+
+//sort foods
+
+    //-needs sortFoods functionality
+
+// sort by days tillexpired
+// food group,
+// alphabetical, etc.
 
 
 
