@@ -49,14 +49,20 @@ private UserRepository userRepository;
     }
 
 
-    @GetMapping("/fridge/adFood")
-    public String adFood(Model model) {
-        model.addAttribute("food", new Food());
-        return "fridge/adFood";
-    }
+//    @GetMapping("/fridge/adFood")
+//    public String adFood(Model model) {
+//        model.addAttribute("food", new Food());
+//        return "fridge/adFood";
+//    }
 
 
     @PostMapping("/fridge/adFood")
+
+    public String adFoodToFridge(@ModelAttribute Food food) {
+        Fridge userFridge =  fridgeRepository.getById(1L);
+        food.setName(userFridge.getName());
+        fridgeRepository.save(userFridge);
+
     public String adFoodTOFridge(@ModelAttribute Food food) {
         Fridge userFridge = (Fridge) fridgeRepository.getById(1L);
         food.setName(userFridge.getName());
@@ -69,6 +75,7 @@ private UserRepository userRepository;
     @PostMapping("/food/{id}/delete")
     public String deletePost(@PathVariable long id) {
         foodRepository.deleteById(id);
+
         return "redirect:/fridge";
     }
 
