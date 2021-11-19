@@ -27,23 +27,33 @@ private UserRepository userRepository;
     }
 
 
-    @GetMapping("/fridge")
-    public String showFridge() {
-        return "/fridge";
+    @GetMapping("/fridge/{id}")
+    public String showFridge(@PathVariable long id, Model model) {
+        Fridge currentFridge = fridgeRepository.getById(id);
+        List<Food> foodInFridge = foodRepository.findAllByFridgeId(id);
+        model.addAttribute("currentFridge", currentFridge);
+        model.addAttribute("foodInFridge", foodInFridge);
+        return "fridge/fridge";
     }
 
 
-    @GetMapping("/fridge/create")
-    public String create(Model model) {
+    @GetMapping("/fridge/add-fridge")
+    public String showAddFridge(Model model) {
         model.addAttribute("fridge", new Fridge());
-        return "fridge/create";
+        return "fridge/add-fridge";
+    }
+
+    @GetMapping("/fridge/add-food")
+    public String showAddFood(Model model) {
+        model.addAttribute("fridge", new Fridge());
+        return "fridge/add-food";
     }
 
 
     @PostMapping("/fridge/create")
     public String createFridge(@ModelAttribute Fridge fridge) {
-        User userFridge = (User) userRepository.getById(1L);
-        fridge.setUsers((List<User>) userFridge);
+        User userFridge = userRepository.getById(1L);
+//        fridge.setUsers((List<User>) userFridge);
         fridgeRepository.save(fridge);
         return "redirect:/fridge";
     }
@@ -56,19 +66,12 @@ private UserRepository userRepository;
 //    }
 
 
-    @PostMapping("/fridge/adFood")
 
 //    public String adFoodToFridge(@ModelAttribute Food food) {
 //        Fridge userFridge =  fridgeRepository.getById(1L);
 //        food.setName(userFridge.getName());
 //        fridgeRepository.save(userFridge);
 
-    public String adFoodTOFridge(@ModelAttribute Food food) {
-        Fridge userFridge = (Fridge) fridgeRepository.getById(1L);
-        food.setName(userFridge.getName());
-        fridgeRepository.save(userFridge);
-        return "redirect:/fridge";
-    }
 
 
 

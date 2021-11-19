@@ -12,16 +12,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
+    @Column(unique = true, nullable = false, columnDefinition = "VARCHAR(50)")
     private String username;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(200)")
+    @Column(unique = true, nullable = false, columnDefinition = "VARCHAR(200)")
     private String email;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
+    @Column(nullable = false, columnDefinition = "VARCHAR(255)")
     private String password;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(15)")
+    @Column(columnDefinition = "VARCHAR(15)")
     private String phoneNumber;
 
     @Column(columnDefinition = "VARCHAR(200)")
@@ -45,6 +45,17 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.profilePicture = profilePicture;
     }
+
+
+    public User() { }
+
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
+
 
     public long getId() {
         return id;
@@ -92,5 +103,13 @@ public class User {
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public List<Fridge> getFridges() {
+        return fridges;
+    }
+
+    public void setFridges(List<Fridge> fridges) {
+        this.fridges = fridges;
     }
 }
