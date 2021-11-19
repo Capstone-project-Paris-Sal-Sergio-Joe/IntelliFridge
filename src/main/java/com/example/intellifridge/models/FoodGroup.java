@@ -4,9 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "fridges")
-public class Fridge {
-
+@Table(name = "food_group")
+public class FoodGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -14,16 +13,16 @@ public class Fridge {
     @Column(nullable = false, columnDefinition = "VARCHAR(50)")
     private String name;
 
-    @ManyToMany(mappedBy = "fridges")
-    private List<User> users;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "foodGroup")
+    private List<ShelfLife> foodShelfLife;
 
-    public Fridge(){
-
-    }
-
-    public Fridge(long id, String name) {
+    public FoodGroup(long id, String name, List<ShelfLife> foodShelfLife) {
         this.id = id;
         this.name = name;
+        this.foodShelfLife = foodShelfLife;
+    }
+
+    public FoodGroup() {
     }
 
     public long getId() {
@@ -40,5 +39,13 @@ public class Fridge {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<ShelfLife> getFoodShelfLife() {
+        return foodShelfLife;
+    }
+
+    public void setFoodShelfLife(List<ShelfLife> foodShelfLife) {
+        this.foodShelfLife = foodShelfLife;
     }
 }

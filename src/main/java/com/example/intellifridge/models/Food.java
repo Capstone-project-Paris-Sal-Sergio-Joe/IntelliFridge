@@ -7,7 +7,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "foods")
-
 public class Food {
 
     @Id
@@ -15,34 +14,39 @@ public class Food {
     private long id;
 
 
-
-    @Column(nullable = false, columnDefinition = "Boolean")
+    @Column(nullable = false)
     private boolean isInFreezer;
 
 
-
-    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
+    @Column(nullable = false)
     private String name;
 
 
-    @Column(nullable = false, columnDefinition = "TimeStamp(20)")
-    private Timestamp date_Added;
+    @Column(nullable = false)
+    private Timestamp dateAdded;
 
-    @Column(nullable = false, columnDefinition = "TimeStamp(20)")
+    @Column(nullable = false)
     private Timestamp expirationDate;
 
+    @ManyToOne
+    @JoinColumn(name = "food_shelf_life_id")
+    private ShelfLife shelfLife;
 
+    @ManyToOne
+    @JoinColumn(name ="fridge_id")
+    private Fridge fridge;
 
-
-    public Food() {
-    }
-
-    public Food(long id, boolean isInFreezer, String name, Timestamp date_Added, Timestamp expirationDate) {
+    public Food(long id, boolean isInFreezer, String name, Timestamp dateAdded, Timestamp expirationDate, ShelfLife shelfLife, Fridge fridge) {
         this.id = id;
         this.isInFreezer = isInFreezer;
         this.name = name;
-        this.date_Added = date_Added;
+        this.dateAdded = dateAdded;
         this.expirationDate = expirationDate;
+        this.shelfLife = shelfLife;
+        this.fridge = fridge;
+    }
+
+    public Food() {
     }
 
     public long getId() {
@@ -69,12 +73,12 @@ public class Food {
         this.name = name;
     }
 
-    public Timestamp getDate_Added() {
-        return date_Added;
+    public Timestamp getDateAdded() {
+        return dateAdded;
     }
 
-    public void setDate_Added(Timestamp date_Added) {
-        this.date_Added = date_Added;
+    public void setDateAdded(Timestamp dateAdded) {
+        this.dateAdded = dateAdded;
     }
 
     public Timestamp getExpirationDate() {
@@ -83,5 +87,21 @@ public class Food {
 
     public void setExpirationDate(Timestamp expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    public ShelfLife getShelfLife() {
+        return shelfLife;
+    }
+
+    public void setShelfLife(ShelfLife shelfLife) {
+        this.shelfLife = shelfLife;
+    }
+
+    public Fridge getFridge() {
+        return fridge;
+    }
+
+    public void setFridge(Fridge fridge) {
+        this.fridge = fridge;
     }
 }
