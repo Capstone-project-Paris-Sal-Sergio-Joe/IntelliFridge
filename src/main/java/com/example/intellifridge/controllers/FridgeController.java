@@ -7,6 +7,7 @@ import com.example.intellifridge.models.User;
 import com.example.intellifridge.repositories.FoodRepository;
 import com.example.intellifridge.repositories.FridgeRepository;
 import com.example.intellifridge.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +17,9 @@ import java.util.List;
 
 @Controller
 public class FridgeController {
-private FoodRepository foodRepository;
-private FridgeRepository fridgeRepository;
-private UserRepository userRepository;
+    private FoodRepository foodRepository;
+    private FridgeRepository fridgeRepository;
+    private UserRepository userRepository;
 
     public FridgeController(FoodRepository foodRepository, FridgeRepository fridgeRepository, UserRepository userRepository) {
         this.foodRepository = foodRepository;
@@ -43,36 +44,20 @@ private UserRepository userRepository;
         return "fridge/add-fridge";
     }
 
-    @GetMapping("/fridge/add-food")
-    public String showAddFood(Model model) {
-        model.addAttribute("fridge", new Fridge());
-        return "fridge/add-food";
-    }
 
-
-    @PostMapping("/fridge/create")
-    public String createFridge(@ModelAttribute Fridge fridge) {
-        User userFridge = userRepository.getById(1L);
-//        fridge.setUsers((List<User>) userFridge);
+    @PostMapping("/fridge/add-fridge")
+    public String addFridge(@ModelAttribute Fridge fridge) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userRepository.getById(currentUser.getId());
         fridgeRepository.save(fridge);
-        return "redirect:/fridge";
+        return "redirect:/profile";
     }
-
-
-//    @GetMapping("/fridge/adFood")
-//    public String adFood(Model model) {
-//        model.addAttribute("food", new Food());
-//        return "fridge/adFood";
-//    }
-
 
 
 //    public String adFoodToFridge(@ModelAttribute Food food) {
 //        Fridge userFridge =  fridgeRepository.getById(1L);
 //        food.setName(userFridge.getName());
 //        fridgeRepository.save(userFridge);
-
-
 
 
     @PostMapping("/food/{id}/delete")
@@ -83,11 +68,6 @@ private UserRepository userRepository;
     }
 
 
-
-
-
-
-
 //sort foods
 
     //-needs sortFoods functionality
@@ -95,7 +75,6 @@ private UserRepository userRepository;
 // sort by days tillexpired
 // food group,
 // alphabetical, etc.
-
 
 
 }
