@@ -28,7 +28,8 @@ public class Food {
     @Column(nullable = false)
     private Timestamp expirationDate;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "food_shelf_life_id")
     private ShelfLife shelfLife;
 
     @ManyToOne

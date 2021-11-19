@@ -56,18 +56,12 @@ private UserRepository userRepository;
 //    }
 
 
-//    @PostMapping("/fridge/adFood")
+
 //    public String adFoodToFridge(@ModelAttribute Food food) {
 //        Fridge userFridge =  fridgeRepository.getById(1L);
 //        food.setName(userFridge.getName());
 //        fridgeRepository.save(userFridge);
-//
-//    public String adFoodTOFridge(@ModelAttribute Food food) {
-//        Fridge userFridge = (Fridge) fridgeRepository.getById(1L);
-//        food.setName(userFridge.getName());
-//        fridgeRepository.save(userFridge);
-//        return "redirect:/fridge";
-//    }
+
 
 
 

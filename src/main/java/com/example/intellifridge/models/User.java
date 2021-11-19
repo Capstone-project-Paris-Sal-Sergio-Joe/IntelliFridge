@@ -46,6 +46,7 @@ public class User {
         this.profilePicture = profilePicture;
     }
 
+
     public User() { }
 
     public User(User copy) {
@@ -54,6 +55,7 @@ public class User {
         username = copy.username;
         password = copy.password;
     }
+
 
     public long getId() {
         return id;
@@ -101,5 +103,13 @@ public class User {
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public List<Fridge> getFridges() {
+        return fridges;
+    }
+
+    public void setFridges(List<Fridge> fridges) {
+        this.fridges = fridges;
     }
 }

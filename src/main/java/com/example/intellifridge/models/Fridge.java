@@ -17,39 +17,13 @@ public class Fridge {
     @ManyToMany(mappedBy = "fridges")
     private List<User> users;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fridge")
-    private List<Food> foods;
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-
-    public Fridge(long id, String name, List<User> users, List<Food> foods) {
-        this.id = id;
-        this.name = name;
-        this.users = users;
-        this.foods = foods;
-    }
-
     public Fridge(){
+
     }
 
     public Fridge(long id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    public List<Food> getFoods() {
-        return foods;
-    }
-
-    public void setFoods(List<Food> foods) {
-        this.foods = foods;
     }
 
     public long getId() {
