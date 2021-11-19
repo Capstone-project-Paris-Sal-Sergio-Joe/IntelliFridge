@@ -23,8 +23,8 @@ public class ProfileController {
 
     @GetMapping("/profile")
     public String show(Model model){
-        User currentUser = userDao.getById(2L);
-        List<Fridge> userFridges = userDao.getById(2L).getFridges();
+        User currentUser = userDao.getById(1L);
+        List<Fridge> userFridges = userDao.getById(1L).getFridges();
         model.addAttribute("user",currentUser);
         model.addAttribute("fridge", userFridges);
         return "profile/profile";

@@ -67,3 +67,15 @@ INSERT INTO food_shelf_life(name, shelf_life_fridge_days, shelf_life_freezer_day
 ('raw chicken', 2, 270, 'raw_chicken_url', 4),
 
 ('doughnuts', 7, 90, 'doughnuts_url', 5);
+
+INSERT INTO foods(name, date_added,expiration_date, is_in_freezer, fridge_id,shelf_life_id) VALUES
+('bread', Now(),NOW(),false, 1,1)
+
+INSERT INTO foods(name, date_added,expiration_date, is_in_freezer, fridge_id,shelf_life_id) VALUES
+('carrot', Now(),NOW(),false, 1,2)
+
+INSERT INTO foods(name, date_added,expiration_date, is_in_freezer, fridge_id,shelf_life_id) VALUES
+('milk', Now(),NOW(),false, 1,3)
+
+INSERT INTO foods(name, date_added,expiration_date, is_in_freezer, fridge_id,shelf_life_id) VALUES
+('milk', Now(),NOW(),false, 2,3)

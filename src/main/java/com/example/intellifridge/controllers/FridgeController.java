@@ -27,9 +27,13 @@ private UserRepository userRepository;
     }
 
 
-    @GetMapping("/fridge")
-    public String showFridge() {
-        return "/fridge";
+    @GetMapping("/fridge/{id}")
+    public String showFridge(@PathVariable long id, Model model) {
+        Fridge currentFridge = fridgeRepository.getById(id);
+        List<Food> foodInFridge = foodRepository.findAllByFridgeId(id);
+        model.addAttribute("currentFridge", currentFridge);
+        model.addAttribute("foodInFridge", foodInFridge);
+        return "fridge/fridge";
     }
 
 
@@ -43,7 +47,7 @@ private UserRepository userRepository;
     @PostMapping("/fridge/create")
     public String createFridge(@ModelAttribute Fridge fridge) {
         User userFridge = (User) userRepository.getById(1L);
-        fridge.setUsers((List<User>) userFridge);
+//        fridge.setUsers((List<User>) userFridge);
         fridgeRepository.save(fridge);
         return "redirect:/fridge";
     }
