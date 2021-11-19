@@ -5,9 +5,10 @@
     <title>Add Food</title>
 </head>
 <body>
-<form th:action="@{fidge/addFood}" th:method="post" th:object="${food}">
+<form th:action="@{/add-food}" th:method="post" th:object="${food}">
     <label for="name">Insert Food Name:</label>
-    <input type="text" placeholder="what food are you adding?" id="name" th:field = "*{name}" />
+    <input type="text" placeholder="what food are you adding?" id="name"/>
+<!--           th:field = "*{name}" -->
     <br>
     <label for="todayFood">Did you get this today?</label>
     <select id="todayFood" name="todayFood">
@@ -16,15 +17,16 @@
     </select>
     <br>
     <label for="isInFreezer">Fridge or Freezer?</label>
-    <select id="isInFreezer" name="isInFreezer" th:field = "*{food.isInFreezer}">
+    <select id="isInFreezer" name="isInFreezer">
+<!--        th:field = "*{food.isInFreezer}"-->
         <option value ="false">Fridge</option>
         <option value ="true">Freezer</option>
     </select>
-    <td th:switch="*{food.isInFreezer}">
-        <span th:case="*"></span>
-        <span th:case="'false'" th:text="${shelfLifeFridge}"></span>
-        <span th:case="'true'" th:text="${shelfLifeFreezer}"></span>
-    </td>
+<!--    <td th:switch="*{food.isInFreezer}">-->
+<!--        <span th:case="*"></span>-->
+<!--        <span th:case="'false'" th:text="${shelfLifeFridge}"></span>-->
+<!--        <span th:case="'true'" th:text="${shelfLifeFreezer}"></span>-->
+<!--    </td>-->
     <br>
     <button type="submit">enter food</button>
 </form>
