@@ -40,13 +40,13 @@ private UserRepository userRepository;
     }
 
 
-    @PostMapping("/fridge/create")
-    public String createFridge(@ModelAttribute Fridge fridge) {
-        User userFridge = (User) userRepository.getById(1L);
-        fridge.setUsers((List<User>) userFridge);
-        fridgeRepository.save(fridge);
-        return "redirect:/fridge";
-    }
+//    @PostMapping("/fridge/create")
+//    public String createFridge(@ModelAttribute Fridge fridge) {
+//        User userFridge = (User) userRepository.getById(1L);
+//        fridge.setUsers((List<User>) userFridge);
+//        fridgeRepository.save(fridge);
+//        return "redirect:/fridge";
+//    }
 
 
 //    @GetMapping("/fridge/adFood")
