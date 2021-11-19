@@ -27,9 +27,13 @@ private UserRepository userRepository;
     }
 
 
-    @GetMapping("/fridge")
-    public String showFridge() {
-        return "/fridge";
+    @GetMapping("/fridge/{id}")
+    public String showFridge(@PathVariable long id, Model model) {
+        Fridge currentFridge = fridgeRepository.getById(id);
+        List<Food> foodInFridge = foodRepository.findAllByFridgeId(id);
+        model.addAttribute("currentFridge", currentFridge);
+        model.addAttribute("foodInFridge", foodInFridge);
+        return "fridge/fridge";
     }
 
 

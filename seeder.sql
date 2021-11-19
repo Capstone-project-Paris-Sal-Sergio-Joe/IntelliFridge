@@ -77,3 +77,4 @@ insert into fridge_user(user_id, fridge_id) VALUES (1,1);
 
 INSERT INTO foods(name, date_added,expiration_date, is_in_freezer, fridge_id, food_shelf_life_id) VALUES
 ('bread', unix_timestamp(now()),unix_timestamp(now()),'false', 1,1)
+
