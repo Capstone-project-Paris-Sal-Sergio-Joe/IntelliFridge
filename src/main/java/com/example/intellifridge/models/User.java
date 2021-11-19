@@ -46,6 +46,8 @@ public class User {
         this.profilePicture = profilePicture;
     }
 
+    public User() { }
+
     public long getId() {
         return id;
     }
