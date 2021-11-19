@@ -1,0 +1,28 @@
+<html lang="eng" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head >
+
+    <title>Title</title>
+</head>
+<body>
+
+
+<nav th:fragment="sort" style="text-align: right">
+    <form method="post">
+        <input type="submit" value="Sort Foods" name="sort">
+
+        <select name="food" id="food">
+            <option value="alphabetical">Alphabetically</option>
+            <option value="expiration">Expritation Date</option>
+            <option value="foodGroup">Food Group</option>
+        </select>
+
+
+
+    </form>
+
+
+</nav>
+
+</body>
+</html>
