@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
-<nav th:include="partials/partials.html :: navbar"></nav>
+<nav th:insert="partials/partials.html :: navbar"></nav>
 <h1>Profile</h1>
 <h2 th:text="${user.username}"></h2>
 <button id="edit" >edit</button>
@@ -35,6 +35,6 @@
 </div>
 <script src="js/jquery.js"></script>
 <script src="js/profile.js"></script>
-<th:block th:include="partials/partials.html :: bootstrap-js"/>
+<th:block th:insert="partials/partials.html :: bootstrap-js"/>
 </body>
 </html>

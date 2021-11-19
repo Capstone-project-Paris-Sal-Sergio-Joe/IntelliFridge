@@ -5,7 +5,7 @@
     <title>Add Food</title>
 </head>
 <body>
-<nav th:include="partials/partials.html :: navbar"></nav>
+<nav th:insert="partials/partials.html :: navbar"></nav>
 <form th:action="@{fidge/addFood}" th:method="post" th:object="${food}">
     <label for="name">Insert Food Name:</label>
     <input type="text" placeholder="what food are you adding?" id="name" th:field = "*{name}" />
@@ -18,6 +18,6 @@
 
     <button type="submit"></button>
 </form>
-<th:block th:include="partials/partials.html :: bootstrap-js"/>
+<th:block th:insert="partials/partials.html :: bootstrap-js"/>
 </body>
 </html>

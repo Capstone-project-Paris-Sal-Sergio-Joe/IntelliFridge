@@ -39,7 +39,7 @@ INSERT INTO food_group(name) VALUES
 ('desserts');
 
 
-INSERT INTO food_shelf_life(name, shelf_life_fridge_days, shelf_life_freezer_days, img_url, food_id) VALUES
+INSERT INTO food_shelf_life(name, shelf_life_fridge_days, shelf_life_freezer_days, img_url, food_group_id) VALUES
 ('bread',7,180,'https://thumbs.dreamstime.com/z/cartoon-bread-vector-illustration-isolated-white-background-147370927.jpg', 1),
 
 ('carrot',21, 365, 'https://cdn3.vectorstock.com/i/1000x1000/77/52/carrot-icon-cartoon-style-on-white-background-vector-8177752.jpg', 2),
@@ -67,3 +67,8 @@ INSERT INTO food_shelf_life(name, shelf_life_fridge_days, shelf_life_freezer_day
 ('raw chicken', 2, 270, 'raw_chicken_url', 4),
 
 ('doughnuts', 7, 90, 'doughnuts_url', 5);
+
+INSERT INTO fridges(name) VALUES ("my_fridge");
+
+INSERT INTO foods(name, date_added,expiration_date, is_in_freezer, fridge_id,food_shelf_life_id) VALUES
+('bread', Now(),NOW(),false, 1,1)

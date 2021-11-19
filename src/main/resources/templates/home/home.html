@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
-<nav th:include="partials/partials.html :: navbar"></nav>
+<nav th:insert="partials/partials.html :: navbar"></nav>
 <body>
 <h1>This the home page</h1>
 <button>Login</button>
 <button>Sign up</button>
-<th:block th:include="partials/partials.html :: bootstrap-js"/>
+<th:block th:insert="partials/partials.html :: bootstrap-js"/>
 </body>
 </html>
