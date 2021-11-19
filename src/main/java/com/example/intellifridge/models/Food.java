@@ -13,13 +13,11 @@ public class Food {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(nullable = false)
+    private String name;
 
     @Column(nullable = false)
     private boolean isInFreezer;
-
-
-    @Column(nullable = false)
-    private String name;
 
 
     @Column(nullable = false)
