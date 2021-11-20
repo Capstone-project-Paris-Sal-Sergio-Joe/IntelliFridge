@@ -1,6 +1,7 @@
 package com.example.intellifridge.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -40,5 +41,26 @@ public class Fridge {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public void addUser(User user) {
+        this.users.add(user);
+    }
+
+    @Override
+    public String toString() {
+        return "Fridge{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", users=" + users +
+                '}';
     }
 }

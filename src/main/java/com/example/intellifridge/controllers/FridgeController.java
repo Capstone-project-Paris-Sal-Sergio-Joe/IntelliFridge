@@ -7,11 +7,12 @@ import com.example.intellifridge.models.User;
 import com.example.intellifridge.repositories.FoodRepository;
 import com.example.intellifridge.repositories.FridgeRepository;
 import com.example.intellifridge.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 
 @Controller
@@ -37,25 +38,41 @@ private UserRepository userRepository;
     }
 
 
-    @GetMapping("/fridge/add-fridge")
-    public String showAddFridge(Model model) {
-        model.addAttribute("fridge", new Fridge());
-        return "fridge/add-fridge";
-    }
-
     @GetMapping("/fridge/add-food")
     public String showAddFood(Model model) {
         model.addAttribute("fridge", new Fridge());
         return "fridge/add-food";
     }
 
+    @GetMapping("/fridge/add-fridge")
+    public String showAddFridge(Model model) {
+        model.addAttribute("fridge", new Fridge());
+        return "fridge/add-fridge";
+    }
 
-    @PostMapping("/fridge/create")
+
+    @PostMapping("/fridge/add-fridge")
     public String createFridge(@ModelAttribute Fridge fridge) {
-        User userFridge = userRepository.getById(1L);
-//        fridge.setUsers((List<User>) userFridge);
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User sameUser = userRepository.getById(currentUser.getId());
+        sameUser.getFridges().add(fridge);
         fridgeRepository.save(fridge);
-        return "redirect:/fridge";
+
+//            WHY DOES THIS CHANGE
+//        System.out.println(currentUser.getUsername());
+//        System.out.println(currentUser.getFridges());
+//
+//        System.out.println(sameUser.getUsername());
+//        System.out.println(sameUser.getFridges());
+//        THIS BELOW WORKS BUT IT HARD-CODES THE USER INSTEAD OF GETTING THE CURRENT USER
+//        User firstUser = userRepository.getById(1L);
+//        firstUser.getFridges().add(fridge);
+//        fridgeRepository.save(fridge);
+
+//        MISTAKENLY SHOWS THE CURRENTUSERS FRIDGES AS "NULL"
+//        System.out.println(currentUser.getUsername());
+//        System.out.println(currentUser.getFridges());
+        return "redirect:/profile";
     }
 
 
