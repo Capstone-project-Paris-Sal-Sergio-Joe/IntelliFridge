@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -46,8 +47,11 @@ public class FridgeController {
 
 
     @PostMapping("/fridge/add-fridge")
-    public String addFridge(@ModelAttribute Fridge fridge) {
+    public String addFridge(@ModelAttribute Fridge fridge, Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List <User> users = new ArrayList<>();
+
+       model.addAttribute("fridge", fridge);
         userRepository.getById(currentUser.getId());
         fridgeRepository.save(fridge);
         return "redirect:/profile";

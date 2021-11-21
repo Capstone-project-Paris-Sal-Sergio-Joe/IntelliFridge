@@ -2,6 +2,7 @@ package com.example.intellifridge.models;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,7 +35,7 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "fridge_id")}
     )
 
-    private List<Fridge> fridges;
+    private List<Fridge> fridges = new ArrayList<>();
 
 
     public User(long id, String username, String email, String password, String phoneNumber, String profilePicture) {
