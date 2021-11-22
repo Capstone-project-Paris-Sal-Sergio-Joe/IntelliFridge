@@ -55,13 +55,6 @@ public class Fridge {
         this.name = name;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
 
     public void addUser(User user) {
         this.users.add(user);

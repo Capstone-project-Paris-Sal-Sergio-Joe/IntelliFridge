@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 
-
 @Controller
 public class FridgeController {
     private FoodRepository foodRepository;
@@ -40,12 +39,6 @@ public class FridgeController {
     }
 
 
-
-    @GetMapping("/fridge/add-food")
-    public String showAddFood(Model model) {
-        model.addAttribute("fridge", new Fridge());
-        return "fridge/add-food";
-    }
 
     @GetMapping("/fridge/add-fridge")
     public String showAddFridge(Model model) {
@@ -74,7 +67,6 @@ public class FridgeController {
 //        MISTAKENLY SHOWS THE CURRENTUSERS FRIDGES AS "NULL"
 //        System.out.println(currentUser.getUsername());
 //        System.out.println(currentUser.getFridges());
-
         return "redirect:/profile";
     }
 
