@@ -40,12 +40,6 @@ public class FridgeController {
 
 
 
-    @GetMapping("/fridge/add-food")
-    public String showAddFood(Model model) {
-        model.addAttribute("fridge", new Fridge());
-        return "fridge/add-food";
-    }
-
     @GetMapping("/fridge/add-fridge")
     public String showAddFridge(Model model) {
         model.addAttribute("fridge", new Fridge());
@@ -59,36 +53,18 @@ public class FridgeController {
         User sameUser = userRepository.getById(currentUser.getId());
         sameUser.getFridges().add(fridge);
         fridgeRepository.save(fridge);
-//            WHY DOES THIS CHANGE
-//        System.out.println(currentUser.getUsername());
-//        System.out.println(currentUser.getFridges());
-//
-//        System.out.println(sameUser.getUsername());
-//        System.out.println(sameUser.getFridges());
-//        THIS BELOW WORKS BUT IT HARD-CODES THE USER INSTEAD OF GETTING THE CURRENT USER
-//        User firstUser = userRepository.getById(1L);
-//        firstUser.getFridges().add(fridge);
-//        fridgeRepository.save(fridge);
-
-//        MISTAKENLY SHOWS THE CURRENTUSERS FRIDGES AS "NULL"
-//        System.out.println(currentUser.getUsername());
-//        System.out.println(currentUser.getFridges());
         return "redirect:/profile";
     }
 
 
-//    public String adFoodToFridge(@ModelAttribute Food food) {
-//        Fridge userFridge =  fridgeRepository.getById(1L);
-//        food.setName(userFridge.getName());
-//        fridgeRepository.save(userFridge);
 
 
-    @PostMapping("/food/{id}/delete")
-    public String deletePost(@PathVariable long id) {
-        foodRepository.deleteById(id);
-
-        return "redirect:/fridge";
-    }
+//    @PostMapping("/food/{id}/delete")
+//    public String deletePost(@PathVariable long id) {
+//        foodRepository.deleteById(id);
+//
+//        return "redirect:/fridge";
+//    }
 
 
 //sort foods

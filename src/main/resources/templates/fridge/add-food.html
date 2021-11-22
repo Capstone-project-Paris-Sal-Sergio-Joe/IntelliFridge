@@ -7,11 +7,12 @@
 <body>
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
-<form th:action="@{fridge/addFood}" th:method="post" th:object="${food}">
+<form th:action="@{'/fridge/' + ${fridge.id} + '/add-food'}" th:method="post" th:object="${food}">
 
-    <label for="name">Insert Food Name:</label>
-    <input type="text" placeholder="what food are you adding?" id="name"/>
-<!--           th:field = "*{name}" -->
+<!--    Hidden date added-->
+    <input th:type="hidden" th:field="*{dateAdded}">
+    <label for="foodName">Insert Food Name:</label>
+    <input type="text" placeholder="What is the name of your food?" id="foodName" th:field="*{name}"/>
     <br>
     <label for="todayFood">Did you get this today?</label>
     <select id="todayFood" name="todayFood">
@@ -19,17 +20,18 @@
         <option value ="false">no</option>
     </select>
     <br>
-    <label for="isInFreezer">Fridge or Freezer?</label>
-    <select id="isInFreezer" name="isInFreezer">
-<!--        th:field = "*{food.isInFreezer}"-->
-        <option value ="false">Fridge</option>
-        <option value ="true">Freezer</option>
-    </select>
-<!--    <td th:switch="*{food.isInFreezer}">-->
-<!--        <span th:case="*"></span>-->
-<!--        <span th:case="'false'" th:text="${shelfLifeFridge}"></span>-->
-<!--        <span th:case="'true'" th:text="${shelfLifeFreezer}"></span>-->
-<!--    </td>-->
+    <label>Fridge or Freezer?</label>
+
+<!--    <select id="isInFreezer" name="isInFreezer" th:field="*{isInFreezer}">-->
+<!--        <option th:value="${false}" th:text="Fridge"></option>-->
+<!--        <option th:value="${true}" th:text="Freezer"></option>-->
+<!--    </select>-->
+
+    <input type="radio" th:field="*{isInFreezer}" th:value="false" th:text="Fridge">
+    <input type="radio" th:field="*{isInFreezer}" th:value="true" th:text="Freezer">
+
+
+
     <br>
     <button type="submit">enter food</button>
 </form>
