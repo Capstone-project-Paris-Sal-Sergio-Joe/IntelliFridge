@@ -8,11 +8,6 @@
 <form th:action="@{/fridge/add-fridge}" th:method="POST" th:object="${fridge}">
     <label for="newFridge">Give your new Fridge a name!</label>
     <br>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 98817654faa42903c0685763f55d3b061dca5efc
     <input id="newFridge" name="newFridge" type="text" placeholder="insert name here:" th:field="*{name}">
 <!--    <input id="fridgeId" name="fridgeId" th:field="*{id}">-->
     <button>+</button>
@@ -23,22 +18,7 @@
     <input type="text" id="fridgeAccess" name="fridgeAccess" placeholder=" Fridge Access Code:">
     <br>
     <button>Add or Join Fridge</button>
-<<<<<<< HEAD
-=======
-    <input id="newFridge" name="newFridge" type="text" placeholder="insert name here:" th:field="*{name}" >
-    <button>+</button>
-    <input type="hidden" id="id" th:value="*{id}" name="id" th:field="*{id}">
-<!--    <br>-->
-<!--    <h3>OR:</h3>-->
-<!--    <br>-->
-<!--    <label for="fridgeAccess">Enter code to join an existing fridge</label>-->
-<!--    <input type="text" id="fridgeAccess" name="fridgeAccess" placeholder=" Fridge Access Code:">-->
-<!--    <br>-->
     <input type="submit" name="submit">
->>>>>>> 340156320da068496d1ef5eb751a0d5d4964aeef
-=======
-
->>>>>>> 98817654faa42903c0685763f55d3b061dca5efc
 </form>
 </body>
 </html>
