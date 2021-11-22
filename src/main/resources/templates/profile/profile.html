@@ -71,8 +71,13 @@
 </form>
 <h3>Fridge List:</h3>
 <div th:each="fridge : ${fridge}">
-    <p th:text="${fridge.name}"></p>
-    <button>View Fridge</button>
+
+<p th:text="${fridge.name}"></p>
+    <form th:action="@{'/fridge/' + ${fridge.id}}" th:method="GET">
+        <button>View Fridge</button>
+    </form>
+
+
 </div>
 <script src="js/jquery.js"></script>
 <script src="js/profile.js"></script>
