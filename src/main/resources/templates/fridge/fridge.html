@@ -11,8 +11,9 @@
     <img src="" alt="food image">
     <p th:text="${food.name}"></p>
     <p>food expires <span th:text="${food.expirationDate}"></span></p>
-    <button>Edit</button>
-    <button>Delete</button>
+    <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}" th:method="POST">
+        <button>Delete</button>
+    </form>
 </div>
 
 <!--<form th:action="@{'/fridge/' + ${currentFridge.id} + '/add-food}'}" th:method="GET">-->
