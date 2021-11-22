@@ -76,5 +76,6 @@ insert into fridges(id, name) VALUE (1,'home');
 insert into fridge_user(user_id, fridge_id) VALUES (1,1);
 
 INSERT INTO foods(name, date_added,expiration_date, is_in_freezer, fridge_id,food_shelf_life_id) VALUES
-('milk', Now(),NOW(),false, 1,3)
+
+('milk', Now(),NOW(),false, 1,3);
 
