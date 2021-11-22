@@ -57,7 +57,6 @@ private UserRepository userRepository;
         User sameUser = userRepository.getById(currentUser.getId());
         sameUser.getFridges().add(fridge);
         fridgeRepository.save(fridge);
-
 //            WHY DOES THIS CHANGE
 //        System.out.println(currentUser.getUsername());
 //        System.out.println(currentUser.getFridges());
