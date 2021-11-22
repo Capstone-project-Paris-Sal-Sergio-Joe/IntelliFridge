@@ -5,18 +5,21 @@
     <title>Add Fridge</title>
 </head>
 <body>
-<form th:action="@{/add-fridge}" th:method="POST" th:object="${fridge}">
-<label for="newFridge">Give your new Fridge a name!</label>
-<br>
-<input id="newFridge" name="newFridge" type="text" placeholder="insert name here:">
-<button>+</button>
-<br>
-<h3>OR:</h3>
-<br>
-<label for="fridgeAccess">Enter code to join an existing fridge</label>
-<input type="text" id="fridgeAccess" name="fridgeAccess" placeholder=" Fridge Access Code:">
-<br>
-<button>Add or Join Fridge</button>
+<form th:action="@{/fridge/add-fridge}" th:method="POST" th:object="${fridge}">
+    <label for="newFridge">Give your new Fridge a name!</label>
+    <br>
+
+    <input id="newFridge" name="newFridge" type="text" placeholder="insert name here:" th:field="*{name}">
+<!--    <input id="fridgeId" name="fridgeId" th:field="*{id}">-->
+    <button>+</button>
+    <br>
+    <h3>OR:</h3>
+    <br>
+    <label for="fridgeAccess">Enter code to join an existing fridge</label>
+    <input type="text" id="fridgeAccess" name="fridgeAccess" placeholder=" Fridge Access Code:">
+    <br>
+    <button>Add or Join Fridge</button>
+
 </form>
 </body>
 </html>

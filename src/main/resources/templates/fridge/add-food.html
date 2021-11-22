@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<head th:insert="partials/partials.html :: head('Add Food')">
     <meta charset="UTF-8">
     <title>Add Food</title>
 </head>
 <body>
-<form th:action="@{/add-food}" th:method="post" th:object="${food}">
+
+<nav th:insert="partials/partials.html :: navbar"></nav>
+<form th:action="@{fridge/addFood}" th:method="post" th:object="${food}">
+
     <label for="name">Insert Food Name:</label>
     <input type="text" placeholder="what food are you adding?" id="name"/>
 <!--           th:field = "*{name}" -->
@@ -30,5 +33,6 @@
     <br>
     <button type="submit">enter food</button>
 </form>
+<th:block th:insert="partials/partials.html :: bootstrap-js"/>
 </body>
 </html>

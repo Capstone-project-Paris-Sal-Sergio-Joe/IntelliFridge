@@ -68,6 +68,7 @@ INSERT INTO food_shelf_life(name, shelf_life_fridge_days, shelf_life_freezer_day
 
 ('doughnuts', 7, 90, 'doughnuts_url', 5);
 
+
 insert into users(id, email, password, phone_number, username) VALUES
 (1,'email@email.com', 'yo','123','bob');
 
@@ -76,5 +77,6 @@ insert into fridges(id, name) VALUE (1,'home');
 insert into fridge_user(user_id, fridge_id) VALUES (1,1);
 
 INSERT INTO foods(name, date_added,expiration_date, is_in_freezer, fridge_id,food_shelf_life_id) VALUES
-('milk', Now(),NOW(),false, 1,3)
+
+('milk', Now(),NOW(),false, 1,3);
 

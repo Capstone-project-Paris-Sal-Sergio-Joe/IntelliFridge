@@ -7,18 +7,21 @@ import com.example.intellifridge.models.User;
 import com.example.intellifridge.repositories.FoodRepository;
 import com.example.intellifridge.repositories.FridgeRepository;
 import com.example.intellifridge.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
+import java.util.*;
+
 
 
 @Controller
 public class FridgeController {
-private FoodRepository foodRepository;
-private FridgeRepository fridgeRepository;
-private UserRepository userRepository;
+    private FoodRepository foodRepository;
+    private FridgeRepository fridgeRepository;
+    private UserRepository userRepository;
 
     public FridgeController(FoodRepository foodRepository, FridgeRepository fridgeRepository, UserRepository userRepository) {
         this.foodRepository = foodRepository;
@@ -37,11 +40,6 @@ private UserRepository userRepository;
     }
 
 
-    @GetMapping("/fridge/add-fridge")
-    public String showAddFridge(Model model) {
-        model.addAttribute("fridge", new Fridge());
-        return "fridge/add-fridge";
-    }
 
     @GetMapping("/fridge/add-food")
     public String showAddFood(Model model) {
@@ -49,30 +47,42 @@ private UserRepository userRepository;
         return "fridge/add-food";
     }
 
-
-    @PostMapping("/fridge/create")
-    public String createFridge(@ModelAttribute Fridge fridge) {
-        User userFridge = userRepository.getById(1L);
-//        fridge.setUsers((List<User>) userFridge);
-        fridgeRepository.save(fridge);
-        return "redirect:/fridge";
+    @GetMapping("/fridge/add-fridge")
+    public String showAddFridge(Model model) {
+        model.addAttribute("fridge", new Fridge());
+        return "fridge/add-fridge";
     }
 
 
-//    @GetMapping("/fridge/adFood")
-//    public String adFood(Model model) {
-//        model.addAttribute("food", new Food());
-//        return "fridge/adFood";
-//    }
+    @PostMapping("/fridge/add-fridge")
+    public String createFridge(@ModelAttribute Fridge fridge) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User sameUser = userRepository.getById(currentUser.getId());
+        sameUser.getFridges().add(fridge);
+        fridgeRepository.save(fridge);
+//            WHY DOES THIS CHANGE
+//        System.out.println(currentUser.getUsername());
+//        System.out.println(currentUser.getFridges());
+//
+//        System.out.println(sameUser.getUsername());
+//        System.out.println(sameUser.getFridges());
+//        THIS BELOW WORKS BUT IT HARD-CODES THE USER INSTEAD OF GETTING THE CURRENT USER
+//        User firstUser = userRepository.getById(1L);
+//        firstUser.getFridges().add(fridge);
+//        fridgeRepository.save(fridge);
 
+//        MISTAKENLY SHOWS THE CURRENTUSERS FRIDGES AS "NULL"
+//        System.out.println(currentUser.getUsername());
+//        System.out.println(currentUser.getFridges());
+
+        return "redirect:/profile";
+    }
 
 
 //    public String adFoodToFridge(@ModelAttribute Food food) {
 //        Fridge userFridge =  fridgeRepository.getById(1L);
 //        food.setName(userFridge.getName());
 //        fridgeRepository.save(userFridge);
-
-
 
 
     @PostMapping("/food/{id}/delete")
@@ -83,11 +93,6 @@ private UserRepository userRepository;
     }
 
 
-
-
-
-
-
 //sort foods
 
     //-needs sortFoods functionality
@@ -95,7 +100,6 @@ private UserRepository userRepository;
 // sort by days tillexpired
 // food group,
 // alphabetical, etc.
-
 
 
 }
