@@ -68,6 +68,7 @@ INSERT INTO food_shelf_life(name, shelf_life_fridge_days, shelf_life_freezer_day
 
 ('doughnuts', 7, 90, 'doughnuts_url', 5);
 
+
 insert into users(id, email, password, phone_number, username) VALUES
 (1,'email@email.com', 'yo','123','bob');
 

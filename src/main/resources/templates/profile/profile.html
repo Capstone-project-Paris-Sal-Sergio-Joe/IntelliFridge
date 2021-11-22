@@ -1,3 +1,44 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
+<!--<head th:insert="partials/partials.html :: head('Profile')">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Profile</title>-->
+<!--    <link rel="stylesheet" href="css/profile.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav th:insert="partials/partials.html :: navbar"></nav>-->
+<!--<h1>Profile</h1>-->
+<!--<h2 th:text="${user.username}"></h2>-->
+<!--<button id="edit" >edit</button>-->
+<!--<form name="edit" class="hidden" id="editForm" method="post">-->
+
+<!--    <ul>-->
+<!--        <li>-->
+<!--            <label for="username">Username</label>-->
+<!--            <input name="username" type="text" th:value="${user.username}" id="username"/>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <label for="email">Email</label>-->
+<!--            <input name="email" type="text" th:value="${user.email}" id="email"/>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <label for="phoneNumber">phoneNumber</label>-->
+<!--            <input name="phoneNumber" type="text" th:value="${user.phoneNumber}" id="phoneNumber"/>-->
+<!--        </li>-->
+<!--        <button type="submit" id="form-btn">Submit</button>-->
+<!--    </ul>-->
+<!--</form>-->
+<!--<h3>Fridge List:</h3>-->
+<!--<div th:each="fridge : ${fridge}">-->
+<!--<p th:text="${fridge.name}"></p>-->
+<!--    <button>View Fridge</button>-->
+<!--</div>-->
+<!--<script src="js/jquery.js"></script>-->
+<!--<script src="js/profile.js"></script>-->
+<!--&lt;!&ndash;<th:block th:insert="partials/partials.html :: bootstrap-js"/>&ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
@@ -30,7 +71,7 @@
 </form>
 <h3>Fridge List:</h3>
 <div th:each="fridge : ${fridge}">
-<p th:text="${fridge.name}"></p>
+    <p th:text="${fridge.name}"></p>
     <button>View Fridge</button>
 </div>
 <script src="js/jquery.js"></script>
