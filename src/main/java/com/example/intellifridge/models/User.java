@@ -38,13 +38,14 @@ public class User {
     private List<Fridge> fridges = new ArrayList<>();
 
 
-    public User(long id, String username, String email, String password, String phoneNumber, String profilePicture) {
+    public User(long id, String username, String email, String password, String phoneNumber, String profilePicture, List<Fridge> fridges) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.profilePicture = profilePicture;
+        this.fridges = fridges;
     }
 
 

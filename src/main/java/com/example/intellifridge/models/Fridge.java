@@ -60,6 +60,20 @@ public class Fridge {
     public void setName(String name) {
         this.name = name;
     }
+
+
+    public void addUser(User user) {
+        this.users.add(user);
+    }
+
+    @Override
+    public String toString() {
+        return "Fridge{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", users=" + users +
+                '}';
+    }
 }
 
 

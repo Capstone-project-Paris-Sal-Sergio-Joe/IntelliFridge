@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/sort-Food :: sort">
-
+<head th:insert="partials/partials.html :: head(${currentFridge.name})">
     <meta charset="UTF-8">
     <title>Fridge</title>
 </head>
 <body>
+<nav th:insert="partials/partials.html :: navbar"></nav>
 <h1 th:text="${currentFridge.name}"></h1>
 <div th:each="food : ${foodInFridge}">
     <p th:text="${food.name}"></p>
     <p>food expires <span th:text="${food.expirationDate}"></span></p>
 </div>
+<th:block th:insert="partials/partials.html :: bootstrap-js"/>
 </body>
 </html>
