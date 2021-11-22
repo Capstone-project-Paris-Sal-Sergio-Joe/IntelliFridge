@@ -16,14 +16,14 @@ public class Food {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false , name="isInFreezer")
     private boolean isInFreezer;
 
 
-    @Column(nullable = false)
+    @Column(nullable = false, name="dateAdded")
     private Timestamp dateAdded;
 
-    @Column(nullable = false)
+    @Column(nullable = false,name="expirationDate")
     private Timestamp expirationDate;
 
     @ManyToOne
