@@ -12,14 +12,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.*;
 
 
 @Controller
 public class FridgeController {
-private FoodRepository foodRepository;
-private FridgeRepository fridgeRepository;
-private UserRepository userRepository;
+    private FoodRepository foodRepository;
+    private FridgeRepository fridgeRepository;
+    private UserRepository userRepository;
 
     public FridgeController(FoodRepository foodRepository, FridgeRepository fridgeRepository, UserRepository userRepository) {
         this.foodRepository = foodRepository;
@@ -36,6 +37,7 @@ private UserRepository userRepository;
         model.addAttribute("foodInFridge", foodInFridge);
         return "fridge/fridge";
     }
+
 
 
     @GetMapping("/fridge/add-food")
@@ -75,20 +77,10 @@ private UserRepository userRepository;
     }
 
 
-//    @GetMapping("/fridge/adFood")
-//    public String adFood(Model model) {
-//        model.addAttribute("food", new Food());
-//        return "fridge/adFood";
-//    }
-
-
-
 //    public String adFoodToFridge(@ModelAttribute Food food) {
 //        Fridge userFridge =  fridgeRepository.getById(1L);
 //        food.setName(userFridge.getName());
 //        fridgeRepository.save(userFridge);
-
-
 
 
     @PostMapping("/food/{id}/delete")
@@ -99,11 +91,6 @@ private UserRepository userRepository;
     }
 
 
-
-
-
-
-
 //sort foods
 
     //-needs sortFoods functionality
@@ -111,7 +98,6 @@ private UserRepository userRepository;
 // sort by days tillexpired
 // food group,
 // alphabetical, etc.
-
 
 
 }
