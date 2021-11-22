@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 
-
 @Controller
 public class FridgeController {
     private FoodRepository foodRepository;
@@ -68,7 +67,6 @@ public class FridgeController {
 //        MISTAKENLY SHOWS THE CURRENTUSERS FRIDGES AS "NULL"
 //        System.out.println(currentUser.getUsername());
 //        System.out.println(currentUser.getFridges());
-
         return "redirect:/profile";
     }
 

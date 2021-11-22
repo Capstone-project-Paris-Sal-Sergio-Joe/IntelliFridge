@@ -24,11 +24,13 @@ private final FridgeRepository fridgeRepository;
 
     ///View the add food menu
 
+
     @GetMapping("/fridge/add-food")
     public String showAddFood(Model model) {
         model.addAttribute("food", new Food());
         return "fridge/add-food";
     }
+
 
     ///Add food to fridge based on ID
 
