@@ -7,7 +7,7 @@
 <body>
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
-<form th:action="@{fridge/addFood}" th:method="post" th:object="${food}">
+<form th:action="@{/fridge/addFood}" th:method="post" th:object="${food}">
 
     <label for="name">Insert Food Name:</label>
     <input type="text" placeholder="what food are you adding?" id="name"/>

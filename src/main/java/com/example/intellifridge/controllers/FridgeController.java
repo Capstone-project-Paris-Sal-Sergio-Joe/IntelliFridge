@@ -41,12 +41,6 @@ public class FridgeController {
 
 
 
-    @GetMapping("/fridge/add-food")
-    public String showAddFood(Model model) {
-        model.addAttribute("fridge", new Fridge());
-        return "fridge/add-food";
-    }
-
     @GetMapping("/fridge/add-fridge")
     public String showAddFridge(Model model) {
         model.addAttribute("fridge", new Fridge());

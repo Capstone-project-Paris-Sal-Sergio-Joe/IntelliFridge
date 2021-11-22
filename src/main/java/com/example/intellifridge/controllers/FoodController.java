@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -25,7 +26,7 @@ private final FridgeRepository fridgeRepository;
 
     @GetMapping("/fridge/add-food")
     public String showAddFood(Model model) {
-        model.addAttribute("fridge", new Fridge());
+        model.addAttribute("food", new Food());
         return "fridge/add-food";
     }
 
@@ -33,11 +34,11 @@ private final FridgeRepository fridgeRepository;
 
 
     @PostMapping("/fridge/{id}/add-food")
-    public String addFood(@ModelAttribute Food food){
-       Fridge foodFridge = fridgeRepository.getById(1L);
+    public String addFood(@ModelAttribute Food food, @PathVariable long id){
 
-
+       foodRepository.save(food);
         return "redirect:/fridge";
     }
+
 
 }
