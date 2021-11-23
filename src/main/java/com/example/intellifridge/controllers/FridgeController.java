@@ -40,12 +40,6 @@ public class FridgeController {
 
 
 
-    @GetMapping("/fridge/add-food")
-    public String showAddFood(Model model) {
-        model.addAttribute("fridge", new Fridge());
-        return "fridge/add-food";
-    }
-
     @GetMapping("/fridge/add-fridge")
     public String showAddFridge(Model model) {
         model.addAttribute("fridge", new Fridge());
@@ -83,12 +77,12 @@ public class FridgeController {
 //        fridgeRepository.save(userFridge);
 
 
-    @PostMapping("/food/{id}/delete")
-    public String deletePost(@PathVariable long id) {
-        foodRepository.deleteById(id);
-
-        return "redirect:/fridge";
+    @PostMapping("/fridge/{fridgeId}/food/{foodId}/delete")
+    public String deletePost(@PathVariable long fridgeId,@PathVariable long foodId ) {
+        foodRepository.deleteById(foodId);
+        return "redirect:/fridge/" + fridgeId;
     }
+
 
 
 //sort foods

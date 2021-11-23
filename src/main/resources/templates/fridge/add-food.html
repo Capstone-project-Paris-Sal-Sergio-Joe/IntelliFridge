@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:insert="partials/partials.html :: head('Add Food')">
+<head th:include="partials/partials.html :: head('Add Food')">
     <meta charset="UTF-8">
     <title>Add Food</title>
 </head>
 <body>
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
-<form th:action="@{fridge/addFood}" th:method="post" th:object="${food}">
+<form th:action="@{/fridge/addFood}" th:method="post" th:object="${food}">
 
     <label for="name">Insert Food Name:</label>
     <input type="text" placeholder="what food are you adding?" id="name"/>
