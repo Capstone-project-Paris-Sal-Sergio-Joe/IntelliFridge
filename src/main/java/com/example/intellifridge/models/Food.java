@@ -59,7 +59,7 @@ public class Food {
         this.id = id;
     }
 
-    public boolean getIsInFreezer() {
+    public boolean isInFreezer() {
         return isInFreezer;
     }
 

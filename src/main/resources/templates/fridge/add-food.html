@@ -22,13 +22,13 @@
     <br>
     <label>Fridge or Freezer?</label>
 
-<!--    <select id="isInFreezer" name="isInFreezer" th:field="*{isInFreezer}">-->
-<!--        <option th:value="${false}" th:text="Fridge"></option>-->
-<!--        <option th:value="${true}" th:text="Freezer"></option>-->
+<!--    <select id="isInFreezer" name="isInFreezer" th:field="*{food.isInFreezer}">-->
+<!--        <option th:value="false" th:text="Fridge"></option>-->
+<!--        <option th:value="true" th:text="Freezer"></option>-->
 <!--    </select>-->
 
-    <input type="radio" th:field="*{isInFreezer}" th:value="false" th:text="Fridge">
-    <input type="radio" th:field="*{isInFreezer}" th:value="true" th:text="Freezer">
+    <input type="radio" name="isInFreezer" th:value="false" th:text="Fridge">
+    <input type="radio" name="isInFreezer" th:value="true" th:text="Freezer">
 
 
 
