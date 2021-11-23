@@ -106,4 +106,17 @@ public class Food {
     public void setFridge(Fridge fridge) {
         this.fridge = fridge;
     }
+
+    @Override
+    public String toString() {
+        return "Food{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", isInFreezer=" + isInFreezer +
+                ", dateAdded=" + dateAdded +
+                ", expirationDate=" + expirationDate +
+                ", shelfLife=" + shelfLife +
+                ", fridge=" + fridge +
+                '}';
+    }
 }
