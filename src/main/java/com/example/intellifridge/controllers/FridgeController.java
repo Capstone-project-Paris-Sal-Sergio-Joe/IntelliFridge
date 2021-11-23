@@ -59,12 +59,21 @@ public class FridgeController {
 
 
 
+
 //    @PostMapping("/food/{id}/delete")
 //    public String deletePost(@PathVariable long id) {
 //        foodRepository.deleteById(id);
 //
 //        return "redirect:/fridge";
 //    }
+
+    @PostMapping("/fridge/{fridgeId}/food/{foodId}/delete")
+    public String deletePost(@PathVariable long fridgeId,@PathVariable long foodId ) {
+        foodRepository.deleteById(foodId);
+        return "redirect:/fridge/" + fridgeId;
+    }
+
+
 
 
 //sort foods

@@ -11,7 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>IntelliFridge</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+<!--    <packaging>war</packaging>-->
     <name>IntelliFridge</name>
     <description>IntelliFridge</description>
     <properties>

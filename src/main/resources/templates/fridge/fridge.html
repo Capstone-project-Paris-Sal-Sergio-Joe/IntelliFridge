@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:insert="partials/partials.html :: head(${currentFridge.name})">
+<head th:include="partials/partials.html :: head(${currentFridge.name})">
     <meta charset="UTF-8">
     <title>Fridge</title>
 </head>
@@ -8,9 +8,18 @@
 <nav th:insert="partials/partials.html :: navbar"></nav>
 <h1 th:text="${currentFridge.name}"></h1>
 <div th:each="food : ${foodInFridge}">
+    <img src="" alt="food image">
     <p th:text="${food.name}"></p>
     <p>food expires <span th:text="${food.expirationDate}"></span></p>
+    <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}" th:method="POST">
+        <button>Delete</button>
+    </form>
 </div>
+
+<!--<form th:action="@{'/fridge/' + ${currentFridge.id} + '/add-food}'}" th:method="GET">-->
+<!--    <button>Add Food</button>-->
+<!--</form>-->
+
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 </body>
 </html>
