@@ -10,6 +10,7 @@ import com.example.intellifridge.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;

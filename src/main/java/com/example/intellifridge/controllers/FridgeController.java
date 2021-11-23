@@ -60,6 +60,7 @@ public class FridgeController {
 
 
 
+
     @PostMapping("/fridge/{fridgeId}/food/{foodId}/delete")
     public String deletePost(@PathVariable long fridgeId,@PathVariable long foodId ) {
         foodRepository.deleteById(foodId);

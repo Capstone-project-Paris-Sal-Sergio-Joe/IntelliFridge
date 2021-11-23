@@ -7,8 +7,9 @@
 <body>
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
-<<<<<<< HEAD
+
 <form th:action="@{'/fridge/' + ${fridge.id} + '/add-food'}" th:method="post" th:object="${food}">
+
 
 <!--    Hidden date added-->
     <input th:type="hidden" th:field="*{dateAdded}">
