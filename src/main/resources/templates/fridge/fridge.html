@@ -16,9 +16,9 @@
     </form>
 </div>
 
-<!--<form th:action="@{'/fridge/' + ${currentFridge.id} + '/add-food}'}" th:method="GET">-->
-<!--    <button>Add Food</button>-->
-<!--</form>-->
+<form th:action="@{'/fridge/' + ${currentFridge.id} + '/add-food'}" th:method="GET">
+    <button>Add Food</button>
+</form>
 
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 </body>
