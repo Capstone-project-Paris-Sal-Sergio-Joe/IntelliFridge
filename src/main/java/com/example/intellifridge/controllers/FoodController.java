@@ -53,24 +53,13 @@ private final FoodShelfLifeRepository foodShelfLifeRepository;
             food.setInFreezer(false);
         }
 
-//        EXPIRATION DATE
-//        List<ShelfLife> shelfLifeList = foodShelfLifeRepository.findAll();
-//        for (int i=0;i<shelfLifeList.size();i++) {
-//            ShelfLife shelfLife = shelfLifeList.get(i);
-//            if (shelfLife.getName().equalsIgnoreCase(food.getName())) {
-//                if (food.isInFreezer() == true) {
-//                    food.setExpirationDate(addDays(shelfLife.getShelfLifeFreezerDays(), food.getDateAdded()));
-//                } else {
-//                    food.setExpirationDate(addDays(shelfLife.getShelfLifeFridgeDays(), food.getDateAdded()));
-//                }
-//            }
-//        }
 
         List<ShelfLife> shelfLifeList = foodShelfLifeRepository.findAll();
         for (int i=0;i<shelfLifeList.size();i++) {
             ShelfLife shelfLife = shelfLifeList.get(i);
             if (shelfLife.getName().equalsIgnoreCase(food.getName())) {
                 Timestamp expirationDate;
+                food.setShelfLife(shelfLife);
                 if (food.isInFreezer() == true) {
                     expirationDate = addDays(shelfLife.getShelfLifeFreezerDays(), food.getDateAdded());
                 } else {
@@ -96,16 +85,4 @@ private final FoodShelfLifeRepository foodShelfLifeRepository;
         return ts;
     }
 
-//    private Long dayToMiliseconds(int days){
-//        Long result = Long.valueOf(days * 24 * 60 * 60 * 1000);
-//        return result;
-//    }
-//
-//    public Timestamp addDays(int days, Timestamp t1) throws Exception{
-//        if(days < 0){
-//            throw new Exception("Day in wrong format.");
-//        }
-//        Long miliseconds = dayToMiliseconds(days);
-//        return new Timestamp(t1.getTime() + miliseconds);
-//    }
 }
