@@ -102,15 +102,15 @@ public class FridgeController {
     //-needs sortFoods functionality
 
     //===============================================================
-    @PostMapping("/fridge/{id}")
+    @PostMapping("/fridge/{id}/sort")
     public  String  getAllFoods(Model model , @PathVariable (name ="id") String id) {
 
         List<Food> fridgeFoodAsc = fridgeRepository.findAllByNameAsc(id);
         model.addAttribute("id",fridgeFoodAsc);
 
-        return "/fridge/fridge";
+//        return "/fridge/fridge";
 
-
+return "redirect:/fridge/" + id;
 //        try {
 //            List<Sort.Order> orders = new ArrayList<Sort.Order>();
 //           if (sort[0].contains(",")) {

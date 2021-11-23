@@ -11,14 +11,15 @@
 
 
 
-<form  th:action="@{/fridge/{id}}" method="post" th:object="${food}">
-    <input type="submit" value="Sort Foods By :" name="sort-Food">
+<form  th:action="@{'/fridge/'+ ${currentFridge.id} + '/sort'}" method="post" >
+    <button>SORT</button>
+<!--    <input type="submit" value="Sort Foods By :" name="sort-Food">-->
 
-    <select name="food" id="food">
+<!--    <select name="food" id="food">-->
         <option value="fridgeFoodAsc">Alphabetically</option>
 <!--        <option value="expiration">Expritation Date</option>-->
 <!--        <option value="foodGroup">Food Group</option>-->
-    </select>
+<!--    </select>-->
 
 
     <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}" th:method="POST">
