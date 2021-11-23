@@ -13,8 +13,14 @@
 
 <!--    Hidden date added-->
     <input th:type="hidden" th:field="*{dateAdded}">
-    <label for="foodName">Insert Food Name:</label>
-    <input type="text" placeholder="What is the name of your food?" id="foodName" th:field="*{name}"/>
+<!--    <label for="foodName">Insert Food Name:</label>-->
+<!--    <input type="text" placeholder="What is the name of your food?" id="foodName" th:field="*{name}"/>-->
+    <label>Food name</label>
+    <select th:field="*{name}">
+        <div th:each="shelfLife : ${shelfLives}">
+            <option th:value="${shelfLife.name}" th:text="${shelfLife.name}"></option>
+        </div>
+    </select>
     <br>
     <label for="todayFood">Did you get this today?</label>
     <select id="todayFood" name="todayFood">
