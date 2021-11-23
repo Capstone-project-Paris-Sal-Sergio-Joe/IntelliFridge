@@ -20,9 +20,6 @@ public class ShelfLife {
     @Column(nullable = false, columnDefinition = "int not null")
     private int shelfLifeFreezerDays;
 
-    @Column(columnDefinition = "VARCHAR(200)")
-    private String imgUrl;
-
     @ManyToOne
     @JoinColumn(name = "food_group_id")
     private FoodGroup foodGroup;
@@ -35,7 +32,6 @@ public class ShelfLife {
         this.name = name;
         this.shelfLifeFridgeDays = shelfLifeFridgeDays;
         this.shelfLifeFreezerDays = shelfLifeFreezerDays;
-        this.imgUrl = imgUrl;
         this.foodGroup = foodGroup;
 
     }
@@ -73,14 +69,6 @@ public class ShelfLife {
 
     public void setShelfLifeFreezerDays(int shelfLifeFreezerDays) {
         this.shelfLifeFreezerDays = shelfLifeFreezerDays;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
     }
 
     public FoodGroup getFoodGroup() {
