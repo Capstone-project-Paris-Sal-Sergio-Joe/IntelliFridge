@@ -16,14 +16,14 @@ public class Food {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false , name="isInFreezer")
+    @Column(nullable = false)
     private boolean isInFreezer;
 
 
-    @Column(nullable = false, name="dateAdded")
+    @Column(nullable = false)
     private Timestamp dateAdded;
 
-    @Column(nullable = false,name="expirationDate")
+    @Column()
     private Timestamp expirationDate;
 
     @ManyToOne
@@ -44,6 +44,10 @@ public class Food {
         this.fridge = fridge;
     }
 
+    public Food(Timestamp dateAdded) {
+        this.dateAdded = dateAdded;
+    }
+
     public Food() {
     }
 
@@ -60,7 +64,7 @@ public class Food {
     }
 
     public void setInFreezer(boolean inFreezer) {
-        isInFreezer = inFreezer;
+        this.isInFreezer = inFreezer;
     }
 
     public String getName() {
