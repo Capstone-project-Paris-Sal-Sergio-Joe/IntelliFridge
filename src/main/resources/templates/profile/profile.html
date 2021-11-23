@@ -9,6 +9,8 @@
 
 <h1>Profile</h1>
 <h2 th:text="${user.username}"></h2>
+<img th:src="${user.photosImagePath}" />
+<br>
 <button id="edit" >edit</button>
 <form name="edit" class="hidden" id="editForm" method="post">
 
@@ -25,15 +27,57 @@
             <label for="phoneNumber">phoneNumber</label>
             <input name="phoneNumber" type="text" th:value="${user.phoneNumber}" id="phoneNumber"/>
         </li>
+
+<!--upload image form-->
+            <form th:action="@{/users/save}"
+                  th:object="${user}" method="post"
+                  enctype="multipart/form-data">
+
+                <div>
+
+                    <label>Profile Picture : </label>
+                    <input type="file" name="image" accept="image/png, image/jpeg"   />
+                    <img th:src="${user.photosImagePath}" />
+
+                </div>
+
+            </form>
+ <!--upload image form-->
+
+<br>
         <button type="submit" id="form-btn">Submit</button>
     </ul>
 </form>
+
+<!-- upload image form -->
+<!--            <form th:action="@{/users/save}"-->
+<!--                  th:object="${user}" method="post"-->
+<!--                  enctype="multipart/form-data"-->
+<!--            >-->
+<!--                ...-->
+<!--                <div>-->
+
+<!--                    <label>Photos: </label>-->
+<!--                    <input type="file" name="image" accept="image/png, image/jpeg" />-->
+
+<!--                </div>-->
+<!--                ...-->
+<!--            </form>-->
+
+<!--upload image form-->
+
+
+
+
+<hr><hr>
+<br><br>
 <h3>Fridge List:</h3>
 <div th:each="fridge : ${fridge}">
 
 <p th:text="${fridge.name}"></p>
     <form th:action="@{'/fridge/' + ${fridge.id}}" th:method="GET">
         <button>View Fridge</button>
+        <br><hr>
     </form>
 </div>
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>

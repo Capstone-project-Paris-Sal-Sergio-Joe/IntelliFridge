@@ -1,0 +1,41 @@
+<!-- This is a comment in a HTML file -->
+<!Doctype html> <!-- Defines document type as HTML -->
+<html> <!-- Start of html tag -->
+
+<head> <!-- Head section contains metadata about the file -->
+
+
+  <!-- This script tag includes the Filestack API into your HTML file -->
+  <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+
+
+</head> <!-- End of Head section tag -->
+
+<body> <!-- Start of Body section Head -->
+<h1>filestack api  test</h1>
+
+
+<!-- This line includes a button -->
+<input type="BUTTON" value="Upload Test" id="pickWatermark" onclick="uploadTest()">
+
+<script> <!-- Start of Javascript script tag -->
+//Comments in script area start with two slashes
+
+
+        //Instantiating dialog with Filestack
+        var client = filestack.init("AHtDDvPETGSXpr1bg2Isxz");
+        //Filestack API method 'pick()' that opens the file picker
+        // client.pick({});
+//The function pickMark()
+function uploadTest() {
+
+  console.log("Upload button clicked.");
+  //Opening the file picker here
+  client.pick({})
+}
+
+</script> <!-- End of Javascript script tag -->
+
+
+</body> <!-- End of Body tag -->
+</html> <!-- End of HTML tag -->

@@ -25,8 +25,8 @@ public class User {
     @Column(columnDefinition = "VARCHAR(15)")
     private String phoneNumber;
 
-    @Column(columnDefinition = "VARCHAR(200)")
-    private String profilePicture;
+        @Column(columnDefinition = "VARCHAR(200)", nullable=true,length=200)
+        private String profilePicture;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -113,7 +113,17 @@ public class User {
 
     public void setFridges(List<Fridge> fridges) {
         this.fridges = fridges;
+
+
     }
+
+@Transient
+    public String getPhotosImagePath() {
+//        if (profilePicture == null || id == null) return null;
+
+        return "/user-photos/" + id + "/" + profilePicture;
+    }
+
 }
 
 
