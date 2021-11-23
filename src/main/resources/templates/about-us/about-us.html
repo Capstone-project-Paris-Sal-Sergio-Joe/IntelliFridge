@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:insert="partials/partials.html :: head('About Us')">
+<head th:include="partials/partials.html :: head('About Us')">
     <meta charset="UTF-8">
     <title>About Us</title>
 </head>
-<body style="text-align: center">
-<nav th:include="partials/partials.html :: navbar"></nav>
+<body>
+
+<nav th:insert="partials/partials.html :: navbar"></nav>
+
 <h1>We are the creators of Intellifridge</h1>
 <div style="position: relative; width: 100%; height: auto">
     <div style="position: absolute; text-align: center; width: 100%">
@@ -32,6 +34,6 @@
         </ul>
     </div>
 </div>
-<th:block th:include="partials/partials.html :: bootstrap-js"/>
+<th:block th:insert="partials/partials.html :: bootstrap-js"/>
 </body>
 </html>

@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:insert="partials/partials.html :: head('Add Food')">
+<head th:include="partials/partials.html :: head('Add Food')">
     <meta charset="UTF-8">
     <title>Add Food</title>
 </head>
 <body>
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
+<<<<<<< HEAD
 <form th:action="@{'/fridge/' + ${fridge.id} + '/add-food'}" th:method="post" th:object="${food}">
+=======
+<form th:action="@{/fridge/addFood}" th:method="post" th:object="${food}">
+>>>>>>> a4ce7c38b80fe9738a3a97d62fefafdbbcaf3d38
 
 <!--    Hidden date added-->
     <input th:type="hidden" th:field="*{dateAdded}">

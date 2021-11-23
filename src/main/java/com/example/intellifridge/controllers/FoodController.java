@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Timestamp;
 import java.time.Instant;
 
+
 @Controller
 public class FoodController {
 private final FoodRepository foodRepository;
@@ -26,6 +27,7 @@ private final UserRepository userRepository;
         this.fridgeRepository = fridgeRepository;
         this.userRepository = userRepository;
     }
+
 
     @GetMapping("/fridge/{id}/add-food")
     public String showAddFood(@PathVariable long id, Model model) {

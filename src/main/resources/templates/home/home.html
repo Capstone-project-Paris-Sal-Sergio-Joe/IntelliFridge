@@ -7,8 +7,13 @@
 <nav th:insert="partials/partials.html :: navbar"></nav>
 <body>
 <h1>This the home page</h1>
-<button>Login</button>
-<button>Sign up</button>
+<form th:action="@{/login}" th:method="GET">
+    <button type="submit">Login</button>
+</form>
+
+<form th:action="@{/sign-up}" th:method="GET">
+    <button type="submit">Sign up</button>
+</form>
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 </body>
 </html>
