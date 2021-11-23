@@ -24,7 +24,7 @@ public class ProfileController {
 
     @GetMapping("/profile")
     public String show(Model model){
-        User currentUser = userDao.getById(1L);
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Fridge> userFridges = currentUser.getFridges();
         model.addAttribute("user",currentUser);
         model.addAttribute("fridge", userFridges);

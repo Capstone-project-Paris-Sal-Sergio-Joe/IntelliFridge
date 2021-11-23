@@ -15,9 +15,6 @@ public class Fridge {
     @Column(nullable = false, columnDefinition = "VARCHAR(50)")
     private String name;
 
-    @Column
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String fridgeCode;
 
     @ManyToMany(mappedBy = "fridges")
     private List<User> users = new ArrayList<>();
