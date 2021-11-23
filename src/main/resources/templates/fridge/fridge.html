@@ -21,6 +21,10 @@
     </select>
 
 
+    <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}" th:method="POST">
+        <button>Delete</button>
+    </form>
+
 
 
 </form>
