@@ -8,10 +8,10 @@
 
 
 <nav th:fragment="sort" style="text-align: right">
-    <form  th:action="@{/partials/sort-Food}" method="post" th:object="${fridge}">
-        <input type="submit" value="Sort Foods By :" name="sort">
+    <form  th:action="@{/fridge/${fridge.getId()}}" method="post" th:object="${food}">
+        <input type="submit" value="Sort Foods By :" name="sort-Food">
 
-        <select name="food" id="food">
+        <select name="id" id="id">
             <option value="alphabetical">Alphabetically</option>
             <option value="expiration">Expritation Date</option>
             <option value="foodGroup">Food Group</option>

@@ -1,16 +1,53 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:insert="partials/partials.html :: head(${currentFridge.name})">
+
     <meta charset="UTF-8">
     <title>Fridge</title>
 </head>
 <body>
 <nav th:insert="partials/partials.html :: navbar"></nav>
+<nav th:insert="partials/sort-Food.html :: sort"></nav>
+
+
+
+<form  th:action="@{/fridge/{id}}" method="post" th:object="${food}">
+    <input type="submit" value="Sort Foods By :" name="sort-Food">
+
+    <select name="food" id="food">
+        <option value="fridgeFoodAsc">Alphabetically</option>
+<!--        <option value="expiration">Expritation Date</option>-->
+<!--        <option value="foodGroup">Food Group</option>-->
+    </select>
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
 <h1 th:text="${currentFridge.name}"></h1>
 <div th:each="food : ${foodInFridge}">
     <p th:text="${food.name}"></p>
     <p>food expires <span th:text="${food.expirationDate}"></span></p>
 </div>
+
+
+
+
+
+
+
+
+
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 </body>
 </html>
