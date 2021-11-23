@@ -41,6 +41,9 @@ private final UserRepository userRepository;
 
     @PostMapping("/fridge/{id}/add-food")
     public String addFood(@PathVariable long id, @ModelAttribute Food food, @RequestParam(name="isInFreezer") String isInFreezer){
+//        EXPIRATION DATE
+
+
         if (isInFreezer.equals("true")) {
             food.setInFreezer(true);
         } else {
