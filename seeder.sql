@@ -39,34 +39,34 @@ INSERT INTO food_group(name) VALUES
 ('desserts');
 
 
-INSERT INTO food_shelf_life(name, shelf_life_fridge_days, shelf_life_freezer_days, img_url, food_group_id) VALUES
-('bread',7,180,'https://thumbs.dreamstime.com/z/cartoon-bread-vector-illustration-isolated-white-background-147370927.jpg', 1),
+INSERT INTO food_shelf_life(name, shelf_life_fridge_days, shelf_life_freezer_days, food_group_id) VALUES
+('bread',7,180, 1),
 
-('carrot',21, 365, 'https://cdn3.vectorstock.com/i/1000x1000/77/52/carrot-icon-cartoon-style-on-white-background-vector-8177752.jpg', 2),
+('carrot',21, 365,  2),
 
-('milk', 7, 180,'https://www.meijer.com/content/dam/meijer/product/0004/12/5010/20/0004125010200_2_A1C1_1200.png',3 ),
+('milk', 7, 180,3 ),
 
-('turkey', 5, 365, 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2021%2F11%2F09%2FTurkey-Prices-FT-BLOG1121.jpg', 4),
+('turkey', 5, 365,  4),
 
-('apple pie', 4, 120, 'https://520553-1656414-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/Slice-of-apple-pie.jpg', 5),
+('apple pie', 4, 120,  5),
 
-('bagels', 7, 120, 'bagel_image',1),
+('bagels', 7, 120, 1),
 
-('blueberries', 10, 300, 'blueberry_url', 2),
+('blueberries', 10, 300, 2),
 
-('butter', 60, 240, 'butter_url', 3),
+('butter', 60, 240,  3),
 
-('steak', 5, 120, 'steak_url', 4),
+('steak', 5, 120, 4),
 
-('ice cream', 21, 120, 'icecream_url', 5),
+('ice cream', 21, 120,  5),
 
-('oatmeal', 6, 180, 'oatmeal_url', 1),
-('grapes', 14,300, 'grapes_url', 2),
+('oatmeal', 6, 180,  1),
+('grapes', 14,300,  2),
 
-('yogurt' ,7, 90, 'yogurt_url', 3),
-('raw chicken', 2, 270, 'raw_chicken_url', 4),
+('yogurt' ,7, 90,  3),
+('raw chicken', 2, 270,  4),
 
-('doughnuts', 7, 90, 'doughnuts_url', 5);
+('doughnuts', 7, 90,  5);
 
 
 insert into users(id, email, password, phone_number, username) VALUES
