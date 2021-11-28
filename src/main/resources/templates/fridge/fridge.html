@@ -6,6 +6,31 @@
 </head>
 <body>
 <nav th:insert="partials/partials.html :: navbar"></nav>
+
+<!--sort testing-->
+<form  th:action="@{'/fridge/' + ${currentFridge.id} + '/sort'}" th:method="POST" th:object="${food}">
+<!--    <input type="submit" value="Sort Foods By :" name="sort-Food">-->
+    <button>SOrt</button>
+<!--    <select name="id" id="id">-->
+<!--        <option value="alphabetical">Alphabetically</option>-->
+<!--        <option value="expiration">Expritation Date</option>-->
+<!--        <option value="foodGroup">Food Group</option>-->
+<!--    </select>-->
+
+    <!--sort testing-->
+
+
+
+</form>
+
+
+<form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete22'}" th:method="POST">
+    <button>Delete/sort mapping test</button>
+</form>
+
+
+
+
 <h1 th:text="${currentFridge.name}"></h1>
 <div th:each="food : ${foodInFridge}">
     <p th:text="${food.name}"></p>
@@ -13,6 +38,10 @@
     <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}" th:method="POST">
         <button>Delete</button>
     </form>
+
+
+
+
 </div>
 
 <form th:action="@{'/fridge/' + ${currentFridge.id} + '/add-food'}" th:method="GET">

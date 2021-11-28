@@ -67,6 +67,21 @@ public class FridgeController {
         return "redirect:/fridge/" + fridgeId;
     }
 
+    @PostMapping("/fridge/{fridgeId}/food/{foodId}/delete22")
+    public  String  getAllFoods(@PathVariable String fridgeId, @ModelAttribute Food food) {
+//        String currentFridge = fridgeRepository.getById(id);
+////        food.sortAsc(currentFridge);
+        fridgeRepository.findAllByNameAsc(fridgeId);
+
+//      foodRepository.save(food);
+
+//fridgeRepository.findAllByNameAsc(id);
+//        model.addAttribute("id",fridgeFoodAsc);
+
+//        return "/fridge/fridge";
+
+        return "redirect:/fridge/" + fridgeId;
+    }
 
 
 
@@ -80,42 +95,41 @@ public class FridgeController {
 
     //-needs sortFoods functionality
 
-    //===============================================================
-    @PostMapping("/fridge/{id}/sort")
-    public  String  getAllFoods(Model model , @PathVariable (name ="id") String id) {
-
-        List<Food> fridgeFoodAsc = fridgeRepository.findAllByNameAsc(id);
-        model.addAttribute("id",fridgeFoodAsc);
-
-//        return "/fridge/fridge";
-
-return "redirect:/fridge/" + id;
-//        try {
-//            List<Sort.Order> orders = new ArrayList<Sort.Order>();
-//           if (sort[0].contains(",")) {
-//                // will sort more than 2 fields
-//                // sortOrder="field, direction"
-//                for (String sortOrder : sort) {
-//                    String[] _sort = sortOrder.split(",");
-//                    orders.add(new Sort.Order(getSortDirection(_sort[1]), _sort[0]));
-//                }
-//            } else {
-//                // sort=[field, direction]
-//                orders.add(new Sort.Order(getSortDirection(sort[1]), sort[0]));
-//            }
+//    //===============================================================
+//    @PostMapping("/fridge/{fridgeId}/sort")
+//    public  String  getAllFoods(Model model , @PathVariable (name ="id") String id) {
 //
-//            List<Food> foods = foodRepository.findAll(Sort.by(orders));
+//        List<Food> fridgeFoodAsc = fridgeRepository.findAllByNameAsc(id);
+//        model.addAttribute("id",fridgeFoodAsc);
 //
-//            if (foods.isEmpty()) {
-//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//            }
+////        return "/fridge/fridge";
 //
-//            return new ResponseEntity<>(foods, HttpStatus.OK);
-//        } catch (Exception e) {
-//            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    return "redirect:/fridge/{id}";
-    }
+//return "redirect:/fridge/${id}" ;
+////            List<Sort.Order> orders = new ArrayList<Sort.Order>();
+////           if (sort[0].contains(",")) {
+////                // will sort more than 2 fields
+////                // sortOrder="field, direction"
+////                for (String sortOrder : sort) {
+////                    String[] _sort = sortOrder.split(",");
+////                    orders.add(new Sort.Order(getSortDirection(_sort[1]), _sort[0]));
+////                }
+////            } else {
+////                // sort=[field, direction]
+////                orders.add(new Sort.Order(getSortDirection(sort[1]), sort[0]));
+////            }
+////
+////            List<Food> foods = foodRepository.findAll(Sort.by(orders));
+////
+////            if (foods.isEmpty()) {
+////                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+////            }
+////
+////            return new ResponseEntity<>(foods, HttpStatus.OK);
+////        } catch (Exception e) {
+////            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+////        }
+////    return "redirect:/fridge/{id}";
+//    }
 
 
 
@@ -142,3 +156,70 @@ return "redirect:/fridge/" + id;
 
 
 }
+
+
+
+//
+//
+//    //===============================================================
+//    @PostMapping("/fridge/{fridgeId}/food/sort")
+//    public  String  getAllFoods(Model model , @PathVariable (name ="id") String id) {
+//
+//        List<Food> fridgeFoodAsc = fridgeRepository.findAllByNameAsc(id);
+//        model.addAttribute("id",fridgeFoodAsc);
+//
+////        return "/fridge/fridge";
+//
+//        return "redirect:/fridge/" + id;
+////        try {
+////            List<Sort.Order> orders = new ArrayList<Sort.Order>();
+////           if (sort[0].contains(",")) {
+////                // will sort more than 2 fields
+////                // sortOrder="field, direction"
+////                for (String sortOrder : sort) {
+////                    String[] _sort = sortOrder.split(",");
+////                    orders.add(new Sort.Order(getSortDirection(_sort[1]), _sort[0]));
+////                }
+////            } else {
+////                // sort=[field, direction]
+////                orders.add(new Sort.Order(getSortDirection(sort[1]), sort[0]));
+////            }
+////
+////            List<Food> foods = foodRepository.findAll(Sort.by(orders));
+////
+////            if (foods.isEmpty()) {
+////                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+////            }
+////
+////            return new ResponseEntity<>(foods, HttpStatus.OK);
+////        } catch (Exception e) {
+////            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+////        }
+////    return "redirect:/fridge/{id}";
+//    }
+//
+//
+//
+//
+//    //    sort method
+////    private Sort.Direction getSortDirection(String direction) {
+////        if (direction.equals("asc")) {
+////            return Sort.Direction.ASC;
+////        } else if (direction.equals("desc")) {
+////            return Sort.Direction.DESC;
+////        }
+////
+////        return Sort.Direction.ASC;
+////    }
+//
+//
+////    @PostMapping("/sort")
+////    public String sortFoods(){
+////        return "fridge/fridge";
+////    }
+//// sort by days tillexpired
+//// food group,
+//// alphabetical, etc.
+//
+//
+//}

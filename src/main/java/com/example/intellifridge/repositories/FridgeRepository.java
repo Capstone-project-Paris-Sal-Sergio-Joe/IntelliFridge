@@ -18,6 +18,8 @@ public interface FridgeRepository extends JpaRepository <Fridge, Long>{
     @Query(nativeQuery = true,value = "SELECT * FROM foods where id = ? Order By name desc ")
     List<Food> findAllByNameDesc(String name);
 
+    String getById(String id);
+
 //    @Query(nativeQuery = true,value = "SELECT * FROM foods Order By is_in_Freezer asc ")
 //    List<Food> findAllByNameAsc(String name);
 
