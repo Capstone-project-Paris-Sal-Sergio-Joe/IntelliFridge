@@ -42,21 +42,6 @@
 </nav>
 
 
-<!-- ================== POST FORM -->
-<form th:fragment="post-form(action, btnText)" th:action="${action}" th:method="POST" th:object="${post}">
-  <div class="form-group mb-3">
-    <label class="form-label fw-bold" for="title">Title</label>
-    <input class="form-control" th:field="*{title}" type="text" placeholder="Enter Blog Post Title">
-  </div>
-  <div class="form-group mb-3">
-    <label class="form-label fw-bold" for="body">Body</label>
-    <textarea class="form-control" th:field="*{body}" id="body" cols="30" rows="10" placeholder="Enter Blog Content"></textarea>
-  </div>
-  <div class="d-grid gap-2 d-block">
-    <button class="btn btn-primary" type="button" th:text="${btnText}"></button>
-  </div>
-</form>
-
 
 <!-- ================== HEADER -->
 <header th:fragment="header(text)">
