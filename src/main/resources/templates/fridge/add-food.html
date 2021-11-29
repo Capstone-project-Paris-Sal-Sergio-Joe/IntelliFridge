@@ -84,9 +84,9 @@
                 }
 
                 $(this).click(function() {
-                    $('addedFood').append(
-                        // $(this).html();
-                    )
+                    $('#foodSearch').val(foodName);
+                    $('#addedFood').html($(this).html());
+                    $('#foodResults').html('');
                 })
 
             })
