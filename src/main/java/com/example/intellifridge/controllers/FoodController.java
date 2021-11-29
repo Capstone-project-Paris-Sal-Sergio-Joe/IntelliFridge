@@ -70,8 +70,8 @@ private final FoodShelfLifeRepository foodShelfLifeRepository;
                 food.setExpirationDate(expirationDate);
             }
         }
-        System.out.println(food);
 
+//        The below line is necessary for some reason
         food.setId(0);
         Fridge currentFridge = fridgeRepository.getById(id);
         food.setFridge(currentFridge);

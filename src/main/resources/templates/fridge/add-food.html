@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="partials/partials.html :: head('Add Food')">
-    <meta charset="UTF-8">
-    <title>Add Food</title>
-    <script src="js/jquery.js"></script>
 </head>
+<style>
+    .foodItem {
+        display: none;
+        border: 5px solid red;
+    }
+</style>
 <body>
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
@@ -14,15 +17,30 @@
 
 <!--    Hidden date added-->
     <input th:type="hidden" th:field="*{dateAdded}">
-<!--    <label for="foodName">Insert Food Name:</label>-->
-<!--    <input type="text" placeholder="What is the name of your food?" id="foodName" th:field="*{name}"/>-->
-    <label>Food name</label>
-    <select th:field="*{name}">
-        <div th:each="shelfLife : ${shelfLives}">
-            <option th:value="${shelfLife.name}" th:text="${shelfLife.name}"></option>
+
+<!--    WORKS -->
+<!--    <label>Food name</label>-->
+<!--    <select th:field="*{name}">-->
+<!--        <div th:each="shelfLife : ${shelfLives}">-->
+<!--            <option th:value="${shelfLife.name}" th:text="${shelfLife.name}"></option>-->
+<!--        </div>-->
+<!--    </select>-->
+<!--    <br>-->
+
+    <label>Food Name</label>
+    <input type="text" placeholder="Food name..." id="foodSearch" th:field="*{name}">
+
+    <div id="foodResults">
+        <div th:each="shelfLife : ${shelfLives}" class="foodItem" th:id="${shelfLife.name}">
+            <h3 th:text="${shelfLife.name}" class="foodName"></h3>
         </div>
-    </select>
-    <br>
+    </div>
+
+    <div id="addedFood"></div>
+
+
+
+
     <label for="todayFood">Did you get this today?</label>
     <select id="todayFood" name="todayFood">
         <option value ="true">yes</option>
@@ -30,12 +48,6 @@
     </select>
     <br>
     <label>Fridge or Freezer?</label>
-
-<!--    <select id="isInFreezer" name="isInFreezer" th:field="*{food.isInFreezer}">-->
-<!--        <option th:value="false" th:text="Fridge"></option>-->
-<!--        <option th:value="true" th:text="Freezer"></option>-->
-<!--    </select>-->
-
     <input type="radio" name="isInFreezer" th:value="false" th:text="Fridge" checked="checked">
     <input type="radio" name="isInFreezer" th:value="true" th:text="Freezer">
 
@@ -45,5 +57,46 @@
     <button type="submit">enter food</button>
 </form>
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
+<!--Jquery script-->
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+<!--My script-->
+<script>
+    $(document).ready(function() {
+        $('#foodSearch').keyup(function() {
+            let search = $(this).val();
+
+            $('.foodItem').each(function() {
+                // let foodName = $(this).text();
+                // console.log(foodName);
+                let foodName = $(this).find('.foodName').text();
+                let regExp = new RegExp(`^${search}`);
+                if (search != '') {
+                    if (regExp.test(foodName) == true) {
+                        $(this).css('display', 'block');
+                    } else {
+                        $(this).css('display', 'none');
+                    }
+                } else {
+                    $(this).css('display', 'none');
+                }
+
+                $(this).click(function() {
+                    $('addedFood').append(
+                        // $(this).html();
+                    )
+                })
+
+            })
+        })
+
+        $(document).on("keydown", "form", function(event) {
+            return event.key != "Enter";
+        });
+    });
+
+</script>
 </body>
 </html>
