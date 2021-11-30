@@ -8,6 +8,7 @@ import com.example.intellifridge.repositories.FoodRepository;
 import com.example.intellifridge.repositories.FoodShelfLifeRepository;
 import com.example.intellifridge.repositories.FridgeRepository;
 import com.example.intellifridge.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -33,12 +34,27 @@ private final FoodShelfLifeRepository foodShelfLifeRepository;
         this.foodShelfLifeRepository = foodShelfLifeRepository;
     }
 
+    @Value("${UNSPLASH_ACCESS_KEY}")
+    private String unsplashApiKey;
+
+    @Value("${UNSPLASH_SECRET_KEY}")
+    private String unsplashSecretKey;
+
+    @RequestMapping(path = "/keys.js", produces = "application/javascript")
+    @ResponseBody
+    public String apikeys(){
+        System.out.println(unsplashApiKey);
+        return "const UnsplashApiKey = `" + unsplashApiKey + "` \n"+
+                "const UnsplashSecretKey =`" + unsplashSecretKey + "`";
+    }
 
     @GetMapping("/fridge/{id}/add-food")
     public String showAddFood(@PathVariable long id, Model model) throws Exception {
         Fridge currentFridge = fridgeRepository.getById(id);
+        List<ShelfLife> shelfLifeList = foodShelfLifeRepository.findAll();
         model.addAttribute("fridge", currentFridge);
         model.addAttribute("food", new Food(Timestamp.from(Instant.now())));
+        model.addAttribute("shelfLives", shelfLifeList);
         return "fridge/add-food";
 
     }
@@ -68,8 +84,8 @@ private final FoodShelfLifeRepository foodShelfLifeRepository;
                 food.setExpirationDate(expirationDate);
             }
         }
-        System.out.println(food);
 
+//        The below line is necessary for some reason
         food.setId(0);
         Fridge currentFridge = fridgeRepository.getById(id);
         food.setFridge(currentFridge);
