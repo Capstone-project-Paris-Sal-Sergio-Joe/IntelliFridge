@@ -71,12 +71,9 @@ public class FridgeController {
 
 
 //sort foods
-
-    //-needs sortFoods functionality
-
-// sort by days tillexpired
-// food group,
-// alphabetical, etc.
+    //    pagination and sorting methods complete
+    //    placed in different branch to not cause merge conflicts
+//
 
 
 }
