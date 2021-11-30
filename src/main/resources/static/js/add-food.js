@@ -1,4 +1,4 @@
-
+console.log("hello world")
 fetch('https://api.unsplash.com/search/photos?client_id=' + "0vWQD0zIliLfVCQmhxLcCFmdUg12C4A0-0JUgmc4qNg&query=cats")
     .then(res => res.json())
     .then(console.log)
@@ -16,8 +16,6 @@ function renderAddFoodImage(object){
 
 let imageSelector = document.getElementById("foodName");
 
-$("foodName").keyup(function (){
-    const selectedImage = imageSelector.value;
-
-
-})
+$(`#foodName`).on("keydown","",function (){
+    console.log("a key was pressed");
+});
