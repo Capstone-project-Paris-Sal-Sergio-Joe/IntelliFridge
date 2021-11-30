@@ -31,7 +31,9 @@
     <input type="text" placeholder="Food name..." id="foodSearch" th:field="*{name}">
 
     <div id="foodResults">
-        <div th:each="shelfLife : ${shelfLives}" class="foodItem" th:id="${shelfLife.name}">
+<!--        <div th:each="shelfLife : ${shelfLives}" class="foodItem" th:id="${shelfLife.name}">-->
+        <div th:each="shelfLife : ${shelfLives}" class="foodItem">
+            <div th:id="${shelfLife.name}" class="foodImageURL"></div>
             <h3 th:text="${shelfLife.name}" class="foodName"></h3>
         </div>
     </div>
@@ -62,41 +64,6 @@
         src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous"></script>
-<!--My script-->
-<script>
-    $(document).ready(function() {
-        $('#foodSearch').keyup(function() {
-            let search = $(this).val();
-
-            $('.foodItem').each(function() {
-                // let foodName = $(this).text();
-                // console.log(foodName);
-                let foodName = $(this).find('.foodName').text();
-                let regExp = new RegExp(`^${search}`);
-                if (search != '') {
-                    if (regExp.test(foodName) == true) {
-                        $(this).css('display', 'block');
-                    } else {
-                        $(this).css('display', 'none');
-                    }
-                } else {
-                    $(this).css('display', 'none');
-                }
-
-                $(this).click(function() {
-                    $('#foodSearch').val(foodName);
-                    $('#addedFood').html($(this).html());
-                    $('#foodResults').html('');
-                })
-
-            })
-        })
-
-        $(document).on("keydown", "form", function(event) {
-            return event.key != "Enter";
-        });
-    });
-
-</script>
+<script src="/js/add-food.js"></script>
 </body>
 </html>
