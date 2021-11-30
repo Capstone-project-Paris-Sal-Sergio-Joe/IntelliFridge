@@ -14,6 +14,32 @@
 <button id="edit" >edit</button>
 <form name="edit" class="hidden" id="editForm" method="post">
 
+
+
+    <!-- Profile Picture -->
+    <div class="profile">
+        <img id="profilePic" src="img/default.jpg">
+    </div>
+
+    <div>
+        <!--    <div style="width: 100%;text-align: center;margin: 20px 0;color: #aaa">-->
+
+        <!--  Choose your own default picture <br>-->
+        <script type="text/javascript" src="http://api.filestackapi.com/filestack.js"></script>
+        <input type="filepicker" data-fp-apikey="AHtDDvPETGSXpr1bg2Isxz" onchange="loadImage(event.fpfile.url)">
+    </div>
+
+    <script type="text/javascript">
+        function loadImage(imageURL) {
+            document.getElementById("profilePic").src = imageURL;
+        }
+    </script>
+
+
+
+
+
+
     <ul>
         <li>
             <label for="username">Username</label>

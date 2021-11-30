@@ -14,27 +14,124 @@
 <body> <!-- Start of Body section Head -->
 <h1>filestack api  test</h1>
 
+<!--<form>-->
+<!--  <label for="fileupload">Select a file to upload</label>-->
+<!--  <input type="file" id="fileupload">-->
+<!--  <input type="submit" value="Submit">-->
+<!--</form>-->
 
-<!-- This line includes a button -->
-<input type="BUTTON" value="Upload Test" id="pickWatermark" onclick="uploadTest()">
+<hr><p>step 2</p>
 
-<script> <!-- Start of Javascript script tag -->
-//Comments in script area start with two slashes
+<!--<form>-->
+<!--  <label for="fileupload">Select a file to upload</label>-->
+<!--  <input type="hidden" id="fileupload">-->
+<!--  <input type="submit" value="Submit">-->
+<!--</form>-->
+
+<hr>
+<form>
+  <label for="fileupload">Select a file to upload</label>
+  <input type="hidden" id="fileupload">
+  <button id="picker" type="button">Pick file</button>
+  <input type="submit" value="Submit">
+</form>
 
 
-        //Instantiating dialog with Filestack
-        var client = filestack.init("AHtDDvPETGSXpr1bg2Isxz");
-        //Filestack API method 'pick()' that opens the file picker
-        // client.pick({});
-//The function pickMark()
-function uploadTest() {
 
-  console.log("Upload button clicked.");
-  //Opening the file picker here
-  client.pick({})
-}
+<hr><br>
 
-</script> <!-- End of Javascript script tag -->
+
+  <form id="pick-form">
+    <div class="field">
+      <div class="control">
+        <button class="button" type="button" id="picker">Pick file</button>
+        <input type="hidden" id="fileupload">
+      </div>
+      <div class="control" id="nameBox"></div>
+      <div class="control" id="urlBox"></div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <input class="button" type="submit" value="Submit">
+      </div>
+    </div>
+  </form>
+
+
+<script>
+  // Set up the picker
+  const client = filestack.init("AHtDDvPETGSXpr1bg2Isxz");
+  const options = {
+    onUploadDone: updateForm,
+    maxSize: 10 * 1024 * 1024,
+    accept: 'image/*',
+    uploadInBackground: false,
+  };
+  const picker = client.picker(options);
+
+  // Get references to the DOM elements
+
+  const form = document.getElementById('pick-form');
+  const fileInput = document.getElementById('fileupload');
+  const btn = document.getElementById('picker');
+  const nameBox = document.getElementById('nameBox');
+  const urlBox = document.getElementById('urlBox');
+
+  // Add our event listeners
+
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    picker.open();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    alert('Submitting: ' + fileInput.value);
+  });
+
+  // Helper to overwrite the field input value
+
+  function updateForm (result) {
+    const fileData = result.filesUploaded[0];
+    fileInput.value = fileData.url;
+
+    // Some ugly DOM code to show some data.
+    const name = document.createTextNode('Selected: ' + fileData.filename);
+    const url = document.createElement('a');
+    url.href = fileData.url;
+    url.appendChild(document.createTextNode(fileData.url));
+    nameBox.appendChild(name);
+    urlBox.appendChild(document.createTextNode('Uploaded to: '));
+    urlBox.appendChild(url);
+  };
+
+</script>
+
+
+<hr>
+<p>below is filetsack api code and button along with javascript function for filestack picker</p>
+<hr>
+
+<!--&lt;!&ndash; This line includes a button &ndash;&gt;-->
+<!--<input type="BUTTON" value="Upload Test" id="pickWatermark" onclick="uploadTest()">-->
+
+<!--<script> &lt;!&ndash; Start of Javascript script tag &ndash;&gt;-->
+<!--//Comments in script area start with two slashes-->
+
+
+<!--        //Instantiating dialog with Filestack-->
+<!--        var client = filestack.init("AHtDDvPETGSXpr1bg2Isxz");-->
+<!--        //Filestack API method 'pick()' that opens the file picker-->
+<!--        // client.pick({});-->
+<!--//The function pickMark()-->
+<!--function uploadTest() {-->
+
+<!--  console.log("Upload button clicked.");-->
+<!--  //Opening the file picker here-->
+<!--  client.pick({})-->
+<!--}-->
+
+<!--</script> &lt;!&ndash; End of Javascript script tag &ndash;&gt;-->
 
 
 </body> <!-- End of Body tag -->
