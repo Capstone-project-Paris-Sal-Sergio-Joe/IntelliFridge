@@ -28,7 +28,7 @@
 <!--    <br>-->
 
     <label>Food Name</label>
-    <input type="text" placeholder="Food name..." id="foodSearch" th:field="*{name}">
+    <input type="text" placeholder="Food name..." id="foodSearch" th:field="*{name}" required>
 
     <div id="foodResults">
 <!--        <div th:each="shelfLife : ${shelfLives}" class="foodItem" th:id="${shelfLife.name}">-->
@@ -44,8 +44,8 @@
 <!--    <label>Fridge or Freezer?</label>-->
 <!--    <input type="radio" name="isInFreezer" th:value="false" th:text="Fridge" checked="checked">-->
 <!--    <input type="radio" name="isInFreezer" th:value="true" th:text="Freezer">-->
-    <br>
-    <button type="submit">enter food</button>
+<!--    <br>-->
+<!--    <button type="submit">enter food</button>-->
 </form>
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 <!--Jquery script-->

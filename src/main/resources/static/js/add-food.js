@@ -21,21 +21,25 @@ $(document).ready(function() {
 
             $(this).click(function () {
                 $('#foodSearch').val(foodName);
+                $('#foodSearch').prop('readonly',true);
                 $('#addedFood').html($(this).html());
-                $('#addedFood').append(
-                    `<p>Fridge or Freezer?</p>
+                $('#addedFood').append(`<p>Fridge or Freezer?</p>
     <input type="radio" name="isInFreezer" value="false" text="Fridge" checked="checked" id="fridgeOption">
     <label for="fridgeOption">Fridge</label>
     <input type="radio" name="isInFreezer" value="true" text="Freezer" id="freezerOption">
     <label for="freezerOption">Freezer</label>
-`
-                )
+    <button type="submit">Add Food</button>
+    <button type="button" id="cancelAddFood">Cancel</button>
+                `)
                 $('#foodResults').html('');
+
+                $('#cancelAddFood').click(() => location.reload());
+
             })
-
-
         })
     })
+
+
     $(document).on("keydown", "form", function(event) {
         return event.key != "Enter";
     });
