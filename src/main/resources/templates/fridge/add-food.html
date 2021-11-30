@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="partials/partials.html :: head('Add Food')">
-    <meta charset="UTF-8">
-    <title>Add Food</title>
 </head>
+<style>
+    .foodItem {
+        display: none;
+        border: 5px solid red;
+    }
+</style>
 <body>
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
@@ -13,30 +17,43 @@
 
 <!--    Hidden date added-->
     <input th:type="hidden" th:field="*{dateAdded}">
-    <label for="foodName">Insert Food Name:</label>
-    <input type="text" placeholder="What is the name of your food?" id="foodName" th:field="*{name}"/>
-    <br>
-    <label for="todayFood">Did you get this today?</label>
-    <select id="todayFood" name="todayFood">
-        <option value ="true">yes</option>
-        <option value ="false">no</option>
-    </select>
-    <br>
-    <label>Fridge or Freezer?</label>
 
-<!--    <select id="isInFreezer" name="isInFreezer" th:field="*{food.isInFreezer}">-->
-<!--        <option th:value="false" th:text="Fridge"></option>-->
-<!--        <option th:value="true" th:text="Freezer"></option>-->
+<!--    WORKS -->
+<!--    <label>Food name</label>-->
+<!--    <select th:field="*{name}">-->
+<!--        <div th:each="shelfLife : ${shelfLives}">-->
+<!--            <option th:value="${shelfLife.name}" th:text="${shelfLife.name}"></option>-->
+<!--        </div>-->
 <!--    </select>-->
+<!--    <br>-->
 
-    <input type="radio" name="isInFreezer" th:value="false" th:text="Fridge" checked="checked">
-    <input type="radio" name="isInFreezer" th:value="true" th:text="Freezer">
+    <label>Food Name</label>
+    <input type="text" placeholder="Food name..." id="foodSearch" th:field="*{name}">
+
+    <div id="foodResults">
+<!--        <div th:each="shelfLife : ${shelfLives}" class="foodItem" th:id="${shelfLife.name}">-->
+        <div th:each="shelfLife : ${shelfLives}" class="foodItem">
+            <div th:id="${shelfLife.name}" class="foodImageURL"></div>
+            <h3 th:text="${shelfLife.name}" class="foodName"></h3>
+        </div>
+    </div>
+
+    <div id="addedFood"></div>
 
 
-
+<!--    <label>Fridge or Freezer?</label>-->
+<!--    <input type="radio" name="isInFreezer" th:value="false" th:text="Fridge" checked="checked">-->
+<!--    <input type="radio" name="isInFreezer" th:value="true" th:text="Freezer">-->
     <br>
     <button type="submit">enter food</button>
 </form>
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
+<!--Jquery script-->
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+<script src="/js/keys.js"></script>
+<script src="/js/add-food.js"></script>
 </body>
 </html>

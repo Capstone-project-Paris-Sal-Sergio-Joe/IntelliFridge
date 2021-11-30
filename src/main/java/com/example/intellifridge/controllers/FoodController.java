@@ -37,8 +37,10 @@ private final FoodShelfLifeRepository foodShelfLifeRepository;
     @GetMapping("/fridge/{id}/add-food")
     public String showAddFood(@PathVariable long id, Model model) throws Exception {
         Fridge currentFridge = fridgeRepository.getById(id);
+        List<ShelfLife> shelfLifeList = foodShelfLifeRepository.findAll();
         model.addAttribute("fridge", currentFridge);
         model.addAttribute("food", new Food(Timestamp.from(Instant.now())));
+        model.addAttribute("shelfLives", shelfLifeList);
         return "fridge/add-food";
 
     }
@@ -68,8 +70,8 @@ private final FoodShelfLifeRepository foodShelfLifeRepository;
                 food.setExpirationDate(expirationDate);
             }
         }
-        System.out.println(food);
 
+//        The below line is necessary for some reason
         food.setId(0);
         Fridge currentFridge = fridgeRepository.getById(id);
         food.setFridge(currentFridge);

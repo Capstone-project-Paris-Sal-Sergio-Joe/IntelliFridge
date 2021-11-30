@@ -7,18 +7,85 @@
 <body>
 <nav th:insert="partials/partials.html :: navbar"></nav>
 <h1 th:text="${currentFridge.name}"></h1>
-<div th:each="food : ${foodInFridge}">
-    <p th:text="${food.name}"></p>
-    <p>food expires <span th:text="${food.expirationDate}"></span></p>
-    <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}" th:method="POST">
-        <button>Delete</button>
-    </form>
+
+
+<!--Add Food - can be moved , just a test-->
+    <a th:href="@{'/fridge/' + ${currentFridge.id} + '/add-food'}"  class="btn btn-primary">
+         Add Food
+    </a>
+
+<!--Table-->
+<div class="container my-2">
+    <table id="foodTable" border="1" class="table table-striped table-responsive-md">
+        <thead>
+            <tr>
+                <th> <a  class="btn btn-success text-right" target="_blank">Food Name</a></th>
+                <th><a  class="btn btn-success text-right" target="_blank">Created Date</a></th>
+                <th> <a  class="btn btn-success text-right" target="_blank">Fridge or freezer</a></th>
+                <th> <a  class="btn btn-success text-right" target="_blank">Actions</a></th>
+            </tr>
+       </thead>
+
+        <tbody>
+            <tr th:each="food : ${foodInFridge}">
+                <td th:text="${food.name}"></td>
+                <td th:text="${food.dateAdded}"></td>
+                <td th:text="${food.isInFreezer()}"></td>
+                <td>
+                    <form>
+                    <button class="btn btn-warning">SMS Updates ?</button>
+                    </form>
+                    <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}" th:method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
-<form th:action="@{'/fridge/' + ${currentFridge.id} + '/add-food'}" th:method="GET">
-    <button>Add Food</button>
-</form>
+<button id="addRow">Add Row</button>
 
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
+<!--cdn datatable links for sorting -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--sort/search bar for table-->
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+<!--Not needed for search/sort table - alignment right and center-->
+<!--        <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script>-->
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Initialize table
+        let table = $('#foodTable').DataTable();
+
+        // My Stuff
+        $('#addRow').on('click',function() {
+            table.row.add([
+                1,2,3,4
+            ]).draw(false);
+        })
+    } );
+</script>
+<!--cdn datatable links for sorting -->
+
 </body>
 </html>
+
+<!--original-->
+<!--        <div th:each="food : ${foodInFridge}">-->
+<!--            <p th:text="${food.name}"></p>-->
+<!--            <p>food expires <span th:text="${food.expirationDate}"></span></p>-->
+<!--            <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}" th:method="POST">-->
+<!--                <button>Delete</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--        -->
+<!--        <form th:action="@{'/fridge/' + ${currentFridge.id} + '/add-food'}" th:method="GET">-->
+<!--            <button>Add Food</button>-->
+<!--        </form>-->
+<!--        -->
+<!--        <th:block th:insert="partials/partials.html :: bootstrap-js"/>-->
+<!--original-->
+
+
