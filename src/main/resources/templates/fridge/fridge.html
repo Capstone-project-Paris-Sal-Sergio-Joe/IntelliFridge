@@ -8,6 +8,7 @@
 <nav th:insert="partials/partials.html :: navbar"></nav>
 <h1 th:text="${currentFridge.name}"></h1>
 <div th:each="food : ${foodInFridge}">
+    <div th: ></div>
     <p th:text="${food.name}"></p>
     <p>food expires <span th:text="${food.expirationDate}"></span></p>
     <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}" th:method="POST">
