@@ -34,8 +34,6 @@ $(document).ready(function() {
 
     // JOE API CODE
 
-    let UNSPLASH_ACCESS_KEY = "0vWQD0zIliLfVCQmhxLcCFmdUg12C4A0-0JUgmc4qNg";
-
     function imageCode(query) {
         let baseUrl = 'https://api.unsplash.com/search/photos?client_id=';
         let endPoint = '&query=';
