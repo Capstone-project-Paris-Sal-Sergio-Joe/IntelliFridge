@@ -1,14 +1,15 @@
 console.log(UnsplashApiKey)
+console.log("hello world")
 $(document).ready(function() {
     $('#foodSearch').keyup(function() {
         let search = $(this).val();
 
-        $('.foodItem').each( function () {
+        $('.foodItem').each( async function () {
             let foodName = $(this).find('.foodName').text();
             let regExp = new RegExp(`^${search}`);
             if (search != '') {
                 if (regExp.test(foodName) == true) {
-                    let foodImageURL = imageCode(foodName);
+                    let foodImageURL = await imageCode(foodName);
                     $(this).find('.foodImageURL').html(`
                             <img src="${foodImageURL}">
                         `)
