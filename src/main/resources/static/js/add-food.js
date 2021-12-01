@@ -1,4 +1,9 @@
 $(document).ready(function() {
+
+    $('#addFoodButton').click(() => {
+        $('#addFoodForm').css('display','block')
+    })
+
     $('#foodSearch').keyup(function() {
         let search = $(this).val();
 
@@ -39,7 +44,7 @@ $(document).ready(function() {
         })
     })
 
-
+    // Prevents user from submitting form by pressing enter
     $(document).on("keydown", "form", function(event) {
         return event.key != "Enter";
     });

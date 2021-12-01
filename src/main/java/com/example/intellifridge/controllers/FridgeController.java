@@ -3,8 +3,10 @@ package com.example.intellifridge.controllers;
 
 import com.example.intellifridge.models.Food;
 import com.example.intellifridge.models.Fridge;
+import com.example.intellifridge.models.ShelfLife;
 import com.example.intellifridge.models.User;
 import com.example.intellifridge.repositories.FoodRepository;
+import com.example.intellifridge.repositories.FoodShelfLifeRepository;
 import com.example.intellifridge.repositories.FridgeRepository;
 import com.example.intellifridge.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.*;
 
 
@@ -21,22 +25,38 @@ public class FridgeController {
     private FoodRepository foodRepository;
     private FridgeRepository fridgeRepository;
     private UserRepository userRepository;
+    private FoodShelfLifeRepository foodShelfLifeRepository;
 
-    public FridgeController(FoodRepository foodRepository, FridgeRepository fridgeRepository, UserRepository userRepository) {
+    public FridgeController(FoodRepository foodRepository, FridgeRepository fridgeRepository, UserRepository userRepository, FoodShelfLifeRepository foodShelfLifeRepository) {
         this.foodRepository = foodRepository;
         this.fridgeRepository = fridgeRepository;
         this.userRepository = userRepository;
+        this.foodShelfLifeRepository = foodShelfLifeRepository;
     }
 
 
     @GetMapping("/fridge/{id}")
     public String showFridge(@PathVariable long id, Model model) {
         Fridge currentFridge = fridgeRepository.getById(id);
+        List<ShelfLife> shelfLifeList = foodShelfLifeRepository.findAll();
         List<Food> foodInFridge = foodRepository.findAllByFridgeId(id);
         model.addAttribute("currentFridge", currentFridge);
         model.addAttribute("foodInFridge", foodInFridge);
+        model.addAttribute("food", new Food(Timestamp.from(Instant.now())));
+        model.addAttribute("shelfLives", shelfLifeList);
         return "fridge/fridge";
     }
+
+//    @GetMapping("/fridge/{id}/add-food")
+//    public String showAddFood(@PathVariable long id, Model model) throws Exception {
+//        Fridge currentFridge = fridgeRepository.getById(id);
+//        List<ShelfLife> shelfLifeList = foodShelfLifeRepository.findAll();
+//        model.addAttribute("fridge", currentFridge);
+//        model.addAttribute("food", new Food(Timestamp.from(Instant.now())));
+//        model.addAttribute("shelfLives", shelfLifeList);
+//        return "fridge/add-food";
+//
+//    }
 
 
 

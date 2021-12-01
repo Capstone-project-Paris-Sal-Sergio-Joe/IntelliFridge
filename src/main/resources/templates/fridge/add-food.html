@@ -14,24 +14,13 @@
 
 <form th:action="@{'/fridge/' + ${fridge.id} + '/add-food'}" th:method="post" th:object="${food}">
 
-
 <!--    Hidden date added-->
     <input th:type="hidden" th:field="*{dateAdded}">
-
-<!--    WORKS -->
-<!--    <label>Food name</label>-->
-<!--    <select th:field="*{name}">-->
-<!--        <div th:each="shelfLife : ${shelfLives}">-->
-<!--            <option th:value="${shelfLife.name}" th:text="${shelfLife.name}"></option>-->
-<!--        </div>-->
-<!--    </select>-->
-<!--    <br>-->
 
     <label>Food Name</label>
     <input type="text" placeholder="Food name..." id="foodSearch" th:field="*{name}" required>
 
     <div id="foodResults">
-<!--        <div th:each="shelfLife : ${shelfLives}" class="foodItem" th:id="${shelfLife.name}">-->
         <div th:each="shelfLife : ${shelfLives}" class="foodItem">
             <div th:id="${shelfLife.name}" class="foodImageURL"></div>
             <h3 th:text="${shelfLife.name}" class="foodName"></h3>
@@ -39,13 +28,6 @@
     </div>
 
     <div id="addedFood"></div>
-
-
-<!--    <label>Fridge or Freezer?</label>-->
-<!--    <input type="radio" name="isInFreezer" th:value="false" th:text="Fridge" checked="checked">-->
-<!--    <input type="radio" name="isInFreezer" th:value="true" th:text="Freezer">-->
-<!--    <br>-->
-<!--    <button type="submit">enter food</button>-->
 </form>
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 <!--Jquery script-->
