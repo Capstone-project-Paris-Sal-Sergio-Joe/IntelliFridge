@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="partials/partials.html :: head('Profile')"></head>
-    <link rel="stylesheet" href="css/profile.css">
+<link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
 
@@ -9,7 +9,7 @@
 
 <h1>Profile</h1>
 <h2 th:text="${user.username}"></h2>
-<button id="edit" >edit</button>
+<button id="edit">edit</button>
 <form name="edit" class="hidden" id="editForm" method="post">
 
     <ul>
@@ -31,13 +31,21 @@
 <h3>Fridge List:</h3>
 <div th:each="fridge : ${fridge}">
 
-<p th:text="${fridge.name}"></p>
+    <p th:text="${fridge.name}"></p>
     <form th:action="@{'/fridge/' + ${fridge.id}}" th:method="GET">
         <button>View Fridge</button>
     </form>
 </div>
-<br>
-<footer><div id="unsubscribe"><p>unsubscribe</p></div></footer>
+
+<!--// Nice to have unsubscribe user-->
+
+<!--<br>-->
+<!--<footer>-->
+<!--    <form>-->
+<!--    <div id="unsubscribe"><p>unsubscribe</p></div>-->
+<!--    </form>-->
+<!--</footer>-->
+
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 <script src="js/jquery.js"></script>
 <script src="js/profile.js"></script>

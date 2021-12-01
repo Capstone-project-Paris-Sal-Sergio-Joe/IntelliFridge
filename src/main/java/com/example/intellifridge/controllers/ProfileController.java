@@ -8,6 +8,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -31,5 +33,10 @@ public class ProfileController {
         model.addAttribute("fridge", userFridges);
         return "profile/profile";
     }
-
+    // Nice to have unsubscribe user
+//    @PostMapping("/profile/delete")
+//    public String deleteUser(@PathVariable long userId){
+//        userDao.deleteById(userId);
+//        return "redirect:/sign-up";
+//    }
 }
