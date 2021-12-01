@@ -3,12 +3,12 @@ $(document).ready(function() {
     $('#foodSearch').keyup(function() {
         let search = $(this).val();
 
-        $('.foodItem').each(async function () {
+        $('.foodItem').each( function () {
             let foodName = $(this).find('.foodName').text();
             let regExp = new RegExp(`^${search}`);
             if (search != '') {
                 if (regExp.test(foodName) == true) {
-                    let foodImageURL = await imageCode(foodName);
+                    let foodImageURL = imageCode(foodName);
                     $(this).find('.foodImageURL').html(`
                             <img src="${foodImageURL}">
                         `)
@@ -43,6 +43,7 @@ $(document).ready(function() {
 
     // JOE API CODE
 
+
     function imageCode(query) {
         let baseUrl = 'https://api.unsplash.com/search/photos?client_id=';
         let endPoint = '&query=';
@@ -50,7 +51,9 @@ $(document).ready(function() {
             .then(function(res) {
                 return res.json();
             }).then(function(data) {
+                console.log(data)
                 return data.results[0].urls.thumb;
             });
     }
+
 });

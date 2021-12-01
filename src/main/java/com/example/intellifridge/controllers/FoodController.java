@@ -44,8 +44,8 @@ private final FoodShelfLifeRepository foodShelfLifeRepository;
     @ResponseBody
     public String apikeys(){
         System.out.println(unsplashApiKey);
-        return "const UnsplashApiKey = `" + unsplashApiKey + "` \n"+
-                "const UnsplashSecretKey =`" + unsplashSecretKey + "`";
+        return "const UnsplashApiKey = `" + unsplashApiKey + "`\n"+
+                "const UnsplashSecretKey = `" + unsplashSecretKey + "`";
     }
 
     @GetMapping("/fridge/{id}/add-food")
