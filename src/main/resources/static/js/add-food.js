@@ -1,3 +1,5 @@
+console.log(UnsplashApiKey)
+console.log("hello world")
 $(document).ready(function() {
 
     $('#addFoodButton').click(() => {
@@ -7,7 +9,7 @@ $(document).ready(function() {
     $('#foodSearch').keyup(function() {
         let search = $(this).val();
 
-        $('.foodItem').each(async function () {
+        $('.foodItem').each( async function () {
             let foodName = $(this).find('.foodName').text();
             let regExp = new RegExp(`^${search}`);
             if (search != '') {
@@ -51,13 +53,15 @@ $(document).ready(function() {
 
     // JOE API CODE
 
+
     function imageCode(query) {
         let baseUrl = 'https://api.unsplash.com/search/photos?client_id=';
         let endPoint = '&query=';
-        return fetch(baseUrl + UNSPLASH_ACCESS_KEY + endPoint +  encodeURIComponent(query))
+        return fetch(baseUrl + UnsplashApiKey + endPoint +  encodeURIComponent(query))
             .then(function(res) {
                 return res.json();
             }).then(function(data) {
+                console.log(data)
                 return data.results[0].urls.thumb;
             });
     }
