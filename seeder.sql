@@ -16,9 +16,6 @@ create table if not exists food_group
 );
 
 
-
-
-
 create table if not exists food_shelf_life
 (
     id int NOT NULL AUTO_INCREMENT,
@@ -32,11 +29,11 @@ create table if not exists food_shelf_life
 );
 
 INSERT INTO food_group(name) VALUES
-('grains'),
-('fruits and vegitables'),
-('dairy'),
-('meats and poultry'),
-('desserts');
+('Grains'),
+('Fruits and Vegetables'),
+('Dairy'),
+('Meats and Poultry'),
+('Desserts');
 
 
 INSERT INTO food_shelf_life(name, shelf_life_fridge_days, shelf_life_freezer_days, food_group_id) VALUES
