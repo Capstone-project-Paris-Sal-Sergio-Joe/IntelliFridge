@@ -32,7 +32,7 @@
         <thead>
         <tr>
             <th><a class="btn btn-success text-right" target="_blank">Food Name</a></th>
-            <th><a class="btn btn-success text-right" target="_blank">Created Date</a></th>
+            <th><a class="btn btn-success text-right" target="_blank">Expiration Date</a></th>
             <th><a class="btn btn-success text-right" target="_blank">Category</a></th>
             <th><a class="btn btn-success text-right" target="_blank">Actions</a></th>
         </tr>
@@ -41,8 +41,7 @@
         <tbody>
         <tr th:each="food : ${foodInFridge}">
             <td th:text="${food.name}" class="food-name"></td>
-<!--            <td class="fridgeImageUrl"><p>"help"</p></td>-->
-            <td th:text="${food.dateAdded}"></td>
+            <td th:text="${(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}"></td>
             <td th:text="${food.getShelfLife().getFoodGroup().name}"></td>
 
             <td>

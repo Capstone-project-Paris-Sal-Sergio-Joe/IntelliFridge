@@ -3,6 +3,7 @@ $(document).ready(function () {
     // initialize datatable
     $('#foodTable').DataTable();
 
+    // add food image after name in table
     $('.food-name').each(async function () {
             let fridgeImage = $(this).text()
             let fridgeImageUrl = await imageCode(fridgeImage);
@@ -12,6 +13,10 @@ $(document).ready(function () {
 
         }
     )
+
+    $('.expirationDate').each(() => {
+
+    })
 
     function imageCode(query) {
         let baseUrl = 'https://api.unsplash.com/search/photos?client_id=';
