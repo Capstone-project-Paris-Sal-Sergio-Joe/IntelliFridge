@@ -33,7 +33,7 @@
         <tr>
             <th><a class="btn btn-success text-right" target="_blank">Food Name</a></th>
             <th><a class="btn btn-success text-right" target="_blank">Created Date</a></th>
-            <th><a class="btn btn-success text-right" target="_blank">Fridge or freezer</a></th>
+            <th><a class="btn btn-success text-right" target="_blank">Category</a></th>
             <th><a class="btn btn-success text-right" target="_blank">Actions</a></th>
         </tr>
         </thead>
@@ -43,7 +43,8 @@
             <td th:text="${food.name}" class="food-name"></td>
 <!--            <td class="fridgeImageUrl"><p>"help"</p></td>-->
             <td th:text="${food.dateAdded}"></td>
-            <td th:text="${food.isInFreezer()}"></td>
+            <td th:text="${food.getShelfLife().getFoodGroup().name}"></td>
+
             <td>
                 <form>
                     <button class="btn btn-warning">SMS Updates ?</button>
