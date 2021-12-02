@@ -33,7 +33,8 @@
 
         <tbody>
         <tr th:each="food : ${foodInFridge}">
-            <td th:text="${food.name}" class="foodName"></td>
+            <td th:text="${food.name}" class="food-name"><p>"help"</p></td>
+            <td class="fridgeImageUrl"><p>"help"</p></td>
             <td th:text="${food.dateAdded}"></td>
             <td th:text="${food.isInFreezer()}"></td>
             <td>
@@ -88,6 +89,6 @@
 <script src="/js/jquery.js"></script>
 <script src="/keys.js"></script>
 <script src="/js/add-food.js"></script>
-
+<script src="/js/fridge.js"></script>
 </body>
 </html>

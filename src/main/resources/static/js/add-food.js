@@ -1,5 +1,3 @@
-
-console.log("hello world")
 $(document).ready(function() {
 
     $('#addFoodButton').click(() => {
@@ -64,7 +62,6 @@ $(document).ready(function() {
             .then(function(res) {
                 return res.json();
             }).then(function(data) {
-                console.log(data)
                 return data.results[0].urls.thumb;
             });
     }
