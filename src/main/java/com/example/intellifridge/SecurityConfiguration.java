@@ -58,8 +58,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/food/{id}/delete",
                         "/fridge/create",
                         "/fridge/add-food",
-                        "/fridge/add-fridge",
-                        "/fridge/{id}"
+                        "/fridge/add-fridge"
+//                        "/fridge/{id}"
 //                        "/fridge/{id}/add-food"
                         // only authenticated users can edit ads
                 )
