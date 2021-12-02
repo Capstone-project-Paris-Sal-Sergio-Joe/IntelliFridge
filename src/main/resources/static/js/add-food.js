@@ -1,20 +1,19 @@
 $(document).ready(function() {
 
     $('#addFoodButton').click(() => {
-        console.log("This button works");
         $('#addFoodForm').css('display','block')
     })
 
     $('#foodSearch').keyup(function() {
         let search = $(this).val();
 
-        $('.foodItem').each( /*async*/ function () {
+        $('.foodItem').each( async function () {
             let foodName = $(this).find('.foodName').text();
             let regExp = new RegExp(`^${search}`);
             if (search != '') {
                 if (regExp.test(foodName) == true) {
-                    // let foodImageURL = await imageCode(foodName);
-                    let foodImageURL = imageCode(foodName);
+                    let foodImageURL = await imageCode(foodName);
+                    // let foodImageURL = imageCode(foodName);
                     console.log(foodImageURL)
                     $(this).find('.foodImageURL').html(`
                             <img src="${foodImageURL}">
