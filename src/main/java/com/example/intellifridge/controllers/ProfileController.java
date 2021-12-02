@@ -40,9 +40,6 @@ public class ProfileController {
         User user = userDao.getById(id);
         user.setUsername(username);
         user.setEmail(email);
-//        if (phoneNumber.isEmpty()){
-//
-//        }
         user.setPhoneNumber(phoneNumber);
         userDao.save(user);
         return "redirect:/profile";
