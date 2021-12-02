@@ -13,6 +13,8 @@ $(document).ready(function() {
             if (search != '') {
                 if (regExp.test(foodName) == true) {
                     let foodImageURL = await imageCode(foodName);
+                    // let foodImageURL = imageCode(foodName);
+                    console.log(foodImageURL)
                     $(this).find('.foodImageURL').html(`
                             <img src="${foodImageURL}">
                         `)

@@ -47,19 +47,6 @@ public class FridgeController {
         return "fridge/fridge";
     }
 
-//    @GetMapping("/fridge/{id}/add-food")
-//    public String showAddFood(@PathVariable long id, Model model) throws Exception {
-//        Fridge currentFridge = fridgeRepository.getById(id);
-//        List<ShelfLife> shelfLifeList = foodShelfLifeRepository.findAll();
-//        model.addAttribute("fridge", currentFridge);
-//        model.addAttribute("food", new Food(Timestamp.from(Instant.now())));
-//        model.addAttribute("shelfLives", shelfLifeList);
-//        return "fridge/add-food";
-//
-//    }
-
-
-
     @GetMapping("/fridge/add-fridge")
     public String showAddFridge(Model model) {
         model.addAttribute("fridge", new Fridge());
@@ -76,24 +63,9 @@ public class FridgeController {
         return "redirect:/profile";
     }
 
-
-
-
-
-
     @PostMapping("/fridge/{fridgeId}/food/{foodId}/delete")
     public String deletePost(@PathVariable long fridgeId,@PathVariable long foodId ) {
         foodRepository.deleteById(foodId);
         return "redirect:/fridge/" + fridgeId;
     }
-
-
-
-
-//sort foods
-    //    pagination and sorting methods complete
-    //    placed in different branch to not cause merge conflicts
-//
-
-
 }
