@@ -8,6 +8,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -30,6 +33,16 @@ public class ProfileController {
         model.addAttribute("user",sameUser);
         model.addAttribute("fridge", userFridges);
         return "profile/profile";
+    }
+
+    @PostMapping("/profile/{id}/edit")
+    public String updateProfile(@PathVariable long id, @RequestParam String username, @RequestParam String email, @RequestParam String phoneNumber){
+        User user = userDao.getById(id);
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setPhoneNumber(phoneNumber);
+        userDao.save(user);
+        return "redirect:/profile";
     }
 
 }

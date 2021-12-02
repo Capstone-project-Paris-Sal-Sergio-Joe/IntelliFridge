@@ -9,8 +9,8 @@
 
 <h1>Profile</h1>
 <h2 th:text="${user.username}"></h2>
-<button id="edit" >edit</button>
-<form name="edit" class="hidden" id="editForm" method="post">
+<button id="edit">edit</button>
+<form th:action="@{'/profile/' + ${user.id} + '/edit'}" name="edit" class="hidden" id="editForm" th:method="post">
 
     <ul>
         <li>
