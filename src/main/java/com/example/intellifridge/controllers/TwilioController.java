@@ -47,8 +47,8 @@ public class TwilioController {
     }
 
 //    @Scheduled(fixedRate = 86400000) // one day use this one for deployment
-    @Scheduled(fixedRate = 60000)// for testing
-    @Transactional// keep both line off if you dont want get a lot of messages during testing
+//    @Scheduled(fixedRate = 30000)// for testing
+//    @Transactional// keep both line off if you dont want get a lot of messages during testing
     public void notification() {
 
         List<User> users = userRepository.findAll();
