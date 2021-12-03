@@ -46,6 +46,9 @@
                 <input name="addByUserName" id="addByUserName" type="text" placeholder="Type the username of an existing user">
             <button>Add</button>
             </form>
+        <form name="deleteFridgeForm" method="post" th:action="@{'/fridge/' + ${fridge.id} + '/delete'}">
+        <button id="deleteFridge">Delete/Leave Fridge</button>
+        </form>
     </div>
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 <script src="js/jquery.js"></script>

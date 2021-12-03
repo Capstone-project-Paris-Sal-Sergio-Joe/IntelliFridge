@@ -63,9 +63,18 @@ public class FridgeController {
         return "redirect:/profile";
     }
 
-    @PostMapping("/fridge/{fridgeId}/food/{foodId}/delete")
-    public String deletePost(@PathVariable long fridgeId,@PathVariable long foodId ) {
-        foodRepository.deleteById(foodId);
-        return "redirect:/fridge/" + fridgeId;
+    @PostMapping("/fridge/{id}/delete")
+    public String deleteFridge(@PathVariable long id){
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User sameUser = userRepository.getById(currentUser.getId());
+//        sameUser.getFridges().remove(fridgeRepository.getById(id));
+        List<User> users = fridgeRepository.getById(id).getUsers();
+        for (User user: users){
+            user.getFridges().remove(fridgeRepository.getById(id));
+        }
+        fridgeRepository.deleteById(id);
+        return "redirect:/profile";
     }
+
+
 }
