@@ -57,11 +57,12 @@ public class ProfileController {
 }
 
     @PostMapping("/profile/{id}/edit")
-    public String updateProfile(@PathVariable long id, @RequestParam String username, @RequestParam String email, @RequestParam String phoneNumber){
+    public String updateProfile(@PathVariable long id, @RequestParam String username, @RequestParam String email, @RequestParam String phoneNumber, @RequestParam Boolean notifications){
         User user = userDao.getById(id);
         user.setUsername(username);
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
+        user.setNotifications(notifications);
         userDao.save(user);
 
         return "redirect:/profile";

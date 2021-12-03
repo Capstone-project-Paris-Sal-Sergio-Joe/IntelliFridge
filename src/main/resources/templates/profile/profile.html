@@ -25,6 +25,13 @@
             <label for="phoneNumber">phoneNumber</label>
             <input name="phoneNumber" type="text" th:value="${user.phoneNumber}" id="phoneNumber"/>
         </li>
+        <li>
+            <p>Do you want to get notifications</p>
+            <label for="notifyYes">Yes</label>
+            <input type="radio" name="notifications" value="true" id="notifyYes">
+            <label for="notifyNo">No</label>
+            <input type="radio" name="notifications" value="false" id="notifyNo" checked="checked">
+        </li>
         <button type="submit" id="form-btn">Submit</button>
     </ul>
 </form>
