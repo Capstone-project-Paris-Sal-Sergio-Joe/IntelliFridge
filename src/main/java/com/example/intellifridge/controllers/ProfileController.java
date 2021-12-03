@@ -39,11 +39,8 @@ public class ProfileController {
     @PostMapping("/profile/add-user-to-fridge/{id}")
     public String addUserToFridge(@PathVariable long id, @RequestParam(name = "addByUserName") String name, Model model){
         User findUser = userDao.findByUsername(name);
-//        Boolean doesUserExist = true;
         model.addAttribute("findUser", findUser);
         if(findUser == null){
-//            doesUserExist = false;
-//            model.addAttribute("findUser",doesUserExist);
             return "redirect:/profile?error=null";
         }
 
