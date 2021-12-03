@@ -35,6 +35,7 @@ public class ProfileController {
         return "profile/profile";
     }
 
+
     @PostMapping("/profile/add-user-to-fridge/{id}")
     public String addUserToFridge(@PathVariable long id, @RequestParam(name = "addByUserName") String name, Model model){
         User findUser = userDao.findByUsername(name);
@@ -55,6 +56,17 @@ public class ProfileController {
         }
         findUser.getFridges().add(findFridge);//problem
         userDao.save(findUser);
+        return "redirect:/profile";
+}
+
+    @PostMapping("/profile/{id}/edit")
+    public String updateProfile(@PathVariable long id, @RequestParam String username, @RequestParam String email, @RequestParam String phoneNumber){
+        User user = userDao.getById(id);
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setPhoneNumber(phoneNumber);
+        userDao.save(user);
+
         return "redirect:/profile";
     }
 
