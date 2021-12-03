@@ -65,14 +65,29 @@ public class FridgeController {
 
     @PostMapping("/fridge/{id}/delete")
     public String deleteFridge(@PathVariable long id){
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User sameUser = userRepository.getById(currentUser.getId());
+//        List<User> users = fridgeRepository.getById(id).getUsers();
+//        for (User user: users){
+//            user.getFridges().remove(fridgeRepository.getById(id));
+//        }
+//        fridgeRepository.deleteById(id);
+
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User sameUser = userRepository.getById(currentUser.getId());
+        Fridge fridge = fridgeRepository.getById(id);
 //        sameUser.getFridges().remove(fridgeRepository.getById(id));
-        List<User> users = fridgeRepository.getById(id).getUsers();
-        for (User user: users){
-            user.getFridges().remove(fridgeRepository.getById(id));
+        List <Fridge> fridges = sameUser.getFridges();
+        List <User> users = fridgeRepository.getById(id).getUsers();
+        fridges.remove(fridgeRepository.getById(id));
+        for(User user: users){
+            System.out.println(user.getUsername());
         }
-        fridgeRepository.deleteById(id);
+        System.out.println(fridge.getUsers().toString());
+        if (fridge.getUsers().size() == 1){
+            fridgeRepository.deleteById(id);
+            System.out.println("yoyo");
+//            return "redirect:/profile";
+        }
+        fridgeRepository.saveAll(fridges);
         return "redirect:/profile";
     }
 
