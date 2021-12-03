@@ -28,6 +28,9 @@ public class User {
     @Column(columnDefinition = "VARCHAR(200)")
     private String profilePicture;
 
+    @Column(nullable = false)
+    private boolean notifications;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name ="fridge_user",
@@ -37,6 +40,16 @@ public class User {
 
     private List<Fridge> fridges = new ArrayList<>();
 
+    public User(long id, String username, String email, String password, String phoneNumber, String profilePicture, boolean notifications, List<Fridge> fridges) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.profilePicture = profilePicture;
+        this.notifications = notifications;
+        this.fridges = fridges;
+    }
 
     public User(long id, String username, String email, String password, String phoneNumber, String profilePicture, List<Fridge> fridges) {
         this.id = id;
@@ -113,5 +126,13 @@ public class User {
 
     public void setFridges(List<Fridge> fridges) {
         this.fridges = fridges;
+    }
+
+    public boolean isNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(boolean notifications) {
+        this.notifications = notifications;
     }
 }

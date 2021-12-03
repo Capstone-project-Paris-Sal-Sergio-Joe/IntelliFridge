@@ -16,6 +16,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -58,14 +59,23 @@ public class TwilioController {
 
         for (int i = 0; i < users.size(); i++) {//loops through all users
             for (int ii = 0; ii < users.get(i).getFridges().size(); ii++) {//gets all users fridges
-                List<String> notifyForFood = new ArrayList<String>();//this holds all the foods that are going to expire soon. it starts off empty
-                List<Food> foodInFridge = foodRepository.findAllByFridgeId(users.get(i).getFridges().get(ii).getId());//gets fridge id so if can find all the food in that fridge
+                List<Food> notifyForFood = new ArrayList<Food>();//this holds all the foods that are going to expire soon. it starts off empty
+                List<Food> foodInFridge = foodRepository.findAllByFridgeIdOrderByExpirationDate(users.get(i).getFridges().get(ii).getId());//gets fridge id so if can find all the food in that fridge
                 for (int iii = 0; iii < foodInFridge.size(); iii++) {
-                    Timestamp foodNotification = SubtractDays(-2, foodRepository.getById(foodInFridge.get(iii).getId()).getExpirationDate());//makes a timestamp by subtracting 2 days before the food will expire
-                    if (foodDate.format(currentDate).equals(foodDate.format(foodNotification))) { //this will check if the current food is going to expire in the 2 next days
-                        notifyForFood.add(foodInFridge.get(iii).getName());// if food is about to expire in the next 2 days it will be added to a notifyForFood
-                    }
+                    if(users.get(i).isNotifications() == true){
+                    Timestamp foodNotificationTwoDays = SubtractDays(-2, foodRepository.getById(foodInFridge.get(iii).getId()).getExpirationDate());//makes a timestamp by subtracting 2 days before the food will expire
+                   Timestamp foodNotificationOneDay = SubtractDays(-1, foodRepository.getById(foodInFridge.get(iii).getId()).getExpirationDate());
+                    if (foodDate.format(currentDate).equals(foodDate.format(foodInFridge.get(iii).getExpirationDate()))) { //this will check if the current food is going to expire today
+//                        notifyForFood.add(foodInFridge.get(iii).getName());// if food is about to expire in the next 2 days it will be added to a notifyForFood
+                        notifyForFood.add(foodInFridge.get(iii));
 
+                    } else if( foodDate.format(currentDate).equals(foodDate.format(foodNotificationOneDay))){//this will check if the current food is going to expire in the 1 next days
+                        notifyForFood.add(foodInFridge.get(iii));
+
+                    }else if(foodDate.format(currentDate).equals(foodDate.format(foodNotificationTwoDays))){//this will check if the current food is going to expire in the 2 next days
+                        notifyForFood.add(foodInFridge.get(iii));
+                    }
+                    }
                 }
                 if(notifyForFood.size() >= 1){//check to see if there any food in the list that needs to be sent through a message if there is no food then it not send a message
                     twilio.sendNotification(notifyForFood, users.get(i),users.get(i).getFridges().indexOf(users.get(i).getFridges().get(ii)));
