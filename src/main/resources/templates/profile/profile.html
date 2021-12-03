@@ -9,8 +9,8 @@
 
 <h1>Profile</h1>
 <h2 th:text="${user.username}"></h2>
-<button id="edit" >edit</button>
-<form name="edit" class="hidden" id="editForm" method="post">
+<button id="edit">edit</button>
+<form th:action="@{'/profile/' + ${user.id} + '/edit'}" name="edit" class="hidden" id="editForm" th:method="post">
 
     <ul>
         <li>
@@ -28,14 +28,25 @@
         <button type="submit" id="form-btn">Submit</button>
     </ul>
 </form>
-<h3>Fridge List:</h3>
-<div th:each="fridge : ${fridge}">
-
-<p th:text="${fridge.name}"></p>
-    <form th:action="@{'/fridge/' + ${fridge.id}}" th:method="GET">
-        <button>View Fridge</button>
-    </form>
+<div th:if="${param.error}" id="errorM">
+    <h1 th:if="${param.error[0] == 'null'}">User not found</h1>
+    <h1 th:if="${param.error[0] == 'current'}">User already added to this fridge</h1>
 </div>
+<h3>Fridge List:</h3>
+    <div th:each="fridge : ${fridge}">
+        <p th:text="${fridge.name}"></p>
+            <form th:action="@{'/fridge/' + ${fridge.id}}" th:method="GET">
+                <button>View Fridge</button>
+            </form>
+            <br>
+        <button id="addUser">Add User</button>
+            <form id="addUserForm" class="hidden" th:action="@{'/profile/add-user-to-fridge/' + ${fridge.id}}" th:method="POST">
+
+                <label for="addByUserName">Add by username</label>
+                <input name="addByUserName" id="addByUserName" type="text" placeholder="Type the username of an existing user">
+            <button>Add</button>
+            </form>
+    </div>
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 <script src="js/jquery.js"></script>
 <script src="js/profile.js"></script>
