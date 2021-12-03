@@ -101,4 +101,10 @@ private final FoodShelfLifeRepository foodShelfLifeRepository;
         return ts;
     }
 
+    @PostMapping("/fridge/{fridgeId}/food/{foodId}/delete")
+    public String deleteFood(@PathVariable long fridgeId,@PathVariable long foodId ) {
+        foodRepository.deleteById(foodId);
+        return "redirect:/fridge/" + fridgeId;
+    }
+
 }
