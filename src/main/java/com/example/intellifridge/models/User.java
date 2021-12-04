@@ -25,7 +25,7 @@ public class User {
     @Column(columnDefinition = "VARCHAR(15)")
     private String phoneNumber;
 
-    @Column(columnDefinition = "VARCHAR(200)")
+    @Column(name="profile_picture" ,columnDefinition = "VARCHAR(200)")
     private String profilePicture;
 
     @Column(nullable = false)
@@ -69,6 +69,8 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
+        profilePicture = copy.profilePicture;
+
     }
 
 
