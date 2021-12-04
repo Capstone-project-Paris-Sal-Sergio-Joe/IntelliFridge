@@ -34,19 +34,24 @@ private final FoodShelfLifeRepository foodShelfLifeRepository;
         this.foodShelfLifeRepository = foodShelfLifeRepository;
     }
 
-//    @Value("${UNSPLASH_ACCESS_KEY}")
-//    private String unsplashApiKey;
-//
-//    @Value("${UNSPLASH_SECRET_KEY}")
-//    private String unsplashSecretKey;
+    @Value("${UNSPLASH_ACCESS_KEY}")
+    private String unsplashApiKey;
 
-//    @RequestMapping(path = "/keys.js", produces = "application/javascript")
-//    @ResponseBody
-//    public String apikeys(){
-//        System.out.println(unsplashApiKey);
-//        return "const UnsplashApiKey = `" + unsplashApiKey + "`\n"+
-//                "const UnsplashSecretKey = `" + unsplashSecretKey + "`";
-//    }
+    @Value("${UNSPLASH_SECRET_KEY}")
+    private String unsplashSecretKey;
+
+    @Value("${FILESTACK_API_KEY}")
+    private String fileStackApiKey;
+
+
+    @RequestMapping(path = "/keys.js", produces = "application/javascript")
+    @ResponseBody
+    public String apikeys(){
+        System.out.println(unsplashApiKey);
+        return "const UnsplashApiKey = `" + unsplashApiKey + "`\n"+
+                "const UnsplashSecretKey = `" + unsplashSecretKey + "`\n"+
+                "const FileStackApiKey = `" + fileStackApiKey + "`";
+    }
 
     @GetMapping("/fridge/{id}/add-food")
     public String showAddFood(@PathVariable long id, Model model) throws Exception {

@@ -40,16 +40,6 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
 <button id="edit">edit</button>
 <form th:action="@{'/profile/' + ${user.id} + '/edit'}" name="edit" class="hidden" id="editForm" th:method="post">
 
@@ -104,11 +94,10 @@
 
 
 
-            <script src="js/jquery.js"></script>
+<script src="js/jquery.js"></script>
+<script src="/keys.js"></script>
 <script src="js/profile.js"></script>
 <section th:replace="partials/partials_scripts :: script"></section>
-
-
 <script th:src="@{js/showImageForm.js}"></script>
 <script th:src="@{js/imageUploadFilestack.js}"></script>
 

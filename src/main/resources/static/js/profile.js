@@ -1,4 +1,3 @@
-console.log("hello");
 const body = $('body');
 
 body.on("click", "#edit", function (){
