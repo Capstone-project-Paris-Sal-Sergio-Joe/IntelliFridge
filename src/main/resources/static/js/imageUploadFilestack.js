@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', function () {
-    const client = filestack.init(FILESTACK_API_KEY);
+    const client = filestack.init(FileStackApiKey);
     const options = {
         maxFiles: 1,
         uploadInBackground: false,
