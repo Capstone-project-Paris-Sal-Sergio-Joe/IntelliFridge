@@ -9,6 +9,47 @@
 
 <h1>Profile</h1>
 <h2 th:text="${user.username}"></h2>
+
+
+
+
+<div >
+
+        <div class="col-md-3">
+
+
+                <div th:unless="${user.profilePicture == 'none'}">
+                    <img th:src="${user.profilePicture}" alt="user profile picture" class="col-12">
+                </div>
+                <div>
+                    <form th:action="@{/profile/{id}/editImage(id=${user.id})}" class="d-flex flex-column"
+                          th:method="post" id="submitImage">
+                        <button th:type="button" class="profileBtn btn btn-outline-secondary whiteFont"
+                                onclick="showImageForm('ImagePicker')">
+                            Edit Image
+                        </button>
+
+                        <div style="display: none" id="ImagePicker">
+                            <input class="form-control" id="imageFile" type="hidden" name="image">
+                            <button type="button" class="btn btn-outline-secondary whiteFont mt-2" id="open">Choose
+                                image to upload
+                            </button>
+                        </div>
+                    </form>
+                </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 <button id="edit">edit</button>
 <form th:action="@{'/profile/' + ${user.id} + '/edit'}" name="edit" class="hidden" id="editForm" th:method="post">
 
@@ -35,6 +76,7 @@
         <button type="submit" id="form-btn">Submit</button>
     </ul>
 </form>
+
 <div th:if="${param.error}" id="errorM">
     <h1 th:if="${param.error[0] == 'null'}">User not found</h1>
     <h1 th:if="${param.error[0] == 'current'}">User already added to this fridge</h1>
@@ -58,7 +100,19 @@
         </form>
     </div>
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
-<script src="js/jquery.js"></script>
+
+
+
+
+            <script src="js/jquery.js"></script>
 <script src="js/profile.js"></script>
+<section th:replace="partials/partials_scripts :: script"></section>
+
+
+<script th:src="@{js/showImageForm.js}"></script>
+<script th:src="@{js/imageUploadFilestack.js}"></script>
+
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
 </body>
 </html>
