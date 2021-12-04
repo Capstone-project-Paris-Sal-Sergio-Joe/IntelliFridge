@@ -69,4 +69,6 @@ public RedirectView saveUser(User user,
         userDao.save(user);
         return "redirect:/login";
     }
+
+
 }

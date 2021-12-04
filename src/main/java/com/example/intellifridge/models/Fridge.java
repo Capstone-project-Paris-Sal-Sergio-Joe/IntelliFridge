@@ -16,6 +16,7 @@ public class Fridge {
     private String name;
 
 
+
     @ManyToMany(mappedBy = "fridges")
     private List<User> users = new ArrayList<>();
 
@@ -34,7 +35,7 @@ public class Fridge {
         this.users = users;
     }
 
-    
+
 
     public long getId() {
         return id;
@@ -55,6 +56,14 @@ public class Fridge {
 
     public void addUser(User user) {
         this.users.add(user);
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     @Override
