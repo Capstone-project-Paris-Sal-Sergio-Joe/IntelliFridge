@@ -1,6 +1,5 @@
 package com.example.intellifridge.models;
 
-//package net.codejava;
 
 import java.io.*;
 import java.nio.file.*;
