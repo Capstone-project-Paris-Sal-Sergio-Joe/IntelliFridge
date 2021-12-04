@@ -1,6 +1,5 @@
 package com.example.intellifridge.controllers;
 
-import com.example.intellifridge.models.FileUpload;
 import com.example.intellifridge.models.User;
 import com.example.intellifridge.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
