@@ -26,33 +26,6 @@ public class UserController {
 
 
 
-
-
-//    file uploader code
-@PostMapping("/users/save")
-public RedirectView saveUser(User user,
-                             @RequestParam("image") MultipartFile multipartFile) throws IOException {
-
-    String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-    user.setProfilePicture(fileName);
-
-    User savedUser = userDao.save(user);
-
-    String uploadDir = "user-photos/" + savedUser.getId();
-
-    FileUpload.saveFile(uploadDir, fileName, multipartFile);
-
-    return new RedirectView("/users", true);
-}
-
-
-
-
-
-
-
-
-
     @GetMapping("/sign-up")
     public String showSignupForm(Model model){
         model.addAttribute("user", new User());
