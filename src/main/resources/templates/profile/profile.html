@@ -81,8 +81,8 @@
         <button th:id="${'addUser' + fridge.id}" th:data-id="${fridge.id}" class="addFormButton">Add User</button>
             <form th:data-id="${fridge.id}" th:id="${'addUserForm' + fridge.id}" class="hidden" th:action="@{'/profile/add-user-to-fridge/' + ${fridge.id}}" th:method="POST">
 
-                <label for="addByUserName">Add by username</label>
-                <input name="addByUserName" id="addByUserName" type="text" placeholder="Type the username of an existing user">
+                <label for="addByUserName">Add by username or email</label>
+                <input name="addByUserName" id="addByUserName" type="text" placeholder="Type the username or email of an existing user">
             <button>Add</button>
             </form>
         <form name="deleteFridgeForm" method="post" th:action="@{'/fridge/' + ${fridge.id} + '/delete'}">
