@@ -40,6 +40,9 @@
 </div>
 
 <button id="edit">edit</button>
+<div th:if="${param.email}">
+    <h1 th:if="${param.email[0] == 'bad'}">Email already exists. Please choose a different email.</h1>
+</div>
 <form th:action="@{'/profile/' + ${user.id} + '/edit'}" name="edit" class="hidden" id="editForm" th:method="post">
 
     <ul>
