@@ -7,6 +7,10 @@
 <nav th:insert="partials/partials.html :: navbar"></nav>
 <body>
 <h1>This the home page</h1>
+
+<form th:action="@{/login2222}" th:method="GET">
+    <button type="submit">Login Error Test</button>
+</form>
 <form th:action="@{/login}" th:method="GET">
     <button type="submit">Login</button>
 </form>

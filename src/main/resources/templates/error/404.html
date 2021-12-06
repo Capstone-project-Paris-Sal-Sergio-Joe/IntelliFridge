@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ooops, Not Found</title>
+
+<!--    <link  rel="stylesheet" th:href="@{css/error.css}"/>-->
+
+</head>
+<body th:style="'background-image:url(' + @{/images/fridge2.png} + '); background-repeat: no-repeat;     background-size: 50% ;
+  background-attachment: fixed;
+  background-position: center;
+ '">
+<h1 >Page not found!!</h1>
+<form th:action="@{/}" th:method="GET">
+    <button type="submit">Login</button>
+</form>
+
+
+</body>
+</html>
