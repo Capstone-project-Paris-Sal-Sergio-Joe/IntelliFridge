@@ -1,0 +1,312 @@
+
+#playground-container {
+    height: 500px;
+    overflow: hidden !important;
+    -webkit-overflow-scrolling: touch;
+}
+h1{
+text-align: center;
+}
+body, html{
+    height: 100%;
+    background-repeat: no-repeat;
+
+/*background-color: red;*/
+
+    background:url(https://media.istockphoto.com/photos/healthy-fresh-vegetables-frame-copy-space-picture-id1249223936?b=1&k=20&m=1249223936&s=170667a&w=0&h=hxKD4SC8LPwZoIDkyMo894U2qxZl7WAVbJm3Zcme-8M=);
+
+    /*background-image: url("static/images/food.jpeg");*/
+
+    font-family: 'Oxygen', sans-serif;
+    background-size: cover;
+}
+
+.main{
+    margin:50px 15px;
+}
+
+/*h1.title {*/
+/*    font-size: 50px;*/
+/*    font-family: 'Passion One', cursive;*/
+/*    font-weight: 400;*/
+/*}*/
+
+hr{
+    width: 10%;
+    color: #fff;
+}
+
+.form-group{
+    margin-bottom: 15px;
+}
+
+label{
+    margin-bottom: 15px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 11px;
+    padding-top: 3px;
+}
+
+/*.main-login{*/
+/*    background-color: #fff;*/
+/*    !* shadows and rounded borders *!*/
+/*    -moz-border-radius: 2px;*/
+/*    -webkit-border-radius: 2px;*/
+/*    border-radius: 2px;*/
+/*    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);*/
+/*    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);*/
+/*    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);*/
+
+}
+/*.form-control {*/
+/*    height: auto!important;*/
+/*    padding: 8px 12px !important;*/
+/*}*/
+/*.input-group {*/
+/*    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;*/
+/*    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;*/
+/*    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;*/
+
+
+/*}*/
+#button {
+    border: 1px solid #ccc;
+    margin-top: 28px;
+    padding: 6px 12px;
+    color: #666;
+    text-shadow: 0 1px #fff;
+    cursor: pointer;
+    -moz-border-radius: 3px 3px;
+    -webkit-border-radius: 3px 3px;
+    border-radius: 3px 3px;
+    -moz-box-shadow: 0 1px #fff inset, 0 1px #ddd;
+    -webkit-box-shadow: 0 1px #fff inset, 0 1px #ddd;
+    box-shadow: 0 1px #fff inset, 0 1px #ddd;
+    background: #f5f5f5;
+    background: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f5f5), color-stop(100%, #eeeeee));
+    background: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    background: -o-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    background: -ms-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    background: linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#eeeeee', GradientType=0);
+}
+
+
+/*TO CENTER MENU FORM*/
+.main-center{
+    margin-top: 30px;
+    margin: 0 auto;
+    max-width: 400px;
+    padding: 10px 40px;
+    background: #1d1f1f;
+    color: #FFF;
+    text-shadow: none;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+
+}
+span.input-group-addon i {
+    color: #009edf;
+    font-size: 17px;
+}
+
+.login-button{
+    margin-top: 5px;
+}
+
+.login-register{
+    font-size: 11px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*@import url(http://fonts.googleapis.com/css?family=Roboto);*/
+
+/*!****** LOGIN MODAL ******!*/
+/*.loginmodal-container {*/
+/*    padding: 30px;*/
+/*    max-width: 350px;*/
+/*    width: 100% !important;*/
+/*    background-color: #F7F7F7;*/
+/*    margin: 0 auto;*/
+/*    border-radius: 2px;*/
+/*    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);*/
+/*    overflow: hidden;*/
+/*    font-family: roboto;*/
+/*}*/
+
+/*.loginmodal-container h1 {*/
+/*    text-align: center;*/
+/*    font-size: 1.8em;*/
+/*    font-family: roboto;*/
+/*}*/
+
+/*.loginmodal-container input[type=submit] {*/
+/*    width: 100%;*/
+/*    display: block;*/
+/*    margin-bottom: 10px;*/
+/*    position: relative;*/
+/*}*/
+
+/*.loginmodal-container input[type=text], input[type=password] {*/
+/*    height: 44px;*/
+/*    font-size: 16px;*/
+/*    width: 100%;*/
+/*    margin-bottom: 10px;*/
+/*    -webkit-appearance: none;*/
+/*    background: #fff;*/
+/*    border: 1px solid #d9d9d9;*/
+/*    border-top: 1px solid #c0c0c0;*/
+/*    !* border-radius: 2px; *!*/
+/*    padding: 0 8px;*/
+/*    box-sizing: border-box;*/
+/*    -moz-box-sizing: border-box;*/
+/*}*/
+
+/*.loginmodal-container input[type=text]:hover, input[type=password]:hover {*/
+/*    border: 1px solid #b9b9b9;*/
+/*    border-top: 1px solid #a0a0a0;*/
+/*    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);*/
+/*    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);*/
+/*    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);*/
+/*}*/
+
+/*.loginmodal {*/
+/*    text-align: center;*/
+/*    font-size: 14px;*/
+/*    font-family: 'Arial', sans-serif;*/
+/*    font-weight: 700;*/
+/*    height: 36px;*/
+/*    padding: 0 8px;*/
+/*    !* border-radius: 3px; *!*/
+/*    !* -webkit-user-select: none;*/
+/*      user-select: none; *!*/
+/*}*/
+
+/*.loginmodal-submit {*/
+/*    !* border: 1px solid #3079ed; *!*/
+/*    border: 0px;*/
+/*    color: #fff;*/
+/*    text-shadow: 0 1px rgba(0,0,0,0.1);*/
+/*    background-color: #4d90fe;*/
+/*    padding: 17px 0px;*/
+/*    font-family: roboto;*/
+/*    font-size: 14px;*/
+/*    !* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); *!*/
+/*}*/
+
+/*.loginmodal-submit:hover {*/
+/*    !* border: 1px solid #2f5bb7; *!*/
+/*    border: 0px;*/
+/*    text-shadow: 0 1px rgba(0,0,0,0.3);*/
+/*    background-color: #357ae8;*/
+/*    !* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); *!*/
+/*}*/
+
+/*.loginmodal-container a {*/
+/*    text-decoration: none;*/
+/*    color: #666;*/
+/*    font-weight: 400;*/
+/*    text-align: center;*/
+/*    display: inline-block;*/
+/*    opacity: 0.6;*/
+/*    transition: opacity ease 0.5s;*/
+/*}*/
+
+/*.login-help{*/
+/*    font-size: 12px;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*!*.login-container{*!*/
+/*!*    margin-top: 5%;*!*/
+/*!*    margin-bottom: 5%;*!*/
+/*!*}*!*/
+/*!*.login-form-1{*!*/
+/*!*    padding: 5%;*!*/
+/*!*    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);*!*/
+/*!*}*!*/
+/*!*.login-form-1 h3{*!*/
+/*!*    text-align: center;*!*/
+/*!*    color: #333;*!*/
+/*!*}*!*/
+/*!*.login-form-2{*!*/
+/*!*    padding: 5%;*!*/
+/*!*    background: #0062cc;*!*/
+/*!*    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);*!*/
+/*!*}*!*/
+/*!*.login-form-2 h3{*!*/
+/*!*    text-align: center;*!*/
+/*!*    color: #fff;*!*/
+/*!*}*!*/
+/*!*.login-container form{*!*/
+/*!*    padding: 10%;*!*/
+/*!*}*!*/
+/*!*.btnSubmit*!*/
+/*!*{*!*/
+/*!*    width: 50%;*!*/
+/*!*    border-radius: 1rem;*!*/
+/*!*    padding: 1.5%;*!*/
+/*!*    border: none;*!*/
+/*!*    cursor: pointer;*!*/
+/*!*}*!*/
+/*!*.login-form-1 .btnSubmit{*!*/
+/*!*    font-weight: 600;*!*/
+/*!*    color: #fff;*!*/
+/*!*    background-color: #0062cc;*!*/
+/*!*}*!*/
+/*!*.login-form-2 .btnSubmit{*!*/
+/*!*    font-weight: 600;*!*/
+/*!*    color: #0062cc;*!*/
+/*!*    background-color: #fff;*!*/
+/*!*}*!*/
+/*!*.login-form-2 .ForgetPwd{*!*/
+/*!*    color: #fff;*!*/
+/*!*    font-weight: 600;*!*/
+/*!*    text-decoration: none;*!*/
+/*!*}*!*/
+/*!*.login-form-1 .ForgetPwd{*!*/
+/*!*    color: #0062cc;*!*/
+/*!*    font-weight: 600;*!*/
+/*!*    text-decoration: none;*!*/
+/*!*}*!*/
