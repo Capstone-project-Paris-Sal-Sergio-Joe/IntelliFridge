@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -57,6 +58,13 @@ public class ProfileController {
 
     @PostMapping("/profile/{id}/edit")
     public String updateProfile(@PathVariable long id, @RequestParam String username, @RequestParam String email, @RequestParam String phoneNumber, @RequestParam Boolean notifications){
+        List<User> users = userDao.findAll();
+        for(int i=0; i< users.size(); i++) {
+            String userEmail = users.get(i).getEmail();
+            if (email.equals(userEmail)) {
+            return "redirect:/profile?email=bad";
+            }
+        }
         User user = userDao.getById(id);
         user.setUsername(username);
         user.setEmail(email);
