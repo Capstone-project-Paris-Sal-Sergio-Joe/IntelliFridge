@@ -61,9 +61,9 @@
         <li>
             <p>Do you want to get notifications</p>
             <label for="notifyYes">Yes</label>
-            <input type="radio" name="notifications" value="true" id="notifyYes">
+            <input type="radio" name="notifications" value="true" id="notifyYes" th:checked="${user.isNotifications() == true}">
             <label for="notifyNo">No</label>
-            <input type="radio" name="notifications" value="false" id="notifyNo" checked="checked">
+            <input type="radio" name="notifications" value="false" id="notifyNo" th:checked="${user.isNotifications() == false}">
         </li>
         <button type="submit" id="form-btn">Submit</button>
     </ul>

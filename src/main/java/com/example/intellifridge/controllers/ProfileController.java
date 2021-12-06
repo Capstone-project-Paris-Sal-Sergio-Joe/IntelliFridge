@@ -38,6 +38,7 @@ public class ProfileController {
 
     @PostMapping("/profile/add-user-to-fridge/{id}")
     public String addUserToFridge(@PathVariable long id, @RequestParam(name = "addByUserName") String name, Model model){
+
         List<User> users = userDao.findAll();
         List<String> usernamesAndEmails = new ArrayList<>();
         for (User user: users) {
@@ -55,6 +56,7 @@ public class ProfileController {
             }
         }
         if (findUser == null) {
+
             return "redirect:/profile?error=null";
         }
 //        Serguio code below
@@ -65,7 +67,8 @@ public class ProfileController {
                 return "redirect:/profile?error=current";
             }
         }
-        findUser.getFridges().add(findFridge);//problem
+
+        findUser.getFridges().add(findFridge);
         userDao.save(findUser);
         return "redirect:/profile";
 }
@@ -93,19 +96,27 @@ public class ProfileController {
 
     @PostMapping("/profile/{id}/edit")
     public String updateProfile(@PathVariable long id, @RequestParam String username, @RequestParam String email, @RequestParam String phoneNumber, @RequestParam Boolean notifications){
-        List<User> users = userDao.findAll();
-        for(int i=0; i< users.size(); i++) {
-            String userEmail = users.get(i).getEmail();
-            if (email.equals(userEmail)) {
-            return "redirect:/profile?email=bad";
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User sameUser = userDao.getById(currentUser.getId());
+        String currentEmail = sameUser.getEmail();
+
+        if(currentEmail.equals(email)){
+            User user = userDao.getById(id);
+            user.setUsername(username);
+            user.setEmail(email);
+            user.setPhoneNumber(phoneNumber);
+            user.setNotifications(notifications);
+            userDao.save(user);
+        }else {
+
+            List<User> users = userDao.findAll();
+            for (int i = 0; i < users.size(); i++) {
+                String userEmail = users.get(i).getEmail();
+                if (email.equals(userEmail)) {
+                    return "redirect:/profile?email=bad";
+                }
             }
         }
-        User user = userDao.getById(id);
-        user.setUsername(username);
-        user.setEmail(email);
-        user.setPhoneNumber(phoneNumber);
-        user.setNotifications(notifications);
-        userDao.save(user);
 
         return "redirect:/profile";
     }
