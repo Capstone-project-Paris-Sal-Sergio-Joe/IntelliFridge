@@ -22,6 +22,10 @@ public class Twilio {
    @Value("${PHONE_NUMBER}")
    private String PHONE_NUMBER;
 
+   @Value("${MESSAGE}")
+   private String MESSAGE;
+
+
    public Timestamp SubtractDays(int days, Timestamp t1) {
        Calendar cal = Calendar.getInstance();
        cal.setTime(t1);
@@ -83,8 +87,9 @@ public class Twilio {
 //        }
 
 
-       Message message = Message.creator(new PhoneNumber(user.getPhoneNumber()),//send to
-               new PhoneNumber(PHONE_NUMBER),//send from
+       Message message = Message.creator(
+               new com.twilio.type.PhoneNumber(user.getPhoneNumber()),
+               MESSAGE,//send from
                "Hello " + user.getUsername() + " these foods are going to expire soon\nFridge: " + user.getFridges().get(fridgeIndex).getName() + str + "------------------\n").create();
 
        System.out.println(message.getSid());
