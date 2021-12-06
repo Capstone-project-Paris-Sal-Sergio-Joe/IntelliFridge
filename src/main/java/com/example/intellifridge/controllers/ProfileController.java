@@ -38,11 +38,28 @@ public class ProfileController {
 
     @PostMapping("/profile/add-user-to-fridge/{id}")
     public String addUserToFridge(@PathVariable long id, @RequestParam(name = "addByUserName") String name, Model model){
-        User findUser = userDao.findByUsername(name);
-        if(findUser == null){
+
+        List<User> users = userDao.findAll();
+        List<String> usernamesAndEmails = new ArrayList<>();
+        for (User user: users) {
+            usernamesAndEmails.add(user.getUsername());
+            usernamesAndEmails.add(user.getEmail());
+        }
+        System.out.println(usernamesAndEmails);
+        User findUser = null;
+        for (int i=0;i<usernamesAndEmails.size();i++) {
+            if (usernamesAndEmails.get(i).equalsIgnoreCase(name)) {
+                findUser = userDao.findByUsername(name);
+                if (findUser == null) {
+                    findUser = userDao.findByEmail(name);
+                }
+            }
+        }
+        if (findUser == null) {
+
             return "redirect:/profile?error=null";
         }
-
+//        Serguio code below
         Fridge findFridge = fridgeDao.getById(id);
         List<Fridge> userFridges = userDao.getById(findUser.getId()).getFridges();
         for(int i=0; i<userFridges.size(); i++){
@@ -55,6 +72,27 @@ public class ProfileController {
         userDao.save(findUser);
         return "redirect:/profile";
 }
+
+//UNTOUCHED WORKING
+//    @PostMapping("/profile/add-user-to-fridge/{id}")
+//    public String addUserToFridge(@PathVariable long id, @RequestParam(name = "addByUserName") String name, Model model){
+//        User findUser = userDao.findByUsername(name);
+//        model.addAttribute("findUser", findUser);
+//        if(findUser == null){
+//            return "redirect:/profile?error=null";
+//        }
+//
+//        Fridge findFridge = fridgeDao.getById(id);
+//        List<Fridge> userFridges = userDao.getById(findUser.getId()).getFridges();
+//        for(int i=0; i<userFridges.size(); i++){
+//            if(findFridge.getId() == userFridges.get(i).getId()){
+//                return "redirect:/profile?error=current";
+//            }
+//        }
+//        findUser.getFridges().add(findFridge);//problem
+//        userDao.save(findUser);
+//        return "redirect:/profile";
+//    }
 
     @PostMapping("/profile/{id}/edit")
     public String updateProfile(@PathVariable long id, @RequestParam String username, @RequestParam String email, @RequestParam String phoneNumber, @RequestParam Boolean notifications){
