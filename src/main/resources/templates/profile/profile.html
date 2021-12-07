@@ -89,6 +89,14 @@
         <button id="deleteFridge">Delete/Leave Fridge</button>
         </form>
     </div>
+<!--    Display if user has no fridges-->
+    <div th:if="${user.getFridges().size() == 0}">
+        <h3>You don't have any fridges</h3>
+<!--        <form th:action="@{/fridge/add-fridge}" th:method="POST">-->
+<!--            <button class="nav-link" type="submit" >Create a Fridge</button>-->
+<!--        </form>-->
+        <a class="nav-link" th:href="@{/fridge/add-fridge}">Create Fridge</a>
+    </div>
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 
 
