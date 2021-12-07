@@ -10,14 +10,8 @@
 <h1>Profile</h1>
 <h2 th:text="${user.username}"></h2>
 
-
-
-
 <div >
-
-        <div class="col-md-3">
-
-
+    <div class="col-md-3">
                 <div>
                     <img th:src="${user.profilePicture}" alt="user profile picture" class="col-12">
                 </div>
@@ -92,10 +86,9 @@
 <!--    Display if user has no fridges-->
     <div th:if="${user.getFridges().size() == 0}">
         <h3>You don't have any fridges</h3>
-<!--        <form th:action="@{/fridge/add-fridge}" th:method="POST">-->
-<!--            <button class="nav-link" type="submit" >Create a Fridge</button>-->
-<!--        </form>-->
-        <a class="nav-link" th:href="@{/fridge/add-fridge}">Create Fridge</a>
+        <button>
+            <a class="nav-link" th:href="@{/fridge/add-fridge}">Create Fridge</a>
+        </button>
     </div>
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 

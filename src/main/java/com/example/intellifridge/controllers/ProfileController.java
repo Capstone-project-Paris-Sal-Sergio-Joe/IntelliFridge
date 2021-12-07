@@ -77,7 +77,6 @@ public class ProfileController {
         user.setPhoneNumber(phoneNumber);
         user.setNotifications(notifications);
         userDao.save(user);
-
         return "redirect:/profile";
     }
 
