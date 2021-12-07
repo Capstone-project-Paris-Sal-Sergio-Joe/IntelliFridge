@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:include="partials/partials.html :: head('Home')" >
+<head>
 
 
 
-
-
-    <meta charset="UTF-8" />
-
-
+  <!--    mbiel view -->
+  <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
+  <link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
 
-
-<!--  <script type="text/javascript" th:src="@{/static/css/loginScript.js}"></script>-->
+  <script type="text/javascript" th:src="@{/static/css/loginScript.js}"></script>
   <!-- Website Font style -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <!-- Google Fonts -->
@@ -21,12 +18,12 @@
   <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
 
-
   <title>Log In</title>
 </head>
-<link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
 
 <body>
+<nav th:replace="partials/partials.html :: head('Home')" ></nav>
+
   <nav th:insert="partials/partials.html :: navbar"></nav>
   <h1>Log In</h1>
   <div th:if="${param.error}">
@@ -56,9 +53,9 @@
           <!--  username -->
           <div class="form-group">
             <label for="username" class="cols-sm-2 control-label">Username</label>
-            <div class="cols-sm-10">
+            <div class="cols-md-12">
               <div class="input-group">
-<!--                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>-->
+                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                 <input id="username" name="username"   type="text" class="form-control"  />   </div>
             </div>
           </div>
@@ -68,9 +65,9 @@
           <!--password-->
           <div class="form-group">
             <label for="password" class="cols-sm-2 control-label" name="password" >Password</label>
-            <div class="ols-sm-10">
+            <div class="ols-md-12">
               <div class="input-group">
-<!--                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>-->
+                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                 <input id="password" name="password" class="form-control" type="password"  />
               </div>
             </div>
