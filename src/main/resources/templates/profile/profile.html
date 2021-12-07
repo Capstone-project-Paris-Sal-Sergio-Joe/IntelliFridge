@@ -67,6 +67,10 @@
 <div th:if="${param.error}" id="errorM">
     <h1 th:if="${param.error[0] == 'null'}">User not found</h1>
     <h1 th:if="${param.error[0] == 'current'}">User already added to this fridge</h1>
+    <h1 th:if="${param.error[0] == 'privateUser'}">User is private and cannot be added</h1>
+</div>
+<div th:if="${param.userAdded}">
+    <h1 th:if="${param.userAdded[0] == 'true'}">User successfully added!</h1>
 </div>
 <h3>Fridge List:</h3>
     <div th:each="fridge : ${fridge}">
@@ -106,6 +110,7 @@
 <script th:src="@{js/imageUploadFilestack.js}"></script>
 
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
 
 </body>
 </html>

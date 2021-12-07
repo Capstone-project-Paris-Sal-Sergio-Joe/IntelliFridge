@@ -3,6 +3,7 @@
 <head th:include="partials/partials.html :: head('Sign-Up')">
   <meta charset="UTF-8" />
   <title>Sign up</title>
+<!--  <link rel="stylesheet" type="text/css" th:href="@{/css/signup.css}" href="/static/css/signup.css">-->
 </head>
 <body>
   <nav th:insert="partials/partials.html :: navbar"></nav>
@@ -16,6 +17,24 @@
 
     <label for="password">Password</label>
     <input id="password" type="password" th:field="*{password}" />
+
+    <label>Privacy</label>
+    <label for="isPrivateTrue">True</label>
+    <input type="radio" name="isPrivate" th:value="true" id="isPrivateTrue">
+    <label for="isPrivateFalse">False</label>
+    <input type="radio" name="isPrivate" th:value="false" id="isPrivateFalse" checked="checked">
+    <p>Users are capable of adding other users to their fridges. If you wish to remain <em>private</em> and not have this capability to be added, select true.</p>
+
+
+<!--    Not working because we're unable to link the CSS to the page-->
+<!--    <label for="privacy">Private?</label>-->
+<!--    <div id="privacy">-->
+<!--      <label class="switch">-->
+<!--        <input type="checkbox" name="isPrivate">-->
+<!--        <span class="slider round"></span>-->
+<!--      </label>-->
+<!--      <p>Users are capable of adding other users to their fridges. If you wish to remain <em>private</em> and not have this capability to be added, select true.</p>-->
+<!--    </div>-->
 
     <input value="Sign me up!" type="submit" />
   </form>
