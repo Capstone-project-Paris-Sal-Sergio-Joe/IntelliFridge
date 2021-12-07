@@ -1,7 +1,3 @@
-.parent{
-    position: relative;
-}
-
-.child{
-
+body{
+    background-color: red;
 }
