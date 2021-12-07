@@ -44,7 +44,6 @@ public class ProfileController {
             usernamesAndEmails.add(user.getUsername());
             usernamesAndEmails.add(user.getEmail());
         }
-        System.out.println(usernamesAndEmails);
         User findUser = null;
         for (int i=0;i<usernamesAndEmails.size();i++) {
             if (usernamesAndEmails.get(i).equalsIgnoreCase(name)) {
@@ -57,6 +56,12 @@ public class ProfileController {
         if (findUser == null) {
             return "redirect:/profile?error=null";
         }
+
+        if (findUser.getIsPrivate() == true) {
+            return "redirect:/profile?error=privateUser";
+        }
+
+
         Fridge findFridge = fridgeDao.getById(id);
         List<Fridge> userFridges = userDao.getById(findUser.getId()).getFridges();
         for(int i=0; i<userFridges.size(); i++){
@@ -66,7 +71,7 @@ public class ProfileController {
         }
         findUser.getFridges().add(findFridge);//problem
         userDao.save(findUser);
-        return "redirect:/profile";
+        return "redirect:/profile?userAdded=true";
 }
 
     @PostMapping("/profile/{id}/edit")
