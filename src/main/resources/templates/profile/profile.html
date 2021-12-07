@@ -35,6 +35,9 @@
 </div>
 
 <button id="edit">edit</button>
+<div th:if="${param.email}">
+    <h1 th:if="${param.email[0] == 'bad'}">Email already exists. Please choose a different email.</h1>
+</div>
 <form th:action="@{'/profile/' + ${user.id} + '/edit'}" name="edit" class="hidden" id="editForm" th:method="post">
 
     <ul>
@@ -53,9 +56,9 @@
         <li>
             <p>Do you want to get notifications</p>
             <label for="notifyYes">Yes</label>
-            <input type="radio" name="notifications" value="true" id="notifyYes">
+            <input type="radio" name="notifications" value="true" id="notifyYes" th:checked="${user.isNotifications() == true}">
             <label for="notifyNo">No</label>
-            <input type="radio" name="notifications" value="false" id="notifyNo" checked="checked">
+            <input type="radio" name="notifications" value="false" id="notifyNo" th:checked="${user.isNotifications() == false}">
         </li>
         <button type="submit" id="form-btn">Submit</button>
     </ul>
