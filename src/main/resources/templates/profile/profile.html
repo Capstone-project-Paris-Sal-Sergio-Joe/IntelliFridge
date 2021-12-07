@@ -48,11 +48,11 @@
     <ul>
         <li>
             <label for="username">Username</label>
-            <input name="username" type="text" th:value="${user.username}" id="username"/>
+            <input name="username" type="text" th:value="${user.username}" id="username" required />
         </li>
         <li>
             <label for="email">Email</label>
-            <input name="email" type="text" th:value="${user.email}" id="email"/>
+            <input name="email" type="text" th:value="${user.email}" id="email" required />
         </li>
         <li>
             <label for="phoneNumber">phoneNumber</label>
@@ -61,9 +61,9 @@
         <li>
             <p>Do you want to get notifications</p>
             <label for="notifyYes">Yes</label>
-            <input type="radio" name="notifications" value="true" id="notifyYes" th:checked="${user.isNotifications() == true}">
+            <input type="radio" name="notifications" value="true" id="notifyYes" th:checked="${user.isNotifications() == true}" required >
             <label for="notifyNo">No</label>
-            <input type="radio" name="notifications" value="false" id="notifyNo" th:checked="${user.isNotifications() == false}">
+            <input type="radio" name="notifications" value="false" id="notifyNo" th:checked="${user.isNotifications() == false}" required >
         </li>
         <button type="submit" id="form-btn">Submit</button>
     </ul>
@@ -104,6 +104,7 @@
 <script th:src="@{js/imageUploadFilestack.js}"></script>
 
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script src="js/frontendValidation.js"></script>
 
 </body>
 </html>

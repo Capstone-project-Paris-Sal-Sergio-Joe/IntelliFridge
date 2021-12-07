@@ -7,18 +7,20 @@
 <body>
   <nav th:insert="partials/partials.html :: navbar"></nav>
   <h1>Create an account</h1>
-  <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+  <h2 id="errorSignUp"></h2>
+  <form id="signUpForm" th:action="@{/sign-up}" method="POST" th:object="${user}">
     <label for="username">Username</label>
-    <input id="username" th:field="*{username}" />
+    <input id="username" th:field="*{username}" required />
 
     <label for="email">Email</label>
-    <input id="email" th:field="*{email}" />
+    <input id="email" th:field="*{email}" required />
 
     <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" />
+    <input id="password" type="password" th:field="*{password}" required />
 
     <input value="Sign me up!" type="submit" />
   </form>
   <th:block th:insert="partials/partials.html :: bootstrap-js" />
+<script src="js/frontendValidation.js"></script>
 </body>
 </html>
