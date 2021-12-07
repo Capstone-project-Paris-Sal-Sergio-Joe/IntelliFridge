@@ -83,9 +83,13 @@
             <form th:action="@{/login}" method="POST">
 <div>
     <form th:action="@{/login}" th:method="GET">
-                    <button type="submit">Login</button>
-                </form>
+<!--                    <button type="submit">Login</button>-->
+                            <input type="submit" value="Log In" class="form-control" />
+
+    </form>
 </div>
+                <br>
+
 <!--                &lt;!&ndash;  username &ndash;&gt;-->
 <!--                <div class="form-group">-->
 <!--                    <label for="username" class="cols-sm-2 control-label">Username</label>-->
@@ -97,14 +101,19 @@
 <!--                </div>-->
 <div>
                 <form th:action="@{/sign-up}" th:method="GET">
-                    <button type="submit">Sign up</button>
+<!--                    <button type="submit">Sign up</button>-->
+                                        <input type="submit" value="Sign Up" class="form-control" />
+
                 </form>
 </div>
 
+                <br>
 
                 <div>
                     <form th:action="@{/about-us}" th:method="GET">
-                        <button type="submit">About Us</button>
+<!--                        <button type="submit">About Us</button>-->
+                          <input type="submit" value="About Us" class="form-control" />
+
                     </form>
                 </div>
 <!--&lt;!&ndash;                &lt;!&ndash;password&ndash;&gt;&ndash;&gt;-->
