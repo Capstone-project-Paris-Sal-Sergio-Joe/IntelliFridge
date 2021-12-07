@@ -59,7 +59,6 @@ public class ProfileController {
 
             return "redirect:/profile?error=null";
         }
-//        Serguio code below
         Fridge findFridge = fridgeDao.getById(id);
         List<Fridge> userFridges = userDao.getById(findUser.getId()).getFridges();
         for(int i=0; i<userFridges.size(); i++){
@@ -73,29 +72,9 @@ public class ProfileController {
         return "redirect:/profile";
 }
 
-//UNTOUCHED WORKING
-//    @PostMapping("/profile/add-user-to-fridge/{id}")
-//    public String addUserToFridge(@PathVariable long id, @RequestParam(name = "addByUserName") String name, Model model){
-//        User findUser = userDao.findByUsername(name);
-//        model.addAttribute("findUser", findUser);
-//        if(findUser == null){
-//            return "redirect:/profile?error=null";
-//        }
-//
-//        Fridge findFridge = fridgeDao.getById(id);
-//        List<Fridge> userFridges = userDao.getById(findUser.getId()).getFridges();
-//        for(int i=0; i<userFridges.size(); i++){
-//            if(findFridge.getId() == userFridges.get(i).getId()){
-//                return "redirect:/profile?error=current";
-//            }
-//        }
-//        findUser.getFridges().add(findFridge);//problem
-//        userDao.save(findUser);
-//        return "redirect:/profile";
-//    }
-
     @PostMapping("/profile/{id}/edit")
     public String updateProfile(@PathVariable long id, @RequestParam String username, @RequestParam String email, @RequestParam String phoneNumber, @RequestParam Boolean notifications){
+
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User sameUser = userDao.getById(currentUser.getId());
         String currentEmail = sameUser.getEmail();
@@ -117,7 +96,6 @@ public class ProfileController {
                 }
             }
         }
-
         return "redirect:/profile";
     }
 
