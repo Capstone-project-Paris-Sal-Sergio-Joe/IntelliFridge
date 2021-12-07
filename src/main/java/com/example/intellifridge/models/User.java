@@ -31,6 +31,10 @@ public class User {
     @Column(nullable = false)
     private boolean notifications;
 
+    @Column(nullable = false)
+    private boolean isPrivate;
+
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name ="fridge_user",
@@ -39,6 +43,8 @@ public class User {
     )
 
     private List<Fridge> fridges = new ArrayList<>();
+
+    public User() { }
 
     public User(long id, String username, String email, String password, String phoneNumber, String profilePicture, boolean notifications, List<Fridge> fridges) {
         this.id = id;
@@ -62,8 +68,6 @@ public class User {
     }
 
 
-    public User() { }
-
     public User(User copy) {
         id = copy.id; // This line is SUPER important! Many things won't work if it's absent
         email = copy.email;
@@ -73,6 +77,17 @@ public class User {
 
     }
 
+    public User(long id, String username, String email, String password, String phoneNumber, String profilePicture, boolean notifications, boolean isPrivate, List<Fridge> fridges) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.profilePicture = profilePicture;
+        this.notifications = notifications;
+        this.isPrivate = isPrivate;
+        this.fridges = fridges;
+    }
 
     public long getId() {
         return id;
@@ -136,5 +151,13 @@ public class User {
 
     public void setNotifications(boolean notifications) {
         this.notifications = notifications;
+    }
+
+    public boolean getIsPrivate() {
+        return isPrivate;
+    }
+
+    public void setIsPrivate(boolean isPrivate) {
+        this.isPrivate = isPrivate;
     }
 }

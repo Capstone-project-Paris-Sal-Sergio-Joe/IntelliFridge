@@ -10,13 +10,8 @@
 <h1>Profile</h1>
 <h2 th:text="${user.username}"></h2>
 
-
-
 <div >
-
-        <div class="col-md-3">
-
-
+    <div class="col-md-3">
                 <div>
                     <img th:src="${user.profilePicture}" alt="user profile picture" class="col-12">
                 </div>
@@ -72,6 +67,10 @@
 <div th:if="${param.error}" id="errorM">
     <h1 th:if="${param.error[0] == 'null'}">User not found</h1>
     <h1 th:if="${param.error[0] == 'current'}">User already added to this fridge</h1>
+    <h1 th:if="${param.error[0] == 'privateUser'}">User is private and cannot be added</h1>
+</div>
+<div th:if="${param.userAdded}">
+    <h1 th:if="${param.userAdded[0] == 'true'}">User successfully added!</h1>
 </div>
 <h3>Fridge List:</h3>
     <div th:each="fridge : ${fridge}">
@@ -91,6 +90,13 @@
         <button id="deleteFridge">Delete/Leave Fridge</button>
         </form>
     </div>
+<!--    Display if user has no fridges-->
+    <div th:if="${user.getFridges().size() == 0}">
+        <h3>You don't have any fridges</h3>
+        <button>
+            <a class="nav-link" th:href="@{/fridge/add-fridge}">Create Fridge</a>
+        </button>
+    </div>
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 
 
@@ -105,6 +111,7 @@
 
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script src="js/frontendValidation.js"></script>
+
 
 </body>
 </html>

@@ -45,7 +45,6 @@ public class ProfileController {
             usernamesAndEmails.add(user.getUsername());
             usernamesAndEmails.add(user.getEmail());
         }
-        System.out.println(usernamesAndEmails);
         User findUser = null;
         for (int i=0;i<usernamesAndEmails.size();i++) {
             if (usernamesAndEmails.get(i).equalsIgnoreCase(name)) {
@@ -59,7 +58,12 @@ public class ProfileController {
 
             return "redirect:/profile?error=null";
         }
-//        Serguio code below
+
+        if (findUser.getIsPrivate() == true) {
+            return "redirect:/profile?error=privateUser";
+        }
+
+
         Fridge findFridge = fridgeDao.getById(id);
         List<Fridge> userFridges = userDao.getById(findUser.getId()).getFridges();
         for(int i=0; i<userFridges.size(); i++){
@@ -70,32 +74,12 @@ public class ProfileController {
 
         findUser.getFridges().add(findFridge);
         userDao.save(findUser);
-        return "redirect:/profile";
+        return "redirect:/profile?userAdded=true";
 }
-
-//UNTOUCHED WORKING
-//    @PostMapping("/profile/add-user-to-fridge/{id}")
-//    public String addUserToFridge(@PathVariable long id, @RequestParam(name = "addByUserName") String name, Model model){
-//        User findUser = userDao.findByUsername(name);
-//        model.addAttribute("findUser", findUser);
-//        if(findUser == null){
-//            return "redirect:/profile?error=null";
-//        }
-//
-//        Fridge findFridge = fridgeDao.getById(id);
-//        List<Fridge> userFridges = userDao.getById(findUser.getId()).getFridges();
-//        for(int i=0; i<userFridges.size(); i++){
-//            if(findFridge.getId() == userFridges.get(i).getId()){
-//                return "redirect:/profile?error=current";
-//            }
-//        }
-//        findUser.getFridges().add(findFridge);//problem
-//        userDao.save(findUser);
-//        return "redirect:/profile";
-//    }
 
     @PostMapping("/profile/{id}/edit")
     public String updateProfile(@PathVariable long id, @RequestParam String username, @RequestParam String email, @RequestParam String phoneNumber, @RequestParam Boolean notifications){
+
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User sameUser = userDao.getById(currentUser.getId());
         String currentEmail = sameUser.getEmail();
@@ -117,7 +101,6 @@ public class ProfileController {
                 }
             }
         }
-
         return "redirect:/profile";
     }
 
