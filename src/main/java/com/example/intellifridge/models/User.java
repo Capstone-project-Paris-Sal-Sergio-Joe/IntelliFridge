@@ -31,6 +31,9 @@ public class User {
     @Column(nullable = false)
     private boolean notifications;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Invitation> invitations;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name ="fridge_user",
@@ -58,6 +61,18 @@ public class User {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.profilePicture = profilePicture;
+        this.fridges = fridges;
+    }
+
+    public User(long id, String username, String email, String password, String phoneNumber, String profilePicture, boolean notifications, List<Invitation> invitations,  List<Fridge> fridges) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.profilePicture = profilePicture;
+        this.notifications = notifications;
+        this.invitations = invitations;
         this.fridges = fridges;
     }
 
@@ -136,5 +151,13 @@ public class User {
 
     public void setNotifications(boolean notifications) {
         this.notifications = notifications;
+    }
+
+    public List<Invitation> getInvitations() {
+        return invitations;
+    }
+
+    public void setInvitations(List<Invitation> invitations) {
+        this.invitations = invitations;
     }
 }
