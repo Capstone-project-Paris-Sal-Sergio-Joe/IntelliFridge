@@ -63,6 +63,9 @@
                     </div>
                 </div>
 
+
+
+
 <!--password-->
                 <div class="form-group">
                     <label for="password" class="cols-sm-2 control-label">Password</label>
@@ -74,15 +77,27 @@
                     </div>
                 </div>
 
-<!--                <div class="form-group">-->
-<!--                    <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>-->
-<!--                    <div class="cols-sm-10">-->
-<!--                        <div class="input-group">-->
-<!--                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>-->
-<!--                            <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                    <div class="cols-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="imageFile" class="form-label">Upload a profile Picture</label>
+                    <br>
+                    <input class="form-control" id="imageFile" type="hidden" name="image" th:field="*{profilePicture}">
+                    <button type="button" class="btn btn-outline-secondary " align-itm="center" id="open">Choose image to upload</button>
+                </div>
+
+
+
 
                 <div class="form-group ">
                     <input value="Sign me up!" class="form-control" type="submit" />
@@ -104,6 +119,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed-->
 <script src="js/bootstrap.min.js"></script>
+
+
+
+<script src="js/jquery.js"></script>
+<script src="/keys.js"></script>
+<script src="js/profile.js"></script>
+<script th:src="@{js/showImageForm.js}"></script>
+<script th:src="@{js/imageUploadFilestack.js}"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+
 </body>
 </html>
 
