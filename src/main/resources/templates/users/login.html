@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
+<head th:include="partials/partials.html :: head('Home')"
 
 
 
@@ -8,7 +8,6 @@
   <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-  <link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
 
   <script type="text/javascript" th:src="@{/static/css/loginScript.js}"></script>
   <!-- Website Font style -->
@@ -17,15 +16,22 @@
   <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
-
+>
   <title>Log In</title>
 </head>
+<link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
 
 <body>
-<nav th:replace="partials/partials.html :: head('Home')" ></nav>
+<!--<nav th:include="partials/partials.html :: head('Home')" ></nav>-->
 
   <nav th:insert="partials/partials.html :: navbar"></nav>
-  <h1>Log In</h1>
+<!--  <h1>Welcome To IntelliFridge</h1>-->
+
+<a class="nav-link" th:href="@{/}">
+  <img class="center" th:src="@{/images/fridge2sm.png}"    />
+</a>
+
+
   <div th:if="${param.error}">
     Invalid Username and Password.
   </div>

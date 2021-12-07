@@ -17,17 +17,22 @@
     <title>sign up</title>
 </head>
 <body>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+<!--&lt;!&ndash;<div class="slider">&ndash;&gt;-->
+<!--    <img class="slider" src="/images/fridge2sm.png">-->
+<!--    &lt;!&ndash;<img src="/static/images/fridge2.png" width="200px" >&ndash;&gt;-->
+
+
+<a class="nav-link" th:href="@{/}">
+<img class="center" th:src="@{/images/fridge2sm.png}"    />
+</a>
 
 
 
-<div class="container">
+
+<div  class="img-rounded">
     <div class="row main">
-        <div class="main-login main-center">
+        <div class=" main-center">
             <form th:action="@{/sign-up}" method="POST" th:object="${user}">
 
 <!--                <div class="form-group">-->
@@ -42,7 +47,7 @@
 
 
 <!--  username -->
-                <div class="form-group">
+                <div >
                     <label for="username" class="cols-sm-2 control-label">Username</label>
                     <div class="cols-md-12">
                         <div class="input-group">
@@ -52,7 +57,7 @@
                 </div>
 
                 <!--                email       -->
-                <div class="form-group">
+                <div>
                     <label for="email" class="cols-sm-2 control-label">Your Email</label>
                     <div class="cols-md-12">
                         <div class="input-group">
@@ -65,9 +70,21 @@
 
 
 
+                <div>
+                    <label for="phoneNumber" class="cols-sm-2 control-label">Phone Number</label>
+                    <div class="cols-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input id="phoneNumber" class="form-control" th:field="*{phoneNumber}" />
 
-<!--password-->
-                <div class="form-group">
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!--password-->
+                <div >
                     <label for="password" class="cols-sm-2 control-label">Password</label>
                     <div class="cols-md-12">
                         <div class="input-group">
@@ -77,7 +94,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div>
                     <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
                     <div class="cols-md-12">
                         <div class="input-group">
@@ -87,32 +104,39 @@
                     </div>
                 </div>
 
+<br>
 
+                <div>
+<!--                    <label for="imageFile" class="form-label">Upload a profile Picture</label>-->
+                    <div >
+                        <div class="form-group">
 
-                <div class="form-group">
-                    <label for="imageFile" class="form-label">Upload a profile Picture</label>
-                    <br>
-                    <input class="form-control" id="imageFile" type="hidden" name="image" th:field="*{profilePicture}">
-                    <button type="button" class="btn btn-outline-secondary " align-itm="center" id="open">Choose image to upload</button>
+                        <input class="form-control" id="imageFile" type="hidden" name="image" th:field="*{profilePicture}">
+                    <button type="button" class="form-control btn btn-primary  justify-content-between"  id="open">Choose Profile Image</button>
+                </div>
+                    </div>
                 </div>
 
 
-
-
+            <div>
                 <div class="form-group ">
                     <input value="Sign me up!" class="form-control" type="submit" />
                 </div>
-
+            </div>
         </div>
     </div>
 </div>
 </form>
 
-<form class="loginCenter " th:action="@{/}" th:method="GET">
-    <button type="submit">Return Home</button>
-<!--    <img src="submit">Home</img>-->
+<!--<form class="loginCenter " th:action="@{/}" th:method="GET">-->
+<!--    <button type="submit">Return Home</button>-->
+<!--&lt;!&ndash;    <img src="submit">Home</img>&ndash;&gt;-->
 
 </form>
+
+
+
+
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
@@ -128,6 +152,7 @@
 <script th:src="@{js/showImageForm.js}"></script>
 <script th:src="@{js/imageUploadFilestack.js}"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
 
 
 </body>
