@@ -1,6 +1,5 @@
 $(document).ready(function () {
-    console.log(UnsplashApiKey)
-    // initialize datatable
+
     $('#foodTable').DataTable();
 
     // add food image after name in table
