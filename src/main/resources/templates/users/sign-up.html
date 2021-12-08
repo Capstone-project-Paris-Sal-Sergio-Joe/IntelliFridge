@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
+<head th:include="partials/partials.html :: head('Home')">
 <!--    mbiel view -->
     <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-    <link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
 
     <script type="text/javascript" th:src="@{/static/css/loginScript.js}"></script>
     <!-- Website Font style -->
@@ -17,6 +16,10 @@
     <title>sign up</title>
 </head>
 <body>
+<link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
+
+
+<nav th:insert="partials/partials.html :: navbar"></nav>
 
 <!--&lt;!&ndash;<div class="slider">&ndash;&gt;-->
 <!--    <img class="slider" src="/images/fridge2sm.png">-->
@@ -179,6 +182,7 @@
 <script th:src="@{js/imageUploadFilestack.js}"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 
+<th:block th:insert="partials/partials.html :: bootstrap-js" />
 
 
 </body>
