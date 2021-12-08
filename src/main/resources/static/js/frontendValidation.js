@@ -3,7 +3,7 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const signUpForm = document.getElementById('signUpForm');
 const errorSignUp = document.getElementById('errorSignUp');
-const validatedEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const validatedEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
 const phoneNumber = document.getElementById('phoneNumber');
 const validatedPhoneNumber = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 
