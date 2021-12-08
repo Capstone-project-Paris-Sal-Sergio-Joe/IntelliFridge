@@ -1,24 +1,435 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:include="partials/partials.html :: head('Sign-Up')">
-  <meta charset="UTF-8" />
-  <title>Sign up</title>
+<head>
+<!--    mbiel view -->
+    <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
+
+    <script type="text/javascript" th:src="@{/static/css/loginScript.js}"></script>
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+    <title>sign up</title>
 </head>
 <body>
-  <nav th:insert="partials/partials.html :: navbar"></nav>
-  <h1>Create an account</h1>
-  <form th:action="@{/sign-up2}" method="POST" th:object="${user}">
-    <label for="username">Username</label>
-    <input id="username" th:field="*{username}" />
 
-    <label for="email">Email</label>
-    <input id="email" th:field="*{email}" />
+<!--&lt;!&ndash;<div class="slider">&ndash;&gt;-->
+<!--    <img class="slider" src="/images/fridge2sm.png">-->
+<!--    &lt;!&ndash;<img src="/static/images/fridge2.png" width="200px" >&ndash;&gt;-->
 
-    <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" />
 
-    <input value="Sign me up!" type="submit" />
-  </form>
-  <th:block th:insert="partials/partials.html :: bootstrap-js" />
+<a class="nav-link" th:href="@{/}">
+<img class="center" th:src="@{/images/fridge2sm.png}"    />
+</a>
+
+
+
+
+<div  class="img-rounded">
+    <div class="row main">
+        <div class=" main-center">
+            <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+
+<!--                <div class="form-group">-->
+<!--&lt;!&ndash;                    <label for="name" class="cols-sm-2 control-label">Your Name</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="cols-sm-10">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="input-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                </div>-->
+
+
+<!--  username -->
+                <div >
+                    <label for="username" class="cols-sm-2 control-label">Username</label>
+                    <div class="cols-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input id="username" class="form-control" th:field="*{username}" />   </div>
+                    </div>
+                </div>
+
+                <!--                email       -->
+                <div>
+                    <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                    <div class="cols-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input id="email" class="form-control" th:field="*{email}" />
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div>
+                    <label for="phoneNumber" class="cols-sm-2 control-label">Phone Number</label>
+                    <div class="cols-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input id="phoneNumber" class="form-control" th:field="*{phoneNumber}" />
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!--password-->
+                <div >
+                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    <div class="cols-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input id="password" class="form-control" type="password" th:field="*{password}" />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                    <div class="cols-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+                        </div>
+                    </div>
+                </div>
+
+<br>
+
+                <div>
+<!--                    <label for="imageFile" class="form-label">Upload a profile Picture</label>-->
+                    <div >
+                        <div class="form-group">
+
+                        <input class="form-control" id="imageFile" type="hidden" name="image" th:field="*{profilePicture}">
+                    <button type="button" class="form-control btn btn-primary  justify-content-between"  id="open">Choose Profile Image</button>
+                </div>
+                    </div>
+                </div>
+
+
+            <div>
+                <div class="form-group ">
+                    <input value="Sign me up!" class="form-control" type="submit" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+<!--<form class="loginCenter " th:action="@{/}" th:method="GET">-->
+<!--    <button type="submit">Return Home</button>-->
+<!--&lt;!&ndash;    <img src="submit">Home</img>&ndash;&gt;-->
+
+</form>
+
+
+
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed-->
+<script src="js/bootstrap.min.js"></script>
+
+
+
+<script src="js/jquery.js"></script>
+<script src="/keys.js"></script>
+<script src="js/profile.js"></script>
+<script th:src="@{js/showImageForm.js}"></script>
+<script th:src="@{js/imageUploadFilestack.js}"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+
+
+<!--        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+<!--&lt;!&ndash;    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>&ndash;&gt;-->
+<!--    &lt;!&ndash;&#45;&#45;&#45;&#45; Include the above in your HEAD tag &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+
+
+
+<!--&lt;!&ndash;    &lt;!&ndash; Website CSS style &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <link href="css/bootstrap.min.css" rel="stylesheet">&ndash;&gt;-->
+
+<!--    &lt;!&ndash; Website Font style &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="style.css">&ndash;&gt;-->
+<!--    &lt;!&ndash; Google Fonts &ndash;&gt;-->
+<!--&lt;!&ndash;    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>&ndash;&gt;-->
+<!--&lt;!&ndash;    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>&ndash;&gt;-->
+
+<!--    <link rel="stylesheet" href="/static/css/loginScript.css">-->
+
+<!--    <title>login</title>-->
+<!--</head>-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--<div class="container">-->
+<!--    <div class="row main">-->
+<!--        <div class="main-login main-center">-->
+<!--&lt;!&ndash;            <h5>Sign up once and watch any of our free demos.</h5>&ndash;&gt;-->
+<!--            <form class="" method="post" action="#">-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="name" class="cols-sm-2 control-label">Your Name</label>-->
+<!--                    <div class="cols-sm-10">-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>-->
+<!--                            <input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="email" class="cols-sm-2 control-label">Your Email</label>-->
+<!--                    <div class="cols-sm-10">-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
+<!--                            <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="username" class="cols-sm-2 control-label">Username</label>-->
+<!--                    <div class="cols-sm-10">-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>-->
+<!--                            <input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="password" class="cols-sm-2 control-label">Password</label>-->
+<!--                    <div class="cols-sm-10">-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>-->
+<!--                            <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--&lt;!&ndash;                <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="cols-sm-10">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="input-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--                <div class="form-group ">-->
+<!--                    <a  target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Register</a>-->
+<!--                </div>-->
+
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; jQuery (necessary for Bootstrap's JavaScript plugins) &ndash;&gt;-->
+<!--&lt;!&ndash;<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash; Include all compiled plugins (below), or include individual files as needed &ndash;&gt;-->
+<!--&lt;!&ndash;<script src="js/bootstrap.min.js"></script>&ndash;&gt;-->
+
+
+<!--/</body>-->
+<!--</html>-->
+
+
+
+
+<!--<html>-->
+<!--<head>-->
+
+
+
+<!--&lt;!&ndash;&#45;&#45;&#45;&#45; Include the above in your HEAD tag &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--</head>-->
+
+<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+<!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+<!--<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
+<!--&lt;!&ndash;&#45;&#45;&#45;&#45; Include the above in your HEAD tag &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--<link rel="stylesheet" href="/css/loginScript.css">-->
+<!--<head>-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+
+
+<!--&lt;!&ndash;    &lt;!&ndash; Website CSS style &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <link href="css/bootstrap.min.css" rel="stylesheet">&ndash;&gt;-->
+
+<!--    &lt;!&ndash; Website Font style &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">-->
+<!--    <link rel="stylesheet" href="style.css">-->
+<!--    &lt;!&ndash; Google Fonts &ndash;&gt;-->
+<!--    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>-->
+<!--    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>-->
+
+<!--    <title>Admin</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <div class="row main">-->
+<!--        <div class="main-login main-center">-->
+<!--            <h5>Sign up once and watch any of our free demos.</h5>-->
+<!--            <form class="" method="post" action="#">-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="name" class="cols-sm-2 control-label">Your Name</label>-->
+<!--                    <div class="cols-sm-10">-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>-->
+<!--                            <input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="email" class="cols-sm-2 control-label">Your Email</label>-->
+<!--                    <div class="cols-sm-10">-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
+<!--                            <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="username" class="cols-sm-2 control-label">Username</label>-->
+<!--                    <div class="cols-sm-10">-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>-->
+<!--                            <input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="password" class="cols-sm-2 control-label">Password</label>-->
+<!--                    <div class="cols-sm-10">-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>-->
+<!--                            <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>-->
+<!--                    <div class="cols-sm-10">-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>-->
+<!--                            <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="form-group ">-->
+<!--                    <a href="https://deepak646.blogspot.com/" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Register</a>-->
+<!--                </div>-->
+
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; jQuery (necessary for Bootstrap's JavaScript plugins) &ndash;&gt;-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+<!--&lt;!&ndash; Include all compiled plugins (below), or include individual files as needed &ndash;&gt;-->
+<!--<script src="js/bootstrap.min.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="col-md-6 login-form-2">&ndash;&gt;-->
+<!--&lt;!&ndash;            <h3>Login for Form 2</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;            <form>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="text" class="form-control" placeholder="Your Email *" value="" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="password" class="form-control" placeholder="Your Password *" value="" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="submit" class="btnSubmit" value="Login" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="form-group">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <a href="#" class="ForgetPwd" value="Login">Forget Password?</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </form>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+
+<!--</body>-->
+<!--</html>-->

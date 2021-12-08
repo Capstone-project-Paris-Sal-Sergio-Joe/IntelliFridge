@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:include="partials/partials.html :: head('Home')"
+<head th:include="partials/partials.html :: head('Home')">
 
 
 
@@ -16,7 +16,7 @@
   <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
->
+
   <title>Log In</title>
 </head>
 <link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
@@ -26,18 +26,19 @@
 
   <nav th:insert="partials/partials.html :: navbar"></nav>
 <!--  <h1>Welcome To IntelliFridge</h1>-->
-
 <a class="nav-link" th:href="@{/}">
   <img class="center" th:src="@{/images/fridge2sm.png}"    />
 </a>
 
 
-  <div th:if="${param.error}">
-    Invalid Username and Password.
-  </div>
-  <div th:if="${param.logout}">
-    You have been logged out.
-  </div>
+<!--<div th:if="${param.error}">-->
+<!--  Invalid Username and Password.-->
+<!--</div>-->
+<!--<div th:if="${param.logout}">-->
+<!--  You have been logged out.-->
+<!--</div>-->
+
+
 
 <!--  <form th:action="@{/login}" method="post">-->
 <!--    <label for="username">Username</label>-->
@@ -102,6 +103,6 @@
 
 
 
-<!--  <th:block th:insert="partials/partials.html :: bootstrap-js" />-->
+  <th:block th:insert="partials/partials.html :: bootstrap-js" />
 </body>
 </html>

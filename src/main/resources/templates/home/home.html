@@ -1,42 +1,8 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
-<!--<head th:insert="partials/partials.html :: head('Home')">-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Home</title>-->
-<!--</head>-->
-<!--<nav th:insert="partials/partials.html :: navbar"></nav>-->
-<!--<body>-->
-<!--<h1>This the home page</h1>-->
-
-
-<!--<form th:action="@{/login}" th:method="GET">-->
-<!--    <button type="submit">Login</button>-->
-<!--</form>-->
-
-<!--<form th:action="@{/sign-up}" th:method="GET">-->
-<!--    <button type="submit">Sign up</button>-->
-<!--</form>-->
-<!--<br>-->
-<!--<form th:action="@{/login2222}" th:method="GET">-->
-<!--    <button type="submit">404</button>-->
-<!--</form>-->
-
-<!--<th:block th:insert="partials/partials.html :: bootstrap-js"/>-->
-<!--</body>-->
-<!--</html>-->
-
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:include="partials/partials.html :: head('Home')"
-
-
-
-<!--    mbiel view -->
+<head th:include="partials/partials.html :: head('Home')">
 <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
-
 <script type="text/javascript" th:src="@{/static/css/loginScript.js}"></script>
 <!-- Website Font style -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -44,102 +10,55 @@
 <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
->
+
 <title>Log In</title>
 </head>
 <link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
-
 <body>
 <!--<nav th:include="partials/partials.html :: head('Home')" ></nav>-->
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
 <h1>Welcome To IntelliFridge</h1>
 
-<a class="nav-link" th:href="@{/}">
-    <img class="center" th:src="@{/images/fridge2sm.png}"    />
-</a>
+    <a class="nav-link" th:href="@{/}">
+        <img class="center" th:src="@{/images/fridge2sm.png}"    />
+    </a>
 
 
-<div th:if="${param.error}">
-    Invalid Username and Password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
-
-<!--  <form th:action="@{/login}" method="post">-->
-<!--    <label for="username">Username</label>-->
-<!--    <input id="username" name="username" type="text" />-->
-<!--    <label for="password">Password</label>-->
-<!--    <input id="password" name="password" type="password" />-->
-<!--    <input type="submit" value="Log In" />-->
-<!--  </form>-->
-
-
-
-<div class="container">
-    <div class="row main">
-        <div class="main-login main-center">
-            <form th:action="@{/login}" method="POST">
-<div>
-    <form th:action="@{/login}" th:method="GET">
-<!--                    <button type="submit">Login</button>-->
-                            <input type="submit" value="Log In" class="form-control" />
-
-    </form>
-</div>
-                <br>
-
-<!--                &lt;!&ndash;  username &ndash;&gt;-->
-<!--                <div class="form-group">-->
-<!--                    <label for="username" class="cols-sm-2 control-label">Username</label>-->
-<!--                    <div class="cols-md-12">-->
-<!--                        <div class="input-group">-->
-<!--                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>-->
-<!--                            <input id="username" name="username"   type="text" class="form-control"  />   </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<div>
-                <form th:action="@{/sign-up}" th:method="GET">
-<!--                    <button type="submit">Sign up</button>-->
-                                        <input type="submit" value="Sign Up" class="form-control" />
-
-                </form>
-</div>
-
-                <br>
-
-                <div>
-                    <form th:action="@{/about-us}" th:method="GET">
-<!--                        <button type="submit">About Us</button>-->
-                          <input type="submit" value="About Us" class="form-control" />
-
-                    </form>
-                </div>
-<!--&lt;!&ndash;                &lt;!&ndash;password&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="form-group">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <label for="password" class="cols-sm-2 control-label" name="password" >Password</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <div class="ols-md-12">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div class="input-group">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <input id="password" name="password" class="form-control" type="password"  />&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-
-
-<!--                <div></div>-->
-<!--                <div class="form-group ">-->
-<!--                    <input type="submit" value="Log In" class="form-control" />-->
-<!--                </div>-->
-<!--            </form>-->
-
+        <div th:if="${param.error}">
+            Invalid Username and Password.
         </div>
-    </div>
-</div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
 
+            <div class="container">
+                <div class="row main">
+                    <div class="main-login main-center">
+                        <form th:action="@{/login}" method="POST">
+                        <div>
+                            <form th:action="@{/login}" th:method="GET">
+                               <!--    <button type="submit">Login</button>-->
+                                <input type="submit" value="Log In" class="form-control" />
+                            </form>
+                        </div><br>
 
+                        <div>
+                            <form th:action="@{/sign-up}" th:method="GET">
+                            <!--       <button type="submit">Sign up</button>-->
+                                <input type="submit" value="Sign Up" class="form-control" />
+                            </form>
+                         </div><br>
 
+                        <div>
+                            <form th:action="@{/about-us}" th:method="GET">
+                            <!--   <button type="submit">About Us</button>-->
+                                  <input type="submit" value="About Us" class="form-control" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
@@ -147,8 +66,6 @@
 <!-- Include all compiled plugins (below), or include individual files as needed-->
 <script src="js/bootstrap.min.js"></script>
 
-
-
-<!--  <th:block th:insert="partials/partials.html :: bootstrap-js" />-->
+  <th:block th:insert="partials/partials.html :: bootstrap-js" />
 </body>
 </html>
