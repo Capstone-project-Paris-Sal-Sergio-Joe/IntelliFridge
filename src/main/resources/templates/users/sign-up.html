@@ -28,12 +28,12 @@
 </a>
 
 
-
+<h2 id="errorSignUp"></h2>
 
 <div  class="img-rounded">
     <div class="row main">
         <div class=" main-center">
-            <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+            <form id="signUpForm" th:action="@{/sign-up}" method="POST" th:object="${user}">
 
 
 
@@ -44,7 +44,7 @@
                     <div class="cols-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input id="username" class="form-control" th:field="*{username}" />   </div>
+                            <input id="username" class="form-control" th:field="*{username}" required />   </div>
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@
                     <div class="cols-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input id="email" class="form-control" th:field="*{email}" />
+                            <input id="email" class="form-control" th:field="*{email}" required />
 
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                     <div class="cols-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input id="phoneNumber" class="form-control" th:field="*{phoneNumber}" />
+                            <input id="phoneNumber" class="form-control" th:field="*{phoneNumber}" required />
 
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="cols-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input id="password" class="form-control" type="password" th:field="*{password}" />
+                            <input id="password" class="form-control" type="password" th:field="*{password}" required />
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                     <div class="cols-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+                            <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" required />
                         </div>
                     </div>
                 </div>
@@ -111,9 +111,9 @@
 
                 <label>Privacy</label>
                 <label for="isPrivateTrue">True</label>
-                <input type="radio" name="isPrivate" th:value="true" id="isPrivateTrue">
+                <input type="radio" name="isPrivate" th:value="true" id="isPrivateTrue" required>
                 <label for="isPrivateFalse">False</label>
-                <input type="radio" name="isPrivate" th:value="false" id="isPrivateFalse" checked="checked">
+                <input type="radio" name="isPrivate" th:value="false" id="isPrivateFalse" checked="checked" required>
 
             <div>
                 <div class="form-group ">
@@ -143,7 +143,6 @@
 <!--      </label>-->
 <!--      <p>Users are capable of adding other users to their fridges. If you wish to remain <em>private</em> and not have this capability to be added, select true.</p>-->
 <!--    </div>-->
-
 </form>
 
 
@@ -167,7 +166,7 @@
 <script th:src="@{js/showImageForm.js}"></script>
 <script th:src="@{js/imageUploadFilestack.js}"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-
+<script src="js/frontendValidation.js"></script>
 <th:block th:insert="partials/partials.html :: bootstrap-js" />
 
 
