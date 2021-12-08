@@ -1,26 +1,100 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:include="partials/partials.html :: head('Log In')">
-  <meta charset="UTF-8" />
+<head th:include="partials/partials.html :: head('Home')">
+
+
+
+  <!--    mbiel view -->
+  <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+  <script type="text/javascript" th:src="@{/static/css/loginScript.js}"></script>
+  <!-- Website Font style -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <!-- Google Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+
   <title>Log In</title>
 </head>
+<link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
+
 <body>
+<!--<nav th:include="partials/partials.html :: head('Home')" ></nav>-->
+
   <nav th:insert="partials/partials.html :: navbar"></nav>
-  <h1>Log In</h1>
-  <div th:if="${param.error}">
-    Invalid Username and Password.
-  </div>
-  <div th:if="${param.logout}">
-    You have been logged out.
+<!--  <h1>Welcome To IntelliFridge</h1>-->
+<a class="nav-link" th:href="@{/}">
+  <img class="center" th:src="@{/images/fridge2sm.png}"    />
+</a>
+
+
+<!--<div th:if="${param.error}">-->
+<!--  Invalid Username and Password.-->
+<!--</div>-->
+<!--<div th:if="${param.logout}">-->
+<!--  You have been logged out.-->
+<!--</div>-->
+
+
+
+
+
+  <div class="container">
+    <div class="row main">
+      <div class="main-login main-center">
+        <form th:action="@{/login}" method="POST">
+
+
+
+          <!--  username -->
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Username</label>
+            <div class="cols-md-12">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                <input id="username" name="username"   type="text" class="form-control"  />   </div>
+            </div>
+          </div>
+
+
+
+          <!--password-->
+          <div class="form-group">
+            <label for="password" class="cols-sm-2 control-label" name="password" >Password</label>
+            <div class="ols-md-12">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                <input id="password" name="password" class="form-control" type="password"  />
+              </div>
+            </div>
+          </div>
+
+
+<div></div>                <br>
+
+          <div class="form-group ">
+            <input type="submit" value="Log In" class="form-control" />
+          </div>
+      </form>
+
+      </div>
+    </div>
   </div>
 
-  <form th:action="@{/login}" method="post">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <input type="submit" value="Log In" />
-  </form>
+
+
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed-->
+  <script src="js/bootstrap.min.js"></script>
+
+
+
   <th:block th:insert="partials/partials.html :: bootstrap-js" />
 
 <!---->
