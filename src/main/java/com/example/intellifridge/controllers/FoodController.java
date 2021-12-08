@@ -47,7 +47,6 @@ private final FoodShelfLifeRepository foodShelfLifeRepository;
     @RequestMapping(path = "/keys.js", produces = "application/javascript")
     @ResponseBody
     public String apikeys(){
-        System.out.println(unsplashApiKey);
         return "const UnsplashApiKey = `" + unsplashApiKey + "`\n"+
                 "const UnsplashSecretKey = `" + unsplashSecretKey + "`\n"+
                 "const FileStackApiKey = `" + fileStackApiKey + "`";

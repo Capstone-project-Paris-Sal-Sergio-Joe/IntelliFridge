@@ -6,8 +6,6 @@ $(document).ready(function() {
 
     $('#foodSearch').keyup(function() {
         let search = $(this).val();
-        console.log(search)
-
         $('.foodItem').each( async function () {
             let foodName = $(this).find('.foodName').text().toLowerCase();
             let regExp = new RegExp(`${search}`);

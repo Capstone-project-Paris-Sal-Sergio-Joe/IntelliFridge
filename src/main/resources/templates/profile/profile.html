@@ -10,14 +10,8 @@
 <h1>Profile</h1>
 <h2 th:text="${user.username}"></h2>
 
-
-
-
 <div >
-
-        <div class="col-md-3">
-
-
+    <div class="col-md-3">
                 <div>
                     <img th:src="${user.profilePicture}" alt="user profile picture" class="col-12">
                 </div>
@@ -41,6 +35,9 @@
 </div>
 
 <button id="edit">edit</button>
+<div th:if="${param.email}">
+    <h1 th:if="${param.email[0] == 'bad'}">Email already exists. Please choose a different email.</h1>
+</div>
 <form th:action="@{'/profile/' + ${user.id} + '/edit'}" name="edit" class="hidden" id="editForm" th:method="post">
 
     <ul>
@@ -59,9 +56,9 @@
         <li>
             <p>Do you want to get notifications</p>
             <label for="notifyYes">Yes</label>
-            <input type="radio" name="notifications" value="true" id="notifyYes">
+            <input type="radio" name="notifications" value="true" id="notifyYes" th:checked="${user.isNotifications() == true}">
             <label for="notifyNo">No</label>
-            <input type="radio" name="notifications" value="false" id="notifyNo" checked="checked">
+            <input type="radio" name="notifications" value="false" id="notifyNo" th:checked="${user.isNotifications() == false}">
         </li>
         <button type="submit" id="form-btn">Submit</button>
     </ul>
@@ -70,6 +67,10 @@
 <div th:if="${param.error}" id="errorM">
     <h1 th:if="${param.error[0] == 'null'}">User not found</h1>
     <h1 th:if="${param.error[0] == 'current'}">User already added to this fridge</h1>
+    <h1 th:if="${param.error[0] == 'privateUser'}">User is private and cannot be added</h1>
+</div>
+<div th:if="${param.userAdded}">
+    <h1 th:if="${param.userAdded[0] == 'true'}">User successfully added!</h1>
 </div>
 <h3>Fridge List:</h3>
     <div th:each="fridge : ${fridge}">
@@ -81,13 +82,20 @@
         <button th:id="${'addUser' + fridge.id}" th:data-id="${fridge.id}" class="addFormButton">Add User</button>
             <form th:data-id="${fridge.id}" th:id="${'addUserForm' + fridge.id}" class="hidden" th:action="@{'/profile/add-user-to-fridge/' + ${fridge.id}}" th:method="POST">
 
-                <label for="addByUserName">Add by username</label>
-                <input name="addByUserName" id="addByUserName" type="text" placeholder="Type the username of an existing user">
+                <label for="addByUserName">Add by username or email</label>
+                <input name="addByUserName" id="addByUserName" type="text" placeholder="Type the username or email of an existing user">
             <button>Add</button>
             </form>
         <form name="deleteFridgeForm" method="post" th:action="@{'/fridge/' + ${fridge.id} + '/delete'}">
         <button id="deleteFridge">Delete/Leave Fridge</button>
         </form>
+    </div>
+<!--    Display if user has no fridges-->
+    <div th:if="${user.getFridges().size() == 0}">
+        <h3>You don't have any fridges</h3>
+        <button>
+            <a class="nav-link" th:href="@{/fridge/add-fridge}">Create Fridge</a>
+        </button>
     </div>
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 
@@ -102,6 +110,7 @@
 <script th:src="@{js/imageUploadFilestack.js}"></script>
 
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
 
 </body>
 </html>

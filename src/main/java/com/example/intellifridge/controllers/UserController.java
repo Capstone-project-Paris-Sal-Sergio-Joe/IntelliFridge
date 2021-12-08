@@ -2,6 +2,7 @@ package com.example.intellifridge.controllers;
 
 import com.example.intellifridge.models.User;
 import com.example.intellifridge.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,8 +24,6 @@ public class UserController {
     }
 
 
-
-
     @GetMapping("/sign-up")
     public String showSignupForm(Model model){
         model.addAttribute("user", new User());
@@ -34,7 +33,11 @@ public class UserController {
     @PostMapping("/sign-up")
     public String saveUser(@ModelAttribute User user){
         String hash = passwordEncoder.encode(user.getPassword());
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User sameUser = userDao.getById(currentUser.getId());
+//        String startingPhoneNumber = sameUser.getPhoneNumber();
         user.setPassword(hash);
+//        if(startingPhoneNumber.equals(null))
         userDao.save(user);
         return "redirect:/login";
     }
