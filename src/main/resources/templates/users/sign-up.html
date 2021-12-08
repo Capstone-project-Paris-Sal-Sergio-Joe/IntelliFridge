@@ -1,30 +1,137 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:include="partials/partials.html :: head('Sign-Up')">
-  <meta charset="UTF-8" />
-  <title>Sign up</title>
-<!--  <link rel="stylesheet" type="text/css" th:href="@{/css/signup.css}" href="/static/css/signup.css">-->
+<head th:include="partials/partials.html :: head('Home')">
+<!--    mbiel view -->
+    <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+    <script type="text/javascript" th:src="@{/static/css/loginScript.js}"></script>
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+    <title>sign up</title>
 </head>
 <body>
-  <nav th:insert="partials/partials.html :: navbar"></nav>
-  <h1>Create an account</h1>
-  <h2 id="errorSignUp"></h2>
-  <form id="signUpForm" th:action="@{/sign-up}" method="POST" th:object="${user}">
-    <label for="username">Username</label>
-    <input id="username" th:field="*{username}" required />
+<link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
 
-    <label for="email">Email</label>
-    <input id="email" th:field="*{email}" required />
 
-    <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" required />
+<nav th:insert="partials/partials.html :: navbar"></nav>
 
-    <label>Privacy</label>
-    <label for="isPrivateTrue">True</label>
-    <input type="radio" name="isPrivate" th:value="true" id="isPrivateTrue" required >
-    <label for="isPrivateFalse">False</label>
-    <input type="radio" name="isPrivate" th:value="false" id="isPrivateFalse" checked="checked" required >
-    <p>Users are capable of adding other users to their fridges. If you wish to remain <em>private</em> and not have this capability to be added, select true.</p>
+
+
+<a class="nav-link" th:href="@{/}">
+<img class="center" th:src="@{/images/fridge2sm.png}"    />
+</a>
+
+
+<h2 id="errorSignUp"></h2>
+
+<div  class="img-rounded">
+    <div class="row main">
+        <div class=" main-center">
+            <form id="signUpForm" th:action="@{/sign-up}" method="POST" th:object="${user}">
+
+
+
+
+<!--  username -->
+                <div >
+                    <label for="username" class="cols-sm-2 control-label">Username</label>
+                    <div class="cols-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input id="username" class="form-control" th:field="*{username}" required />   </div>
+                    </div>
+                </div>
+
+                <!--                email       -->
+                <div>
+                    <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                    <div class="cols-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input id="email" class="form-control" th:field="*{email}" required />
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div>
+                    <label for="phoneNumber" class="cols-sm-2 control-label">Phone Number</label>
+                    <div class="cols-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input id="phoneNumber" class="form-control" th:field="*{phoneNumber}" required />
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!--password-->
+                <div >
+                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    <div class="cols-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input id="password" class="form-control" type="password" th:field="*{password}" required />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                    <div class="cols-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" required />
+                        </div>
+                    </div>
+                </div>
+
+<br>
+
+                <div>
+<!--                    <label for="imageFile" class="form-label">Upload a profile Picture</label>-->
+                    <div >
+                        <div class="form-group">
+
+                        <input class="form-control" id="imageFile" type="hidden" name="image" th:field="*{profilePicture}">
+                    <button type="button" class="form-control btn btn-primary  justify-content-between"  id="open">Choose Profile Image</button>
+                </div>
+                    </div>
+                </div>
+
+                <label>Privacy</label>
+                <label for="isPrivateTrue">True</label>
+                <input type="radio" name="isPrivate" th:value="true" id="isPrivateTrue" required>
+                <label for="isPrivateFalse">False</label>
+                <input type="radio" name="isPrivate" th:value="false" id="isPrivateFalse" checked="checked" required>
+
+            <div>
+                <div class="form-group ">
+                    <input value="Sign me up!" class="form-control" type="submit" />
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="form-group">-->
+
+<!--</div>-->
+<!--<p>Users are capable of adding other users to their fridges. If you wish to remain <em>private</em> and not have this capability to be added, select true.</p>-->
 
 
 <!--    Not working because we're unable to link the CSS to the page-->
@@ -36,10 +143,71 @@
 <!--      </label>-->
 <!--      <p>Users are capable of adding other users to their fridges. If you wish to remain <em>private</em> and not have this capability to be added, select true.</p>-->
 <!--    </div>-->
+</form>
 
-    <input value="Sign me up!" type="submit" />
-  </form>
-  <th:block th:insert="partials/partials.html :: bootstrap-js" />
+
+
+
+
+
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed-->
+<script src="js/bootstrap.min.js"></script>
+
+
+
+<script src="js/jquery.js"></script>
+<script src="/keys.js"></script>
+<script src="js/profile.js"></script>
+<script th:src="@{js/showImageForm.js}"></script>
+<script th:src="@{js/imageUploadFilestack.js}"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script src="js/frontendValidation.js"></script>
+<th:block th:insert="partials/partials.html :: bootstrap-js" />
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

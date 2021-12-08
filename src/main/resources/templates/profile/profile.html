@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="partials/partials.html :: head('Profile')"></head>
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="/static/css/profile.css">
+<style>
+    .hidden{
+        display: none;
+    }
+</style>
 </head>
 <body>
 
@@ -51,7 +56,7 @@
         </li>
         <li>
             <label for="phoneNumber">phoneNumber</label>
-            <input name="phoneNumber" type="text" th:value="${user.phoneNumber}" id="phoneNumber"/>
+            <input name="phoneNumber" type="text" th:value="${user.phoneNumber}" id="phoneNumber" required />
         </li>
         <li>
             <p>Do you want to get notifications</p>
@@ -101,17 +106,15 @@
 
 
 
+<section th:replace="partials/partials_scripts :: script"></section>
 
 <script src="js/jquery.js"></script>
 <script src="/keys.js"></script>
-<script src="js/profile.js"></script>
-<section th:replace="partials/partials_scripts :: script"></section>
 <script th:src="@{js/showImageForm.js}"></script>
 <script th:src="@{js/imageUploadFilestack.js}"></script>
-
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script src="js/frontendValidationProfile.js"></script>
-
+<script src="js/profile.js"></script>
 
 </body>
 </html>
