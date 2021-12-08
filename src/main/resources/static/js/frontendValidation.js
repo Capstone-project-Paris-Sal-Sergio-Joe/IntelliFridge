@@ -25,6 +25,12 @@ signUpForm.addEventListener('submit',(e) =>{
         messages.push('Password must be less than 20 characters')
     }
 
+    if(phoneNumber.value.match(validatedPhoneNumber) || phoneNumber === '' || phoneNumber === null){
+
+    }else {
+        messages.push('This is not a valid phone number');
+    }
+
     if(messages.length >0){
         e.preventDefault()
         errorSignUp.innerText = messages.join(', ');
