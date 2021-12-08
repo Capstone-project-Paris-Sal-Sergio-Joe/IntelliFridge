@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="partials/partials.html :: head('Profile')"></head>
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="/static/css/profile.css">
+<style>
+    .hidden{
+        display: none;
+    }
+</style>
 </head>
 <body>
 
@@ -33,7 +38,7 @@
                 </div>
     </div>
 </div>
-
+<h2 id="errorProfileForm"></h2>
 <button id="edit">edit</button>
 <div th:if="${param.email}">
     <h1 th:if="${param.email[0] == 'bad'}">Email already exists. Please choose a different email.</h1>
@@ -43,22 +48,22 @@
     <ul>
         <li>
             <label for="username">Username</label>
-            <input name="username" type="text" th:value="${user.username}" id="username"/>
+            <input name="username" type="text" th:value="${user.username}" id="username" required />
         </li>
         <li>
             <label for="email">Email</label>
-            <input name="email" type="text" th:value="${user.email}" id="email"/>
+            <input name="email" type="text" th:value="${user.email}" id="email" required />
         </li>
         <li>
             <label for="phoneNumber">phoneNumber</label>
-            <input name="phoneNumber" type="text" th:value="${user.phoneNumber}" id="phoneNumber"/>
+            <input name="phoneNumber" type="text" th:value="${user.phoneNumber}" id="phoneNumber" required />
         </li>
         <li>
             <p>Do you want to get notifications</p>
             <label for="notifyYes">Yes</label>
-            <input type="radio" name="notifications" value="true" id="notifyYes" th:checked="${user.isNotifications() == true}">
+            <input type="radio" name="notifications" value="true" id="notifyYes" th:checked="${user.isNotifications() == true}" required >
             <label for="notifyNo">No</label>
-            <input type="radio" name="notifications" value="false" id="notifyNo" th:checked="${user.isNotifications() == false}">
+            <input type="radio" name="notifications" value="false" id="notifyNo" th:checked="${user.isNotifications() == false}" required >
         </li>
         <button type="submit" id="form-btn">Submit</button>
     </ul>
@@ -83,7 +88,7 @@
             <form th:data-id="${fridge.id}" th:id="${'addUserForm' + fridge.id}" class="hidden" th:action="@{'/profile/add-user-to-fridge/' + ${fridge.id}}" th:method="POST">
 
                 <label for="addByUserName">Add by username or email</label>
-                <input name="addByUserName" id="addByUserName" type="text" placeholder="Type the username or email of an existing user">
+                <input name="addByUserName" id="addByUserName" type="text" placeholder="Type the username or email of an existing user" required>
             <button>Add</button>
             </form>
         <form name="deleteFridgeForm" method="post" th:action="@{'/fridge/' + ${fridge.id} + '/delete'}">
@@ -101,16 +106,15 @@
 
 
 
+<section th:replace="partials/partials_scripts :: script"></section>
 
 <script src="js/jquery.js"></script>
 <script src="/keys.js"></script>
-<script src="js/profile.js"></script>
-<section th:replace="partials/partials_scripts :: script"></section>
 <script th:src="@{js/showImageForm.js}"></script>
 <script th:src="@{js/imageUploadFilestack.js}"></script>
-
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-
+<script src="js/frontendValidationProfile.js"></script>
+<script src="js/profile.js"></script>
 
 </body>
 </html>
