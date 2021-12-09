@@ -12,6 +12,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="partials/partials.html :: head(${currentFridge.name})">
 
+    <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
 <!--    <meta  name="viewport" content="width=device-width, initial-scale=1.0" />-->
@@ -71,6 +72,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+<link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
 
 
 <body>
@@ -80,160 +82,15 @@
 <h1 th:text="${currentFridge.name}"></h1>
 
 
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-</div>
-
-
-
-
-
-
-
-<!--<div class="container my-5  ">-->
-<!--    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">-->
-<!--        <div class="col">-->
-<!--            <div class="card h-100 text-center aboutUs ">-->
-<!--                <br>-->
-<!--                <img th:src="@{/images/sal.jpg}" class="food-name" class="card-img-top imageProfile" alt="...">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">Paris Shirley</h5>-->
-<!--                    <div class="card text-center" >-->
-<!--                        <div class="card-body">-->
-<!--                            <h5 class="card-title">About Me</h5>-->
-<!--                            <p class="card-text">a short description about myself.-->
-<!--                                a short description about myself.-->
-<!--                                a short description about myself.-->
-<!--                                a short description about myself.</p>-->
-<!--                            <ul class="list-group list-group-flush">-->
-<!--                                <li class="list-group-item ">-->
-<!--                                    <a href="https://github.com/shirleyp1097" >-->
-<!--                                        <i class="fab fa-github" style="font-size:36px"></i>-->
-<!--                                    </a>-->
-<!--                                    <a href="https://google.com" >-->
-<!--                                        <i class="fa fa-envelope"  style="font-size:36px"></i>-->
-<!--                                    </a>-->
-<!--                                    <a href="" >-->
-<!--                                        <i class="fab fa-linkedin-in" style="font-size:36px"></i></a>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-
-<!--        &lt;!&ndash;        sal              &ndash;&gt;-->
-<!--        <div class="col">-->
-<!--            <div class="card h-100 text-center aboutUs"><br>-->
-<!--                <img th:src="@{/images/sal.jpg}" class="card-img-top imageProfile" alt="...">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">Salvador Salazar</h5>-->
-<!--                    <div class="card text-center" >-->
-<!--                        <div class="card-body">-->
-<!--                            <h5 class="card-title">About Me</h5>-->
-<!--                            <p class="card-text">a short description about myself.-->
-<!--                                a short description about myself.-->
-<!--                                a short description about myself.-->
-<!--                                a short description about myself.</p>-->
-
-<!--                            <ul class="list-group list-group-flush">-->
-<!--                                <li class="list-group-item ">-->
-<!--                                    <a href="https://github.com/salvadorsalazar" >-->
-<!--                                        <i class="fab fa-github" style="font-size:36px"></i>-->
-<!--                                    </a>-->
-
-<!--                                    <a href="https://google.com" >-->
-<!--                                        <i class="fa fa-envelope"  style="font-size:36px"></i>-->
-<!--                                    </a>-->
-
-<!--                                    <a href="https://www.linkedin.com/in/salvador-salazar2" >-->
-<!--                                        <i class="fab fa-linkedin-in" style="font-size:36px"></i></a>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-
-<!--        &lt;!&ndash;               serguio            &ndash;&gt;-->
-<!--        <div class="col">-->
-<!--            <div class="card h-100 aboutUs text-center"><br>-->
-
-<!--                <img th:src="@{/images/serguio.jpg}" class="card-img-top imageProfile" alt="...">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">Serguio Landa</h5>-->
-
-<!--                    <div class="card text-center" >-->
-<!--                        <div class="card-body">-->
-<!--                            <h5 class="card-title">About Me</h5>-->
-<!--                            <p class="card-text">a short description about myself.-->
-<!--                                a short description about myself.-->
-<!--                                a short description about myself.-->
-<!--                                a short description about myself.</p>-->
-
-<!--                            <ul class="list-group list-group-flush">-->
-<!--                                <li class="list-group-item ">-->
-<!--                                    <a href="https://github.com/SerguioL" >-->
-<!--                                        <i class="fab fa-github" style="font-size:36px"></i>-->
-<!--                                    </a>-->
-<!--                                    <a href="https://google.com" >-->
-<!--                                        <i class="fa fa-envelope"  style="font-size:36px"></i>-->
-<!--                                    </a>-->
-
-<!--                                    <a href="" >-->
-<!--                                        <i class="fab fa-linkedin-in" style="font-size:36px"></i></a>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-
-<!--        &lt;!&ndash;           joe             &ndash;&gt;-->
-<!--        <div class="col">-->
-<!--            <div class="card h-100 aboutUs text-center"><br>-->
-<!--                <img th:src="@{/images/joeProfile.jpg}" alt="" class="card-img-top  imageProfile">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">Joseph Congdon</h5>-->
-<!--                    <div class="card text-center" >-->
-<!--                        <div class="card-body">-->
-<!--                            <h5 class="card-title">About Me</h5>-->
-<!--                            <p class="card-text">a short description about myself.-->
-<!--                                a short description about myself.-->
-<!--                                a short description about myself.-->
-<!--                                a short description about myself.</p>-->
-<!--                            <ul class="list-group list-group-flush">-->
-<!--                                <li class="list-group-item ">-->
-<!--                                    <a href="https://github.com/josephcongdon" >-->
-<!--                                        <i class="fab fa-github" style="font-size:36px"></i>-->
-<!--                                    </a>-->
-
-<!--                                    <a href="https://google.com" >-->
-<!--                                        <i class="fa fa-envelope"  style="font-size:36px"></i>-->
-<!--                                    </a>-->
-
-<!--                                    <a href="" >-->
-<!--                                        <i class="fab fa-linkedin-in" style="font-size:36px"></i></a>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+<!--h1<div class="card" style="width: 18rem;">-->
+<!--    <img src="..." class="card-img-top" alt="...">-->
+<!--    <div class="card-body">-->
+<!--        <h5 class="card-title">Card title</h5>-->
+<!--        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+<!--        <a href="#" class="btn btn-primary">Go somewhere</a>-->
 <!--    </div>-->
 <!--</div>-->
+
 
 
 
@@ -253,23 +110,54 @@
         </thead>
 
         <tbody>
-        <tr th:each="food : ${foodInFridge}">
+        <tr  th:each="food : ${foodInFridge}">
+
+            <div class="card-body">
+            <td th:text="${food.name}" class="food-name">
+
+                <div th:text="${'Expiration Date : '+(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}"></div>
+<!--                <br>-->
+                                        <a href="#" class="btn btn-primary">Test Button</a>
+                                       <div>
+                                        <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"
+                                              th:method="POST">
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
+                                       </div>
+            </div>
 
 
-<!--            <td th:text="${food.name}" class="food-name">-->
-
-              <td>  <div class="card" style="width: 18rem;">
-                    <img th:text="${food.name}" class="food-name">
-                    <div class="card-body">
-
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
+    <!--                                    </div>  -->
 
 
+</td>
+            <!--              <td>  <div   class="card " style="width: 18rem;">-->
+<!--                    <img th:text="${food.name}"  >-->
+<!--                    <div class="card-body">-->
+<!--                        <img src="${fridgeImageUrl}   "><br>-->
 
-            </td>
+<!--                        <div id="foodResults">-->
+<!--                            <div th:each="shelfLife : ${shelfLives}" class="foodItem">-->
+<!--                                <div th:id="${shelfLife.name}" class="foodImageUrl"></div>-->
+<!--                                <h3 th:text="${shelfLife.name}" class="foodName"></h3>-->
+<!--                            </div>-->
 
+<!--                        <div th:text="${'Expiration Date : '+(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}"></div>-->
+<!--<br>-->
+<!--&lt;!&ndash;                        <a href="#" class="btn btn-primary">Test Button</a>&ndash;&gt;-->
+<!--                        <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"-->
+<!--                              th:method="POST">-->
+<!--                            <button class="btn btn-danger">Delete</button>-->
+<!--                        </form>-->
+
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+
+
+
+<!--            </td>-->
 
 
 
@@ -304,6 +192,51 @@
         </tbody>
     </table>
 </div>
+
+
+
+
+
+
+
+
+
+
+<h1>IMAGES</h1>
+<div class="container">
+    <div class="row main">
+        <div class="main-login main-center">
+<div >
+
+    <div th:each="food : ${foodInFridge}">
+
+    <div th:text="${food.name}" class="food-name">    </div>
+        <div    ></div>
+<!--<br><hr>-->
+        <div th:text="${'Expiration Date : '+(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}">    </div>
+
+
+        <!--        </div>-->
+<!--        &lt;!&ndash;                <br>&ndash;&gt;-->
+<!--        <div>-->
+<!--        <a href="#" class="btn btn-primary">Test Button</a>-->
+<!--        </div>-->
+
+        <div>
+            <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"
+                  th:method="POST">
+                <button class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+
+</div>
+
+</div>
+        </div>
+    </div>
+
+
+<hr><hr>
 
 <!--add-food form-->
 <button class="btn btn-primary" id="addFoodButton">Add Food</button>
@@ -360,6 +293,14 @@
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="/js/add-food.js"></script>
 <script src="/js/fridge.js"></script>
+
+
+<!--    &lt;!&ndash; jQuery (necessary for Bootstrap's JavaScript plugins)&ndash;&gt;-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    <!-- Include all compiled plugins (below), or include individual files as needed-->
+    <script src="js/bootstrap.min.js"></script>
+
+
 </body>
 </html>
 
