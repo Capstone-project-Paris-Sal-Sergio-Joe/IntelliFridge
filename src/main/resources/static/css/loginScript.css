@@ -1,3 +1,4 @@
+/*@keyframes ants { to { background-position: 100% } }*/
 
 .center {
     display: block;
@@ -13,7 +14,33 @@
 h1{
 text-align: center;
 }
+.imageProfile{
+    display: block;
+    /*margin-left: auto;*/
+    margin: auto;
 
+border-radius: 50%;
+/*    -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);*/
+/*    -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);*/
+/*    box-shadow: 1px 2px 3px rgba(0,0,0,.5);*/
+
+
+    /*padding: 1em;*/
+    /*border: 1px solid transparent;*/
+    /*background:*/
+    /*        linear-gradient(white, white) padding-box,*/
+    /*        repeating-linear-gradient(-45deg, black 0, black 25%, white 0, white 50%) 0 / .6em .6em;*/
+    /*animation: ants 12s linear infinite;*/
+}
+
+
+/*.image-blurred-edge {*/
+/*    background-image: url('http://lorempixel.com/200/200/city/9');*/
+/*    width: 200px;*/
+/*    height: 200px;*/
+/*    !* you need to match the shadow color to your background or image border for the desired effect*!*/
+/*    box-shadow: 0 0 8px 8px white inset;*/
+/*}*/
 
 /*body, html{*/
 /*    height: 100%;*/
@@ -41,7 +68,11 @@ hr{
     color: #fff;
 }
 
+.aboutUs{
+    background: rgb(  111,	178,	209)	;
+    border-radius:30px;
 
+}
 
 /*TO CENTER MENU FORM*/
 .main-center{
@@ -103,4 +134,7 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+
+
 
