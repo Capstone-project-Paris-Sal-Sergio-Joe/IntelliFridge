@@ -79,28 +79,26 @@ public class ProfileController {
 
     @PostMapping("/profile/{id}/edit")
     public String updateProfile(@PathVariable long id, @RequestParam String username, @RequestParam String email, @RequestParam String phoneNumber, @RequestParam Boolean notifications){
-
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User sameUser = userDao.getById(currentUser.getId());
-        String currentEmail = sameUser.getEmail();
-
-        if(currentEmail.equals(email)){
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User sameUser = userDao.getById(currentUser.getId());
+//        String currentEmail = sameUser.getEmail();
+//        if(currentEmail.equals(email)){
+//       }
             User user = userDao.getById(id);
             user.setUsername(username);
             user.setEmail(email);
             user.setPhoneNumber(phoneNumber);
             user.setNotifications(notifications);
             userDao.save(user);
-        }else {
-
-            List<User> users = userDao.findAll();
-            for (int i = 0; i < users.size(); i++) {
-                String userEmail = users.get(i).getEmail();
-                if (email.equals(userEmail)) {
-                    return "redirect:/profile?email=bad";
-                }
-            }
-        }
+//        else {
+//            List<User> users = userDao.findAll();
+//            for (int i = 0; i < users.size(); i++) {
+//                String userEmail = users.get(i).getEmail();
+//                if (email.equals(userEmail)) {
+//                    return "redirect:/profile?email=bad";
+//                }
+//            }
+//        }
         return "redirect:/profile";
     }
 
