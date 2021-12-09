@@ -36,7 +36,6 @@ public class UserController {
 
         List<User> users = userDao.findAll();
         for (User otherUser: users) {
-            System.out.println(user);
             if (otherUser.getUsername().equalsIgnoreCase(user.getUsername())) {
                 return "redirect:/sign-up?error=usernameAlreadyExists";
             } else if (otherUser.getEmail().equalsIgnoreCase(user.getEmail())) {

@@ -82,25 +82,48 @@ public class ProfileController {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User sameUser = userDao.getById(currentUser.getId());
-        String currentEmail = sameUser.getEmail();
 
-        if(currentEmail.equals(email)){
-            User user = userDao.getById(id);
-            user.setUsername(username);
-            user.setEmail(email);
-            user.setPhoneNumber(phoneNumber);
-            user.setNotifications(notifications);
-            userDao.save(user);
-        }else {
+        List<User> otherUsers = userDao.findUsersByIdIsNot(sameUser.getId());
 
-            List<User> users = userDao.findAll();
-            for (int i = 0; i < users.size(); i++) {
-                String userEmail = users.get(i).getEmail();
-                if (email.equals(userEmail)) {
-                    return "redirect:/profile?email=bad";
-                }
+        for (User otherUser : otherUsers) {
+            if (otherUser.getUsername().equalsIgnoreCase(username)) {
+                return "redirect:/profile?error=usernameAlreadyExists";
+            } else if (otherUser.getEmail().equalsIgnoreCase(email)) {
+                return "redirect:/profile?error=emailAlreadyExists";
+            } else if (otherUser.getPhoneNumber() == null) {
+                continue;
+            } else if (otherUser.getPhoneNumber().equalsIgnoreCase("")) {
+                continue;
+            } else if (otherUser.getPhoneNumber().equalsIgnoreCase(phoneNumber)) {
+                return "redirect:/profile?error=phoneNumberAlreadyExists";
             }
         }
+
+//        if all above conditions pass
+        sameUser.setUsername(username);
+        sameUser.setEmail(email);
+        sameUser.setPhoneNumber(phoneNumber);
+        sameUser.setNotifications(notifications);
+        userDao.save(sameUser);
+
+//        String currentEmail = sameUser.getEmail();
+//        if(currentEmail.equals(email)){
+//            User user = userDao.getById(id);
+//            user.setUsername(username);
+//            user.setEmail(email);
+//            user.setPhoneNumber(phoneNumber);
+//            user.setNotifications(notifications);
+//            userDao.save(user);
+//        }else {
+//
+//            List<User> users = userDao.findAll();
+//            for (int i = 0; i < users.size(); i++) {
+//                String userEmail = users.get(i).getEmail();
+//                if (email.equals(userEmail)) {
+//                    return "redirect:/profile?email=bad";
+//                }
+//            }
+//        }
         return "redirect:/profile";
     }
 
