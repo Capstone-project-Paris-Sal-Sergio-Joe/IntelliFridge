@@ -29,6 +29,13 @@
 
 
 <h2 id="errorSignUp"></h2>
+<div th:if="${param.error}" id="errorM">
+    <h1 th:if="${param.error[0] == 'usernameAlreadyExists'}">Username already taken. Please choose another</h1>
+    <h1 th:if="${param.error[0] == 'emailAlreadyExists'}">Email already taken. Please choose another</h1>
+    <h1 th:if="${param.error[0] == 'phoneNumberAlreadyExists'}">Phone number already taken. Please choose another</h1>
+</div>
+<!--<div th:if="${param.error}" th:id="${param.error[0]}"></div>-->
+
 
 <div  class="img-rounded">
     <div class="row main">
@@ -67,7 +74,7 @@
                     <div class="cols-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input id="phoneNumber" class="form-control" th:field="*{phoneNumber}" required />
+                            <input id="phoneNumber" class="form-control" th:field="*{phoneNumber}"/>
 
                         </div>
                     </div>

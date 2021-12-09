@@ -3,11 +3,14 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const signUpForm = document.getElementById('signUpForm');
 const errorSignUp = document.getElementById('errorSignUp');
-const validatedEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const validatedEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
 const phoneNumber = document.getElementById('phoneNumber');
 const validatedPhoneNumber = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+const backendError = document.getElementById('errorM');
+
 
 signUpForm.addEventListener('submit',(e) =>{
+
     let messages = [];
 
 
@@ -25,10 +28,19 @@ signUpForm.addEventListener('submit',(e) =>{
         messages.push('Password must be less than 20 characters')
     }
 
+    if(phoneNumber.value.match(validatedPhoneNumber)){
+
+    } else if (phoneNumber.value === '') {
+
+    } else if (phoneNumber.value === null) {
+
+    } else {
+        messages.push('This is not a valid phone number');
+    }
+
     if(messages.length >0){
         e.preventDefault()
         errorSignUp.innerText = messages.join(', ');
     }
+    backendError.innerText = '';
 })
-
-
