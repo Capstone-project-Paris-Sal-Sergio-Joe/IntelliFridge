@@ -10,21 +10,22 @@
 <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
-
 <title>Log In</title>
 </head>
 <link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
-<body>
-<!--<h1>This the home</h1>-->
-<!--<form th:action="@{/login}" th:method="GET">-->
-<!--    <button type="submit">Login</button>-->
-<!--</form>-->
 
-<!--<form th:action="@{/sign-up}" th:method="GET">-->
-<!--    <button type="submit">Sign up</button>-->
-<!--</form>-->
-<!--<th:block th:insert="partials/partials.html :: bootstrap-js"/>-->
+<!--      href="/static/css/animation.css">-->
+
+
+<body  class="welcome">
+
+
+<span id="splash-overlay" class="splash"></span>
+<span id="welcome" class="z-depth-4"></span>
+
+
 <!--<nav th:include="partials/partials.html :: head('Home')" ></nav>-->
+
 <nav th:insert="partials/partials.html :: navbar"></nav>
 <h1 class="title">Welcome To IntelliFridge</h1>
 
@@ -44,25 +45,26 @@
                 <div class="row main">
                     <div class="main-login main-center">
                         <form th:action="@{/login}" method="POST">
-                            <div>
-                                <form th:action="@{/login}" th:method="GET">
-                                   <!--    <button type="submit">Login</button>-->
-                                    <input type="submit" value="Log In" class="form-control" />
-                                </form>
-                            </div><br>
-                            <div>
-                                <form th:action="@{/sign-up}" th:method="GET">
-                                <!--       <button type="submit">Sign up</button>-->
-                                    <input type="submit" value="Sign Up" class="form-control" />
-                                </form>
-                             </div><br>
-                            <div>
-                                <form th:action="@{/about-us}" th:method="GET">
-                                <!--   <button type="submit">About Us</button>-->
-                                      <input type="submit" value="About Us" class="form-control" />
-                                </form>
-                            </div>
-                        </form>
+                        <div>
+                            <form th:action="@{/login}" th:method="GET">
+                               <!--    <button type="submit">Login</button>-->
+                                <input type="submit" value="Log In" class="form-control" />
+                            </form>
+                        </div><br>
+
+                        <div>
+                            <form th:action="@{/sign-up}" th:method="GET">
+                            <!--       <button type="submit">Sign up</button>-->
+                                <input type="submit" value="Sign Up" class="form-control" />
+                            </form>
+                         </div><br>
+
+                        <div>
+                            <form th:action="@{/about-us}" th:method="GET">
+                            <!--   <button type="submit">About Us</button>-->
+                                  <input type="submit" value="About Us" class="form-control" />
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
