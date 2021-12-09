@@ -67,9 +67,13 @@
             <label for="notifyNo">No</label>
             <input type="radio" name="notifications" value="false" id="notifyNo" th:checked="${user.isNotifications() == false}" required >
         </li>
-<!--        <li>-->
-<!--            -->
-<!--        </li>-->
+        <li>
+            <label>Privacy: </label>
+            <label for="isPrivateTrue">True</label>
+            <input type="radio" name="privacy" th:value="true" id="isPrivateTrue" th:checked="${user.getIsPrivate() == true}" required>
+            <label for="isPrivateFalse">False</label>
+            <input type="radio" name="privacy" th:value="false" id="isPrivateFalse" th:checked="${user.getIsPrivate() == false}" required>
+        </li>
         <button type="submit" id="form-btn">Submit</button>
     </ul>
 </form>

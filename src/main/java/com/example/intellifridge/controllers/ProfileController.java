@@ -78,7 +78,7 @@ public class ProfileController {
 }
 
     @PostMapping("/profile/{id}/edit")
-    public String updateProfile(@PathVariable long id, @RequestParam String username, @RequestParam String email, @RequestParam String phoneNumber, @RequestParam Boolean notifications){
+    public String updateProfile(@PathVariable long id, @RequestParam String username, @RequestParam String email, @RequestParam String phoneNumber, @RequestParam Boolean notifications, @RequestParam Boolean privacy){
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User sameUser = userDao.getById(currentUser.getId());
@@ -104,6 +104,7 @@ public class ProfileController {
         sameUser.setEmail(email);
         sameUser.setPhoneNumber(phoneNumber);
         sameUser.setNotifications(notifications);
+        sameUser.setIsPrivate(privacy);
         userDao.save(sameUser);
 
 //        String currentEmail = sameUser.getEmail();
