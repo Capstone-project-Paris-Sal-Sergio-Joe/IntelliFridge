@@ -7,3 +7,18 @@
     width: 100%;
     white-space: nowrap;
 }
+
+@media (max-width: 720px) {
+
+    table#foodTable.table.table-striped.table-responsive-md.dataTable.no-footer{
+        visibility: collapse;
+    }
+
+}
+
+@media (min-width:721px) {
+    .phoneTable{
+        visibility: collapse;
+    }
+
+}
