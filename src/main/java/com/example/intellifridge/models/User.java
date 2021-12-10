@@ -160,4 +160,19 @@ public class User {
     public void setIsPrivate(boolean isPrivate) {
         this.isPrivate = isPrivate;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", profilePicture='" + profilePicture + '\'' +
+                ", notifications=" + notifications +
+                ", isPrivate=" + isPrivate +
+                ", fridges=" + fridges +
+                '}';
+    }
 }
