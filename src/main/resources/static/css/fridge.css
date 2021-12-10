@@ -3,12 +3,7 @@
     border: 5px solid red;
 }
 
-.table-parent{
-    width: 300px;
-
-}
-
-.table{
+.container {
     width: 100%;
-    border-collapse: collapse;
+    white-space: nowrap;
 }

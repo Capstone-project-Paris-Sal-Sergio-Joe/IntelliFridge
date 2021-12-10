@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
+<head th:include="partials/partials.html :: head('Home')" >
     <title id="pageTitle">IntelliFridge | About Us</title>
     <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
     integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
 
 </head>
 <body>
+<link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
+
+
 <nav th:insert="partials/partials.html :: navbar"></nav>
 <h1 class="title">IntelliFridge</h1>
 
@@ -156,6 +158,7 @@
         </div>
     </div>
 
+<th:block th:insert="partials/partials.html :: bootstrap-js" />
 
 </body>
 </html>
