@@ -17,11 +17,9 @@
 <!--      href="/static/css/animation.css">-->
 
 
-<body  >
+<body >
+<link  rel="stylesheet" th:href="@{css/logo.css}"/>
 
-
-<span id="splash-overlay" class="splash"></span>
-<span id="welcome" class="z-depth-4"></span>
 
 
 <!--<nav th:include="partials/partials.html :: head('Home')" ></nav>-->
@@ -29,10 +27,9 @@
 <nav th:insert="partials/partials.html :: navbar"></nav>
 <h1 class="title">Welcome To IntelliFridge</h1>
 
-    <a class="nav-link" th:href="@{/}">
-        <img class="center" th:src="@{/images/fridge2sm.png}"    />
-    </a>
-
+<a class="nav-link" th:href="@{/}">
+    <img class="center signup-logo" th:src="@{/images/IfMedium.png}"    />
+</a>
 
         <div th:if="${param.error}">
             Invalid Username and Password.
