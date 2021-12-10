@@ -23,7 +23,7 @@
 <!--&lt;!&ndash;<link  rel="stylesheet" th:href="@{css/loginScript.css}"/>&ndash;&gt;-->
 
 
-<body style="color:white"  >
+<body  >
 
 
 <link  rel="stylesheet" th:href="@{/css/loginScript.css}"/>
@@ -52,13 +52,13 @@
 
         <tbody>
         <tr th:each="food : ${foodInFridge}">
-            <td style="color:white" th:text="${food.name}" class="food-name"></td>
-            <td style="color:white"   th:text="${(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}"></td>
+            <td th:text="${food.name}" class="food-name"></td>
+            <td   th:text="${(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}"></td>
 
-            <td  style="color:white"  th:text="${food.getShelfLife().getFoodGroup().name}">
+            <td   th:text="${food.getShelfLife().getFoodGroup().name}">
 
             </td>
-        <td style="color:white"  >
+        <td   >
             <form  th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"
                   th:method="POST">
                 <button   class="btn btn-danger">Delete</button>
