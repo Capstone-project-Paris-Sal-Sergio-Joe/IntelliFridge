@@ -95,14 +95,14 @@ button#form-btn{
 }
 
 .submitFridgeBtn{
-    background-color: rgb(88, 229, 61);
     border-radius: 7.25rem;
-    border: green solid 1px;
-    color: white;
+    color: black;
     font-size: 12px;
     margin: auto;
     height: 2rem;
     width: 5rem;
+    background-color: rgb( 195, 252, 204);
+    border: rgb( 142, 182, 200) solid 2px;
 }
 
 .submitFridgeBtn:active{
@@ -111,14 +111,14 @@ button#form-btn{
 }
 
 .cancelFridgeBtn{
-    background-color: rgb(239, 41, 41);
     border-radius: 7.25rem;
-    border: red solid 1px;
-    color: white;
+    color: black;
     font-size: 12px;
     margin: auto;
     height: 2rem;
     width: 5rem;
+    background-color: rgb( 254, 191, 189);
+    border: rgb( 142, 182, 200) solid 2px;
 }
 
 .cancelFridgeBtn:active{
@@ -272,7 +272,7 @@ li{
 }
 
 footer{
-    border: rgb( 142, 182, 200) solid 2px;
+    /*border: rgb( 142, 182, 200) solid 2px;*/
     /*position: fixed;*/
 }
 
@@ -280,6 +280,13 @@ footer{
     height: 3rem;
     width: auto;
 }
-/*h1{*/
-/*    text-align: center;*/
-/*}*/
+
+@media screen and (min-width:576px) {
+
+   .desktopView{
+       display: flex;
+       flex-direction: column;
+   }
+
+
+}
