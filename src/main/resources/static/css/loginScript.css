@@ -8,6 +8,11 @@
     color:rgb(  111,	178,	209) ;
 
 }
+.aboutTitle{
+    position: relative;
+    height: 20px;
+    width: 100%;
+}
 
 h1{
 text-align: center;

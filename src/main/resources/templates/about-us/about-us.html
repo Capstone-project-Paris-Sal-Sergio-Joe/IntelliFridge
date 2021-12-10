@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:include="partials/partials.html :: head('Home')" >
     <title id="pageTitle">IntelliFridge | About Us</title>
     <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,11 +12,10 @@
 </head>
 <body>
 <link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
-
-
 <nav th:insert="partials/partials.html :: navbar"></nav>
-<h1 class="title">IntelliFridge</h1>
-
+<div class="aboutTitle">
+<img th:src="@{/images/if-logo-FINAL-full.png}"  th:width="400px"/>
+</div>
     <div class="container my-5  ">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
             <div class="col">
