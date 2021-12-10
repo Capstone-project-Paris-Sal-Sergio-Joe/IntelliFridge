@@ -28,8 +28,14 @@ h1,h3{
     color: #05f105;
 }
 
+.noFridges{
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
 p,label{
-    color: rgb(1, 103, 145);
+    color: white;
 }
 
 .errorProfileForm{
@@ -72,9 +78,66 @@ button#form-btn{
     width: 4rem;
 }
 
+.addFridgeBtn{
+    background-color: rgb( 111, 178, 209);
+    border-radius: 7.25rem;
+    border: blue solid 1px;
+    color: white;
+    font-size: 12px;
+    margin: auto;
+    height: 3rem;
+    width: 20rem;
+}
+
+.addFridgeBtn:active{
+    background-color: #406fee;
+    color: white;
+}
+
+.submitFridgeBtn{
+    background-color: rgb(88, 229, 61);
+    border-radius: 7.25rem;
+    border: green solid 1px;
+    color: white;
+    font-size: 12px;
+    margin: auto;
+    height: 2rem;
+    width: 5rem;
+}
+
+.submitFridgeBtn:active{
+    background-color: #23fd5f;
+    color: white;
+}
+
+.cancelFridgeBtn{
+    background-color: rgb(239, 41, 41);
+    border-radius: 7.25rem;
+    border: red solid 1px;
+    color: white;
+    font-size: 12px;
+    margin: auto;
+    height: 2rem;
+    width: 5rem;
+}
+
+.cancelFridgeBtn:active{
+    background-color: #ec0b0b;
+    color: white;
+}
+
+.addFridge{
+    margin-bottom: 25px;
+}
+
 button#edit.editFormBtn:active{
     background-color: gray;
     color: white;
+}
+
+
+input#newFridge{
+    margin: 10px;
 }
 
 .editInput{
@@ -114,12 +177,11 @@ button#edit.editFormBtn:active{
 }
 
 .addUserInput{
-    /*max-width: 93px;*/
-    width: 12.3rem;
-    height: 20px;
-    margin: 2px;
-    position: absolute;
-    right: 5rem;
+         width: 14.5rem;
+         height: 28px;
+         position: absolute;
+         right: 2rem;
+         margin: 3px;
 }
 
 .error{
@@ -139,6 +201,7 @@ div.col.cardImg{
 button.btn.addUserBtn{
     position: absolute;
     top: 14rem;
+    right: 11rem;
 }
 
 .cardControls{
@@ -191,6 +254,7 @@ button#open.btn-outline-secondary.whiteFont.mt-2{
 
 
 
+
 .uploadBtnDiv{
     text-align: center;
 }
@@ -199,6 +263,23 @@ li{
     list-style: none;
 }
 
+.addFridge{
+    text-align: center;
+}
+
+.addUserDiv{
+    margin-right: 3rem;
+}
+
+footer{
+    border: rgb( 142, 182, 200) solid 2px;
+    /*position: fixed;*/
+}
+
+.footerImg{
+    height: 3rem;
+    width: auto;
+}
 /*h1{*/
 /*    text-align: center;*/
 /*}*/
