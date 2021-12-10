@@ -1,6 +1,7 @@
 const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
+const passwordConfirm = document.getElementById('confirm');
 const signUpForm = document.getElementById('signUpForm');
 const errorSignUp = document.getElementById('errorSignUp');
 const validatedEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
@@ -26,6 +27,10 @@ signUpForm.addEventListener('submit',(e) =>{
 
     if (password.value.length >= 20) {
         messages.push('Password must be less than 20 characters')
+    }
+
+    if (password.value !== passwordConfirm.value) {
+        messages.push('Password and password confirmation are not the same');
     }
 
     if(phoneNumber.value.match(validatedPhoneNumber)){
