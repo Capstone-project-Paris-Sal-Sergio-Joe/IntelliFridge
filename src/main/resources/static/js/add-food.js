@@ -48,45 +48,45 @@ $(document).ready(function() {
     //mobile view
 
 
-
-    $('#foodSearch2').keyup(function() {
-        let search = $(this).val();
-        $('.foodItem').each( async function () {
-            let foodName = $(this).find('.foodName').text().toLowerCase();
-            let regExp = new RegExp(`${search}`);
-            if (search != '') {
-                if (regExp.test(foodName) == true) {
-                    let foodImageURL = await imageCode(foodName);
-                    $(this).find('.foodImageURL').html(`
-                            <img src="${foodImageURL}">
-                        `)
-                    $(this).css('display', 'block');
-                } else {
-                    $(this).css('display', 'none');
-                }
-            } else {
-                $(this).css('display', 'none');
-            }
-
-            $(this).click(function () {
-                $('#foodSearch').val(foodName);
-                $('#foodSearch').prop('readonly',true);
-                $('#addedFood').html($(this).html());
-                $('#addedFood').append(`<p>Fridge or Freezer?</p>
-    <input type="radio" name="isInFreezer" value="false" text="Fridge" checked="checked" id="fridgeOption">
-    <label for="fridgeOption">Fridge</label>
-    <input type="radio" name="isInFreezer" value="true" text="Freezer" id="freezerOption">
-    <label for="freezerOption">Freezer</label>
-    <button type="submit">Add Food</button>
-    <button type="button" id="cancelAddFood">Cancel</button>
-                `)
-                $('#foodResults2').html('');
-
-                $('#cancelAddFood').click(() => location.reload());
-
-            })
-        })
-    })
+    //
+    // $('#foodSearch2').keyup(function() {
+    //     let search = $(this).val();
+    //     $('.foodItem').each( async function () {
+    //         let foodName = $(this).find('.foodName').text().toLowerCase();
+    //         let regExp = new RegExp(`${search}`);
+    //         if (search != '') {
+    //             if (regExp.test(foodName) == true) {
+    //                 let foodImageURL = await imageCode(foodName);
+    //                 $(this).find('.foodImageURL').html(`
+    //                         <img src="${foodImageURL}">
+    //                     `)
+    //                 $(this).css('display', 'block');
+    //             } else {
+    //                 $(this).css('display', 'none');
+    //             }
+    //         } else {
+    //             $(this).css('display', 'none');
+    //         }
+    //
+    //         $(this).click(function () {
+    //             $('#foodSearch').val(foodName);
+    //             $('#foodSearch').prop('readonly',true);
+    //             $('#addedFood').html($(this).html());
+    //             $('#addedFood').append(`<p>Fridge or Freezer?</p>
+    // <input type="radio" name="isInFreezer" value="false" text="Fridge" checked="checked" id="fridgeOption">
+    // <label for="fridgeOption">Fridge</label>
+    // <input type="radio" name="isInFreezer" value="true" text="Freezer" id="freezerOption">
+    // <label for="freezerOption">Freezer</label>
+    // <button type="submit">Add Food</button>
+    // <button type="button" id="cancelAddFood">Cancel</button>
+    //             `)
+    //             $('#foodResults2').html('');
+    //
+    //             $('#cancelAddFood').click(() => location.reload());
+    //
+    //         })
+    //     })
+    // })
 
 
 

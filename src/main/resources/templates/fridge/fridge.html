@@ -11,6 +11,7 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" th:src="@{/static/css/loginScript.js}"></script>
 
     <title>Fridge</title>
 </head>
@@ -22,7 +23,7 @@
 <!--&lt;!&ndash;<link  rel="stylesheet" th:href="@{css/loginScript.css}"/>&ndash;&gt;-->
 
 
-<body>
+<body style="color:white"  >
 
 
 <link  rel="stylesheet" th:href="@{/css/loginScript.css}"/>
@@ -41,7 +42,7 @@
 <div class="table-parent">
         <thead>
         <tr>
-            <th><a class="btn btn-success text-right" target="_blank">Food Name</a></th>
+            <th><a class="btn btn-success text-right" target="_blank">Sort</a></th>
             <th><a class="btn btn-success text-right" target="_blank">Expiration Date</a></th>
             <th><a class="btn btn-success text-right" target="_blank">Category</a></th>
             <th><a class="btn btn-success text-right" target="_blank">Actions</a></th>
@@ -51,15 +52,16 @@
 
         <tbody>
         <tr th:each="food : ${foodInFridge}">
-            <td th:text="${food.name}" class="food-name"></td>
-            <td th:text="${(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}"></td>
-            <td th:text="${food.getShelfLife().getFoodGroup().name}">
+            <td style="color:white" th:text="${food.name}" class="food-name"></td>
+            <td style="color:white"   th:text="${(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}"></td>
+
+            <td  style="color:white"  th:text="${food.getShelfLife().getFoodGroup().name}">
 
             </td>
-        <td>
-            <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"
+        <td style="color:white"  >
+            <form  th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"
                   th:method="POST">
-                <button class="btn btn-danger">Delete</button>
+                <button   class="btn btn-danger">Delete</button>
             </form>
         </td>
         </tr>
@@ -69,106 +71,106 @@
 </div>
 
 
-        <!-- table for mobile view-->
+<!--        &lt;!&ndash; table for mobile view&ndash;&gt;-->
 
-<!--Table-->
-<div class="container my-2 phoneTable">
-    <table id="foodTable2" border="1" class="table table-striped " >
-        <!--        style="width: fit-content"-->
-        <thead>
-        <tr>
-            <th><a class="btn btn-primary text-right" target="_blank">Food Name</a>
-
-
-                <!--add-food form-->
-                <button class="btn btn-primary" id="addFoodButton">Add Food</button>
-                <form th:action="@{'/fridge/' + ${currentFridge.id} + '/add-food'}" th:method="post" th:object="${food}" id="addFoodForm">
-
-                    <!--    Hidden date added-->
-                    <input th:type="hidden" th:field="*{dateAdded}">
-
-                    <!--    <label>Food Name</label>-->
-                    <input type="text" placeholder="Food name..." id="foodSearch2" th:field="*{name}" required>
-
-                    <div id="foodResults2">
-                        <div th:each="shelfLife : ${shelfLives}" class="foodItem">
-                            <div th:id="${shelfLife.name}" class="foodImageURL2"></div>
-                            <h3 th:text="${shelfLife.name}" class="foodName"></h3>
-                        </div>
-                    </div>
-
-                    <div id="addedFood"></div>
-                </form>
-
-            </th>
-        </tr>
-        </thead>
-
-        <tbody >
+<!--&lt;!&ndash;Table&ndash;&gt;-->
+<!--<div class="container my-2 phoneTable">-->
+<!--    <table id="foodTable" border="1" class="table table-striped " >-->
+<!--        &lt;!&ndash;        style="width: fit-content"&ndash;&gt;-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th><a class="btn btn-primary text-right" target="_blank">Sort</a>-->
 
 
-        <tr th:each="food : ${foodInFridge}">
-            <td   >
+<!--                &lt;!&ndash;add-food form&ndash;&gt;-->
+<!--                <button class="btn btn-primary" id="addFoodButton">Add Food</button>-->
+<!--                <form th:action="@{'/fridge/' + ${currentFridge.id} + '/add-food'}" th:method="post" th:object="${food}" id="addFoodForm">-->
 
-                <div class="row"   >
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <div  >
-                        <div class="card-header"></div>
-                                <div   th:text="${food.name}"  class="food-name "  style="background: rgb(2,60,82);   color:white; margin: 5px;  " >
-                                </div>
-                                <div class="card-body " style="background: rgb(2,60,82); color:white;"   >
+<!--                    &lt;!&ndash;    Hidden date added&ndash;&gt;-->
+<!--                    <input th:type="hidden" th:field="*{dateAdded}">-->
 
-                                    <div  th:text="${'Expires On: '+(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}">
-                                    </div>
-                                    <div>
-                                        <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"
-                                              th:method="POST">
-                                            <button class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </div>
+<!--                    &lt;!&ndash;    <label>Food Name</label>&ndash;&gt;-->
+<!--                    <input type="text" placeholder="Food name..." id="foodSearch" th:field="*{name}" required>-->
 
-                                </div>
-                                <!--                                <br>-->
-                            </div>
+<!--                    <div id="foodResults">-->
+<!--                        <div th:each="shelfLife : ${shelfLives}" class="foodItem">-->
+<!--                            <div th:id="${shelfLife.name}" class="foodImageURL"></div>-->
+<!--                            <h3 th:text="${shelfLife.name}" class="foodName"></h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                        </div>
+<!--                    <div id="addedFood"></div>-->
+<!--                </form>-->
 
-                    </div>
-                </div>
-            </td>
+<!--            </th>-->
+<!--        </tr>-->
+<!--        </thead>-->
 
-        </tr>
-
-        </tbody>
-    </table>
-</div>
-</div>
+<!--        <tbody >-->
 
 
-        <!-- table for mobile view-->
+<!--        <tr th:each="food : ${foodInFridge}">-->
+<!--            <td   >-->
+
+<!--                <div class="row"   >-->
+<!--                    <div class="col-sm-3">-->
+<!--                        <div class="card">-->
+<!--                            <div  >-->
+<!--                        <div class="card-header"></div>-->
+<!--                                <div   th:text="${food.name}"  class="food-name "  style="background: rgb(2,60,82);   color:white; margin: 5px;  " >-->
+<!--                                </div>-->
+<!--                                <div class="card-body " style="background: rgb(2,60,82); color:white;"   >-->
+
+<!--                                    <div  th:text="${'Expires On: '+(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}">-->
+<!--                                    </div>-->
+<!--                                    <div>-->
+<!--                                        <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"-->
+<!--                                              th:method="POST">-->
+<!--                                            <button class="btn btn-danger">Delete</button>-->
+<!--                                        </form>-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+<!--                                &lt;!&ndash;                                <br>&ndash;&gt;-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </td>-->
+
+<!--        </tr>-->
+
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<!--        &lt;!&ndash; table for mobile view&ndash;&gt;-->
 
 
 
-<!--&lt;!&ndash;add-food form&ndash;&gt;-->
-<!--<button class="btn btn-primary" id="addFoodButton">Add Food</button>-->
-<!--<form th:action="@{'/fridge/' + ${currentFridge.id} + '/add-food'}" th:method="post" th:object="${food}" id="addFoodForm">-->
+<!--add-food form-->
+<button class="btn btn-primary" id="addFoodButton">Add Food</button>
+<form th:action="@{'/fridge/' + ${currentFridge.id} + '/add-food'}" th:method="post" th:object="${food}" id="addFoodForm">
 
-<!--    &lt;!&ndash;    Hidden date added&ndash;&gt;-->
-<!--    <input th:type="hidden" th:field="*{dateAdded}">-->
+    <!--    Hidden date added-->
+    <input th:type="hidden" th:field="*{dateAdded}">
 
-<!--&lt;!&ndash;    <label>Food Name</label>&ndash;&gt;-->
-<!--    <input type="text" placeholder="Food name..." id="foodSearch" th:field="*{name}" required>-->
+<!--    <label>Food Name</label>-->
+    <input type="text" placeholder="Food name..." id="foodSearch" th:field="*{name}" required>
 
-<!--    <div id="foodResults">-->
-<!--        <div th:each="shelfLife : ${shelfLives}" class="foodItem">-->
-<!--            <div th:id="${shelfLife.name}" class="foodImageURL"></div>-->
-<!--            <h3 th:text="${shelfLife.name}" class="foodName"></h3>-->
-<!--        </div>-->
-<!--    </div>-->
+    <div id="foodResults">
+        <div th:each="shelfLife : ${shelfLives}" class="foodItem">
+            <div th:id="${shelfLife.name}" class="foodImageURL"></div>
+            <h3 th:text="${shelfLife.name}" class="foodName"></h3>
+        </div>
+    </div>
 
-<!--    <div id="addedFood"></div>-->
-<!--</form>-->
+    <div id="addedFood"></div>
+</form>
 
 
 
@@ -242,10 +244,10 @@
     <!-- Include all compiled plugins (below), or include individual files as needed-->
     <script src="js/bootstrap.min.js"></script>
 
+
+
+
 <th:block th:insert="partials/partials.html :: bootstrap-js" />
-
-
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
