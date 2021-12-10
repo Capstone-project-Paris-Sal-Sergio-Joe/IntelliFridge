@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:include="partials/partials.html :: head('Home')">
-<!--    mbiel view -->
-    <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--    mbiel view -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 
@@ -16,12 +16,13 @@
     <title>sign up</title>
 </head>
 <body>
+
 <link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
 <link  rel="stylesheet" th:href="@{css/logo.css}"/>
 
 
-<nav th:insert="partials/partials.html :: navbar"></nav>
 
+<nav th:insert="partials/partials.html :: navbar"></nav>
 
 
 <a class="nav-link" th:href="@{/}">
@@ -30,19 +31,24 @@
 
 
 <h2 id="errorSignUp"></h2>
+<div th:if="${param.error}" id="errorM">
+    <h1 th:if="${param.error[0] == 'usernameAlreadyExists'}">Username already taken. Please choose another</h1>
+    <h1 th:if="${param.error[0] == 'emailAlreadyExists'}">Email already taken. Please choose another</h1>
+    <h1 th:if="${param.error[0] == 'phoneNumberAlreadyExists'}">Phone number already taken. Please choose another</h1>
+</div>
 
-<div  class="img-rounded">
+<div class="img-rounded">
     <div class="row main">
         <div class=" main-center">
             <form id="signUpForm" th:action="@{/sign-up}" method="POST" th:object="${user}">
 
-<!--  username -->
-                <div >
+                <!--  username -->
+                <div>
                     <label for="username" class="cols-sm-2 control-label">Username</label>
                     <div class="cols-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input id="username" class="form-control" th:field="*{username}" required />   </div>
+                            <input id="username" class="form-control" th:field="*{username}" required/></div>
                     </div>
                 </div>
 
@@ -52,12 +58,11 @@
                     <div class="cols-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input id="email" class="form-control" th:field="*{email}" required />
+                            <input id="email" class="form-control" th:field="*{email}" required/>
 
                         </div>
                     </div>
                 </div>
-
 
 
                 <div>
@@ -65,21 +70,20 @@
                     <div class="cols-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input id="phoneNumber" class="form-control" th:field="*{phoneNumber}" required />
+                            <input id="phoneNumber" class="form-control" th:field="*{phoneNumber}"/>
 
                         </div>
                     </div>
                 </div>
 
 
-
                 <!--password-->
-                <div >
+                <div>
                     <label for="password" class="cols-sm-2 control-label">Password</label>
                     <div class="cols-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input id="password" class="form-control" type="password" th:field="*{password}" required />
+                            <input id="password" class="form-control" type="password" th:field="*{password}" required/>
                         </div>
                     </div>
                 </div>
@@ -89,30 +93,26 @@
                     <div class="cols-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" required />
+                            <input type="password" class="form-control" name="confirm" id="confirm"
+                                   placeholder="Confirm your Password" required/>
                         </div>
                     </div>
                 </div>
 
-<br>
+                <br>
 
                 <div>
-<!--                    <label for="imageFile" class="form-label">Upload a profile Picture</label>-->
 
-
-<!--                    <div class="mb-3">-->
-<!--                        <label for="imageFile" class="form-label">Upload a profile Picture</label>-->
-<!--                        <br>-->
-<!--                        <input class="form-control" id="imageFile" type="hidden" name="image" th:field="*{profilePicture}">-->
-<!--                        <button type="button" class="btn btn-outline-secondary mb-3 whiteFont" id="open">Choose image to upload</button>-->
-<!--                    </div>-->
-
-                    <div >
+                    <!--                    <label for="imageFile" class="form-label">Upload a profile Picture</label>-->
+                    <div>
                         <div class="form-group">
 
-                        <input class="form-control" id="imageFile" type="hidden" name="image" th:field="*{profilePicture}">
-                    <button type="button" class="form-control btn btn-primary  justify-content-between"  id="open">Choose Profile Image</button>
-                </div>
+                            <input class="form-control" id="imageFile" type="hidden" name="image"
+                                   th:field="*{profilePicture}">
+                            <button type="button" class="form-control btn btn-primary  justify-content-between"
+                                    id="open">Choose Profile Image
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -122,9 +122,10 @@
                 <label for="isPrivateFalse">False</label>
                 <input type="radio" name="isPrivate" th:value="false" id="isPrivateFalse" checked="checked" required>
 
-            <div>
-                <div class="form-group ">
-                    <input value="Sign me up!" class="form-control" type="submit" />
+                <div>
+                    <div class="form-group ">
+                        <input value="Sign me up!" class="form-control" type="submit"/>
+                    </div>
                 </div>
             </div>
 
@@ -153,18 +154,10 @@
 </form>
 
 
-
-
-
-
-
-
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed-->
 <script src="js/bootstrap.min.js"></script>
-
 
 
 <script src="js/jquery.js"></script>
@@ -174,8 +167,12 @@
 <script th:src="@{js/imageUploadFilestack.js}"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script src="js/frontendValidation.js"></script>
-<th:block th:insert="partials/partials.html :: bootstrap-js" />
+<th:block th:insert="partials/partials.html :: bootstrap-js"/>
 
+<input value="Sign me up!" type="submit"/>
+</form>
+
+<th:block th:insert="partials/partials.html :: bootstrap-js"/>
 
 </body>
 </html>
