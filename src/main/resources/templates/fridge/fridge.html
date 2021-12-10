@@ -121,6 +121,7 @@
 
 
         <tr  th:each="food : ${foodInFridge}">
+            <td th:text="${food.name}" class="food-name"></td>
 
             <td th:text="${(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}"></td>
 
@@ -156,39 +157,39 @@
 
 
 
-<h1>----</h1>
-<div class="container">
-    <div class="card" style="  border-radius:25px;
-        background: #73AD21;
-        padding: 20px;
-        width: 200px;
-        height: 150px;" >
+<!--<h1>&#45;&#45;&#45;&#45;</h1>-->
+<!--        <div class="container">-->
+<!--            <div class="card" style="  border-radius:25px;-->
+<!--                background: #73AD21;-->
+<!--                padding: 20px;-->
+<!--                width: 200px;-->
+<!--                height: 150px;" >-->
 
 
 
 
 
-        <div th:each="food : ${foodInFridge}"    >
+<!--            <div th:each="food : ${foodInFridge}"    >-->
 
-            <div th:text="${food.name}"  class=" card-img-top"   >
-            </div>
-                <div class="card-body">
-                <div th:text="${'Expiration Date : '+(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}">    </div>
-
-
+<!--                <div th:text="${food.name}"  class="food-name "   >-->
+<!--                </div>-->
+<!--                    <div class="card-body">-->
+<!--                    <div th:text="${'Expiration Date : '+(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}">    </div>-->
 
 
-                <div>
-                    <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"
-                          th:method="POST">
-                        <button class="btn btn-danger">Delete</button>
-                    </form>
-                </div>
-            </div>
 
-       </div>
-    </div>
-</div>
+
+<!--                        <div>-->
+<!--                            <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"-->
+<!--                                  th:method="POST">-->
+<!--                                <button class="btn btn-danger">Delete</button>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                     </div>-->
+
+<!--               </div>-->
+<!--         </div>-->
+<!--        </div>-->
 
 </div>
 
@@ -215,22 +216,44 @@
 
 
 
-<div class="row" >
-    <div class="col-sm-3">
-        <div class="card">
-            <div class="card-header" style="background: rgb(111,178,209);"  >
-                This is a header
-            </div>
-            <img class="card-img-top" src="https://source.unsplash.com/daily" alt="Card image top">
-            <div class="card-body  "   style="background: rgb(111,178,209);"   >
-                <h3 class="card-title">Card title</h3>
-                <h4 class="card-subtitle">Card subtitle</h4>
-                <p class="card-text">This is a simple Card example</p>
-            </div>
+<!--<div class="row" >-->
+<!--    <div class="col-sm-3">-->
+<!--        <div class="card">-->
 
-        </div>
-    </div>
-</div>
+
+
+<!--                        <div th:each="food : ${foodInFridge}"    >-->
+
+<!--                            <div th:text="${food.name}" class="card-header" style="background: rgb(111,178,209);"  >-->
+<!--                            </div>-->
+
+<!--                            <div  type="hidden" th:text="${food.name}"  class="food-name "  style="background: rgb(111,178,209);" >-->
+<!--                            </div>-->
+
+<!--                                <div class="card-body " style="background: rgb(111,178,209);"   >-->
+
+<!--                                    <div th:text="${food.getShelfLife().getFoodGroup().name}">-->
+
+<!--                                    </div>-->
+
+<!--                                        <div th:text="${'Expiration Date : '+(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}">-->
+<!--                                        </div>-->
+
+<!--                                            <div>-->
+<!--                                                <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"-->
+<!--                                                      th:method="POST">-->
+<!--                                                    <button class="btn btn-danger">Delete</button>-->
+<!--                                                </form>-->
+<!--                                            </div>-->
+
+<!--                                 </div>-->
+<!--                            <br>-->
+<!--                           </div>-->
+
+<!--                        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
 
 
 
