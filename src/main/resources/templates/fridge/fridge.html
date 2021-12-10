@@ -15,17 +15,17 @@
     <title>Fridge</title>
 </head>
 
-<!--Datatable CDN's-->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+<!--&lt;!&ndash;Datatable CDN's&ndash;&gt;-->
+<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">-->
 
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-<!--<link  rel="stylesheet" th:href="@{css/loginScript.css}"/>-->
+<!--<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>-->
+<!--&lt;!&ndash;<link  rel="stylesheet" th:href="@{css/loginScript.css}"/>&ndash;&gt;-->
 
 
 <body>
 
 
-<link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
+<link  rel="stylesheet" th:href="@{/css/loginScript.css}"/>
 <link rel="stylesheet" href="/static/css/food-container.css" th:href="@{/css/food-container.css}"/>
 <link rel="stylesheet" href="/static/css/food-container.css" th:href="@{/css/fridge.css}"/>
 
@@ -73,7 +73,7 @@
 
 <!--Table-->
 <div class="container my-2 phoneTable">
-    <table id="foodTable" border="1" class="table table-striped " >
+    <table id="foodTable2" border="1" class="table table-striped " >
         <!--        style="width: fit-content"-->
         <thead>
         <tr>
@@ -88,11 +88,11 @@
                     <input th:type="hidden" th:field="*{dateAdded}">
 
                     <!--    <label>Food Name</label>-->
-                    <input type="text" placeholder="Food name..." id="foodSearch" th:field="*{name}" required>
+                    <input type="text" placeholder="Food name..." id="foodSearch2" th:field="*{name}" required>
 
-                    <div id="foodResults">
+                    <div id="foodResults2">
                         <div th:each="shelfLife : ${shelfLives}" class="foodItem">
-                            <div th:id="${shelfLife.name}" class="foodImageURL"></div>
+                            <div th:id="${shelfLife.name}" class="foodImageURL2"></div>
                             <h3 th:text="${shelfLife.name}" class="foodName"></h3>
                         </div>
                     </div>
@@ -113,8 +113,7 @@
                 <div class="row"   >
                     <div class="col-sm-3">
                         <div class="card">
-                            <div  >
-                        <div class="card-header"></div>
+                            <div>
                                 <div   th:text="${food.name}"  class="food-name "  style="background: rgb(2,60,82);   color:white; margin: 5px;  " >
                                 </div>
                                 <div class="card-body " style="background: rgb(2,60,82); color:white;"   >
@@ -217,7 +216,7 @@
 
 
 
-<th:block th:insert="partials/partials.html :: bootstrap-js"/>
+<!--<th:block th:insert="partials/partials.html :: bootstrap-js"/>-->
 <!--cdn datatable links for sorting -->
 
 <!--Not needed for search/sort table - alignment right and center-->
@@ -262,231 +261,18 @@
 
 
 
-<!--<div class="card" style="width:20rem;-->
-<!-- border-radius:25px;-->
-<!--    background: rgb(  111,	178,	209)	;-->
-<!--">-->
 
 
 
-<!--    <img class="card-img-top" src="https://source.unsplash.com/daily" alt="Card image top">-->
-<!--    <div class="card-body">-->
-<!--        <h3 class="card-title">Card title</h3>-->
-<!--        <h4 class="card-subtitle">Card subtitle</h4>-->
-<!--        <p class="card-text">This is a simple Card example</p>-->
-<!--    </div>-->
-<!--</div>-->
 
-<!--<br>-->
-<!--<div class="row"  >-->
 
 
-<!--    <div class="card " style="width: 20rem;">-->
-<!--        <div class="card ">-->
-<!--            <div class="card-header"   style="-->
-<!--    background: rgb(  111,	178,	209)	;-->
-<!--" >-->
-<!--                This is a header-->
-<!--            </div>-->
 
-<!--            <img class="card-img-top" src="https://source.unsplash.com/daily" alt="Card image top">-->
 
-<!--            <div class="card-body"   style="background: rgb(111,178,209);"  >-->
-<!--                <h3 class="card-title">Card title</h3>-->
-<!--                <h4 class="card-subtitle">Card subtitle</h4>-->
-<!--                <p class="card-text">This is a simple Card example</p>-->
-<!--            </div>-->
 
 
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--ORIGINAL FRIDGE HITML-->
-
-
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
-<!--<head th:include="partials/partials.html :: head(${currentFridge.name})">-->
-
-
-
-<!--    <meta  name="viewport" content="width=device-width, initial-scale=1.0" />-->
-<!--    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
-
-
-<!--    <script type="text/javascript" th:src="@{/static/css/loginScript.js}"></script>-->
-<!--    &lt;!&ndash; Website Font style &ndash;&gt;-->
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">-->
-<!--    &lt;!&ndash; Google Fonts &ndash;&gt;-->
-<!--    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>-->
-<!--    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>-->
-
-
-
-
-
-
-<!--    <title>Fridge</title>-->
-<!--</head>-->
-<!--<style>-->
-<!--    .foodItem {-->
-<!--        display: none;-->
-<!--        border: 5px solid red;-->
-<!--    }-->
-
-<!--    #addFoodForm {-->
-<!--        display: none;-->
-<!--    }-->
-<!--</style>-->
-
-<!--&lt;!&ndash;Datatable CDN's&ndash;&gt;-->
-<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">-->
-
-<!--<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>-->
-
-
-<!--<body>-->
-<!--<link  rel="stylesheet" th:href="@{css/loginScript.css}"/>-->
-
-<!--<nav th:insert="partials/partials.html :: navbar"></nav>-->
-<!--<h1 th:text="${currentFridge.name}"></h1>-->
-
-
-<!--&lt;!&ndash;Table&ndash;&gt;-->
-<!--<div class="container my-2">-->
-<!--    <table id="foodTable" border="1" class="table table-striped table-responsive-md">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th><a class="btn btn-success text-right" target="_blank">Food Name</a></th>-->
-<!--            <th><a class="btn btn-success text-right" target="_blank">Expiration Date</a></th>-->
-<!--            <th><a class="btn btn-success text-right" target="_blank">Category</a></th>-->
-<!--            <th><a class="btn btn-success text-right" target="_blank">Actions</a></th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-
-<!--        <tbody>-->
-<!--        <tr th:each="food : ${foodInFridge}">-->
-
-
-<!--            <td th:text="${food.name}" class="food-name">-->
-
-
-
-
-<!--            </td>-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--            <td th:text="${(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}"></td>-->
-
-<!--            <td th:text="${food.getShelfLife().getFoodGroup().name}"></td>-->
-
-
-
-<!--            <td>-->
-<!--                <form>-->
-<!--                    <button class="btn btn-warning">SMS Updates ?</button>-->
-<!--                </form>-->
-<!--                <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"-->
-<!--                      th:method="POST">-->
-<!--                    <button class="btn btn-danger">Delete</button>-->
-<!--                </form>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--</div>-->
-
-<!--&lt;!&ndash;add-food form&ndash;&gt;-->
-<!--<button class="btn btn-primary" id="addFoodButton">Add Food</button>-->
-<!--<form th:action="@{'/fridge/' + ${currentFridge.id} + '/add-food'}" th:method="post" th:object="${food}" id="addFoodForm">-->
-
-<!--    &lt;!&ndash;    Hidden date added&ndash;&gt;-->
-<!--    <input th:type="hidden" th:field="*{dateAdded}">-->
-
-<!--    <label>Food Name</label>-->
-<!--    <input type="text" placeholder="Food name..." id="foodSearch" th:field="*{name}" required>-->
-
-<!--    <div id="foodResults">-->
-<!--        <div th:each="shelfLife : ${shelfLives}" class="foodItem">-->
-<!--            <div th:id="${shelfLife.name}" class="foodImageURL"></div>-->
-<!--            <h3 th:text="${shelfLife.name}" class="foodName"></h3>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <div id="addedFood"></div>-->
-<!--</form>-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<th:block th:insert="partials/partials.html :: bootstrap-js"/>-->
-<!--&lt;!&ndash;cdn datatable links for sorting &ndash;&gt;-->
-
-<!--&lt;!&ndash;Not needed for search/sort table - alignment right and center&ndash;&gt;-->
-<!--&lt;!&ndash;        <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script>&ndash;&gt;-->
-
-<!--&lt;!&ndash;<script type="text/javascript">&ndash;&gt;-->
-<!--&lt;!&ndash;    let table = new DataTable('#foodTable', {&ndash;&gt;-->
-<!--&lt;!&ndash;        // options&ndash;&gt;-->
-<!--&lt;!&ndash;    });&ndash;&gt;-->
-<!--</script>-->
-<!--&lt;!&ndash;<script src="/js/jquery.js"></script>&ndash;&gt;-->
-<!--<script src="/keys.js"></script>-->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
-<!--&lt;!&ndash;sort/search bar for table&ndash;&gt;-->
-<!--<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>-->
-<!--<script src="/js/add-food.js"></script>-->
-<!--<script src="/js/fridge.js"></script>-->
-<!--</body>-->
-<!--</html>-->
