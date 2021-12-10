@@ -1,5 +1,3 @@
-/*@keyframes ants { to { background-position: 100% } }*/
-
 .center {
     display: block;
     margin-left: auto;
@@ -14,34 +12,13 @@
 h1{
 text-align: center;
 }
-.imageProfile{
+.imageProfile {
     display: block;
     /*margin-left: auto;*/
     margin: auto;
 
-border-radius: 50%;
-/*    -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);*/
-/*    -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);*/
-/*    box-shadow: 1px 2px 3px rgba(0,0,0,.5);*/
-
-
-    /*padding: 1em;*/
-    /*border: 1px solid transparent;*/
-    /*background:*/
-    /*        linear-gradient(white, white) padding-box,*/
-    /*        repeating-linear-gradient(-45deg, black 0, black 25%, white 0, white 50%) 0 / .6em .6em;*/
-    /*animation: ants 12s linear infinite;*/
+    border-radius: 50%;
 }
-
-
-/*.image-blurred-edge {*/
-/*    background-image: url('http://lorempixel.com/200/200/city/9');*/
-/*    width: 200px;*/
-/*    height: 200px;*/
-/*    !* you need to match the shadow color to your background or image border for the desired effect*!*/
-/*    box-shadow: 0 0 8px 8px white inset;*/
-/*}*/
-
 body{
 
 
