@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:include="partials/partials.html :: head('Home')">
-    <!--    mbiel view -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
@@ -19,6 +18,7 @@
 
 <link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
 <link  rel="stylesheet" th:href="@{css/logo.css}"/>
+<link rel="stylesheet" th:href="@{css/signup.css}"/>
 
 
 
@@ -43,41 +43,30 @@
             <form id="signUpForm" th:action="@{/sign-up}" method="POST" th:object="${user}">
 
                 <!--  username -->
-                <div>
+                <div class="text-field">
                     <label for="username" class="cols-sm-2 control-label">Username</label>
                     <div class="cols-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input id="username" class="form-control" th:field="*{username}" required/></div>
-                    </div>
-                </div>
-
-                <!--                email       -->
-                <div>
-                    <label for="email" class="cols-sm-2 control-label">Your Email</label>
-                    <div class="cols-md-12">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input id="email" class="form-control" th:field="*{email}" required/>
-
+                            <input type="text" id="username" class="form-control" th:field="*{username}"/>
                         </div>
                     </div>
                 </div>
 
-                <!--phone number-->
-                <div>
-                    <label for="phoneNumber" class="cols-sm-2 control-label">Phone Number</label>
-                    <div class="cols-md-12">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input id="phoneNumber" class="form-control" th:field="*{phoneNumber}"/>
+<!--                &lt;!&ndash;                email       &ndash;&gt;-->
+<!--                <div>-->
+<!--                    <label for="email" class="cols-sm-2 control-label">Email Address</label>-->
+<!--                    <div class="cols-md-12">-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
+<!--                            <input id="email" class="form-control" th:field="*{email}" required placeholder="Required"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
-                        </div>
-                    </div>
-                </div>
 
                 <!--password-->
-                <div>
+                <div class="text-field">
                     <label for="password" class="cols-sm-2 control-label">Password</label>
                     <div class="cols-md-12">
                         <div class="input-group">
@@ -88,43 +77,39 @@
                 </div>
 
 <!--                password confirm-->
-                <div>
+                <div class="text-field">
                     <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
                     <div class="cols-md-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" name="confirm" id="confirm"
-                                   placeholder="Confirm your Password" required/>
+                            <input type="password" class="form-control" name="confirm" id="confirm" required/>
                         </div>
                     </div>
                 </div>
 
+<!--                <div>-->
+<!--                    <div>-->
+<!--                        <div class="form-group">-->
+
+<!--                            <input class="form-control" id="imageFile" type="hidden" name="image"-->
+<!--                                   th:field="*{profilePicture}">-->
+<!--                            <button type="button" class="form-control btn btn-primary  justify-content-between"-->
+<!--                                    id="open">Choose Profile Image-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <label>Privacy</label>-->
+<!--                <label for="isPrivateTrue">True</label>-->
+<!--                <input type="radio" name="isPrivate" th:value="true" id="isPrivateTrue" required>-->
+<!--                <label for="isPrivateFalse">False</label>-->
+<!--                <input type="radio" name="isPrivate" th:value="false" id="isPrivateFalse" checked="checked" required>-->
                 <br>
 
                 <div>
-
-                    <!--                    <label for="imageFile" class="form-label">Upload a profile Picture</label>-->
-                    <div>
-                        <div class="form-group">
-
-                            <input class="form-control" id="imageFile" type="hidden" name="image"
-                                   th:field="*{profilePicture}">
-                            <button type="button" class="form-control btn btn-primary  justify-content-between"
-                                    id="open">Choose Profile Image
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <label>Privacy</label>
-                <label for="isPrivateTrue">True</label>
-                <input type="radio" name="isPrivate" th:value="true" id="isPrivateTrue" required>
-                <label for="isPrivateFalse">False</label>
-                <input type="radio" name="isPrivate" th:value="false" id="isPrivateFalse" checked="checked" required>
-
-                <div>
                     <div class="form-group ">
-                        <input value="Sign me up!" class="form-control" type="submit"/>
+                        <input value="Register" class="form-control" type="submit"/>
                     </div>
                 </div>
              </form>
