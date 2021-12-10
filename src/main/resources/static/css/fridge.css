@@ -1,3 +1,7 @@
+html, body {
+    overflow-x: hidden;
+}
+
 .foodItem {
     display: none;
     border: 5px solid red;

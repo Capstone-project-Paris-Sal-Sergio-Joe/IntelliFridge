@@ -1,6 +1,9 @@
 $(document).ready(function () {
 
-    $('#foodTable').DataTable();
+    $('#foodTable').DataTable({
+        "paging": false,
+        "info": false
+    });
 
     // add food image after name in table
     $('.food-name').each(async function () {
