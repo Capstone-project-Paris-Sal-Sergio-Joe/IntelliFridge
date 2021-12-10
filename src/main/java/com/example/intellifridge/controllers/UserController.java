@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -32,10 +33,23 @@ public class UserController {
 
     @PostMapping("/sign-up")
     public String saveUser(@ModelAttribute User user){
+
+        List<User> users = userDao.findAll();
+        for (User otherUser: users) {
+            if (otherUser.getUsername().equalsIgnoreCase(user.getUsername())) {
+                return "redirect:/sign-up?error=usernameAlreadyExists";
+            } else if (otherUser.getEmail().equalsIgnoreCase(user.getEmail())) {
+                return "redirect:/sign-up?error=emailAlreadyExists";
+            } else if (otherUser.getPhoneNumber() == null) {
+                continue;
+            } else if (otherUser.getPhoneNumber().equalsIgnoreCase("")) {
+                continue;
+            } else if (otherUser.getPhoneNumber().equalsIgnoreCase(user.getPhoneNumber())) {
+                return "redirect:/sign-up?error=phoneNumberAlreadyExists";
+            }
+        }
+
         String hash = passwordEncoder.encode(user.getPassword());
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User sameUser = userDao.getById(currentUser.getId());
-//        String startingPhoneNumber = sameUser.getPhoneNumber();
         user.setPassword(hash);
 //        if(startingPhoneNumber.equals(null))
         userDao.save(user);

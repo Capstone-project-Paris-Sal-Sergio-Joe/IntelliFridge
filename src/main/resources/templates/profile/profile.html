@@ -42,13 +42,23 @@
         </div>
     </div>
 </div>
-<h1 class="text-center" th:text="${user.username}"></h1>
+<!--<h1 class="text-center" th:text="${user.username}"></h1>-->
 
-<h2 id="errorProfileForm" class="errorProfileForm text-center"></h2>
-<div class="editFormP">
-<button class="editForm" id="edit">edit</button>
-<div th:if="${param.email}">
-    <h2 class="text-center error" th:if="${param.email[0] == 'bad'}">Email already exists. Please choose a different email.</h2>
+<!--<h2 id="errorProfileForm" class="errorProfileForm text-center"></h2>-->
+
+<!--<button class="editForm" id="edit">edit</button>-->
+<!--<div th:if="${param.email}">-->
+<!--    <h2 class="text-center error" th:if="${param.email[0] == 'bad'}">Email already exists. Please choose a different email.</h2>-->
+
+    <h1 class="text-center" th:text="${user.username}"></h1>
+
+    <h2 id="errorProfileForm" class="errorProfileForm text-center"></h2>
+    <div class="editFormP">
+<button id="edit" class="editFormBtn">edit</button>
+<div th:if="${param.error}" id="backendErrorProfileMessage">
+    <h1 class="text-center error" th:if="${param.error[0] == 'usernameAlreadyExists'}">Username already taken. Please choose another</h1>
+    <h1 class="text-center error" th:if="${param.error[0] == 'emailAlreadyExists'}">Email already taken. Please choose another</h1>
+    <h1 class="text-center error" th:if="${param.error[0] == 'phoneNumberAlreadyExists'}">Phone number already taken. Please choose another</h1>
 </div>
     <div class="editFormC">
 <form th:action="@{'/profile/' + ${user.id} + '/edit'}" name="edit" class="hidden" id="editForm" th:method="post">
@@ -68,14 +78,23 @@
         <li>
             <label for="phoneNumber">phoneNumber</label>
             <br>
-            <input class="editInput" name="phoneNumber" type="text" th:value="${user.phoneNumber}" id="phoneNumber" placeholder="Phone number" required/>
+            <input name="phoneNumber" type="text" th:value="${user.phoneNumber}" id="phoneNumber" />
         </li>
         <li>
-            <p>Do you want to get notifications</p>
+            <label>Do you want to get notifications?</label>
+            <br>
             <label for="notifyYes">Yes</label>
             <input type="radio" name="notifications" value="true" id="notifyYes" th:checked="${user.isNotifications() == true}" required>
             <label for="notifyNo">No</label>
             <input type="radio" name="notifications" value="false" id="notifyNo" th:checked="${user.isNotifications() == false}" required>
+        </li>
+        <li>
+            <label>Privacy: </label>
+            <br>
+            <label for="isPrivateTrue">True</label>
+            <input type="radio" name="privacy" th:value="true" id="isPrivateTrue" th:checked="${user.getIsPrivate() == true}" required>
+            <label for="isPrivateFalse">False</label>
+            <input type="radio" name="privacy" th:value="false" id="isPrivateFalse" th:checked="${user.getIsPrivate() == false}" required>
         </li>
         <button type="submit" id="form-btn">Submit</button>
     </ul>

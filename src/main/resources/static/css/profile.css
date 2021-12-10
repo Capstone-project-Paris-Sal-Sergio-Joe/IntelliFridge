@@ -46,14 +46,15 @@ p,label{
     image-resolution: normal;
 }
 
-.editForm{
+.editFormBtn{
     background-color: white;
     border-radius: 7.25rem;
     border: gray solid 1px;
     color: gray;
     font-size: 12px;
-    height: 47px;
-    width: 97px;
+    margin: auto;
+    height: 2rem;
+    width: 12rem;
 }
 
 .editForm:active{
@@ -71,7 +72,7 @@ button#form-btn{
     width: 4rem;
 }
 
-button#form-btn:active{
+button#edit.editFormBtn:active{
     background-color: gray;
     color: white;
 }
@@ -188,11 +189,7 @@ button#open.btn-outline-secondary.whiteFont.mt-2{
     width: 12rem;
 }
 
-.editForm{
-    margin: auto;
-    height: 2rem;
-    width: 12rem;
-}
+
 
 .uploadBtnDiv{
     text-align: center;
