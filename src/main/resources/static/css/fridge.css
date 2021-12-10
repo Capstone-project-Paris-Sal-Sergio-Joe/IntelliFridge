@@ -2,3 +2,9 @@
     display: none;
     border: 5px solid red;
 }
+
+.container {
+    width: 100%;
+    white-space: nowrap;
+
+}
