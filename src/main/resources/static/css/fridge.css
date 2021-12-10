@@ -2,3 +2,13 @@
     display: none;
     border: 5px solid red;
 }
+
+.table-parent{
+    width: 300px;
+
+}
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+}
