@@ -32,9 +32,11 @@
                 </button>
                 <div style="display: none" id="ImagePicker">
                     <input class="form-control" id="imageFile" type="hidden" name="image">
+                    <div class="uploadBtnDiv">
                     <button type="button" class="btn btn-outline-secondary whiteFont mt-2" id="open">Choose
                         image to upload
                     </button>
+                </div>
                 </div>
             </form>
         </div>
@@ -43,10 +45,12 @@
 <h1 class="text-center" th:text="${user.username}"></h1>
 
 <h2 id="errorProfileForm" class="errorProfileForm text-center"></h2>
+<div class="editFormP">
 <button class="editForm" id="edit">edit</button>
 <div th:if="${param.email}">
     <h2 class="text-center error" th:if="${param.email[0] == 'bad'}">Email already exists. Please choose a different email.</h2>
 </div>
+    <div class="editFormC">
 <form th:action="@{'/profile/' + ${user.id} + '/edit'}" name="edit" class="hidden" id="editForm" th:method="post">
 
     <ul>
@@ -76,6 +80,8 @@
         <button type="submit" id="form-btn">Submit</button>
     </ul>
 </form>
+</div>
+</div>
 
 <div th:if="${param.error}" id="errorM">
     <h1 class="text-center error" th:if="${param.error[0] == 'null'}">User not found</h1>

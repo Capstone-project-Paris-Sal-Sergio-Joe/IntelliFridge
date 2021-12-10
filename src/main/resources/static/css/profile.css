@@ -13,6 +13,17 @@ h1,h3{
 
 }
 
+.editFormP{
+    position: relative;
+    text-align: center;
+}
+
+.editFormC{
+    position: inherit;
+    right: 1rem;
+    margin-top: 20px;
+}
+
 .success{
     color: #05f105;
 }
@@ -31,7 +42,8 @@ p,label{
     border-radius: 50%;
     height: 11rem;
     width: 11rem;
-    margin: 10px
+    margin: 10px;
+    image-resolution: normal;
 }
 
 .editForm{
@@ -180,6 +192,10 @@ button#open.btn-outline-secondary.whiteFont.mt-2{
     margin: auto;
     height: 2rem;
     width: 12rem;
+}
+
+.uploadBtnDiv{
+    text-align: center;
 }
 
 li{
