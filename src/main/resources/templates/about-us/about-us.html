@@ -12,6 +12,7 @@
           integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
 
+
 </head>
 <body>
 
@@ -31,8 +32,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Paris Shirley</h5>
                         <div class="card text-center" >
-                            <div class="card-body">
-                                <h5 class="card-title">About Me</h5>
+
 
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item ">
@@ -48,7 +48,6 @@
                                 </ul>
                             </div>
 
-                        </div>
                     </div>
                 </div>
             </div>
@@ -151,6 +150,7 @@
     </div>
 </div>
 </div>
+<th:block th:insert="partials/partials.html :: bootstrap-js" />
 
 </body>
 </html>
