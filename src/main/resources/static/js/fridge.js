@@ -9,17 +9,11 @@ $(document).ready(function () {
     $('.food-name').each(async function () {
             let fridgeImage = $(this).text()
             let fridgeImageUrl = await imageCode(fridgeImage);
-            $(this).append(`
-            <img src="${fridgeImageUrl}">
-        `)
-
-
+                $(this).append(`
+                <img src="${fridgeImageUrl}" class="foodResultImage img-thumbnail">
+            `)
         }
     )
-
-    $('.expirationDate').each(() => {
-
-    })
 
     function imageCode(query) {
         let baseUrl = 'https://api.unsplash.com/search/photos?client_id=';

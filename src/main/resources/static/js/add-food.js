@@ -4,6 +4,10 @@ $(document).ready(function() {
         $('#addFoodForm').css('display','block')
     })
 
+    // $('#addFoodButton').click(() => {
+    //     $('#addFoodForm').toggleClass("visible")
+    // })
+
     $('#foodSearch').keyup(function() {
         let search = $(this).val();
         $('.foodItem').each( async function () {
@@ -13,7 +17,10 @@ $(document).ready(function() {
                 if (regExp.test(foodName) == true) {
                     let foodImageURL = await imageCode(foodName);
                     $(this).find('.foodImageURL').html(`
-                            <img src="${foodImageURL}">
+                            <div>
+                                <img src="${foodImageURL}" class="img-thumbnail foodResultImage">
+                            </div>
+                           
                         `)
                     $(this).css('display', 'block');
                 } else {
@@ -26,15 +33,17 @@ $(document).ready(function() {
             $(this).click(function () {
                 $('#foodSearch').val(foodName);
                 $('#foodSearch').prop('readonly',true);
-                $('#addedFood').html($(this).html());
-                $('#addedFood').append(`<p>Fridge or Freezer?</p>
+                $('#addedFood').html($(this).html() + `
+    <p class="text text-center">Fridge or Freezer?</p>
+    <div class="d-flex flex-row justify-content-around">
     <input type="radio" name="isInFreezer" value="false" text="Fridge" checked="checked" id="fridgeOption">
     <label for="fridgeOption">Fridge</label>
     <input type="radio" name="isInFreezer" value="true" text="Freezer" id="freezerOption">
     <label for="freezerOption">Freezer</label>
-    <button type="submit">Add Food</button>
-    <button type="button" id="cancelAddFood">Cancel</button>
-                `)
+    </div>
+    <button type="submit" class="btn btn-primary">Add Food</button>
+    <button type="button" id="cancelAddFood" class="btn btn-danger">Cancel</button>
+                `);
                 $('#foodResults').html('');
 
                 $('#cancelAddFood').click(() => location.reload());

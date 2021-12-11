@@ -1,21 +1,51 @@
-html, body {
-    overflow-x: hidden;
-}
-
-.foodItem {
-    display: none;
-    border: 5px solid red;
-}
-
-.container {
-    width: 100%;
-    white-space: nowrap;
-}
-
 @media (max-width: 720px) {
 
     table#foodTable.table.table-striped.table-responsive-md.dataTable.no-footer{
         visibility: collapse;
+    }
+
+    /*gets rid of the table search*/
+    div#foodTable_wrapper.dataTables_wrapper.no-footer {
+        visibility: collapse;
+    }
+
+    html, body {
+        overflow-x: hidden;
+    }
+
+    .foodItem {
+        display: none;
+        max-width: 25%;
+    }
+
+    .foodName {
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 200px;
+        text-overflow: ellipsis;
+    }
+
+    .container {
+        width: 100%;
+        white-space: nowrap;
+    }
+
+    #addFoodForm {
+        display: none;
+    }
+
+    .visible {
+        display: block;
+    }
+
+    .foodResultImage {
+        height: 200px;
+        width: 200px;
+        object-fit: cover;
+    }
+
+    #addedFood {
+        max-width: 200px;
     }
 
 }
@@ -23,6 +53,45 @@ html, body {
 @media (min-width:721px) {
     .phoneTable{
         visibility: collapse;
+    }
+
+    html, body {
+        overflow-x: hidden;
+    }
+
+    .foodItem {
+        display: none;
+        max-width: 200px;
+    }
+
+    .foodName {
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 200px;
+        text-overflow: ellipsis;
+    }
+
+    .container {
+        width: 100%;
+        white-space: nowrap;
+    }
+
+    #addFoodForm {
+        display: none;
+    }
+
+    .visible {
+        display: block;
+    }
+
+    .foodResultImage {
+        height: 200px;
+        width: 200px;
+        object-fit: cover;
+    }
+
+    #addedFood {
+        max-width: 200px;
     }
 
 }
