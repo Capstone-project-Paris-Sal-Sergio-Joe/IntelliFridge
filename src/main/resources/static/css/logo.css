@@ -1,9 +1,16 @@
 .login-logo{
+    margin-top: 71px;
     animation: pulse-blue 2.5s infinite;
     width: 285px;
 }
 
 .signup-logo{
+    margin-top: 71px;
+    animation: pulse-blue 2.5s infinite;
+    width: 285px;
+}
+
+.home-logo{
     animation: pulse-blue 2.5s infinite;
     width: 285px;
 }
