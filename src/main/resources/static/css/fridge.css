@@ -1,3 +1,4 @@
+/*Mobile View*/
 @media (max-width: 720px) {
 
     table#foodTable.table.table-striped.table-responsive-md.dataTable.no-footer{
@@ -13,14 +14,9 @@
         overflow-x: hidden;
     }
 
-    .foodItem {
-        display: none;
-        max-width: 25%;
-    }
-
     .foodName {
         white-space: nowrap;
-        overflow: hidden;
+        overflow: auto;
         max-width: 200px;
         text-overflow: ellipsis;
     }
@@ -39,17 +35,24 @@
     }
 
     .foodResultImage {
-        height: 200px;
-        width: 200px;
+        height: 150px;
+        width: 150px;
         object-fit: cover;
     }
 
+    .foodItem {
+        display: none;
+        max-width: 33%;
+    }
+
+
     #addedFood {
-        max-width: 200px;
+        width: 150px;
     }
 
 }
 
+/*Desktop View*/
 @media (min-width:721px) {
     .phoneTable{
         visibility: collapse;
@@ -93,5 +96,4 @@
     #addedFood {
         max-width: 200px;
     }
-
 }
