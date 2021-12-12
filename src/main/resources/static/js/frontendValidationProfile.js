@@ -13,6 +13,10 @@ editForm.addEventListener('submit', (e) => {
 
     if(email.value.match(validatedEmail)){
 
+    } else if (email.value === '') {
+
+    } else if (email.value === null) {
+
     } else {
         messages.push('This is not a valid email');
     }

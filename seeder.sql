@@ -75,7 +75,7 @@ INSERT INTO food_shelf_life(name, shelf_life_fridge_days, shelf_life_freezer_day
 ('Fatty Fish',2,90,4),
 ('Cooked Fish',4,120,4),
 ('Smoked Fish',14,60,4),
-('Fresh Shrimp/Crawfish',2,180,4),
+('Shrimp/Crawfish',2,180,4),
 ('Pizza',4,60,4),
 ('Corn',180,365,2),
 ('Oats',120,240,2),

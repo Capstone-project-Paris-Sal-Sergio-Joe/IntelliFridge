@@ -16,7 +16,7 @@ public class User {
     @Column(unique = true, nullable = false, columnDefinition = "VARCHAR(50)")
     private String username;
 
-    @Column(unique = true, nullable = false, columnDefinition = "VARCHAR(200)")
+    @Column(unique = true, columnDefinition = "VARCHAR(200)")
     private String email;
 
     @Column(nullable = false)
