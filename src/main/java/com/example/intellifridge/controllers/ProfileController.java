@@ -32,6 +32,7 @@ public class ProfileController {
         List<Fridge> userFridges = sameUser.getFridges();
         model.addAttribute("user",sameUser);
         model.addAttribute("fridge", userFridges);
+        model.addAttribute("newFridge", new Fridge());
         return "profile/profile";
     }
 
@@ -98,6 +99,14 @@ public class ProfileController {
                 return "redirect:/profile?error=phoneNumberAlreadyExists";
             }
         }
+
+        User user = userDao.getById(id);
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setPhoneNumber(phoneNumber);
+        user.setNotifications(notifications);
+        user.setIsPrivate(privacy);
+        userDao.save(user);
 
         return "redirect:/profile";
     }
