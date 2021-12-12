@@ -18,174 +18,218 @@
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
 
-<div >
+<div class=" divtest container">
+    <div class=" divtest row">
+        <div class=" divtest col">
+            <div class="row">
+                <div class=" divtest col-sm-12 col-md-4 col-lg-5 col-xl-4 text-center">
+                    <div>
+                        <!--    <div class="col-md-3">-->
+                        <div>
+                            <img th:src="${user.profilePicture}" th:if="${user.profilePicture == null}"
+                                 alt="user profile picture" class=" profileImg">
+                            <!--            mx-auto d-block-->
+                            <img th:src="@{images/profilePic.jpg}" th:if="${user.profilePicture != null}"
+                                 alt="user profile picture" class=" profileImg">
+                        </div>
+                        <div>
+                            <form th:action="@{/profile/{id}/editImage(id=${user.id})}" class="d-flex flex-column"
+                                  th:method="post" id="submitImage">
+                                <!--                <button th:type="button" class="profileBtn btn btn-outline-secondary whiteFont"-->
+                                <!--                        onclick="showImageForm('ImagePicker')">-->
+                                <!--                    Edit Image-->
+                                <!--                </button>-->
+                                <div id="ImagePicker">
+                                    <input class="form-control" id="imageFile" type="hidden" name="image">
+                                    <div class="uploadBtnDiv">
+                                        <button type="button" class="btn btn-outline-secondary whiteFont mt-2"
+                                                id="open">Choose image to upload
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--</div>-->
+                    <h1 th:text="${user.username}"></h1>
+                    <!--                <h1>hello</h1>-->
 
-<div class="desktopView">
-<div>
-<!--    <div class="col-md-3">-->
-        <div>
-            <img th:src="${user.profilePicture}" th:if="${user.profilePicture == null}" alt="user profile picture" class="mx-auto d-block profileImg">
-            <img th:src="@{images/profilePic.jpg}" th:if="${user.profilePicture != null}" alt="user profile picture" class="mx-auto d-block profileImg">
-        </div>
-        <div>
-            <form th:action="@{/profile/{id}/editImage(id=${user.id})}" class="d-flex flex-column"
-                  th:method="post" id="submitImage">
-                <button th:type="button" class="profileBtn btn btn-outline-secondary whiteFont"
-                        onclick="showImageForm('ImagePicker')">
-                    Edit Image
-                </button>
-                <div style="display: none" id="ImagePicker">
-                    <input class="form-control" id="imageFile" type="hidden" name="image">
-                    <div class="uploadBtnDiv">
-                        <button type="button" class="btn btn-outline-secondary whiteFont mt-2" id="open">Choose
-                            image to upload
-                        </button>
+                    <h2 id="errorProfileForm" class="errorProfileForm "></h2>
+                    <div class="editFormP">
+                        <button id="edit" class="editFormBtn">edit</button>
+                        <div th:if="${param.error}" id="backendErrorProfileMessage">
+                            <h1 class="text-center error" th:if="${param.error[0] == 'usernameAlreadyExists'}">Username
+                                already taken.
+                                Please choose another</h1>
+                            <h1 class="text-center error" th:if="${param.error[0] == 'emailAlreadyExists'}">Email
+                                already taken. Please
+                                choose another</h1>
+                            <h1 class="text-center error" th:if="${param.error[0] == 'phoneNumberAlreadyExists'}">Phone
+                                number already
+                                taken. Please choose another</h1>
+                        </div>
+                        <form th:action="@{'/profile/' + ${user.id} + '/edit'}" name="edit" class="hidden editForm"
+                              id="editForm" th:method="post">
+
+                            <ul>
+                                <li>
+                                    <label for="username">Username</label>
+                                    <br>
+                                    <input class="editInput" name="username" type="text" th:value="${user.username}"
+                                           id="username"
+                                           placeholder="Username" required/>
+                                </li>
+                                <li>
+                                    <label for="email">Email</label>
+                                    <br>
+                                    <input class="editInput" name="email" type="text" th:value="${user.email}"
+                                           id="email"
+                                           placeholder="Email" required/>
+                                </li>
+                                <li>
+                                    <label for="phoneNumber">phoneNumber</label>
+                                    <br>
+                                    <input class="editInput" name="phoneNumber" type="text"
+                                           th:value="${user.phoneNumber}" id="phoneNumber"/>
+                                </li>
+                                <li>
+                                    <label>Do you want to get notifications?</label>
+                                    <br>
+                                    <label for="notifyYes">Yes</label>
+                                    <input type="radio" name="notifications" value="true" id="notifyYes"
+                                           th:checked="${user.isNotifications() == true}" required>
+                                    <label for="notifyNo">No</label>
+                                    <input type="radio" name="notifications" value="false" id="notifyNo"
+                                           th:checked="${user.isNotifications() == false}" required>
+                                </li>
+                                <li>
+                                    <label>Privacy: </label>
+                                    <br>
+                                    <label for="isPrivateTrue">True</label>
+                                    <input type="radio" name="privacy" th:value="true" id="isPrivateTrue"
+                                           th:checked="${user.getIsPrivate() == true}" required>
+                                    <label for="isPrivateFalse">False</label>
+                                    <input type="radio" name="privacy" th:value="false" id="isPrivateFalse"
+                                           th:checked="${user.getIsPrivate() == false}" required>
+                                </li>
+                                <li>
+                                    <button type="submit" id="form-btn">Submit</button>
+                                </li>
+                            </ul>
+                        </form>
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>
-<!--</div>-->
-<h1 class="text-center" th:text="${user.username}"></h1>
 
-<h2 id="errorProfileForm" class="errorProfileForm text-center"></h2>
-<div class="editFormP">
-    <button id="edit" class="editFormBtn">edit</button>
-    <div th:if="${param.error}" id="backendErrorProfileMessage">
-        <h1 class="text-center error" th:if="${param.error[0] == 'usernameAlreadyExists'}">Username already taken.
-            Please choose another</h1>
-        <h1 class="text-center error" th:if="${param.error[0] == 'emailAlreadyExists'}">Email already taken. Please
-            choose another</h1>
-        <h1 class="text-center error" th:if="${param.error[0] == 'phoneNumberAlreadyExists'}">Phone number already
-            taken. Please choose another</h1>
-    </div>
-    <div class="editFormC">
-        <form th:action="@{'/profile/' + ${user.id} + '/edit'}" name="edit" class="hidden" id="editForm" th:method="post">
-
-            <ul>
-                <li>
-                    <label for="username">Username</label>
-                    <br>
-                    <input class="editInput" name="username" type="text" th:value="${user.username}" id="username"
-                           placeholder="Username" required/>
-                </li>
-                <li>
-                    <label for="email">Email</label>
-                    <br>
-                    <input class="editInput" name="email" type="text" th:value="${user.email}" id="email"
-                           placeholder="Email" required/>
-                </li>
-                <li>
-                    <label for="phoneNumber">phoneNumber</label>
-                    <br>
-                    <input name="phoneNumber" type="text" th:value="${user.phoneNumber}" id="phoneNumber"/>
-                </li>
-                <li>
-                    <label>Do you want to get notifications?</label>
-                    <br>
-                    <label for="notifyYes">Yes</label>
-                    <input type="radio" name="notifications" value="true" id="notifyYes"
-                           th:checked="${user.isNotifications() == true}" required>
-                    <label for="notifyNo">No</label>
-                    <input type="radio" name="notifications" value="false" id="notifyNo"
-                           th:checked="${user.isNotifications() == false}" required>
-                </li>
-                <li>
-                    <label>Privacy: </label>
-                    <br>
-                    <label for="isPrivateTrue">True</label>
-                    <input type="radio" name="privacy" th:value="true" id="isPrivateTrue"
-                           th:checked="${user.getIsPrivate() == true}" required>
-                    <label for="isPrivateFalse">False</label>
-                    <input type="radio" name="privacy" th:value="false" id="isPrivateFalse"
-                           th:checked="${user.getIsPrivate() == false}" required>
-                </li>
-                <button type="submit" id="form-btn">Submit</button>
-            </ul>
-        </form>
-    </div>
-</div>
-</div>
-
-<div th:if="${param.error}" id="errorM">
-    <h1 class="text-center error" th:if="${param.error[0] == 'null'}">User not found</h1>
-    <h1 class="text-center error" th:if="${param.error[0] == 'current'}">User already added to this fridge</h1>
-    <h1 class="text-center error" th:if="${param.error[0] == 'privateUser'}">User is private and cannot be added</h1>
-</div>
-<div th:if="${param.userAdded}">
-    <h1 class="text-center success" th:if="${param.userAdded[0] == 'true'}">User successfully added!</h1>
-</div>
-<h3 class="text-center">Fridge List:</h3>
-
-<div th:each="fridge : ${fridge}">
-    <div class="container">
-        <div class="row main">
-            <div class="container fridgeCards">
-                <div class="row">
-                    <div class="col">
-                        <h4 class="text-center" th:text="${fridge.name}"></h4>
+                <div class="Fl divtest col-sm-12 col-md-8 col-lg-7 col-xl-8">
+                    <div th:if="${param.error}" id="errorM">
+                        <h1 class="text-center error" th:if="${param.error[0] == 'null'}">User not found</h1>
+                        <h1 class="text-center error" th:if="${param.error[0] == 'current'}">User already added to this
+                            fridge</h1>
+                        <h1 class="text-center error" th:if="${param.error[0] == 'privateUser'}">User is private and
+                            cannot be added</h1>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col cardImg">
-                        <img class="fridgeImg" th:src="@{/images/fridge-icon.png}" alt="fridge image">
+                    <div th:if="${param.userAdded}">
+                        <h1 class="text-center success" th:if="${param.userAdded[0] == 'true'}">User successfully
+                            added!</h1>
                     </div>
+                    <div class=" divtest row">
+                        <h3 class="text-center ">Fridge List:</h3>
+                        <div th:if="${user.getFridges().size() == 0}">
+                            <h3 class="noFridges">It looks like you have no fridges lets add one</h3>
+                        </div>
+                    </div>
+                    <div class=" divtest row">
+                        <div th:each="fridge : ${fridge}">
+                            <div class=" divtest row ">
+                                <div class="container fridgeCards">
+                                    <div class=" divtest row">
+                                        <div class="col">
+                                            <h4 class="text-center" th:text="${fridge.name}"></h4>
+                                        </div>
+                                    </div>
+                                    <div class=" divtest row">
+                                        <div class=" divtest col-6 cardImg text-center">
+                                            <img class="fridgeImg" th:src="@{/images/fridge-icon.png}"
+                                                 alt="fridge image">
+                                        </div>
 
-                    <div class="col cardControls">
-                        <form th:action="@{'/fridge/' + ${fridge.id}}" th:method="GET">
-                            <button class="btn view-btn">View Fridge</button>
-                        </form>
+                                        <div class=" divtest col-6 cardControls">
 
-                        <br>
+                                            <div class=" divtest row text-center">
+                                                <form th:action="@{'/fridge/' + ${fridge.id}}" th:method="GET">
+                                                    <button class="btn view-btn">View Fridge</button>
+                                                </form>
+                                            </div>
+                                            <br>
 
-                        <form name="deleteFridgeForm" method="post"
-                              th:action="@{'/fridge/' + ${fridge.id} + '/delete'}">
-                            <button class="btn leave-btn" id="deleteFridge">Leave</button>
-                        </form>
+                                            <div class=" divtest row text-center">
+                                                <form name="deleteFridgeForm" method="post"
+                                                      th:action="@{'/fridge/' + ${fridge.id} + '/delete'}">
+                                                    <button class="btn leave-btn" id="deleteFridge">Leave</button>
+                                                </form>
+                                            </div>
 
-                        <br>
+                                            <br>
 
-                        <button th:id="${'addUser' + fridge.id}" th:data-id="${fridge.id}" class="addFormButton btn">Add
-                            Friends
+                                            <div class=" divtest row text-center ">
+                                                <button th:id="${'addUser' + fridge.id}" th:data-id="${fridge.id}"
+                                                        class="addFormButton btn">Add Friends
+                                                </button>
 
-                        </button>
-                        <div class="addUserDiv">
-                        <form th:data-id="${fridge.id}" th:id="${'addUserForm' + fridge.id}" class="hidden"
-                              th:action="@{'/profile/add-user-to-fridge/' + ${fridge.id}}" th:method="POST">
+                                            </div>
 
-                            <label class="addUser" for="addByUserName"></label>
-                            <input class="addUserInput" name="addByUserName" id="addByUserName" type="text"
-                                   placeholder="Type a username or email" required>
-                            <button class="btn addUserBtn">Add</button>
-                        </form>
+                                            <!--                            <div class="addUserDiv">-->
+                                            <!--                        <form th:data-id="${fridge.id}" th:id="${'addUserForm' + fridge.id}" class=""-->
+                                            <!--                              th:action="@{'/profile/add-user-to-fridge/' + ${fridge.id}}" th:method="POST">-->
+
+                                            <!--                            <label class="addUser" for="addByUserName"></label>-->
+                                            <!--                            <input class="addUserInput" name="addByUserName" id="addByUserName" type="text"-->
+                                            <!--                                   placeholder="Type a username or email" required>-->
+                                            <!--                            <button class="btn addUserBtn">Add</button>-->
+                                            <!--                        </form>-->
+                                            <!--                    </div>-->
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <form th:data-id="${fridge.id}" th:id="${'addUserForm' + fridge.id}" class=""
+                                              th:action="@{'/profile/add-user-to-fridge/' + ${fridge.id}}"
+                                              th:method="POST">
+
+                                            <label class="addUser" for="addByUserName"></label>
+                                            <input class="addUserInput" name="addByUserName" id="addByUserName"
+                                                   type="text"
+                                                   placeholder="Type a username or email" required>
+                                            <button class="btn addUserBtn">Add</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
+                    <div class=" divtest row">
+                        <div class="addFridge text-center">
+                            <button id="addFridgeBtn" class="addFridgeBtn">Add fridge</button>
+                            <form class="hidden" id="addFridgeForm" th:action="@{/profile/add-fridge}" th:method="POST"
+                                  th:object="${newFridge}">
+                                <label for="newFridge">Give your new Fridge a name!</label>
+                                <br>
+                                <input id="newFridge" name="newFridge" type="text" placeholder="insert name here:"
+                                       th:field="*{name}" required>
+                                <br>
+                                <button type="submit" class="submitFridgeBtn" name="submit">Submit</button>
+                                <button id="cancel" class="cancelFridgeBtn">Cancel</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!--<footer th:insert="partials/partials.html :: footer"></footer>-->
 
-<div th:if="${user.getFridges().size() == 0}">
-    <h3 class="noFridges">It looks like you have no fridges lets add one</h3>
-</div>
-
-<div class="addFridge">
-    <button id="addFridgeBtn" class="addFridgeBtn" >Add fridge</button>
-<form class="hidden" id="addFridgeForm" th:action="@{/profile/add-fridge}" th:method="POST" th:object="${newFridge}">
-    <label for="newFridge">Give your new Fridge a name!</label>
-    <br>
-    <input id="newFridge" name="newFridge" type="text" placeholder="insert name here:" th:field="*{name}" required >
-    <br>
-    <button type="submit" class="submitFridgeBtn" name="submit">Submit</button>
-    <button id="cancel" class="cancelFridgeBtn" >Cancel</button>
-</form>
-</div>
-<!--<nav th:insert="partials/partials.html :: navbar"></nav>-->
-
-<footer th:insert="partials/partials.html :: footer"></footer>
-</div>
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 
 
