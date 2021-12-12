@@ -32,6 +32,7 @@ public class ProfileController {
         List<Fridge> userFridges = sameUser.getFridges();
         model.addAttribute("user",sameUser);
         model.addAttribute("fridge", userFridges);
+        model.addAttribute("newFridge", new Fridge());
         return "profile/profile";
     }
 

@@ -47,19 +47,12 @@ public class FridgeController {
         return "fridge/fridge";
     }
 
-    @GetMapping("/fridge/add-fridge")
-    public String showAddFridge(Model model) {
-        model.addAttribute("fridge", new Fridge());
-        return "fridge/add-fridge";
-    }
-
-
-    @PostMapping("/fridge/add-fridge")
-    public String createFridge(@ModelAttribute Fridge fridge) {
+    @PostMapping("/profile/add-fridge")
+    public String createFridge(@ModelAttribute Fridge newFridge) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User sameUser = userRepository.getById(currentUser.getId());
-        sameUser.getFridges().add(fridge);
-        fridgeRepository.save(fridge);
+        sameUser.getFridges().add(newFridge);
+        fridgeRepository.save(newFridge);
         return "redirect:/profile";
     }
 

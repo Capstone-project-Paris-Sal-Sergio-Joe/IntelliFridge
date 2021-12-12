@@ -2,48 +2,55 @@
     display: none;
 }
 
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+/*.center {*/
+/*    !*display: block;*!*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*}*/
 h1,h3{
     color:rgb( 111, 178, 209);
     text-decoration: underline;
 
 }
 
-.editFormP{
-    position: relative;
-    text-align: center;
-}
-
-.editFormC{
-    position: inherit;
-    right: 1rem;
-    margin-top: 20px;
+.editForm{
+    margin-right: 31px;
 }
 
 .success{
     color: #05f105;
 }
 
+.noFridges{
+    color: white;
+    text-decoration: none;
+}
+
 p,label{
-    color: rgb(1, 103, 145);
+    color: black;
 }
 
 .errorProfileForm{
     color: red;
 }
 
+.divtest{
+    /*border: black solid 2px;*/
+}
+
 .profileImg{
-    display: block;
+    /*display: block;*/
     border: rgb( 142, 182, 200) solid 2px;
     border-radius: 50%;
     height: 11rem;
     width: 11rem;
-    margin: 10px;
-    image-resolution: normal;
+    margin-top: 60px;
+    /*image-resolution: normal;*/
+}
+
+.btn.btn-outline-secondary.whiteFont.mt-2{
+    height: 2rem;
+    width: 12rem;
 }
 
 .editFormBtn{
@@ -52,7 +59,7 @@ p,label{
     border: gray solid 1px;
     color: gray;
     font-size: 12px;
-    margin: auto;
+    /*margin: auto;*/
     height: 2rem;
     width: 12rem;
 }
@@ -72,54 +79,112 @@ button#form-btn{
     width: 4rem;
 }
 
+.addFridgeBtn{
+    background-color: rgb( 111, 178, 209);
+    border-radius: 7.25rem;
+    border: blue solid 1px;
+    color: white;
+    font-size: 12px;
+    /*margin: auto;*/
+    height: 3rem;
+    width: 400px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.addFridgeBtn:active{
+    background-color: #406fee;
+    color: white;
+}
+
+.submitFridgeBtn{
+    border-radius: 7.25rem;
+    color: black;
+    font-size: 12px;
+    /*margin: auto;*/
+    height: 2rem;
+    width: 5rem;
+    background-color: rgb( 195, 252, 204);
+    border: rgb( 142, 182, 200) solid 2px;
+}
+
+.addUserForm{
+}
+
+#addFridgeForm{
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.submitFridgeBtn:active{
+    background-color: #23fd5f;
+    color: white;
+}
+
+.cancelFridgeBtn{
+    border-radius: 7.25rem;
+    color: black;
+    font-size: 12px;
+    /*margin: auto;*/
+    height: 2rem;
+    width: 5rem;
+    background-color: rgb( 254, 191, 189);
+    border: rgb( 142, 182, 200) solid 2px;
+}
+
+.cancelFridgeBtn:active{
+    background-color: #ec0b0b;
+    color: white;
+}
+
 button#edit.editFormBtn:active{
     background-color: gray;
     color: white;
 }
 
-.editInput{
-    width: 12rem;
+
+input#newFridge{
+    margin: 10px;
 }
 
+
+
 .fridgeCards{
-    margin-top: 30px;
+    margin-top: 20px;
     /*margin: 0 auto;*/
     width: 400px;
-    height: 354px;
-    padding: 10px 40px;
+    height: auto;
+    /*padding: 10px 40px;*/
     background: rgb(  194,	235,	252)	;
-    color: #FFF;
+    color: black;
     border-radius:30px;
-    position: relative;
+    /*position: relative;*/
     border: rgb( 142, 182, 200) solid 2px;
 
 }
-.main{
-    margin:10px 25px;
-}
+
 
 .btn{
     background-color: white;
     border-radius: 7.25rem;
     font-size: 12px;
-    height: 47px;
-    width: 97px;
-
-
+    height: 40px;
+    width: 100px;
+    margin: 10px;
 }
 
 .addUser{
     font-size: 7px;
-    margin: 2px;
+    /*margin: 2px;*/
+    /*margin-bottom: 20px;*/
 }
 
 .addUserInput{
-    /*max-width: 93px;*/
-    width: 12.3rem;
-    height: 20px;
-    margin: 2px;
-    position: absolute;
-    right: 5rem;
+         width: 13.6rem;
+         height: 28px;
+         /*position: absolute;*/
+         /*right: 2rem;*/
+         /*margin: 3px;*/
 }
 
 .error{
@@ -131,30 +196,10 @@ div.col.cardControls{
 
 }
 
-div.col.cardImg{
-
-}
-
-
-button.btn.addUserBtn{
-    position: absolute;
-    top: 14rem;
-}
-
-.cardControls{
-    position: absolute;
-    left: 10rem;
-}
-
 .fridgeImg{
     height: 185px;
-    width: auto;
-}
 
-
-.cardImg{
-    position: absolute;
-    right: 0.98rem
+    /*width: auto;*/
 }
 
 .view-btn{
@@ -165,44 +210,352 @@ button.btn.addUserBtn{
 .leave-btn{
     background-color: rgb( 254, 191, 189);
     border: rgb( 142, 182, 200) solid 2px;
+    margin-bottom: 10px;
 }
 
 .addFormButton {
     background-color: rgb( 234, 223, 252);
     border: rgb( 142, 182, 200) solid 2px;
+    margin: auto;
+    margin-bottom: 30px;
 }
 
 .addUserBtn{
     background-color: rgb( 224, 255, 230);
     border: rgb( 142, 182, 200) solid 2px;
 }
-
-button.profileBtn.btn.btn-outline-secondary.whiteFont{
-    margin: auto;
-    height: 2rem;
-    width: 12rem;
+.Fl{
+    margin-top: 60px;
 }
 
-button#open.btn-outline-secondary.whiteFont.mt-2{
-    margin: auto;
-    height: 2rem;
-    width: 12rem;
+.ulUserEditForm{
+    padding: 0;
 }
+
+
+.ulUserEditForm > li {
+    padding: 10px;
 
 .hr-design{
     width: 88%;
     border-top: 11px dotted rgb(3, 169, 244);
     margin: .5em auto .5em auto ;
+
 }
 
 .uploadBtnDiv{
-    text-align: center;
+    /*text-align: center;*/
 }
 
 li{
     list-style: none;
 }
 
-/*h1{*/
+.addFridge{
+    /*text-align: center;*/
+
+}
+
+.addUserDiv{
+    margin-right: 3rem;
+}
+
+footer{
+    /*border: rgb( 142, 182, 200) solid 2px;*/
+    /*position: fixed;*/
+    position: fixed;
+    bottom: 0px;
+    height: 54px;
+    width: 100%;
+    background: #0c0b0b;
+}
+
+.footerImg{
+    height: 3rem;
+    width: auto;
+}
+
+/*///////*/
+
+/*.hidden{*/
+/*    display: none;*/
+/*}*/
+
+/*.center {*/
+/*    !*display: block;*!*/
+/*    !*margin-left: auto;*!*/
+/*    !*margin-right: auto;*!*/
+/*}*/
+/*h1,h3{*/
+/*    color:rgb( 111, 178, 209);*/
+/*    text-decoration: underline;*/
+
+/*}*/
+
+/*.editFormP{*/
+/*    !*position: relative;*!*/
+/*    !*text-align: center;*!*/
+/*}*/
+
+/*.editFormC{*/
+/*    !*position: inherit;*!*/
+/*    !*right: 1rem;*!*/
+/*    !*margin-top: 20px;*!*/
+/*}*/
+
+/*.success{*/
+/*    color: #05f105;*/
+/*}*/
+
+/*.noFridges{*/
+/*    !*text-align: center;*!*/
+/*    color: white;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*p,label{*/
+/*    color: white;*/
+/*}*/
+
+/*.errorProfileForm{*/
+/*    color: red;*/
+/*}*/
+
+/*.profileImg{*/
+/*    !*display: block;*!*/
+/*    border: rgb( 142, 182, 200) solid 2px;*/
+/*    border-radius: 50%;*/
+/*    height: 11rem;*/
+/*    width: 11rem;*/
+/*    !*margin: 10px;*!*/
+/*    !*image-resolution: normal;*!*/
+/*}*/
+
+/*.editFormBtn{*/
+/*    background-color: white;*/
+/*    border-radius: 7.25rem;*/
+/*    border: gray solid 1px;*/
+/*    color: gray;*/
+/*    font-size: 12px;*/
+/*    !*margin: auto;*!*/
+/*    height: 2rem;*/
+/*    width: 12rem;*/
+/*}*/
+
+/*.editForm:active{*/
+/*    background-color: gray;*/
+/*    color: white;*/
+/*}*/
+
+/*button#form-btn{*/
+/*    background-color: white;*/
+/*    border-radius: 7.25rem;*/
+/*    border: gray solid 1px;*/
+/*    color: gray;*/
+/*    font-size: 12px;*/
+/*    height: 2rem;*/
+/*    width: 4rem;*/
+/*}*/
+
+/*.addFridgeBtn{*/
+/*    background-color: rgb( 111, 178, 209);*/
+/*    border-radius: 7.25rem;*/
+/*    border: blue solid 1px;*/
+/*    color: white;*/
+/*    font-size: 12px;*/
+/*    !*margin: auto;*!*/
+/*    height: 3rem;*/
+/*    width: 20rem;*/
+/*}*/
+
+/*.addFridgeBtn:active{*/
+/*    background-color: #406fee;*/
+/*    color: white;*/
+/*}*/
+
+/*.submitFridgeBtn{*/
+/*    border-radius: 7.25rem;*/
+/*    color: black;*/
+/*    font-size: 12px;*/
+/*    !*margin: auto;*!*/
+/*    height: 2rem;*/
+/*    width: 5rem;*/
+/*    background-color: rgb( 195, 252, 204);*/
+/*    border: rgb( 142, 182, 200) solid 2px;*/
+/*}*/
+
+/*.submitFridgeBtn:active{*/
+/*    background-color: #23fd5f;*/
+/*    color: white;*/
+/*}*/
+
+/*.cancelFridgeBtn{*/
+/*    border-radius: 7.25rem;*/
+/*    color: black;*/
+/*    font-size: 12px;*/
+/*    margin: auto;*/
+/*    height: 2rem;*/
+/*    width: 5rem;*/
+/*    background-color: rgb( 254, 191, 189);*/
+/*    border: rgb( 142, 182, 200) solid 2px;*/
+/*}*/
+
+/*.cancelFridgeBtn:active{*/
+/*    background-color: #ec0b0b;*/
+/*    color: white;*/
+/*}*/
+
+/*.addFridge{*/
+/*    margin-bottom: 25px;*/
+/*}*/
+
+/*button#edit.editFormBtn:active{*/
+/*    background-color: gray;*/
+/*    color: white;*/
+/*}*/
+
+
+/*input#newFridge{*/
+/*    margin: 10px;*/
+/*}*/
+
+/*.editInput{*/
+/*    width: 12rem;*/
+/*}*/
+
+/*.fridgeCards{*/
+/*    margin-top: 30px;*/
+/*    !*margin: 0 auto;*!*/
+/*    width: 400px;*/
+/*    height: 354px;*/
+/*    padding: 10px 40px;*/
+/*    background: rgb(  194,	235,	252)	;*/
+/*    color: #FFF;*/
+/*    border-radius:30px;*/
+/*    position: relative;*/
+/*    border: rgb( 142, 182, 200) solid 2px;*/
+
+/*}*/
+/*.main{*/
+/*    margin:10px 25px;*/
+/*}*/
+
+/*.btn{*/
+/*    background-color: white;*/
+/*    border-radius: 7.25rem;*/
+/*    font-size: 12px;*/
+/*    height: 47px;*/
+/*    width: 97px;*/
+
+
+/*}*/
+
+/*.addUser{*/
+/*    font-size: 7px;*/
+/*    margin: 2px;*/
+/*}*/
+
+/*.addUserInput{*/
+/*    width: 14.5rem;*/
+/*    height: 28px;*/
+/*    position: absolute;*/
+/*    right: 2rem;*/
+/*    margin: 3px;*/
+/*}*/
+
+/*.error{*/
+/*    color: red;*/
+/*}*/
+
+/*div.col.cardControls{*/
+/*    width: 8.7rem;*/
+
+/*}*/
+
+/*div.col.cardImg{*/
+
+/*}*/
+
+
+/*button.btn.addUserBtn{*/
+/*    position: absolute;*/
+/*    top: 14rem;*/
+/*    right: 11rem;*/
+/*}*/
+
+/*.cardControls{*/
+/*    position: absolute;*/
+/*    left: 10rem;*/
+/*}*/
+
+/*.fridgeImg{*/
+/*    height: 185px;*/
+/*    width: auto;*/
+
+/*}*/
+
+/*.cardImg{*/
+/*    position: absolute;*/
+/*    right: 0.98rem*/
+/*}*/
+
+/*.view-btn{*/
+/*    background-color: rgb( 195, 252, 204);*/
+/*    border: rgb( 142, 182, 200) solid 2px;*/
+/*}*/
+
+/*.leave-btn{*/
+/*    background-color: rgb( 254, 191, 189);*/
+/*    border: rgb( 142, 182, 200) solid 2px;*/
+/*}*/
+
+/*.addFormButton {*/
+/*    background-color: rgb( 234, 223, 252);*/
+/*    border: rgb( 142, 182, 200) solid 2px;*/
+/*}*/
+
+/*.addUserBtn{*/
+/*    background-color: rgb( 224, 255, 230);*/
+/*    border: rgb( 142, 182, 200) solid 2px;*/
+/*}*/
+
+/*button.profileBtn.btn.btn-outline-secondary.whiteFont{*/
+/*    margin: auto;*/
+/*    height: 2rem;*/
+/*    width: 12rem;*/
+/*}*/
+
+/*button#open.btn-outline-secondary.whiteFont.mt-2{*/
+/*    margin: auto;*/
+/*    height: 2rem;*/
+/*    width: 12rem;*/
+/*}*/
+
+
+
+
+/*.uploadBtnDiv{*/
 /*    text-align: center;*/
+/*}*/
+
+/*li{*/
+/*    list-style: none;*/
+/*}*/
+
+/*.addFridge{*/
+/*    text-align: center;*/
+/*}*/
+
+/*.addUserDiv{*/
+/*    margin-right: 3rem;*/
+/*}*/
+
+/*footer{*/
+/*    !*border: rgb( 142, 182, 200) solid 2px;*!*/
+/*    !*position: fixed;*!*/
+/*}*/
+
+/*.footerImg{*/
+/*    height: 3rem;*/
+/*    width: auto;*/
 /*}*/

@@ -25,11 +25,6 @@
     color: rgb(111, 178, 209);
 }
 Html, body {overflow-x: hidden}
-
-h1 {
-    text-align: center;
-}
-
 .imageProfile {
     display: block;
     margin: auto;
