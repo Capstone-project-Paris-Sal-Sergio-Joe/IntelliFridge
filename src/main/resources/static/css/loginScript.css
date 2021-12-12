@@ -18,9 +18,9 @@
 }
 Html, body {overflow-x: hidden}
 
-h1{
-text-align: center;
-}
+/*h1{*/
+/*text-align: center;*/
+/*}*/
 .imageProfile {
     display: block;
     /*margin-left: auto;*/

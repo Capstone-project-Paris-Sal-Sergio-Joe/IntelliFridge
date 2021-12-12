@@ -14,18 +14,7 @@ h1,h3{
 }
 
 .editForm{
-    text-align: center;
-}
-
-.editFormP{
-    /*position: relative;*/
-    /*text-align: center;*/
-}
-
-.editFormC{
-    /*position: inherit;*/
-    /*right: 1rem;*/
-    /*margin-top: 20px;*/
+    margin-right: 31px;
 }
 
 .success{
@@ -33,7 +22,6 @@ h1,h3{
 }
 
 .noFridges{
-    /*text-align: center;*/
     color: white;
     text-decoration: none;
 }
@@ -47,7 +35,7 @@ p,label{
 }
 
 .divtest{
-    border: black solid 2px;
+    /*border: black solid 2px;*/
 }
 
 .profileImg{
@@ -100,8 +88,8 @@ button#form-btn{
     /*margin: auto;*/
     height: 3rem;
     width: 400px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 60px;
 }
 
 .addFridgeBtn:active{
@@ -118,6 +106,14 @@ button#form-btn{
     width: 5rem;
     background-color: rgb( 195, 252, 204);
     border: rgb( 142, 182, 200) solid 2px;
+}
+
+.addUserForm{
+}
+
+#addFridgeForm{
+    margin-top: 20px;
+    margin-bottom: 60px;
 }
 
 .submitFridgeBtn:active{
@@ -141,10 +137,6 @@ button#form-btn{
     color: white;
 }
 
-.addFridge{
-    /*margin-bottom: 25px;*/
-}
-
 button#edit.editFormBtn:active{
     background-color: gray;
     color: white;
@@ -155,13 +147,7 @@ input#newFridge{
     margin: 10px;
 }
 
-.editInput{
-    /*width: 12rem;*/
-}
 
-hr{
-    color: white;
-}
 
 .fridgeCards{
     margin-top: 20px;
@@ -176,9 +162,7 @@ hr{
     border: rgb( 142, 182, 200) solid 2px;
 
 }
-.main{
-    /*margin:10px 25px;*/
-}
+
 
 .btn{
     background-color: white;
@@ -192,6 +176,7 @@ hr{
 .addUser{
     font-size: 7px;
     /*margin: 2px;*/
+    /*margin-bottom: 20px;*/
 }
 
 .addUserInput{
@@ -211,26 +196,10 @@ div.col.cardControls{
 
 }
 
-button.btn.addUserBtn{
-    /*position: absolute;*/
-    /*top: 14rem;*/
-    /*right: 11rem;*/
-}
-
-.cardControls{
-    /*position: absolute;*/
-    /*left: 10rem;*/
-}
-
 .fridgeImg{
     height: 185px;
     /*width: auto;*/
 
-}
-
-.cardImg{
-    /*position: absolute;*/
-    /*right: 0.98rem*/
 }
 
 .view-btn{
@@ -241,33 +210,30 @@ button.btn.addUserBtn{
 .leave-btn{
     background-color: rgb( 254, 191, 189);
     border: rgb( 142, 182, 200) solid 2px;
+    margin-bottom: 10px;
 }
 
 .addFormButton {
     background-color: rgb( 234, 223, 252);
     border: rgb( 142, 182, 200) solid 2px;
+    margin: auto;
+    margin-bottom: 30px;
 }
 
 .addUserBtn{
     background-color: rgb( 224, 255, 230);
     border: rgb( 142, 182, 200) solid 2px;
 }
-
-button.profileBtn.btn.btn-outline-secondary.whiteFont{
-    /*margin: auto;*/
-    /*height: 2rem;*/
-    /*width: 12rem;*/
-}
-
-button#open.btn-outline-secondary.whiteFont.mt-2{
-    /*margin: auto;*/
-    /*height: 2rem;*/
-    /*width: 12rem;*/
-}
-
-
 .Fl{
     margin-top: 60px;
+}
+
+.ulUserEditForm{
+    padding: 0;
+}
+
+.ulUserEditForm > li {
+    padding: 10px;
 }
 
 .uploadBtnDiv{
