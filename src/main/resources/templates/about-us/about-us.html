@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:include="partials/partials.html :: head('Home')" >
-
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
     <title id="pageTitle">IntelliFridge | About Us</title>
     <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -12,217 +11,124 @@
           integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
 
+
 </head>
 <body>
 
-<link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
-<nav th:insert="partials/partials.html :: navbar"></nav>
-<div class="aboutTitle">
-<img th:src="@{/images/if-logo-FINAL-full.png}"  th:width="400px" style="display: block;
-    margin-left: auto;
-    margin-right: auto;"/>
-</div>
-    <div class="container my-5  ">
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-            <div class="col">
-                <div class="card h-100 text-center aboutUs ">
-                    <br>
-                    <img th:src="@{/images/paris.jpg}" class="card-img-top imageProfile" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Paris Shirley</h5>
-                        <div class="card text-center" >
+    <nav th:insert="partials/partials.html :: navbar"></nav>
+        <div class="aboutTitle">
+            <img th:src="@{/images/if-logo-FINAL-full.png}"  th:width="400px" style="display: block;
+                margin-left: auto;
+                margin-right: auto;"/>
+        </div>
+            <div class="container my-5  ">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                    <div class="col">
+                        <div class="card h-100 text-center aboutUs ">
+                            <br>
+                            <img th:src="@{/images/paris.jpg}" class="card-img-top imageProfile" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">About Me</h5>
-                                <p class="card-text">a short description about myself.
-                                    a short description about myself.
-                                    a short description about myself.
-                                    a short description about myself.</p>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item ">
-                                        <a href="https://github.com/shirleyp1097" >
-                                            <i class="fab fa-github" style="font-size:36px"></i>
-                                        </a>
-                                        <a href="https://google.com" >
-                                            <i class="fa fa-envelope"  style="font-size:36px"></i>
-                                        </a>
-                                        <a href="" >
-                                            <i class="fab fa-linkedin-in" style="font-size:36px"></i></a>
-                                    </li>
-                                </ul>
+                                <h5 class="card-title">Paris Shirley</h5>
+                                <div class="card text-center" >
+                                    <div class="card-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item ">
+                                                <a href="https://github.com/shirleyp1097" >
+                                                    <i class="fab fa-github" style="font-size:36px"></i>
+                                                </a>
+                                                <a href="https://google.com" >
+                                                    <i class="fa fa-envelope"  style="font-size:36px"></i>
+                                                </a>
+                                                <a href="" >
+                                                    <i class="fab fa-linkedin-in" style="font-size:36px"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                <!--        sal              -->
+                <div class="col">
+                    <div class="card h-100 text-center aboutUs"><br>
+                        <img th:src="@{/images/sal.jpg}" class="card-img-top imageProfile" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Salvador Salazar</h5>
+                            <div class="card text-center" >
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item ">
+                                            <a href="https://github.com/salvadorsalazar" >
+                                                <i class="fab fa-github" style="font-size:36px"></i>
+                                            </a>
+                                            <a href="https://google.com" >
+                                                <i class="fa fa-envelope"  style="font-size:36px"></i>
+                                            </a>
+                                            <a href="https://www.linkedin.com/in/salvador-salazar2" >
+                                                <i class="fab fa-linkedin-in" style="font-size:36px"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
+                <!--               serguio            -->
+                <div class="col">
+                    <div class="card h-100 aboutUs text-center"><br>
+                        <img th:src="@{/images/serguio.jpg}" class="card-img-top imageProfile" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Serguio Landa</h5>
+                            <div class="card text-center" >
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item ">
+                                            <a href="https://github.com/SerguioL" >
+                                                <i class="fab fa-github" style="font-size:36px"></i>
+                                            </a>
+                                            <a href="https://google.com" >
+                                                <i class="fa fa-envelope"  style="font-size:36px"></i>
+                                            </a>
+                                            <a href="" >
+                                                <i class="fab fa-linkedin-in" style="font-size:36px"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-
-        <!--        sal              -->
-        <div class="col">
-            <div class="card h-100 text-center aboutUs"><br>
-                <img th:src="@{/images/sal.jpg}" class="card-img-top imageProfile" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Salvador Salazar</h5>
-                    <div class="card text-center" >
+                <!--           joe             -->
+                <div class="col">
+                    <div class="card h-100 aboutUs text-center"><br>
+                        <img th:src="@{/images/joeProfile.jpg}" alt="" class="card-img-top  imageProfile">
                         <div class="card-body">
-                            <h5 class="card-title">About Me</h5>
-                            <p class="card-text">a short description about myself.
-                                a short description about myself.
-                                a short description about myself.
-                                a short description about myself.</p>
-
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item ">
-                                    <a href="https://github.com/salvadorsalazar" >
-                                        <i class="fab fa-github" style="font-size:36px"></i>
-                                    </a>
-
-                                    <a href="https://google.com" >
-                                        <i class="fa fa-envelope"  style="font-size:36px"></i>
-                                    </a>
-
-                                    <a href="https://www.linkedin.com/in/salvador-salazar2" >
-                                        <i class="fab fa-linkedin-in" style="font-size:36px"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!--               serguio            -->
-        <div class="col">
-            <div class="card h-100 aboutUs text-center"><br>
-
-                <img th:src="@{/images/serguio.jpg}" class="card-img-top imageProfile" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Serguio Landa</h5>
-
-                    <div class="card text-center" >
-                        <div class="card-body">
-                            <h5 class="card-title">About Me</h5>
-                            <p class="card-text">a short description about myself.
-                                a short description about myself.
-                                a short description about myself.
-                                a short description about myself.</p>
-
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item ">
-                                    <a href="https://github.com/SerguioL" >
-                                        <i class="fab fa-github" style="font-size:36px"></i>
-                                    </a>
-                                    <a href="https://google.com" >
-                                        <i class="fa fa-envelope"  style="font-size:36px"></i>
-                                    </a>
-
-                                    <a href="" >
-                                        <i class="fab fa-linkedin-in" style="font-size:36px"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!--           joe             -->
-        <div class="col">
-            <div class="card h-100 aboutUs text-center"><br>
-                <img th:src="@{/images/joeProfile.jpg}" alt="" class="card-img-top  imageProfile">
-                <div class="card-body">
-                    <h5 class="card-title">Joseph Congdon</h5>
-                    <div class="card text-center" >
-                        <div class="card-body">
-                            <h5 class="card-title">About Me</h5>
-                            <p class="card-text">a short description about myself.
-                                a short description about myself.
-                                a short description about myself.
-                                a short description about myself.</p>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item ">
-                                    <a href="https://github.com/josephcongdon" >
-                                        <i class="fab fa-github" style="font-size:36px"></i>
-                                    </a>
-
-                                    <a href="https://google.com" >
-                                        <i class="fa fa-envelope"  style="font-size:36px"></i>
-                                    </a>
-
-                                    <a href="" >
-                                        <i class="fab fa-linkedin-in" style="font-size:36px"></i></a>
-                                </li>
-                            </ul>
+                            <h5 class="card-title">Joseph Congdon</h5>
+                            <div class="card text-center" >
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item ">
+                                            <a href="https://github.com/josephcongdon" >
+                                                <i class="fab fa-github" style="font-size:36px"></i>
+                                            </a>
+                                            <a href="https://google.com" >
+                                                <i class="fa fa-envelope"  style="font-size:36px"></i>
+                                            </a>
+                                            <a href="" >
+                                                <i class="fab fa-linkedin-in" style="font-size:36px"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
+    <th:block th:insert="partials/partials.html :: bootstrap-js" />
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -14,22 +14,18 @@
 </head>
 <link  rel="stylesheet" th:href="@{css/loginScript.css}"/>
 
-
-<!--      href="/static/css/animation.css">-->
-
-
 <body >
 <link  rel="stylesheet" th:href="@{css/logo.css}"/>
-
+<link  rel="stylesheet" th:href="@{css/home.css}"/>
 
 
 <!--<nav th:include="partials/partials.html :: head('Home')" ></nav>-->
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
 <h1 class="title">Welcome To IntelliFridge</h1>
-
+<em class="description">The intuitive food-tracker made for you </em>
 <a class="nav-link" th:href="@{/}">
-    <img class="center signup-logo" th:src="@{/images/IfMedium.png}"    />
+    <img class="center home-logo" th:src="@{/images/IfMedium.png}"/>
 </a>
 
         <div th:if="${param.error}">
@@ -39,6 +35,14 @@
             You have been logged out.
         </div>
 
+            <div>
+                <ul class="description-ul">
+                    <li class="description"><em>Say Goodbye to wasting food</em></li>
+                    <li class="description"><em>Keep track of your food on your phone</em></li>
+                    <li class="description"><em>Be notified before your food expires</em></li>
+                </ul>
+            </div>
+
             <div class="container">
                 <div class="row main">
                     <div class="main-login main-center">
@@ -46,23 +50,24 @@
                         <div>
                             <form th:action="@{/login}" th:method="GET">
                                <!--    <button type="submit">Login</button>-->
-                                <input type="submit" value="Log In" class="form-control" />
+                                <input type="submit" value="Log In" class="proper form-control btn btn-outline-light" />
                             </form>
                         </div><br>
 
                         <div>
                             <form th:action="@{/sign-up}" th:method="GET">
                             <!--       <button type="submit">Sign up</button>-->
-                                <input type="submit" value="Sign Up" class="form-control" />
+                                <input type="submit" value="Sign Up" class="proper form-control btn btn-outline-light" />
                             </form>
                          </div><br>
 
                         <div>
                             <form th:action="@{/about-us}" th:method="GET">
                             <!--   <button type="submit">About Us</button>-->
-                                  <input type="submit" value="About Us" class="form-control" />
+                                  <input type="submit" value="About Us" class="proper form-control btn btn-outline-light" />
                             </form>
                         </div>
+                      </form>
                     </div>
                 </div>
             </div>
