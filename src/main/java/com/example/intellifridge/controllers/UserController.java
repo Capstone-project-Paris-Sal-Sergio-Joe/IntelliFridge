@@ -38,6 +38,10 @@ public class UserController {
         for (User otherUser: users) {
             if (otherUser.getUsername().equalsIgnoreCase(user.getUsername())) {
                 return "redirect:/sign-up?error=usernameAlreadyExists";
+            } else if (otherUser.getEmail() == null) {
+                continue;
+            } else if (otherUser.getEmail().equalsIgnoreCase("")) {
+                continue;
             } else if (otherUser.getEmail().equalsIgnoreCase(user.getEmail())) {
                 return "redirect:/sign-up?error=emailAlreadyExists";
             } else if (otherUser.getPhoneNumber() == null) {

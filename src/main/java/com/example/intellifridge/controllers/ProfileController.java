@@ -88,6 +88,10 @@ public class ProfileController {
         for (User otherUser : otherUsers) {
             if (otherUser.getUsername().equalsIgnoreCase(username)) {
                 return "redirect:/profile?error=usernameAlreadyExists";
+            } else if (otherUser.getEmail() == null) {
+                continue;
+            } else if (otherUser.getEmail().equalsIgnoreCase("")) {
+                continue;
             } else if (otherUser.getEmail().equalsIgnoreCase(email)) {
                 return "redirect:/profile?error=emailAlreadyExists";
             } else if (otherUser.getPhoneNumber() == null) {
@@ -98,6 +102,13 @@ public class ProfileController {
                 return "redirect:/profile?error=phoneNumberAlreadyExists";
             }
         }
+
+        sameUser.setUsername(username);
+        sameUser.setEmail(email);
+        sameUser.setPhoneNumber(phoneNumber);
+        sameUser.setNotifications(notifications);
+        sameUser.setIsPrivate(privacy);
+        userDao.save(sameUser);
 
         return "redirect:/profile";
     }

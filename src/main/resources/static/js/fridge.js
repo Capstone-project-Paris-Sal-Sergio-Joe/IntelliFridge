@@ -1,22 +1,31 @@
 $(document).ready(function () {
 
-    $('#foodTable').DataTable();
+    $('#foodTable').DataTable({
+        "paging": false,
+        "info": false
+    });
 
-    // add food image after name in table
+    // add food image after name in desktop view table
     $('.food-name').each(async function () {
             let fridgeImage = $(this).text()
             let fridgeImageUrl = await imageCode(fridgeImage);
-            $(this).append(`
-            <img src="${fridgeImageUrl}">
-        `)
-
-
+                $(this).prepend(`
+                <img src="${fridgeImageUrl}" class="foodResultImage img-thumbnail">
+                <br>
+            `)
         }
     )
 
-    $('.expirationDate').each(() => {
-
-    })
+    // add food image after name in mobile view table
+    $('.foodNameMobile').each(async function () {
+            let fridgeImage = $(this).text()
+            let fridgeImageUrl = await imageCode(fridgeImage);
+            $(this).prepend(`
+                <img src="${fridgeImageUrl}" class="foodResultImage img-thumbnail m-2">
+                <br>
+            `)
+        }
+    )
 
     function imageCode(query) {
         let baseUrl = 'https://api.unsplash.com/search/photos?client_id=';
