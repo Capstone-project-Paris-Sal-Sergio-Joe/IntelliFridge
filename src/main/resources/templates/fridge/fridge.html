@@ -116,66 +116,6 @@
 <!--    </tr>-->
 </div>
 
-<!--Mobile View Table-->
-<!--<div class="container my-2 phoneTable">-->
-<!--    <table class="table table-striped ">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th>-->
-<!--                <a class="btn btn-primary text-right" target="_blank">Food Name</a>-->
-<!--                &lt;!&ndash;add-food form&ndash;&gt;-->
-<!--                <button class="btn btn-primary" id="addFoodButton">Add Food</button>-->
-<!--                <form th:action="@{'/fridge/' + ${currentFridge.id} + '/add-food'}" th:method="post" th:object="${food}"-->
-<!--                      id="addFoodForm">-->
-<!--                    &lt;!&ndash;    Hidden date added&ndash;&gt;-->
-<!--                    <input th:type="hidden" th:field="*{dateAdded}">-->
-<!--                    <input type="text" placeholder="Food name..." id="foodSearch" th:field="*{name}" required>-->
-
-<!--                    <div id="foodResults">-->
-<!--                        <div th:each="shelfLife : ${shelfLives}" class="foodItem">-->
-<!--                            <div th:id="${shelfLife.name}" class="foodImageURL"></div>-->
-<!--                            <h3 th:text="${shelfLife.name}" class="foodName"></h3>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    <div id="addedFood"></div>-->
-<!--                </form>-->
-<!--            </th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-
-<!--        <tbody>-->
-<!--        <tr th:each="food : ${foodInFridge}">-->
-<!--            <td>-->
-<!--                <div class="row">-->
-<!--                    <div class="col-sm-3">-->
-<!--                        <div class="card">-->
-<!--                            <div>-->
-<!--                                <div th:text="${food.name}" class="food-name "-->
-<!--                                     style="background: rgb(2,60,82);   color:white; margin: 5px;  ">-->
-<!--                                </div>-->
-<!--                                <div class="card-body " style="background: rgb(2,60,82); color:white;">-->
-<!--                                    <div th:text="${'Expires On: '+(food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}">-->
-<!--                                    </div>-->
-<!--                                    <div>-->
-<!--                                        <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"-->
-<!--                                              th:method="POST">-->
-<!--                                            <button class="btn btn-danger">Delete</button>-->
-<!--                                        </form>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--        </tr>-->
-
-<!--        </tbody>-->
-<!--    </table>-->
-<!--</div>-->
-<!-- table for mobile view-->
-
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 <script src="/keys.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
