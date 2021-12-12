@@ -22,7 +22,7 @@
 <!--<nav th:include="partials/partials.html :: head('Home')" ></nav>-->
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
-<h1 class="title">Welcome To IntelliFridge</h1>
+<h1 class="home-title title">Welcome To <span><img class="home-image-position" th:src="@{/images/IF-RASTER-900-01.png}" th:width="170px"/></span></h1>
 <em class="description">The intuitive food-tracker made for you </em>
 <a class="nav-link" th:href="@{/}">
     <img class="center home-logo" th:src="@{/images/IfMedium.png}"/>
