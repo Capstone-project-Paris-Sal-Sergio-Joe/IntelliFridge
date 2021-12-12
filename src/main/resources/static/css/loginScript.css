@@ -24,8 +24,11 @@ text-align: center;
 
     border-radius: 50%;
 }
-body{
-    /*background:url(https://cdn.filestackcontent.com/JKHcJikXRKehLgRQjCs7);*/
+
+
+Html, body {
+    overflow-x: hidden;
+
 }
 
 .main{
