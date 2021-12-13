@@ -10,11 +10,11 @@
 
 <!--    mbiel view -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" th:href="@{css/loginScript.css}"/>
 
 </head>
 
 <body>
-<link rel="stylesheet" th:href="@{css/loginScript.css}"/>
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
 
@@ -26,10 +26,10 @@
                     <div>
                         <!--    <div class="col-md-3">-->
                         <div>
-                            <img th:src="${user.profilePicture}" th:if="${user.profilePicture == null}"
+                            <img th:src="${user.profilePicture}" th:if="${user.profilePicture != null}"
                                  alt="user profile picture" class=" profileImg">
                             <!--            mx-auto d-block-->
-                            <img th:src="@{images/profilePic.jpg}" th:if="${user.profilePicture != null}"
+                            <img th:src="@{images/profilePic.jpg}" th:if="${user.profilePicture == null}"
                                  alt="user profile picture" class=" profileImg">
                         </div>
                         <div>
