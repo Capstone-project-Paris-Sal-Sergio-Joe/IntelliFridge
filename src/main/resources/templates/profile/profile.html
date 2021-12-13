@@ -18,8 +18,6 @@
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
 
-
-
 <div class=" divtest container">
     <div class=" divtest row">
         <div class=" divtest col">
@@ -183,18 +181,6 @@
                                                 </button>
 
                                             </div>
-
-                                            <!--                            <div class="addUserDiv">-->
-                                            <!--                        <form th:data-id="${fridge.id}" th:id="${'addUserForm' + fridge.id}" class=""-->
-                                            <!--                              th:action="@{'/profile/add-user-to-fridge/' + ${fridge.id}}" th:method="POST">-->
-
-                                            <!--                            <label class="addUser" for="addByUserName"></label>-->
-                                            <!--                            <input class="addUserInput" name="addByUserName" id="addByUserName" type="text"-->
-                                            <!--                                   placeholder="Type a username or email" required>-->
-                                            <!--                            <button class="btn addUserBtn">Add</button>-->
-                                            <!--                        </form>-->
-                                            <!--                    </div>-->
-
                                         </div>
                                     </div>
                                     <div class="row">
@@ -237,8 +223,6 @@
 <!--<footer th:insert="partials/partials.html :: footer"></footer>-->
 
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
-
-
 <section th:replace="partials/partials_scripts :: script"></section>
 
 <script src="js/jquery.js"></script>
