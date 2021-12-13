@@ -77,8 +77,19 @@
 <!--mobile view-->
 <div class="phoneTable container">
     <h1>Your fridge:</h1>
+    <div>
+        <label for="sortByMobileView">Sort By:</label>
+<!--        <form th:action="@{'/fridge/' + ${currentFridge.id} + }">-->
+            <select name="sort" id="sortByMobileView">
+                <option value="blank"></option>
+                <option value="name">Name</option>
+                <option value="expirationDate" id="sortByExpirationDate">Expiration Date</option>
+                <option value="dateAdded" id="sortByRecentlyAdded">Recently Added</option>
+            </select>
+<!--        </form>-->
+    </div>
     <div class="d-flex flex-wrap">
-        <div th:each="food: ${foodInFridge}" class="card">
+        <div th:each="food: ${foodInFridge}" class="card mobileViewFood">
             <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"
                   th:method="POST" class="align-self-end">
                 <button class="btn btn-outline-danger">
