@@ -32,10 +32,10 @@
 
 
 <h2 id="errorSignUp"></h2>
-<div th:if="${param.error}" id="errorM" >
-    <h1 style="color: white" th:if="${param.error[0] == 'usernameAlreadyExists'}">Username already taken. Please choose another</h1>
-    <h1 style="color: white" th:if="${param.error[0] == 'emailAlreadyExists'   }">Email already taken. Please choose another</h1>
-    <h1 style="color: white" th:if="${param.error[0] == 'phoneNumberAlreadyExists'}">Phone number already taken. Please choose another</h1>
+<div th:if="${param.error}" id="errorM" class="alert alert-danger text-center" >
+    <h1 th:if="${param.error[0] == 'usernameAlreadyExists'}">Username already taken. Please choose another</h1>
+    <h1 th:if="${param.error[0] == 'emailAlreadyExists'   }">Email already taken. Please choose another</h1>
+    <h1 th:if="${param.error[0] == 'phoneNumberAlreadyExists'}">Phone number already taken. Please choose another</h1>
 </div>
 
 <div class="img-rounded">
