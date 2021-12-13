@@ -15,6 +15,11 @@
     width: 285px;
 }
 
+.home-image-position{
+    padding-bottom: 4px;
+    width: 12.1rem;
+}
+
 @keyframes pulse-blue {
     0% {
         transform: scale(0.98);
@@ -34,3 +39,4 @@
         border-radius: 100px;
     }
 }
+
