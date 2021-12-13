@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="partials/partials.html :: head('Profile')"></head>
-<!--<style>-->
-<!--    .hidden{-->
-<!--        display: none;-->
-<!--    }-->
-<!--</style>-->
+
 <link rel="stylesheet" th:href="@{/css/profile.css}">
 
-<!--    mbiel view -->
+<!--    mobile view -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 </head>
 
 <body>
-<link rel="stylesheet" th:href="@{css/loginScript.css}"/>
+<link rel="stylesheet" th:href="@{/css/loginScript.css}"/>
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
 
@@ -27,6 +23,7 @@
                         <div>
                             <img th:src="${user.profilePicture}" th:if="${user.profilePicture != null}"
                                  alt="user profile picture" class=" profileImg">
+
                             <img th:src="@{images/profilePic.jpg}" th:if="${user.profilePicture == null}"
                                  alt="user profile picture" class=" profileImg">
                         </div>
