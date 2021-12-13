@@ -69,7 +69,7 @@ public class UserController {
         user.setProfilePicture(profilePicture);
         userDao.save(user);
 
-        return "redirect:/profile/";
+        return "redirect:/profile";
     }
 
 }

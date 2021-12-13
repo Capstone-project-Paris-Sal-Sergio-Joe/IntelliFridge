@@ -3,6 +3,10 @@
     color:rgb(  111,	178,	209) ;
 }
 
+.home-title{
+    text-align: center;
+}
+
 .description{
     color:rgb(  111,	178,	209) ;
     margin-left: auto;
@@ -27,5 +31,13 @@
 }
 .proper-logIn{
     padding: 9px;
-    font-size: 19px;
+    font-size: 1.5rem;
+}
+
+input[type="text"], input[type="password"], input[type="submit"] {
+    font-size: 1.5rem;
+}
+
+.home-image-position{
+    padding-bottom: 4px;
 }

@@ -1,24 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="partials/partials.html :: head('Profile')"></head>
-<!--<style>-->
-<!--    .hidden{-->
-<!--        display: none;-->
-<!--    }-->
-<!--</style>-->
+
 <link rel="stylesheet" th:href="@{/css/profile.css}">
 
-<!--    mbiel view -->
+<!--    mobile view -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" th:href="@{css/loginScript.css}"/>
 
 </head>
 
 <body>
-<link rel="stylesheet" th:href="@{css/loginScript.css}"/>
-
 <nav th:insert="partials/partials.html :: navbar"></nav>
-
-
 
 <div class=" divtest container">
     <div class=" divtest row">
@@ -29,6 +22,7 @@
                         <div>
                             <img th:src="${user.profilePicture}" th:if="${user.profilePicture != null}"
                                  alt="user profile picture" class=" profileImg">
+
                             <img th:src="@{images/profilePic.jpg}" th:if="${user.profilePicture == null}"
                                  alt="user profile picture" class=" profileImg">
                         </div>
@@ -127,6 +121,7 @@
                         <h1 class="text-center" th:if="${param.userAdded[0] == 'true'}">User successfully
                             added!</h1>
                     </div>
+
                     <div class=" divtest row">
                         <h3 class="text-center ">Fridge List:</h3>
                         <div th:if="${user.getFridges().size() == 0}">
@@ -215,8 +210,6 @@
 <!--<footer th:insert="partials/partials.html :: footer"></footer>-->
 
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
-
-
 <section th:replace="partials/partials_scripts :: script"></section>
 
 <script src="js/jquery.js"></script>

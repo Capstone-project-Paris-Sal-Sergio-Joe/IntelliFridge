@@ -48,7 +48,8 @@ public class ProfileController {
         }
         User findUser = null;
         for (int i=0;i<usernamesAndEmails.size();i++) {
-            if (usernamesAndEmails.get(i).equalsIgnoreCase(name)) {
+            if(usernamesAndEmails.get(i) == null || usernamesAndEmails.get(i).equals("")){}
+            else if (usernamesAndEmails.get(i).equalsIgnoreCase(name)) {
                 findUser = userDao.findByUsername(name);
                 if (findUser == null) {
                     findUser = userDao.findByEmail(name);
