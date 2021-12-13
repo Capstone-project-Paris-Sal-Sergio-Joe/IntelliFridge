@@ -159,6 +159,10 @@ input#newFridge{
 
 }
 
+p{
+    font-size: 1.2rem;
+}
+
 
 .btn{
     background-color: white;
@@ -176,7 +180,7 @@ input#newFridge{
 
 .addUserInput{
          width: 13.6rem;
-         height: 28px;
+         height: 39px;
 }
 
 .fridgeImg{
@@ -224,6 +228,10 @@ input#newFridge{
     width: 88%;
     border-top: 11px dotted rgb(3, 169, 244);
     margin: .5em auto .5em auto ;
+}
+
+input[type="text"]{
+    font-size: 1.5rem;
 }
 
 /*.addUserDiv{*/

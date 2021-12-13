@@ -92,6 +92,7 @@
                                 </li>
                                 <li>
                                     <label>Privacy: </label>
+                                    <p>By default, users are able to add other users to their fridge. If you’d like to remain private and NOT be able to be added, select True.</p>
                                     <br>
                                     <label for="isPrivateTrue">True</label>
                                     <input type="radio" name="privacy" th:value="true" id="isPrivateTrue"
@@ -124,7 +125,7 @@
                     <div class=" divtest row">
                         <h3 class="text-center ">Fridge List:</h3>
                         <div th:if="${user.getFridges().size() == 0}">
-                            <h3 class="noFridges">It looks like you have no fridges lets add one</h3>
+                            <h3 class="noFridges text-center" >It looks like you have no fridges lets add one</h3>
                         </div>
                     </div>
                     <div class=" divtest row">
