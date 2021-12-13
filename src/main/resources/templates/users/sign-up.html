@@ -30,8 +30,9 @@
     <img class="center signup-logo" th:src="@{/images/IfMedium.png}"    />
 </a>
 
-
-<h2 id="errorSignUp"></h2>
+<div th:if="${errorSignUp != ''}" >
+<h2 class=" alert-danger text-center errorSignUp" id="errorSignUp" ></h2>
+</div>
 <div th:if="${param.error}" id="errorM" class="alert alert-danger text-center" >
     <h1 th:if="${param.error[0] == 'usernameAlreadyExists'}">Username already taken. Please choose another</h1>
     <h1 th:if="${param.error[0] == 'emailAlreadyExists'   }">Email already taken. Please choose another</h1>
