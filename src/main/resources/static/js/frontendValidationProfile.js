@@ -19,6 +19,7 @@ editForm.addEventListener('submit', (e) => {
 
     } else {
         messages.push('This is not a valid email');
+
     }
 
     if(phoneNumber.value.match(validatedPhoneNumber)){
@@ -29,12 +30,16 @@ editForm.addEventListener('submit', (e) => {
 
     } else {
         messages.push('This is not a valid phone number');
-    }
 
+    }
 
     if(messages.length >0){
         e.preventDefault()
         errorProfileForm.innerText = messages.join(', ');
+
     }
-    backendError.innerHTML = '';
+    if(backendError != null){
+        backendError.innerText = '';
+    }
+
 })

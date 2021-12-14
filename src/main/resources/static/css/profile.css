@@ -243,3 +243,9 @@ input[type="text"]{
 
     }
 }
+
+.dropdown-animation{
+
+    visibility: visible;
+}
+
