@@ -17,7 +17,8 @@
     <div class=" divtest row">
         <div class=" divtest col">
             <div class="row">
-                <div class=" divtest col-sm-12 col-md-4 col-lg-5 col-xl-4 text-center">
+                <!-- user profile image and their update/edit options               -->
+                <div class=" divtest col-sm-12 col-md-5 col-lg-5 col-xl-4 text-center">
                     <div>
                         <div>
                             <img th:src="${user.profilePicture}" th:if="${user.profilePicture != null}"
@@ -27,11 +28,14 @@
                                  alt="user profile picture" class=" profileImg">
                         </div>
                         <div>
-                            <form th:action="@{/profile/{id}/editImage(id=${user.id})}" class="d-flex flex-column" th:method="post" id="submitImage">
+                            <form th:action="@{/profile/{id}/editImage(id=${user.id})}" class="d-flex flex-column"
+                                  th:method="post" id="submitImage">
                                 <div id="ImagePicker">
                                     <input class="form-control" id="imageFile" type="hidden" name="image">
                                     <div class="uploadBtnDiv">
-                                        <button type="button" class="btn btn-outline-secondary whiteFont mt-2" id="open">Profile picture</button>
+                                        <button type="button" class="btn btn-outline-secondary whiteFont mt-2"
+                                                id="open">Profile picture
+                                        </button>
                                     </div>
                                 </div>
                             </form>
@@ -41,21 +45,23 @@
                     <h1 class="userName" th:text="${user.username}"></h1>
                     <!--/*@thymesVar id="errorProfileForm" type=""*/-->
                     <div th:if="${errorProfileForm != ''}" class="">
-                         <h1 id="errorProfileForm" class="errorProfileForm alert-danger"></h1>
+                        <h1 id="errorProfileForm" class="errorProfileForm alert-danger"></h1>
                     </div>
-                        <button id="edit" class="editFormBtn">edit</button>
-                        <div th:if="${param.error}" id="backendErrorProfileMessage" class=" alert-danger">
-                            <h1 class="text-center " th:if="${param.error[0] == 'usernameAlreadyExists'}">Username
-                                already taken.
-                                Please choose another</h1>
-                            <h1 class="text-center " th:if="${param.error[0] == 'emailAlreadyExists'}">Email
-                                already taken. Please
-                                choose another</h1>
-                            <h1 class="text-center " th:if="${param.error[0] == 'phoneNumberAlreadyExists'}">Phone
-                                number already
-                                taken. Please choose another</h1>
-                        </div>
-                        <div class=" divtest row">
+                    <button id="edit" class="editFormBtn">edit</button>
+                    <div th:if="${param.error}" id="backendErrorProfileMessage" class=" alert-danger">
+                        <h1 class="text-center " th:if="${param.error[0] == 'usernameAlreadyExists'}">Username
+                            already taken.
+                            Please choose another</h1>
+                        <h1 class="text-center " th:if="${param.error[0] == 'emailAlreadyExists'}">Email
+                            already taken. Please
+                            choose another</h1>
+                        <h1 class="text-center " th:if="${param.error[0] == 'phoneNumberAlreadyExists'}">Phone
+                            number already
+                            taken. Please choose another</h1>
+                        <h1 class="text-center " th:if="${param.error[0] == 'notifications'}">You can't have
+                            notifications on if you do not have a phone number</h1>
+                    </div>
+                    <div class=" divtest row">
                         <form th:action="@{'/profile/' + ${user.id} + '/edit'}" name="edit" class="hidden editForm"
                               id="editForm" th:method="post">
 
@@ -72,13 +78,13 @@
                                     <br>
                                     <input class="" name="email" type="text" th:value="${user.email}"
                                            id="email"
-                                           placeholder="Email" required/>
+                                           placeholder="Email"/>
                                 </li>
                                 <li>
                                     <label for="phoneNumber">Phone Number</label>
                                     <br>
                                     <input class="" name="phoneNumber" type="text"
-                                           th:value="${user.phoneNumber}" id="phoneNumber"/>
+                                           th:value="${user.phoneNumber}" id="phoneNumber" placeholder="Phone Number"/>
                                 </li>
                                 <li>
                                     <label>Do you want to get notifications?</label>
@@ -92,12 +98,13 @@
                                 </li>
                                 <li>
                                     <label>Privacy: </label>
-                                    <p>By default, users are able to add other users to their fridge. If you’d like to remain private and NOT be able to be added, select True.</p>
-                                    <br>
-                                    <label for="isPrivateTrue">True</label>
+                                    <p>By default, users are able to add other users to their fridge. If you’d like to
+                                        remain private and NOT be able to be added, select True.</p>
+                                    <!--                                    <br>-->
+                                    <label for="isPrivateTrue">Yes</label>
                                     <input type="radio" name="privacy" th:value="true" id="isPrivateTrue"
                                            th:checked="${user.getIsPrivate() == true}" required>
-                                    <label for="isPrivateFalse">False</label>
+                                    <label for="isPrivateFalse">No</label>
                                     <input type="radio" name="privacy" th:value="false" id="isPrivateFalse"
                                            th:checked="${user.getIsPrivate() == false}" required>
                                 </li>
@@ -109,12 +116,13 @@
                     </div>
                 </div>
                 <hr class="hr-design">
-                <div class="Fl divtest col-sm-12 col-md-8 col-lg-7 col-xl-8">
-                    <div th:if="${param.error}" id="errorM" class="alert alert-danger text-center">
-                        <h1 th:if="${param.error[0] == 'null'}">User not found</h1>
-                        <h1 th:if="${param.error[0] == 'current'}">User already added to this
+                <!-- all the fridge a user is apart of                 -->
+                <div class="Fl divtest col-sm-12 col-md-7 col-lg-7 col-xl-8">
+                    <div th:if="${param.error1}" id="errorM" class="alert alert-danger text-center">
+                        <h1 th:if="${param.error1[0] == 'null'}">User not found</h1>
+                        <h1 th:if="${param.error1[0] == 'current'}">User already added to this
                             fridge</h1>
-                        <h1  th:if="${param.error[0] == 'privateUser'}">User is private and
+                        <h1 th:if="${param.error1[0] == 'privateUser'}">User is private and
                             cannot be added</h1>
                     </div>
                     <div th:if="${param.userAdded}" class="alert alert-success">
@@ -125,7 +133,7 @@
                     <div class=" divtest row">
                         <h3 class="text-center ">Fridge List:</h3>
                         <div th:if="${user.getFridges().size() == 0}">
-                            <h3 class="noFridges text-center" >It looks like you have no fridges lets add one</h3>
+                            <h3 class="noFridges text-center">It looks like you have no fridges lets add one</h3>
                         </div>
                     </div>
                     <div class=" divtest row">
@@ -171,7 +179,8 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <form th:data-id="${fridge.id}" th:id="${'addUserForm' + fridge.id}" class="addUserForm hidden"
+                                        <form th:data-id="${fridge.id}" th:id="${'addUserForm' + fridge.id}"
+                                              class="addUserForm hidden"
                                               th:action="@{'/profile/add-user-to-fridge/' + ${fridge.id}}"
                                               th:method="POST">
 
@@ -207,7 +216,6 @@
         </div>
     </div>
 </div>
-<!--<footer th:insert="partials/partials.html :: footer"></footer>-->
 
 <th:block th:insert="partials/partials.html :: bootstrap-js"/>
 <section th:replace="partials/partials_scripts :: script"></section>
