@@ -124,5 +124,9 @@ input:checked + .slider:before {
 }
 
 
+label {
+    font-size: 1.5rem;
+}
+
 
 
