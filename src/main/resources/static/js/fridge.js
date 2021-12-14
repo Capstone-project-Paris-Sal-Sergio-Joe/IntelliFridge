@@ -14,6 +14,34 @@ $(document).ready(function () {
     //     }
     // });
 
+    //search for mobile view
+    $('#searchMobileView').keyup(function() {
+        $('#noFoodMessage').html('');
+        let search = $(this).val().toLowerCase();
+        let foodCount = $('.mobileViewFood').length;
+        $('.mobileViewFood').each(function() {
+            let foodName = $(this).attr('data-id');
+            let regExp = new RegExp(`${search}`);
+            if (search != '') {
+                if (regExp.test(foodName) == true) {
+                    $(this).css('display','block');
+                    // foodCount += 1;
+                } else {
+                    $(this).css('display','none');
+                    foodCount -= 1;
+                }
+            } else {
+                $(this).css('display','block');
+            }
+        })
+
+        if (foodCount === 0) {
+            $('#noFoodMessage').html(`<h2>No foods in your fridge match search criteria...</h2>`)
+        }
+
+
+    })
+
     // sort by for mobile view
     $('#sortByMobileView').change(function(){
         var value = $(this).val();
