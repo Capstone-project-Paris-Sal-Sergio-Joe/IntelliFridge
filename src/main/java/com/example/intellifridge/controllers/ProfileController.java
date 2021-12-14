@@ -58,11 +58,11 @@ public class ProfileController {
         }
         if (findUser == null) {
 
-            return "redirect:/profile?error=null";
+            return "redirect:/profile?error1=null";
         }
 
         if (findUser.getIsPrivate() == true) {
-            return "redirect:/profile?error=privateUser";
+            return "redirect:/profile?error1=privateUser";
         }
 
 
@@ -70,7 +70,7 @@ public class ProfileController {
         List<Fridge> userFridges = userDao.getById(findUser.getId()).getFridges();
         for(int i=0; i<userFridges.size(); i++){
             if(findFridge.getId() == userFridges.get(i).getId()){
-                return "redirect:/profile?error=current";
+                return "redirect:/profile?error1=current";
             }
         }
 
@@ -102,6 +102,14 @@ public class ProfileController {
                 continue;
             } else if (otherUser.getPhoneNumber().equalsIgnoreCase(phoneNumber)) {
                 return "redirect:/profile?error=phoneNumberAlreadyExists";
+            }
+        }
+
+        if(notifications == true){ //check to see if the current user's notifications are on
+            if (sameUser.getPhoneNumber() == null || phoneNumber == null || phoneNumber.equalsIgnoreCase("")){
+                // this checks to see if the users has a phone number if they don't then it will give them an error message saying they can't have notifications on unless they have phone number
+
+                return "redirect:/profile?error=notifications";
             }
         }
 

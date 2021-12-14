@@ -46,42 +46,72 @@ public class TwilioController {
        return ts;
    }
 
-    @Scheduled(fixedRate = 86400000) // one day use this one for deployment
+ //   @Scheduled(fixedRate = 86400000) // one day use this one for deployment
 
+//   @Scheduled(fixedRate = 120000)// for testing
+//   @Transactional// keep both line off if you dont want get a lot of messages during testing
 //   @Scheduled(fixedRate = 30000)// for testing
-   @Transactional// keep both line off if you dont want get a lot of messages during testing
+//   @Transactional// keep both line off if you dont want get a lot of messages during testing
 
    public void notification() {
 
        List<User> users = userRepository.findAll();
 
        SimpleDateFormat foodDate = new SimpleDateFormat("MM/dd/yyyy");
+       //takes a timestamp and format it's into months days and years
 
        Timestamp currentDate = new Timestamp(System.currentTimeMillis());
+       // get the timestamp for the current date
 
-       for (int i = 0; i < users.size(); i++) {//loops through all users
-           for (int ii = 0; ii < users.get(i).getFridges().size(); ii++) {//gets all users fridges
-               List<Food> notifyForFood = new ArrayList<Food>();//this holds all the foods that are going to expire soon. it starts off empty
-               List<Food> foodInFridge = foodRepository.findAllByFridgeIdOrderByExpirationDate(users.get(i).getFridges().get(ii).getId());//gets fridge id so if can find all the food in that fridge
-               for (int iii = 0; iii < foodInFridge.size(); iii++) {
-                   if(users.get(i).isNotifications() == true){
-                   Timestamp foodNotificationTwoDays = SubtractDays(-2, foodRepository.getById(foodInFridge.get(iii).getId()).getExpirationDate());//makes a timestamp by subtracting 2 days before the food will expire
-                  Timestamp foodNotificationOneDay = SubtractDays(-1, foodRepository.getById(foodInFridge.get(iii).getId()).getExpirationDate());
-                   if (foodDate.format(currentDate).equals(foodDate.format(foodInFridge.get(iii).getExpirationDate()))) { //this will check if the current food is going to expire today
-//                        notifyForFood.add(foodInFridge.get(iii).getName());// if food is about to expire in the next 2 days it will be added to a notifyForFood
-                       notifyForFood.add(foodInFridge.get(iii));
+       for (User user : users) {//loops through all users
 
-                   } else if( foodDate.format(currentDate).equals(foodDate.format(foodNotificationOneDay))){//this will check if the current food is going to expire in the 1 next days
-                       notifyForFood.add(foodInFridge.get(iii));
+           for (int ii = 0; ii < user.getFridges().size(); ii++) {
+               //gets all users fridges
 
-                   }else if(foodDate.format(currentDate).equals(foodDate.format(foodNotificationTwoDays))){//this will check if the current food is going to expire in the 2 next days
-                       notifyForFood.add(foodInFridge.get(iii));
-                   }
+               List<Food> notifyForFood = new ArrayList<Food>();
+               //this holds all the foods that are going to expire soon. it starts off empty
+
+               List<Food> foodInFridge = foodRepository.findAllByFridgeIdOrderByExpirationDate(user.getFridges().get(ii).getId());
+               //gets fridge id so it can find all the food in that fridge
+               //findAllByFridgeIdOrderByExpirationDate this is a methode that was made in the FoodRepository that finds all the food n a fridge by fridge ID and orders it by timestamp
+
+               for (Food food : foodInFridge) {
+
+                   if (user.isNotifications() == true) {
+                       //checks to see if the current users in the loop has notifications on
+
+                       Timestamp foodNotificationTwoDays = SubtractDays(-2, foodRepository.getById(food.getId()).getExpirationDate());
+                       //makes a timestamp by subtracting 2 days before the food will expire
+
+                       Timestamp foodNotificationOneDay = SubtractDays(-1, foodRepository.getById(food.getId()).getExpirationDate());
+
+                       if (foodDate.format(currentDate).equals(foodDate.format(food.getExpirationDate()))) {
+                           //this will check if the current food is going to expire today
+
+                           notifyForFood.add(food);
+                           // if food is about to expire in the next 2 days it will be added to a notifyForFood
+
+                       } else if (foodDate.format(currentDate).equals(foodDate.format(foodNotificationOneDay))) {
+                           //this will check if the current food is going to expire in the next day
+
+                           notifyForFood.add(food);
+
+                       } else if (foodDate.format(currentDate).equals(foodDate.format(foodNotificationTwoDays))) {
+                           //this will check if the current food is going to expire in the 2 next days
+
+                           notifyForFood.add(food);
+
+                       }
                    }
                }
-               if(notifyForFood.size() >= 1){//check to see if there any food in the list that needs to be sent through a message if there is no food then it not send a message
-                   twilio.sendNotification(notifyForFood, users.get(i),users.get(i).getFridges().indexOf(users.get(i).getFridges().get(ii)));
-                   notifyForFood.clear();//this clears the notifyForFood list after it is done  sending the notification
+               if (notifyForFood.size() >= 1) {
+                   //check to see if their any food in the list that needs to be sent through a message if there is no food in the notifyForFood then it not send a message
+
+                   twilio.sendNotification(notifyForFood, user, user.getFridges().indexOf(user.getFridges().get(ii)));
+                   //twilio.sendNotification(List of Food object, Current User in the loop, current fridge in the loop
+
+                   notifyForFood.clear();
+                   //this clears the notifyForFood list after it is done  sending the notification
                }
            }
        }

@@ -14,13 +14,12 @@
 
 h3{
     color:rgb( 111, 178, 209);
-    text-decoration: underline;
-
+    font-weight: bold;
 }
 
 .userName{
     color:rgb( 111, 178, 209);
-    text-decoration: underline;
+    font-weight: bold;
 }
 
 .editForm{
