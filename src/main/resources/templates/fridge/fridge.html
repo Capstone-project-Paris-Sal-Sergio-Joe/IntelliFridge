@@ -76,9 +76,9 @@
 
 <!--mobile view-->
 <div class="phoneTable container">
-    <h1 th:text="'Fridge: ' + ${currentFridge.name}" class=""></h1>
+    <h1 th:text="'Fridge: ' + ${currentFridge.name}" class="my-2"></h1>
     <div class="d-flex justify-content-between">
-        <div>
+        <div class="my-2">
             <label for="sortByMobileView">Sort By:</label>
             <select name="sort" id="sortByMobileView">
                 <option value="blank"></option>
@@ -87,7 +87,7 @@
                 <option value="dateAdded" id="sortByRecentlyAdded">Recently Added</option>
             </select>
         </div>
-        <div class="">
+        <div class="my-2">
             <label for="searchMobileView">Search:</label>
             <input type="text" id="searchMobileView" class="">
         </div>
@@ -96,7 +96,7 @@
         <div id="noFoodMessage"></div>
         <div th:each="food: ${foodInFridge}" class="card mobileViewFood" th:data-id="${food.getName()}">
             <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"
-                  th:method="POST" class="align-self-end">
+                  th:method="POST" class="">
                 <button class="btn btn-outline-danger">
 <!--                    Trash Can Icon-->
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">

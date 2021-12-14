@@ -36,7 +36,7 @@ $(document).ready(function () {
         })
 
         if (foodCount === 0) {
-            $('#noFoodMessage').html(`<h2>No foods in your fridge match search criteria...</h2>`)
+            $('#noFoodMessage').html(`<h2 class="alert-danger">No foods in your fridge match search criteria...</h2>`)
         }
 
 
