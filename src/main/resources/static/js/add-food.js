@@ -4,10 +4,6 @@ $(document).ready(function() {
         $('#addFoodForm').css('display','block')
     })
 
-    // $('#addFoodButton').click(() => {
-    //     $('#addFoodForm').toggleClass("visible")
-    // })
-
     $('#foodSearch').keyup(function() {
         let search = $(this).val().toLowerCase();
         $('.foodItem').each( async function () {
@@ -31,6 +27,7 @@ $(document).ready(function() {
             }
 
             $(this).click(function () {
+                $(window).scrollTop(0);
                 $('#foodSearch').val(foodName);
                 $('#foodSearch').prop('readonly',true);
                 $('#addedFood').html($(this).html() + `
