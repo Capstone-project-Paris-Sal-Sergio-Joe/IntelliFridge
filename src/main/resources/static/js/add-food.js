@@ -9,7 +9,7 @@ $(document).ready(function() {
     // })
 
     $('#foodSearch').keyup(function() {
-        let search = $(this).val();
+        let search = $(this).val().toLowerCase();
         $('.foodItem').each( async function () {
             let foodName = $(this).find('.foodName').text().toLowerCase();
             let regExp = new RegExp(`${search}`);

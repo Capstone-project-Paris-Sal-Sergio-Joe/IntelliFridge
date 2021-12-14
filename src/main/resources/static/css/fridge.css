@@ -1,6 +1,22 @@
 /*Mobile View*/
 @media (max-width: 720px) {
 
+    .mobileViewFood {
+        display: block;
+    }
+
+    .freezerText {
+        float: right;
+        display:inline-block;
+        color:rgb( 111, 178, 209);
+    }
+
+    .deleteButtonMobile {
+        display:inline-block;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
     table#foodTable.table.table-striped.table-responsive-md.dataTable.no-footer{
         visibility: collapse;
     }

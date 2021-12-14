@@ -34,17 +34,50 @@ public class FridgeController {
         this.foodShelfLifeRepository = foodShelfLifeRepository;
     }
 
+    @GetMapping("/yo/{name}")
+    @ResponseBody
+    public String showYo(@PathVariable String name) {
+        return "hello " + name;
+    }
+
 
     @GetMapping("/fridge/{id}")
     public String showFridge(@PathVariable long id, Model model) {
         Fridge currentFridge = fridgeRepository.getById(id);
         List<ShelfLife> shelfLifeList = foodShelfLifeRepository.findAll();
         List<Food> foodInFridge = foodRepository.findAllByFridgeId(id);
+        Collections.sort(foodInFridge, new SortByExpirationDate());
         model.addAttribute("currentFridge", currentFridge);
         model.addAttribute("foodInFridge", foodInFridge);
         model.addAttribute("food", new Food(Timestamp.from(Instant.now())));
         model.addAttribute("shelfLives", shelfLifeList);
         return "fridge/fridge";
+    }
+
+    @GetMapping("/fridge/{id}/{sortByMethod}")
+    public String showSortedFridge(@PathVariable long id, @PathVariable String sortByMethod, Model model) {
+        Fridge currentFridge = fridgeRepository.getById(id);
+        List<ShelfLife> shelfLifeList = foodShelfLifeRepository.findAll();
+        List<Food> foodInFridge = null;
+        if (sortByMethod.equalsIgnoreCase("name")) {
+            foodInFridge = foodRepository.findAllByFridgeIdOrderByName(id);
+        } else if (sortByMethod.equalsIgnoreCase("dateAdded")) {
+            foodInFridge = foodRepository.findAllByFridgeIdOrderByDateAddedDesc(id);
+        } else if (sortByMethod.equalsIgnoreCase("expirationDate")) {
+            foodInFridge = foodRepository.findAllByFridgeIdOrderByExpirationDate(id);
+        }
+        model.addAttribute("currentFridge", currentFridge);
+        model.addAttribute("foodInFridge", foodInFridge);
+        model.addAttribute("food", new Food(Timestamp.from(Instant.now())));
+        model.addAttribute("shelfLives", shelfLifeList);
+        return "fridge/fridge";
+    }
+
+    class SortByExpirationDate implements Comparator<Food> {
+        // Used for sorting in ascending order of ID
+        public int compare(Food a, Food b) {
+            return a.getExpirationDate().compareTo(b.getExpirationDate());
+        }
     }
 
     @PostMapping("/profile/add-fridge")
@@ -57,7 +90,7 @@ public class FridgeController {
     }
 
     @PostMapping("/fridge/{id}/delete")
-    public String deleteFridge(@PathVariable long id){
+    public String deleteFridge(@PathVariable long id) {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User sameUser = userRepository.getById(currentUser.getId());
@@ -65,14 +98,14 @@ public class FridgeController {
 
 //        Delete all foods in fridge
         List<Food> allFoods = foodRepository.findAllByFridgeId(id);
-        for (Food food: allFoods) {
+        for (Food food : allFoods) {
             foodRepository.delete(food);
         }
 
-        List <Fridge> fridges = sameUser.getFridges();
-        List <User> users = fridgeRepository.getById(id).getUsers();
+        List<Fridge> fridges = sameUser.getFridges();
+        List<User> users = fridgeRepository.getById(id).getUsers();
         fridges.remove(fridgeRepository.getById(id));
-        if (fridge.getUsers().size() == 1){
+        if (fridge.getUsers().size() == 1) {
             fridgeRepository.deleteById(id);
         }
         fridgeRepository.saveAll(fridges);
