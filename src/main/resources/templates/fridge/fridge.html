@@ -8,8 +8,8 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-<!--    Font Awesome-->
-<!--    <script src="https://kit.fontawesome.com/dc5eef4649.js" crossorigin="anonymous"></script>-->
+    <!--    Font Awesome-->
+    <!--    <script src="https://kit.fontawesome.com/dc5eef4649.js" crossorigin="anonymous"></script>-->
     <title>Fridge</title>
 </head>
 <!--Datatable CDN's-->
@@ -76,21 +76,41 @@
 
 <!--mobile view-->
 <div class="phoneTable container">
-    <h1>Your fridge:</h1>
+    <h1 th:text="'Fridge: ' + ${currentFridge.name}" class="my-2"></h1>
+    <div class="d-flex justify-content-between">
+        <div class="my-2">
+            <label for="sortByMobileView">Sort By:</label>
+            <select name="sort" id="sortByMobileView">
+                <option value="blank"></option>
+                <option value="name">Name</option>
+                <option value="expirationDate" id="sortByExpirationDate">Expiration Date</option>
+                <option value="dateAdded" id="sortByRecentlyAdded">Recently Added</option>
+            </select>
+        </div>
+        <div class="my-2">
+            <label for="searchMobileView">Search:</label>
+            <input type="text" id="searchMobileView" class="">
+        </div>
+    </div>
     <div class="d-flex flex-wrap">
-        <div th:each="food: ${foodInFridge}" class="card">
+        <div id="noFoodMessage"></div>
+        <div th:each="food: ${foodInFridge}" class="card mobileViewFood d-flex-inline" th:data-id="${food.getName()}">
             <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"
-                  th:method="POST" class="align-self-end">
+                  th:method="POST" class="deleteButtonMobile">
                 <button class="btn btn-outline-danger">
-<!--                    Trash Can Icon-->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    <!--                    Trash Can Icon-->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd"
+                              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                     </svg>
                 </button>
             </form>
+            <h5 th:if="${food.isInFreezer() == true}" class="freezerText mr-2">FREEZER</h5>
             <h3 th:text="${food.name}" class="foodNameMobile text text-center"></h3>
-            <p th:text="${'Expires: ' + (food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}" class="text text-center"></p>
+            <p th:text="${'Expires: ' + (food.expirationDate.getMonth() + 1) + '-' + (food.expirationDate.getDate()) + '-' + (food.expirationDate.getYear() + 1900)}"
+               class="text text-center"></p>
         </div>
     </div>
 </div>
