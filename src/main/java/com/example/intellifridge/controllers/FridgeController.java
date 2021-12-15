@@ -94,8 +94,10 @@ public class FridgeController {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User sameUser = userRepository.getById(currentUser.getId());
+
         Fridge fridge = fridgeRepository.getById(id);
         List<Fridge> fridges = sameUser.getFridges();
+
         List<User> users = fridgeRepository.getById(id).getUsers();
         fridges.remove(fridgeRepository.getById(id));
         System.out.println(fridge.getUsers().size());

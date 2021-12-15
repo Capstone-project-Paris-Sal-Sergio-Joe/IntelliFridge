@@ -114,6 +114,11 @@
                             </ul>
                         </form>
                     </div>
+                    <div class="divtest row">
+                        <form th:action="@{'/delete-account'}" th:method="GET">
+                            <button>Delete account</button>
+                        </form>
+                    </div>
                 </div>
                 <hr class="hr-design">
                 <!-- all the fridge a user is apart of                 -->
@@ -125,7 +130,7 @@
                         <h1 th:if="${param.error1[0] == 'privateUser'}">User is private and
                             cannot be added</h1>
                     </div>
-                    <div th:if="${param.userAdded}" class="alert alert-success">
+                    <div id="add-success" th:if="${param.userAdded}" class="alert alert-success">
                         <h1 class="text-center" th:if="${param.userAdded[0] == 'true'}">User successfully
                             added!</h1>
                     </div>

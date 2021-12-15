@@ -19,3 +19,15 @@ body.on("click", "#addFridgeBtn", function (){
 });
 
 $('#cancel').click(() => location.reload());
+
+setTimeout(()=> {
+    $('#backendErrorProfileMessage').fadeOut('slow');
+}, 5000 );
+
+setTimeout(()=> {
+    $('#errorM').fadeOut('slow');
+}, 5000 );
+
+setTimeout(()=> {
+    $('#add-success').fadeOut('slow');
+}, 5000 );
