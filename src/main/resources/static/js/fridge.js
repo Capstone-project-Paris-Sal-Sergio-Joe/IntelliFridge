@@ -1,19 +1,5 @@
 $(document).ready(function () {
 
-    // sort by for mobile view
-    // $('#sortByMobileView').change(function(){
-    //     var value = $(this).val();
-    //     if (value === 'name') {
-    //         var allFoods = [];
-    //         $('.mobileViewFood').each(() => allFoods.push($(this).html()));
-    //         console.log(allFoods);
-    //     }
-    //
-    //     function nameSort(a, b) {
-    //         return (a)
-    //     }
-    // });
-
     //search for mobile view
     $('#searchMobileView').keyup(function() {
         $('#noFoodMessage').html('');
@@ -36,7 +22,7 @@ $(document).ready(function () {
         })
 
         if (foodCount === 0) {
-            $('#noFoodMessage').html(`<h2 class="alert-danger">No foods in your fridge match search criteria...</h2>`)
+            $('#noFoodMessage').html(`<h2 class="alert-danger">No matches...</h2>`)
         }
 
 
