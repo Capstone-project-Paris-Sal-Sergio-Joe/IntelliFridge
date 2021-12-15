@@ -22,7 +22,7 @@
 
 <nav th:insert="partials/partials.html :: navbar"></nav>
 
-<div class="container">
+<div class="container my-2">
     <button id="addFoodButton" class="btn btn-success">Add Food</button>
     <form th:action="@{'/fridge/' + ${currentFridge.id} + '/add-food'}" th:method="post" th:object="${food}"
           id="addFoodForm">
@@ -78,7 +78,7 @@
 <!--mobile view-->
 <div class="phoneTable container">
     <h1 th:text="'Fridge: ' + ${currentFridge.name}" class="my-2"></h1>
-    <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap justify-content-between">
         <div class="my-2">
             <label for="sortByMobileView">Sort By:</label>
             <select name="sort" id="sortByMobileView">
@@ -94,7 +94,7 @@
             <input type="text" id="searchMobileView" class="">
         </div>
     </div>
-    <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap justify-content-center">
         <div id="noFoodMessage"></div>
         <div th:each="food: ${foodInFridge}" class="card mobileViewFood d-flex-inline" th:data-id="${food.getName()}">
             <form th:action="@{'/fridge/' + ${currentFridge.id} + '/food/' + ${food.id} + '/delete'}"
