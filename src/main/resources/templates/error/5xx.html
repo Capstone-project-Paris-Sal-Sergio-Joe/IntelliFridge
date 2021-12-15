@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ooops, Not Found</title>
+
+    <link  rel="stylesheet" th:href="@{css/error.css}"/>
+
+</head>
+<body >
+
+
+<div>
+    <h1 >Something Went Wrong </h1>
+    <form th:action="@{/}" th:method="GET">
+        <button class="errBtn" type="submit">Go Back</button>
+    </form>
+</div>
+
+<div><img th:src=" @{/images/fridge2.png}" </div>
+
+
+
+</body>
+</html>
