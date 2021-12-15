@@ -25,7 +25,7 @@
 
         <img class="center" th:src="@{/images/navIcon.png}"  th:width="40px "   />
     </a>
-    <a class="navbar-brand" sec:authorize="isAuthenticated()" >
+    <a class="navbar-brand" sec:authorize="isAuthenticated()" th:href="@{/profile}">
       <img class="center" th:src="@{/images/navIcon.png}"  th:width="40px "  />
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

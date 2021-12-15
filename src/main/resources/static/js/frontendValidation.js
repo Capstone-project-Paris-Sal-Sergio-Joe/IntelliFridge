@@ -25,5 +25,11 @@ signUpForm.addEventListener('submit',(e) =>{
         e.preventDefault()
         errorSignUp.innerText = messages.join(', ');
     }
+    if(backendError != null){
     backendError.innerText = '';
+    }
+    setTimeout(()=> {
+        $('#errorSignUp').fadeOut('slow');
+    }, 8000 );
+
 })

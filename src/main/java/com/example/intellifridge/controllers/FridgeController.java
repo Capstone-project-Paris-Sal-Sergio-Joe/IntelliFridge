@@ -94,18 +94,18 @@ public class FridgeController {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User sameUser = userRepository.getById(currentUser.getId());
+
         Fridge fridge = fridgeRepository.getById(id);
-
-//        Delete all foods in fridge
-        List<Food> allFoods = foodRepository.findAllByFridgeId(id);
-        for (Food food : allFoods) {
-            foodRepository.delete(food);
-        }
-
         List<Fridge> fridges = sameUser.getFridges();
+
         List<User> users = fridgeRepository.getById(id).getUsers();
         fridges.remove(fridgeRepository.getById(id));
+        System.out.println(fridge.getUsers().size());
         if (fridge.getUsers().size() == 1) {
+            List<Food> allFoods = foodRepository.findAllByFridgeId(id);
+            for (Food food : allFoods) {
+                foodRepository.delete(food);
+            }
             fridgeRepository.deleteById(id);
         }
         fridgeRepository.saveAll(fridges);
