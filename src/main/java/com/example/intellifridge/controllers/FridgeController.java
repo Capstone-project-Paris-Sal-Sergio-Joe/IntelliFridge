@@ -57,22 +57,21 @@ public class FridgeController {
     }
 
     @PostMapping("/fridge/{id}/delete")
-    public String deleteFridge(@PathVariable long id){
+    public String deleteFridge(@PathVariable long id) {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User sameUser = userRepository.getById(currentUser.getId());
+
         Fridge fridge = fridgeRepository.getById(id);
+        List<Fridge> fridges = sameUser.getFridges();
 
-//        Delete all foods in fridge
-        List<Food> allFoods = foodRepository.findAllByFridgeId(id);
-        for (Food food: allFoods) {
-            foodRepository.delete(food);
-        }
-
-        List <Fridge> fridges = sameUser.getFridges();
-        List <User> users = fridgeRepository.getById(id).getUsers();
+        List<User> users = fridgeRepository.getById(id).getUsers();
         fridges.remove(fridgeRepository.getById(id));
-        if (fridge.getUsers().size() == 1){
+        if (fridge.getUsers().size() == 1) {
+            List<Food> allFoods = foodRepository.findAllByFridgeId(id);
+            for (Food food : allFoods) {
+                foodRepository.delete(food);
+            }
             fridgeRepository.deleteById(id);
         }
         fridgeRepository.saveAll(fridges);
